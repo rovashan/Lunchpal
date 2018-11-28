@@ -1,0 +1,156 @@
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
+
+
+header{
+  background:url("/assets/images/hero-image.png")bottom;
+  height: 480px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: -15px;
+  margin-bottom: 60px;
+}
+
+
+
+.info {
+  width: 60%;
+  padding: 30px;
+  position: relative;
+  top: 50px;
+  margin: 40px auto;
+  text-align: center;
+  color:#111;
+}
+.info p {
+  font-size: 1.3rem;
+}
+
+.plansLink {
+  background: $color;
+  color: #fff;
+  display: block;
+  width: 40%;
+  margin: 0 auto;
+  padding: 15px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.plansLink:hover {
+ background: $hoverColor;
+}
+
+.howitworks, .plans, .reasonsWhy {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.howitworks .stepsContainer > div,  .reasonsWhy .reasonsContainer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.steps img, .reasons img {
+  width: 100%;
+  max-width: 60px;
+  margin-right: 10px;
+}
+.steps div p, .reasons div p  {
+  text-align: left;
+  display: block;
+}
+
+.title {
+  font-weight: 700;
+  color: #111;
+  font-size: 1.4rem;
+}
+
+.getstarted {
+  background: $color;
+  color: #fff;
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.getstarted:hover {
+    background: $hoverColor;
+}
+.menus > div {
+  display: flex;
+  justify-content: center;
+
+}
+
+.menus a {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  border: 1px solid $color;
+  color: $color;
+  border-radius: 8px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.menus a:hover{
+  background: $hoverColor;
+  color: #fff;
+}
+
+.menusContainer {
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+@media screen and (min-width: 790px) {
+  header{
+    height: 700px;
+  }
+
+  .info {
+    width: 50%;
+    text-align: center;
+    top: 140px;
+    padding-bottom: 60px;
+  }
+  .plansLink, .getstarted{
+    width: 30%;
+    max-width: 300px;
+    
+  }
+  
+  .howitworks .stepsContainer, .reasonsWhy .reasonsContainer{
+    display: flex;
+  }
+
+  .howitworks .stepsContainer > div,  .reasonsWhy .reasonsContainer > div {
+    display: block;
+    margin: 20px;
+  }
+
+  .menusContainer {
+    width: 50%;
+   
+  }
+
+  h1 {
+    font-size: 3.4rem;
+  }
+  .steps img, .reasons img {
+    width: 90px;
+  }
+  .steps div p, .reasons div p {
+    text-align: center;
+  }
+}

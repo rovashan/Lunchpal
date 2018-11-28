@@ -1,0 +1,48 @@
+section div {
+  width: 90%;
+  margin: 0 auto;
+}
+
+section div div {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+  margin: 20px;
+}
+
+.stepImages {
+  width: 300px;
+  max-width: 700px;
+  height: 300px;
+  
+  
+}
+
+.stepImages.one{
+  background: url("../../assets/images/rawpixel-651370-unsplash.png")left center;
+}
+.stepImages.two{
+  background: url("../../assets/images/bench-accounting-49908-unsplash.png")center;
+}
+.stepImages.three{
+  background: url("../../assets/images/kevin-mccutcheon-698687-unsplash.png")center;
+}
+
+
+@media screen and (min-width: 690px) {
+  section > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .stepImages {
+    width: 300px;
+    height: 400px;
+  }
+
+  section div div{
+    text-align: left;
+    border-bottom: none;
+  }
+
+}

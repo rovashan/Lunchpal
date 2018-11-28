@@ -1,0 +1,73 @@
+footer {
+  
+  padding: 20px 0px;
+  margin-top: 100px;
+}
+
+
+.footerInfo , .social, .creditCards{
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.footerInfo {
+  text-align: center;
+}
+
+.social, .creditCards {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.social li, .creditCards li {
+  margin: 10px;
+}
+
+
+
+.footerInfo li {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.footerInfo li:last-of-type {
+  border-bottom: none;
+}
+
+.footerInfo li a {
+  color: #111;
+
+}
+
+ul li a {
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+}
+
+.social li a img {
+  width: 30px;
+}
+
+.creditCards li img{
+  width: 40px;
+}
+
+
+@media screen and (min-width: 690px) {
+  .footerInfo {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .footerInfo li {
+    border: none;
+  }
+  .footerInfo li a:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,23 @@
+<section>
+
+  <h2>Contact Us</h2>
+<div class="formContainer">
+  <div class="imageDecorator"></div>
+
+
+  <form (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
+    
+    <label for="name">Name:</label>
+    <input type="text" formControlName="name">
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" formControlName="email">
+  
+    
+    <label for="message">Message:</label>
+    <textarea formControlName="message"></textarea>
+
+    <input type="submit" [disabled]="!contactForm.valid" value="Send">
+  </form>
+</div> 
+</section>

@@ -26,6 +26,7 @@
     "@angular/router": "6.1.10",
     "@angular/service-worker": "6.1.10",
     "core-js": "^2.5.4",
+    "ng-simple-slideshow": "^1.2.6",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"
   },

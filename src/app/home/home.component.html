@@ -1,21 +1,100 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="mat-typography" style="padding: 16px">
-  <div style="text-align:center">
-    <h1>
-      Welcome to {{title}}!
-    </h1>
-    <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=" alt="Angular">
+<header>
+  <div class="info">
+    <h1>Build Your Meal Kit</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at erat vestibulum, pellentesque erat non, faucibus nulla.</p>
+    <a class="plansLink" routerLink="/plans">View Plans</a>
   </div>
-  <h2>Here are some links to help you start: </h2>
-  <ul>
-    <li>
-      <h2><a target="_blank" href="https://angular.io/tutorial" rel="noopener">Tour of Heroes</a></h2>
-    </li>
-    <li>
-      <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki" rel="noopener">CLI Documentation</a></h2>
-    </li>
-    <li>
-      <h2><a target="_blank" href="https://blog.angular.io//" rel="noopener">Angular blog</a></h2>
-    </li>
-  </ul>
+</header>
+
+<section class="howitworks">
+  <h2>How It Works</h2>
+  <div class="stepsContainer">
+  <div class="steps">
+    <img src="./assets/images/profiles.svg" />
+    <div>
+      <p class="title">Pick A Plan</p>
+      <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+    </div>
+  </div>
+  <div class="steps">
+    <img src="./assets/images/ecommerce.svg" />
+    <div>
+      <p class="title">Order</p>
+      <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+    </div>
+
+  </div>
+  <div class="steps">
+    <img src="./assets/images/delivering.svg" />
+    <div>
+      <p class="title">Delivering</p>
+      <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+    </div>
+  </div>
 </div>
+</section>
+
+<div class="section">
+  <a class="getstarted" href="#">Get Started</a>
+</div>
+
+
+<section>
+  <h2>Menu For The Week</h2>
+  <div class="menusContainer">
+    <div class="menus">
+      <div>
+        <a href="#">Menu 1</a>
+        <a href="#">Menu 2</a>
+        <a href="#">Menu 3</a>
+      </div>
+    
+      <slideshow 
+    
+      [minHeight]="'525px'"
+      [autoPlay]="true"
+      [showArrows]="true"
+      [imageUrls]="imageSources"
+      [lazyLoad]="imageSources?.length > 1"
+      [autoPlayWaitForLazyLoad]="true">
+      </slideshow>
+    
+    </div>
+  </div>
+</section>
+
+
+<section class="reasonsWhy">
+  <h2>Why Food Service?</h2>
+  <div class="reasonsContainer">
+    <div class="reasons">
+      <img src="./assets/images/vegetables.svg" />
+      <div>
+        <p class="title">No skimpin’ on the chicken!</p>
+        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+      </div>
+    </div>
+    <div class="reasons">
+      <img src="./assets/images/appointment.svg" />
+      <div>
+        <p class="title">No commitment whatsoever</p>
+        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+      </div>
+  
+    </div>
+    <div class="reasons">
+      <img src="./assets/images/favorites.svg" />
+      <div>
+        <p class="title">The Most 5s Stars Reviews</p>
+        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+      </div>
+    </div>
+    <div class="reasons">
+      <img src="./assets/images/diet.svg" />
+      <div>
+        <p class="title">Fresh And Affordable.</p>
+        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+      </div>
+    </div>
+  </div>
+</section>

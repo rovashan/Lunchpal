@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule} from '@angular/router';
 import { MatProgressBarModule } from '@angular/material';
 
 import { AppModule } from './app.module';
@@ -19,4 +19,6 @@ const routes: Routes = [ { path: 'shell', component: AppShellComponent }];
   bootstrap: [AppComponent],
   declarations: [AppShellComponent],
 })
-export class AppServerModule {}
+export class AppServerModule {
+  
+}

@@ -1,0 +1,83 @@
+
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
+
+.formContainer{
+    display: block;
+}
+
+
+form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+form * {
+    display: block;
+}
+
+form label {
+    text-align: left;
+    text-transform: uppercase;
+   
+}
+
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px 0;
+    color: #222;
+    text-indent: 10px;
+}
+
+form input[type="text"], form input[type="email"] {
+    border:none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+form textarea{
+    border:1px solid #eee;
+    resize: vertical;
+    height: 190px;
+    font-family: "Source Sans Pro";
+
+}
+
+form input[type="submit"]{
+    width: 70%;
+    max-width: 300px;
+    margin: 20px 0px 20px auto;
+    background: $color;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-indent: 0px;
+    cursor: pointer;
+}
+
+
+form input[type="submit"]:hover {
+    background: $hoverColor;
+
+}
+
+.imageDecorator{
+    display: none;   
+    background: url("../../assets/images/hero-image.png") bottom center;
+}
+
+@media screen and (min-width: 690px) {
+  .formContainer{
+      display: flex;
+  }
+  .imageDecorator{
+    width: 35%;
+    max-width: 550px;
+    height: 400px;
+    display: block;
+    
+  }   
+
+}

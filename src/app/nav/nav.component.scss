@@ -1,0 +1,205 @@
+
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
+
+nav {
+    background: #fff;
+    color: #111;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    height: 60px;
+    top:0px;
+    position: fixed;
+    width: 100%;
+    max-width: 1920px;
+    z-index: 98;
+  
+}
+
+.topnav ul{
+    display: flex;
+    padding: 0px;
+    margin-top: 10px;
+
+}
+
+.clear {
+  clear: both;
+}
+
+.topnav .menu{
+    float: left;
+
+}
+
+
+.topnav .options {
+
+    float: right;
+
+}
+
+.topnav ul li {
+    list-style-type: none;
+    margin: 0 5px;
+    position: relative;
+}
+
+
+
+.topnav ul li a {
+
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.topnav .menu li a{
+    color: #111;
+}
+
+
+
+.lineBelow{
+    height: 3px;
+    display: block;
+    background: $color;
+    position: relative;
+    width: 0px;
+    bottom: -10px;
+    z-index: 99;
+}
+
+
+.topnav .menu li a:hover{
+    color: $color;
+}
+
+.topnav .menu li:hover .lineBelow {
+    width: 100%;
+}
+
+.topnav .mobileLogo {
+  display: none;
+}
+
+.topnav .menutoggler {
+    display: none;
+}
+.topnav .sidenav {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: -10px;
+    left: 0;
+    background-color: #fff;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+  
+}
+
+.topnav .sidenav li:last-of-type{
+  border-bottom: 1px solid $color;
+}
+.topnav .sidenav li:first-of-type{
+    border-bottom: none;   
+}
+
+
+.topnav .sidenav li a {
+    color: #111;
+    display: inline-block;
+    width: 240px;
+    font-size: 1rem;
+}
+
+
+li i {
+  display: block;
+  padding-top: 10px;
+  font-size: 1.6rem;
+}
+
+
+
+.signin a, .login a {
+    color: $color;
+}
+
+.signin{
+    border: 1px solid $color;
+    border-radius: 5px;
+}
+
+.options li:first-of-type:hover {
+    background: $hoverColor;
+    
+}
+.options li:first-of-type:hover a {
+    color: #fff;
+}
+
+
+.topnav .menu li a.logo, {
+  padding-left: 10px;
+  font-size: 1.4rem;
+  margin-top: -4px;
+  color:  $color;
+}
+
+.topnav .sidenav li a.logo {
+  color:  $color;
+  font-size: 1.4rem;
+}
+
+.topnav .sidenav li a:hover{
+    text-indent: 5px;
+    color: #fff;
+    background: $color;
+}
+
+.topnav .sidenav li:first-of-type a:hover{
+   text-indent: 0px;
+   color: $color;
+   background: #fff;
+}
+
+
+.icon {
+    cursor: pointer;
+  }
+  
+
+
+
+@media screen and (max-width: 690px) {
+    .topnav .menu {
+        display: none;
+    }
+    .topnav .sidenav {
+      display: block;
+    }
+    .topnav .menutoggler {
+      display:block;
+      float: left;
+    }
+
+    .topnav .mobileLogo {
+      display: block;
+      float: left;
+      margin-top: 7px;
+    }
+
+    .topnav .mobileLogo li a {
+      color:  $color;
+      font-size: 1.4rem;
+      padding: 0;
+      margin-top: 10px;
+    }
+  }

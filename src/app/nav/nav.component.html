@@ -1,0 +1,38 @@
+<nav class="topnav">
+  <ul class="menutoggler">
+      <li (click)="showMenu()" class="icon"><i class="material-icons">menu</i></li>
+  </ul>
+
+  <ul class="menu">
+    <li><a class="logo" routerLink="/home">LUNCHPAL</a></li>
+    <li><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
+    <li><a routerLink="/plans">Our Plans</a><span class="lineBelow"></span></li>
+    <li><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
+    <li><a routerLink="/contactus">Contact Us</a><span class="lineBelow"></span></li>
+
+  </ul>
+
+
+<!-- class="menu" -->
+  <ul #sidenav class="sidenav">
+  <li><a class="logo" routerLink="/home">LUNCHPAL</a></li>
+  <li><a routerLink="/howitworks"> How It Works</a></li>
+  <li><a routerLink="/plans">Our Plans</a></li>
+  <li><a routerLink="/faqs">FAQ</a></li>
+  <li><a routerLink="/contactus">Contact Us</a></li>
+
+  </ul>
+
+  <ul class="mobileLogo">
+      <li><a routerLink="/home">LUNCHPAL</a></li>
+  </ul>
+
+
+  <ul class="options">
+      <li class="signin"><a href="#start">Sign In</a></li>
+      <li class="login"><a href="#login">Log In</a></li>
+  </ul>
+
+
+  <p class="clear"></p>
+</nav>

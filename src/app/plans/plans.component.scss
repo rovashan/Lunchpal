@@ -1,0 +1,92 @@
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
+
+.plansContainer, .faqsContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.plans {
+    margin: 20px;
+}
+
+
+
+.menus > div {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .menus a {
+    display: block;
+    padding: 15px;
+    color: #fff;
+    font-size: 18px;
+    border: 1px solid $color;
+    color: $color;
+    border-radius: 8px;
+    margin: 10px;
+    text-decoration: none;
+  }
+  
+  .menus a:hover{
+    background: $hoverColor;
+    color: #fff;
+  }
+
+.faqsContainer {
+    display: block;
+}
+
+.faqsContainer > div {
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+}
+
+button.package {
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border:1px solid $color;
+    background: none;
+    color: $color;
+}
+
+button.recommended {
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background: $color;
+    color: #fff;
+}
+
+button.package:hover {
+    background: $hoverColor;
+    color: #fff;
+}
+
+.menusContainer {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+@media screen and (min-width: 890px) {
+    .plansContainer, .faqsContainer {
+        display: flex;
+    }
+
+    .menusContainer {
+        width: 50%;
+        
+    }
+}
