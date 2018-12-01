@@ -13,7 +13,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-            <button class="package">Select this plan</button>
+            <button #menuOne id="menuOne" (click)="menuHandler($event)" class="package">Select this plan</button>
         </mat-card-actions>
       </mat-card>
 
@@ -28,7 +28,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-              <button class="package recommended">Select this plan</button>
+              <button #menuTwo id="menuTwo" (click)="menuHandler($event)" class="package recommended">Select this plan</button>
           </mat-card-actions>
         </mat-card>
 
@@ -43,7 +43,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-                <button class="package">Select this plan</button>
+                <button #menuThree id="menuThree" (click)="menuHandler($event)" class="package">Select this plan</button>
             </mat-card-actions>
           </mat-card>
     </div>
@@ -52,6 +52,7 @@
     
 <section>
   <h2>Menu For The Week</h2>
+  <h3>{{planSelected}}</h3>
   <div class="menusContainer">
     <div class="menus">
       <div>
