@@ -13,7 +13,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-            <button #menuOne id="menuOne" (click)="menuHandler($event)" class="package">Select this plan</button>
+            <button class="package">Select this plan</button>
         </mat-card-actions>
       </mat-card>
 
@@ -28,7 +28,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-              <button #menuTwo id="menuTwo" (click)="menuHandler($event)" class="package recommended">Select this plan</button>
+              <button class="package recommended">Select this plan</button>
           </mat-card-actions>
         </mat-card>
 
@@ -43,7 +43,7 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-                <button #menuThree id="menuThree" (click)="menuHandler($event)" class="package">Select this plan</button>
+                <button class="package">Select this plan</button>
             </mat-card-actions>
           </mat-card>
     </div>
@@ -52,17 +52,16 @@
     
 <section>
   <h2>Menu For The Week</h2>
-  <h3>{{planSelected}}</h3>
+  <h3>{{menuSelected}}</h3>
   <div class="menusContainer">
     <div class="menus">
       <div>
-        <a href="#">Menu 1</a>
-        <a href="#">Menu 2</a>
-        <a href="#">Menu 3</a>
+        <a href="#" id="menuOne" (click)="menuHandler($event)" >Menu 1</a>
+        <a href="#" id="menuTwo" (click)="menuHandler($event)">Menu 2</a>
+        <a href="#" id="menuThree" (click)="menuHandler($event)">Menu 3</a>
       </div>
 
       <slideshow 
-    
       [minHeight]="'525px'"
       [autoPlay]="true"
       [showArrows]="true"
