@@ -1,21 +1,10 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarouselHandlerService {
-
-  constructor() {  
-  }
-
-  //--- this service is just handling the images for the carousel
-  //--- the carousel was not receiving the changes from the service
-  //--- to the component
-
-
-  public menuOneString = "Menu One";
-  public menuTwoString = "Menu Two";
-  public menuThreeString = "Menu One";
 
   //Plan One Images
   public menuOne = [
@@ -39,5 +28,53 @@ export class CarouselHandlerService {
     
   ]
 
+    imageSources: string[]= this.menuOne;
+    label: string = "Menu One";
+    
+    public menuOneLabel = "Menu One";
+    public menuTwoLabel = "Menu Two";
+    public menuThreeLabel = "Menu Three";
+
+    public sourcesChange: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.imageSources);
+    public labelsChange: BehaviorSubject<string> = new BehaviorSubject<string>(this.label);
+
+
+    setSources(imagesArray: string[]): void {
+      this.imageSources = imagesArray;
+      this.sourcesChange.next(imagesArray);
+      
+    }
+    setlabels(label: string):void{
+      this.label = label
+      this.labelsChange.next(label);
+    }
+
+    menuHandler($event: Event){
+      $event.preventDefault();
+      
+      let currentID = $event.target["id"];
+      //check the ID of the plan selected
+      if(currentID === "menuOne"){
+        //set the images array to be the array of images for the menu
+        console.log("menu one is selected");
+        this.setSources(this.menuOne);
+        this.setlabels(this.menuOneLabel);
+        
+        }
+      else if (currentID === "menuTwo"){
+        console.log("menu two is selected");
+        this.setSources(this.menuTwo);
+        this.setlabels(this.menuTwoLabel);
+      
+      }
+      else if (currentID === "menuThree"){
+        console.log("menu three is selected");
+        this.setSources(this.menuThree);
+        this.setlabels(this.menuThreeLabel);
+       
+        
+      }
+    
+    }
 
 }
