@@ -29,10 +29,13 @@
 
 
   <ul class="options">
-      <li class="signin"><a href="#start">Sign In</a></li>
-      <li class="login"><a href="#login">Log In</a></li>
+      <li *ngIf="authService.user | async as user; else showSignIn" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
   </ul>
 
+  <ng-template #showSignIn>
+    <li class="signin"><a routerLink="/signup">Sign In</a></li>
+    <li class="login"><a routerLink="/login">Log In</a><span class="lineBelow"></span></li>
+  </ng-template>
 
   <p class="clear"></p>
 </nav>

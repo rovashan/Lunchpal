@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
+import {AuthService} from "../auth/auth.service";
+
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +9,7 @@ import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular
 })
 export class NavComponent implements OnInit {
 
-    constructor() { }
+    constructor(private authService: AuthService) { }
     
 
     //---- Below is the implementation for the sidenav
@@ -41,6 +43,14 @@ export class NavComponent implements OnInit {
 
     closeMenu(){
       this.menu.nativeElement.style.width = "";
+    }
+
+
+
+    //logout function from AuthService
+    logout(event: Event){
+      event.preventDefault();
+      this.authService.logOut();
     }
 
     ngOnInit() {

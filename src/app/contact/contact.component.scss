@@ -16,52 +16,12 @@ form * {
     display: block;
 }
 
-form label {
-    text-align: left;
-    text-transform: uppercase;
-   
-}
 
 
-form input, form textarea {
-    width: 100%;
-    padding: 10px 0;
-    color: #222;
-    text-indent: 10px;
-}
-
-form input[type="text"], form input[type="email"] {
-    border:none;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
-}
-
-form textarea{
-    border:1px solid #eee;
-    resize: vertical;
-    height: 190px;
-    font-family: "Source Sans Pro";
-
-}
-
-form input[type="submit"]{
-    width: 70%;
-    max-width: 300px;
-    margin: 20px 0px 20px auto;
-    background: $color;
+form input[type=submit]{
     color: #fff;
-    border: none;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    text-indent: 0px;
-    cursor: pointer;
 }
 
-
-form input[type="submit"]:hover {
-    background: $hoverColor;
-
-}
 
 .imageDecorator{
     display: none;   
@@ -75,7 +35,7 @@ form input[type="submit"]:hover {
   .imageDecorator{
     width: 35%;
     max-width: 550px;
-    height: 400px;
+    height: 600px;
     display: block;
     
   }   

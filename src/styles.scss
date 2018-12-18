@@ -12,7 +12,8 @@
 $app-primary: mat-palette($mat-indigo);
 $app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $app-theme:   mat-light-theme($app-primary, $app-accent);
-
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
 // Include the default theme styles.
 @include angular-material-theme($app-theme);
 
@@ -28,6 +29,11 @@ body {
 
 main {
   text-align: center;
+}
+
+.error {
+  color: red;
+  font-style: italic;
 }
 
 section, .section {
@@ -49,4 +55,85 @@ section h2 {
 
 .arrow-container {
   z-index: 90 !important;
+}
+
+form {
+  border-radius: 3px;
+  padding: 20px 10px;
+}
+
+form > p {
+  margin-bottom: 40px;
+  text-align: left;
+  color: #777;
+}
+
+
+.contactForm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+}
+
+.loginForm, .signupForm {
+  margin: 100px auto;
+  width: 70%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+form input, .loginForm, .signupForm {
+  border:none;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+form label {
+  text-align: left;
+  text-transform: uppercase;
+ 
+}
+
+form textarea{
+  border:1px solid #eee;
+  resize: vertical;
+  height: 190px;
+  font-family: "Source Sans Pro";
+
+}
+
+form input[type="submit"]{
+  display: block;
+  width: 70%;
+  max-width: 300px;
+  margin: 20px 0px 20px auto;
+  background: $color;
+  color: #fff;
+  border: none;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-indent: 0px;
+  cursor: pointer;
+}
+
+
+form input[type="submit"]:hover {
+  background: $hoverColor;
+
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px 0;
+  color: #222;
+  text-indent: 10px;
+}
+
+input[type="submit"]:disabled {
+    background: #b4c8d3;
+}
+
+input[type="submit"]:disabled:hover {
+  background: #b4c8d3;
 }
