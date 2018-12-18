@@ -1,0 +1,20 @@
+<section>
+    <h2>Get Started with Lunchpal</h2>
+  
+  <form class="signupForm" (ngSubmit)="signup(signupForm.value)" [formGroup]="signupForm">
+    <p>Create an account and start using Lunchpal.</p> 
+    
+    <label for="email">Email Address:</label>
+    <input type="email" formControlName="email">
+  
+    <label for="password">Password:</label>
+    <input type="password" name="password" formControlName="password">
+  
+    <input class="signupSubmit" type="submit" [disabled]="!signupForm.valid" value="Sign Up">
+  </form>
+  
+  <div *ngIf="authService.error != ''">
+    <p class="error">{{authService.signupError}}</p>
+  </div>
+
+  </section>

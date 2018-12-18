@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'howitworks', loadChildren: './howitworks/howitworks.module#HowitworksModule' },
   { path: 'faqs', loadChildren: './faqs/faqs.module#FaqsModule' },
   { path: 'contactus', loadChildren: './contact/contact.module#ContactModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginModule' },
+  { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
 ];
 
 @NgModule({

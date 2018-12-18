@@ -5,8 +5,9 @@
   <div class="imageDecorator"></div>
 
 
-  <form (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
-    
+  <form class="contactForm" (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
+    <p>If you have any doubt or question, send us a message.</p>
+
     <label for="name">Name:</label>
     <input type="text" formControlName="name">
 

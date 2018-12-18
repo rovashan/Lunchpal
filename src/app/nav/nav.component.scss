@@ -76,7 +76,7 @@ nav {
     color: $color;
 }
 
-.topnav .menu li:hover .lineBelow {
+.topnav ul li:hover .lineBelow {
     width: 100%;
 }
 
@@ -134,7 +134,12 @@ li i {
 
 .signin{
     border: 1px solid $color;
-    border-radius: 5px;
+    border-radius: 5px; 
+   
+}
+
+.signin:hover {
+    background: $color !important;
 }
 
 .options li:first-of-type:hover {
@@ -175,6 +180,18 @@ li i {
     cursor: pointer;
   }
   
+
+
+.options .logout a{
+    color: #111;
+}
+
+.options .logout:hover a{
+    color: $color !important;
+}
+.options .logout:hover{
+    background: none !important;
+}
 
 
 

@@ -38,12 +38,14 @@ export class CarouselHandlerService {
     public sourcesChange: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(this.imageSources);
     public labelsChange: BehaviorSubject<string> = new BehaviorSubject<string>(this.label);
 
-
+    //set sources array for the images
     setSources(imagesArray: string[]): void {
       this.imageSources = imagesArray;
       this.sourcesChange.next(imagesArray);
       
     }
+    
+    //set label for the images
     setlabels(label: string):void{
       this.label = label
       this.labelsChange.next(label);
