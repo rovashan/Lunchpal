@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 //firebase auth module
 import { AngularFireAuth } from '@angular/fire/auth';
+import {AngularFirestore} from "@angular/fire/firestore";
 import { map } from "rxjs/operators";
 import {Router} from "@angular/router";
-
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
+    private angularFirestore: AngularFirestore,
     private router: Router
   ) { }
 
@@ -35,6 +36,12 @@ export class AuthService {
   signUp(email:string, password:string){
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
     .then((user)=>{
+
+      // Create entry in Firestore users collection
+      this.angularFirestore.collection('/users').doc(user.user.uid).set({
+        uid: user.user.uid,
+        email: user.user.email
+      });            
 
       console.log(user.user.email);
       this.signupError = "";
