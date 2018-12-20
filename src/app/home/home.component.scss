@@ -131,7 +131,7 @@ header{
   }
   
   .howitworks .stepsContainer, .reasonsWhy .reasonsContainer{
-    display: flex;
+    display: inline-flex;
   }
 
   .howitworks .stepsContainer > div,  .reasonsWhy .reasonsContainer > div {
