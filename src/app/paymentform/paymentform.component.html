@@ -12,14 +12,14 @@
               <label for="firstname">First Name: </label>
               <input name="firstname" placeholder="First Name" formControlName="firstname" required>
               <div *ngIf="delivery.get('firstname').hasError('required') && (delivery.get('firstname').dirty || delivery.get('firstname').touched)">
-                  <span class="error">Firstname is required.</span>
+                  <span class="error">First name is required.</span>
                 </div>
             </div>
             <div>
               <label for="">Last Name: </label>
               <input name="lastname" placeholder="Last Name" formControlName="lastname"  required>
               <div *ngIf="delivery.get('lastname').hasError('required') && (delivery.get('lastname').dirty || delivery.get('lastname').touched)">
-                  <span class="error">Lastname is required.</span>
+                  <span class="error">Last name is required.</span>
                 </div>
             </div>  
           </div>
@@ -36,7 +36,7 @@
                 <label for="apartment">Building or Apartment: </label>
                 <input name="apartment" placeholder="Building or Apartment" formControlName="apartment" required>
                 <div *ngIf="delivery.get('apartment').hasError('required') && (delivery.get('apartment').dirty || delivery.get('apartment').touched)">
-                    <span class="error">Name is required.</span>
+                    <span class="error">Building or Apartment is required.</span>
                   </div>
               </div>  
             </div>
@@ -46,14 +46,14 @@
                   <label for="city">City: </label>
                   <input name="city" placeholder="City" formControlName="city" required>
                   <div *ngIf="delivery.get('city').hasError('required') && (delivery.get('city').dirty || delivery.get('city').touched)">
-                      <span class="error">Name is required.</span>
+                      <span class="error">City is required.</span>
                     </div>
                 </div>
                 <div>
                   <label for="phone">Phone Number: </label>
                   <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone" required>
                   <div *ngIf="delivery.get('phone').hasError('required') && (delivery.get('phone').dirty || delivery.get('phone').touched)">
-                      <span class="error">Name is required.</span>
+                      <span class="error">Phone is required.</span>
                     </div>
                 </div>  
           </div>
@@ -62,7 +62,7 @@
                   <label for="email">Email: </label>
                   <input type="email" name="email" placeholder="Email Address" formControlName="email" required>
                   <div *ngIf="delivery.get('email').hasError('required') && (delivery.get('email').dirty || delivery.get('email').touched)">
-                      <span class="error">Name is required.</span>
+                      <span class="error">Email is required.</span>
                     </div>
                 </div> 
               <div>
@@ -71,7 +71,7 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <div *ngIf="delivery.get('fdeldate').hasError('required') && (delivery.get('fdeldate').dirty || delivery.get('fdeldate').touched)">
-                    <span class="error">Name is required.</span>
+                    <span class="error">First delivery date is required.</span>
                   </div>
               </div>
              
