@@ -62,10 +62,11 @@ form {
   padding: 20px 10px;
 }
 
-form > p {
+form > p, .paymentContainer form > p{
   margin-bottom: 40px;
   text-align: left;
   color: #777;
+  font-size: 1rem;
 }
 
 
@@ -81,11 +82,11 @@ form > p {
 }
 
 
-form input, .loginForm, .signupForm {
+form input, .loginForm, .signupForm, .paymentContainer form input {
   border:none;
-  border-bottom: 1px solid #eee;
   margin-bottom: 20px;
   text-align: left;
+  border-bottom:1px solid #777;
 }
 
 form label {
@@ -102,7 +103,16 @@ form textarea{
 
 }
 
-form input[type="submit"]{
+.paymentContainer .continue, .paymentContainer .confirmOrder {
+  padding: 10px;
+}
+
+
+.personalinfo {
+  font-style: italic;
+}
+
+form input[type="submit"], .paymentContainer .continue, .paymentContainer .confirmOrder{
   display: block;
   width: 70%;
   max-width: 300px;
@@ -117,8 +127,11 @@ form input[type="submit"]{
   cursor: pointer;
 }
 
+.paymentContainer .confirmOrder{
+  margin: 40px auto;
+}
 
-form input[type="submit"]:hover {
+form input[type="submit"]:hover, .paymentContainer .confirmOrder:hover {
   background: $hoverColor;
 
 }
@@ -137,3 +150,4 @@ input[type="submit"]:disabled {
 input[type="submit"]:disabled:hover {
   background: #b4c8d3;
 }
+

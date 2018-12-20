@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-
 //firebase auth module
 import { AngularFireAuth } from '@angular/fire/auth';
+//Afirestore service
+import {AfirestoreService} from "../afirestore.service";
 import { map } from "rxjs/operators";
 import {Router} from "@angular/router";
+
+
 
 
 @Injectable({
@@ -13,6 +16,7 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
+    private afirestore: AfirestoreService,
     private router: Router
   ) { }
 
@@ -26,7 +30,7 @@ export class AuthService {
       if(!authState){
         return null;
       }else{
-        return authState.email
+        return authState
       }
     })
   ); 
@@ -35,8 +39,14 @@ export class AuthService {
   signUp(email:string, password:string){
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
     .then((user)=>{
+      
+      //add the user to the users database
+      let userData = {
+        "email": user.user.email,
+        "userID": user.user.uid 
+      }
+      this.afirestore.addUser(userData);
 
-      console.log(user.user.email);
       this.signupError = "";
       this.router.navigate(["/"]);
 
@@ -63,7 +73,7 @@ export class AuthService {
   signIn(email:string, password:string){
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
-      console.log(user.user.email);
+      console.log(user.user.uid);
       this.loginError = "";
       this.router.navigate(["/"]);
     })
@@ -74,9 +84,5 @@ export class AuthService {
   }
 
   
-  hello(){
-    console.log("Hello from service");
-  }
-
 
 }

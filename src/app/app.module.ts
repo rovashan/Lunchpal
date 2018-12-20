@@ -16,13 +16,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import {AuthService} from "./auth/auth.service";
+import {AfirestoreService} from "./afirestore.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-  
     
   ],
   imports: [
@@ -35,7 +35,7 @@ import {AuthService} from "./auth/auth.service";
     MatToolbarModule,
     AppRoutingModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AfirestoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,139 @@
+<section>
+  <h2>Delivery & Payment Form</h2>
+  <div class="structureContainer">
+  <div class="paymentContainer">
+    <mat-vertical-stepper linear>
+      <mat-step [completed]="deliveryState" label="Personal Information">
+        
+        <form [formGroup]="delivery" (change)="deliveryCompleted()">
+            <p>Please fill the form below with your personal information: </p>
+          <div class="controls">
+            <div>
+              <label for="firstname">First Name: </label>
+              <input name="firstname" placeholder="First Name" formControlName="firstname" required>
+              <div *ngIf="delivery.get('firstname').hasError('required') && (delivery.get('firstname').dirty || delivery.get('firstname').touched)">
+                  <span class="error">Firstname is required.</span>
+                </div>
+            </div>
+            <div>
+              <label for="">Last Name: </label>
+              <input name="lastname" placeholder="Last Name" formControlName="lastname"  required>
+              <div *ngIf="delivery.get('lastname').hasError('required') && (delivery.get('lastname').dirty || delivery.get('lastname').touched)">
+                  <span class="error">Lastname is required.</span>
+                </div>
+            </div>  
+          </div>
+
+          <div class="controls">
+              <div>
+                <label for="street">Street Address: </label>
+                <input name="street" placeholder="Street Address" formControlName="street" required>
+                <div *ngIf="delivery.get('street').hasError('required') && (delivery.get('street').dirty || delivery.get('street').touched)">
+                    <span class="error">Street Address is required.</span>
+                  </div>
+              </div>
+              <div>
+                <label for="apartment">Building or Apartment: </label>
+                <input name="apartment" placeholder="Building or Apartment" formControlName="apartment" required>
+                <div *ngIf="delivery.get('apartment').hasError('required') && (delivery.get('apartment').dirty || delivery.get('apartment').touched)">
+                    <span class="error">Name is required.</span>
+                  </div>
+              </div>  
+            </div>
+
+          <div class="controls">
+                <div>
+                  <label for="city">City: </label>
+                  <input name="city" placeholder="City" formControlName="city" required>
+                  <div *ngIf="delivery.get('city').hasError('required') && (delivery.get('city').dirty || delivery.get('city').touched)">
+                      <span class="error">Name is required.</span>
+                    </div>
+                </div>
+                <div>
+                  <label for="phone">Phone Number: </label>
+                  <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone" required>
+                  <div *ngIf="delivery.get('phone').hasError('required') && (delivery.get('phone').dirty || delivery.get('phone').touched)">
+                      <span class="error">Name is required.</span>
+                    </div>
+                </div>  
+          </div>
+          <div class="controls">
+              <div>
+                  <label for="email">Email: </label>
+                  <input type="email" name="email" placeholder="Email Address" formControlName="email" required>
+                  <div *ngIf="delivery.get('email').hasError('required') && (delivery.get('email').dirty || delivery.get('email').touched)">
+                      <span class="error">Name is required.</span>
+                    </div>
+                </div> 
+              <div>
+                <label for="fdeldate">First Delivery Date: </label>
+                <input (ngModelChange)="deliveryCompleted()" [matDatepicker]="picker" formControlName="fdeldate" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="delivery.get('fdeldate').hasError('required') && (delivery.get('fdeldate').dirty || delivery.get('fdeldate').touched)">
+                    <span class="error">Name is required.</span>
+                  </div>
+              </div>
+             
+        </div>
+  
+         </form> 
+         
+         <button *ngIf="delivery.valid" class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
+      </mat-step>
+      
+      <mat-step [completed]="creditState" label="Credit Card Information">
+          <form [formGroup]="creditCard" (change)="creditCompleted()">
+              <p>Please fill the form below with your credit card information: </p>
+            <div class="controls">
+              <div>
+                <label for="cardnumber">Credit Card Number: </label>
+                <input name="cardnumber" placeholder="Credit Card Number" formControlName="cardnumber" required>
+              </div>
+              <div class="small">
+                <label for="expdate">Expiry Date: </label>
+                <input name="expdate" placeholder="Expiry Date" formControlName="expdate" required>
+              </div>  
+              <div class="small">
+                  <label for="seccode">Security Code: </label>
+                  <input name="seccode" placeholder="Security Code" formControlName="seccode" required>
+                </div>  
+            </div>
+  
+           </form>  
+           <button class="continue" *ngIf="creditCard.valid" matStepperNext type="button" (click)="creditCompleted()">Continue</button>
+      </mat-step>
+      <mat-step label="Confirmation">
+         <p>Please confirm your order.</p>
+         <img class="confirmIcon" src="../../assets/images/box.svg" />
+         <button class="confirmOrder" (click)="confirmOrder()">Confirm Order</button>
+        </mat-step>
+    </mat-vertical-stepper>
+  </div>
+
+  <div class="summary">
+    <div>
+      <h3>Order Summary</h3>
+      <p class="planSelected">Classic Plan <span class="planType">R50</span></p>
+    </div>
+      <!-- TODO: wire the user info -->
+    <div>
+      <h3>Personal Information</h3>
+      <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>
+      <p>Email: <span class="personalinfo">{{selectedemail}}</span> </p>
+    </div>
+    <div>
+      <h3>Delivery Address</h3>
+      <p>Address: <span class="personalinfo">{{selectedaddress}}</span>  </p>
+      <p>City: <span class="personalinfo">{{selectedcity}}</span> </p>
+    </div>
+    <div>
+      <h3>Delivery Date</h3>
+      <p>Delivery date: <span class="personalinfo">{{selecteddate}}</span></p>
+    </div>
+  </div>
+
+
+
+</div>
+</section>

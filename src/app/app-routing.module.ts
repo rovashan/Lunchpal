@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'contactus', loadChildren: './contact/contact.module#ContactModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
+  { path: 'payment', loadChildren: './paymentform/paymentform.module#PaymentformModule' },
 ];
 
 @NgModule({
