@@ -69,8 +69,8 @@ export class AuthService {
     })
   }
   
-  //signin function
-  signIn(email:string, password:string){
+  //signup function
+  signup(email:string, password:string){
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
       console.log(user.user.uid);

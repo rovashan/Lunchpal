@@ -128,26 +128,22 @@ li i {
 
 
 
-.signin a, .login a {
+.login a {
     color: $color;
-}
-
-.signin{
     border: 1px solid $color;
     border-radius: 5px; 
-   
+    text-align: center;
+    width: 75px;
+    font-size: 100px;
 }
 
-.signin:hover {
+.signup a {
     background: $color !important;
-}
-
-.options li:first-of-type:hover {
-    background: $hoverColor;
-    
-}
-.options li:first-of-type:hover a {
-    color: #fff;
+    color: #fff; //!important;
+    border: 1px solid;
+    border-radius: 5px; 
+    text-align: center;
+    width: 75px;
 }
 
 

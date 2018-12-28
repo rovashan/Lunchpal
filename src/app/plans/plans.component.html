@@ -1,16 +1,19 @@
 <section>
-  <h2>Plans</h2>
+  <h2>Choose a plan</h2>
 
   <div class="plansContainer">
     <mat-card class="plans">
         <mat-card-header>
-          <mat-card-title><h3>Plan 1</h3></mat-card-title>
+          <mat-card-title><h3>Mzanzi</h3></mat-card-title>
         </mat-card-header>
         <img mat-card-image src="../../assets/images/pablo-merchan-montes-772142-unsplash.png" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-              Pellentesque id erat ac mi placerat auctor id ac turpis. Duis congue dolor varius ipsum semper laoreet. Etiam finibus ullamcorper hendrerit. Vestibulum tristique tincidunt libero,
+              South African cuisine.
           </p>
+          <strong>R50</strong>
+          <p>Per day</p >
+
         </mat-card-content>
         <mat-card-actions>
             <button class="package">Select this plan</button>
@@ -19,28 +22,32 @@
 
       <mat-card class="plans">
           <mat-card-header>
-            <mat-card-title><h3>Plan 2</h3></mat-card-title>
+            <mat-card-title><h3>Classic</h3></mat-card-title>
           </mat-card-header>
           <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p>
-                Pellentesque id erat ac mi placerat auctor id ac turpis. Duis congue dolor varius ipsum semper laoreet. Etiam finibus ullamcorper hendrerit. Vestibulum tristique tincidunt libero,
+                Everyday food.
             </p>
+            <strong>R65</strong>
+            <p>Per day</p>
           </mat-card-content>
           <mat-card-actions>
-              <button class="package recommended">Select this plan</button>
+              <button class="package recommended" (click)="selectPlan()">Select this plan</button>
           </mat-card-actions>
         </mat-card>
 
         <mat-card class="plans">
             <mat-card-header>
-              <mat-card-title><h3>Plan 3</h3></mat-card-title>
+              <mat-card-title><h3>Fit</h3></mat-card-title>
             </mat-card-header>
             <img mat-card-image src="../../assets/images/alex-loup-392625-unsplash.png" alt="Photo of a Shiba Inu">
             <mat-card-content>
               <p>
-                  Pellentesque id erat ac mi placerat auctor id ac turpis. Duis congue dolor varius ipsum semper laoreet. Etiam finibus ullamcorper hendrerit. Vestibulum tristique tincidunt libero,
+                  Health conscious food.
               </p>
+              <strong>R75</strong>
+              <p>Per day</p>
             </mat-card-content>
             <mat-card-actions>
                 <button class="package">Select this plan</button>
