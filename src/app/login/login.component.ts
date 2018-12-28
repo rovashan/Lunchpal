@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
    
   });
 
-  //pass the form data to the service signin function  
+  //pass the form data to the service signup function  
   login(formData: FormData){
-    this.authService.signIn(formData["email"], formData["password"]);
+    this.authService.signup(formData["email"], formData["password"]);
   }
 
   ngOnInit() {
