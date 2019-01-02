@@ -54,6 +54,12 @@ export class NavComponent implements OnInit {
     }
 
     ngOnInit() {
+   /*
+      this.authService.user.subscribe(u => {
+      console.log(u)
+    });
+
+    */
     }
 
 

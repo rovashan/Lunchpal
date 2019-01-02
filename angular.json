@@ -25,7 +25,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json"
+              "src/manifest.json",
+              "src/OneSignalSDKUpdaterWorker.js",
+              "src/OneSignalSDKWorker.js"
             ],
             "styles": [
               "src/styles.scss"
@@ -56,7 +58,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-app:build"
+            "browserTarget": "my-app:build",
+            "ssl": true,
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt"
           },
           "configurations": {
             "production": {

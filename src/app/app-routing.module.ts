@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import {GuardGuard} from "./auth/guard.guard";
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
@@ -10,7 +12,7 @@ const routes: Routes = [
   { path: 'contactus', loadChildren: './contact/contact.module#ContactModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
-  { path: 'payment', loadChildren: './paymentform/paymentform.module#PaymentformModule' },
+  { path: 'payment', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
 ];
 
 @NgModule({

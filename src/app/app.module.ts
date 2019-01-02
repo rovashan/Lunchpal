@@ -15,8 +15,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+//custom firebase services
 import {AuthService} from "./auth/auth.service";
 import {AfirestoreService} from "./afirestore.service";
+
+//onesignal notifications service
+import {OnesignalService} from "./onesignal/onesignal.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,7 @@ import {AfirestoreService} from "./afirestore.service";
     MatToolbarModule,
     AppRoutingModule,
   ],
-  providers: [AuthService, AfirestoreService],
+  providers: [AuthService, AfirestoreService, OnesignalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

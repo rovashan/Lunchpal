@@ -4,6 +4,8 @@
   "theme_color": "#3f51b5",
   "background_color": "#002984",
   "display": "standalone",
+  "gcm_sender_id": "482941778795",
+  "gcm_sender_id_comment": "Do not change the GCM Sender ID",
   "scope": "/",
   "start_url": "/",
   "icons": [
