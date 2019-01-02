@@ -4,6 +4,9 @@ import {Router} from "@angular/router";
 
 //auth service
 import {AuthService} from "../auth/auth.service";
+//OneSignal service
+import {OnesignalService} from "../onesignal/onesignal.service";
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private notifications: OnesignalService
   ) { }
 
   public loginForm = new FormGroup({
@@ -26,10 +30,13 @@ export class LoginComponent implements OnInit {
   //pass the form data to the service signup function  
   login(formData: FormData){
     this.authService.signup(formData["email"], formData["password"]);
+    //show the notification to remind the user to purchase a plan
+    this.notifications.sendReminder();
+    
   }
-
+  
   ngOnInit() {
-   
+    
   }
 
 }

@@ -48,7 +48,7 @@ export class AuthService {
       this.afirestore.addUser(userData);
 
       this.signupError = "";
-      this.router.navigate(["/"]);
+      this.router.navigate(["/plans"]);
 
     })
     .catch((err)=>{
@@ -75,7 +75,7 @@ export class AuthService {
     .then((user)=>{
       console.log(user.user.uid);
       this.loginError = "";
-      this.router.navigate(["/"]);
+      this.router.navigate(["/plans"]);
     })
     .catch((err)=>{
       console.log("An error ocurred");
