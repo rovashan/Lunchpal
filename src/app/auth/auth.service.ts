@@ -48,7 +48,7 @@ export class AuthService {
       this.afirestore.addUser(userData);
 
       this.signupError = "";
-      this.router.navigate(["/"]);
+      this.router.navigate(["/payment"]);
 
     })
     .catch((err)=>{
@@ -69,8 +69,8 @@ export class AuthService {
     })
   }
   
-  //signup function
-  signup(email:string, password:string){
+  //login function
+  login(email:string, password:string){
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
       console.log(user.user.uid);

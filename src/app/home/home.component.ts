@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarouselHandlerService} from "../carousel-handler.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import {CarouselHandlerService} from "../carousel-handler.service";
 export class HomeComponent implements OnInit {
   title = 'app';
 
-  constructor(private carouselHandler: CarouselHandlerService) { }
+  constructor(private carouselHandler: CarouselHandlerService, 
+    private authService: AuthService) { }
 
   menuSelected: string;
   imageSources: string[];
@@ -22,6 +24,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
     this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
+    this.authService.user.subscribe(user => {
+      console.log(user);
+    });
   }
 
 }

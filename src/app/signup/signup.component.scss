@@ -1,8 +1,17 @@
+
 @media screen and (min-width: 690px) {
-  
+    
     .signupForm {
         width: 50%;
         max-width: 600px;
     }
+    
+    .buttonHolder{
+        text-align: center;
+    }
 
-  }
+    .signupSubmit {
+        display: inline;
+    }   
+    
+}

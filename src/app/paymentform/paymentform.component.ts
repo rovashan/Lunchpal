@@ -90,5 +90,10 @@ export class PaymentformComponent implements OnInit {
       this.onDeliveryFormChanges(data);
     });
 
+    this.authService.user.subscribe(user => {
+      console.log(user);
+    });
+    
+
   }
 }
