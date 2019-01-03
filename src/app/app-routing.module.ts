@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
   { path: 'payment', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
+  { path: 'plan', loadChildren: './planproducts/planproducts.module#PlanproductsModule'}
+
 ];
 
 @NgModule({

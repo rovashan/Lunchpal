@@ -24,7 +24,9 @@ body * {
 
 body {
   margin: 0;
+  background: rgb(245, 245, 245);
   font-family: "Source Sans Pro";
+
 }
 
 main {
@@ -37,22 +39,24 @@ main {
 }
 
 section, .section {
-    margin: 30px 0;
+    margin: 0px;
     display: block;
+    padding-bottom: 20px;
 }
 
 h1, h2, h3 {
   text-transform: uppercase;
+ 
 }
 
 h3 {
   color: #999;
 }
-section h2 {
-  margin: 100px auto 20px auto;
+section > h2 {
+  padding-top: 20px;
+  margin: 60px auto 20px auto;
   font-size: 2.3rem;
 }
-
 .arrow-container {
   z-index: 90 !important;
 }
@@ -60,6 +64,7 @@ section h2 {
 form {
   border-radius: 3px;
   padding: 20px 10px;
+  background: #fff;
 }
 
 form > p, .paymentContainer form > p{
