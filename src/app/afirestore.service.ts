@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +9,14 @@ export class AfirestoreService {
 
   constructor(private firestore: AngularFirestore ) { }
 
-
   //add users to the user database
-  public addUser(userData: Object){
-    return this.firestore.collection("users").add(userData);
+  public addUser(userData: User){
+    return this.firestore.collection("users").doc(userData.id).set(userData);
   }
 
-  //check if user has active plan
   public getUser(uid: string) {
-    //return this.firestore.collection("users").doc(uid).snapshotChanges();
-    return this.firestore.doc("/users/mkk1ZYKF3ENzBTX9dE1c").snapshotChanges();
+    //valueChanges excludes metadata so it's lighter than snapshotChanges
+    return this.firestore.collection("users").doc(uid).valueChanges();
   }
 
 }
