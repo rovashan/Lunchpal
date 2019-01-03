@@ -28,7 +28,7 @@ export class PlansComponent implements OnInit {
   }
 
   selectPlan() {
-    this.router.navigate(["/payment"]);
+    this.router.navigate(["/signup"]);
   }
 
 }
