@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import {FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class PaymentformComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
   selectedfirstname:string;
   selectedlastname:string;
   selectedemail:string;

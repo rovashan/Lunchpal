@@ -43,7 +43,8 @@ export class AuthService {
       //add the user to the users database
       let userData = {
         "email": user.user.email,
-        "userID": user.user.uid 
+        "userID": user.user.uid,
+        "status": "new"
       }
       this.afirestore.addUser(userData);
 
@@ -74,8 +75,17 @@ export class AuthService {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
       console.log(user.user.uid);
+      let uid = user.user.uid;
       this.loginError = "";
-      this.router.navigate(["/plans"]);
+
+      // navigate to order view only if active user
+      //if (this.afirestore.isActiveUser)
+      this.afirestore.getUser(uid).subscribe(userInfo => {
+        console.log(user);
+        //if (user.payload.data)
+        let userinfo = userInfo.payload.data();
+        this.router.navigate(["/plans"]);
+      });
     })
     .catch((err)=>{
       console.log("An error ocurred");

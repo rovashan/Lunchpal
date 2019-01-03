@@ -13,4 +13,10 @@ export class AfirestoreService {
   public addUser(userData: Object){
     return this.firestore.collection("users").add(userData);
   }
+
+  //check if user has active plan
+  public getUser(uid: string) {
+    return this.firestore.collection("users").doc(uid).snapshotChanges();
+  }
+
 }
