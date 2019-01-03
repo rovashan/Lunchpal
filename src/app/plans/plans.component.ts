@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CarouselHandlerService} from "../carousel-handler.service";
+import { CarouselHandlerService } from "../carousel-handler.service";
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-plans',
@@ -10,25 +12,37 @@ import { Router } from '@angular/router';
 export class PlansComponent implements OnInit {
 
   constructor(
+    public authService: AuthService,
     private carouselHandler: CarouselHandlerService,
     private router: Router
-  ) { }  
-  
+  ) { }
+
   menuSelected: string;
   imageSources: string[];
+  authSubscription: Subscription;
 
+  menuHandler($event: Event) {
+    this.carouselHandler.menuHandler($event);
+  }
 
-   menuHandler($event: Event){
-     this.carouselHandler.menuHandler($event);
-   } 
-  
   ngOnInit() {
     this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
     this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
   }
 
+
   selectPlan() {
-    this.router.navigate(["/signup"]);
+    this.authSubscription = this.authService.user.subscribe(user => {
+      if (user) {
+        this.router.navigate(["/payment"]);
+      } else {
+        this.router.navigate(["/signup"]);
+      }
+    });
   }
 
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
+    console.log('destroyed');
+  }
 }

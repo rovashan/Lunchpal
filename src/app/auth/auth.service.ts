@@ -42,6 +42,7 @@ export class AuthService {
         let userData: User = {
           id: user.user.uid,
           createdDate: new Date(),
+          email: user.user.email,
           status: UserStatus.New
         }
         this.afirestore.addUser(userData);

@@ -50,7 +50,6 @@ export class PaymentformComponent implements OnInit {
       this.deliveryState = true;
       console.log(this.deliveryState);
     }else{
-      
       this.deliveryState = false;
       console.log(this.deliveryState);
     }
@@ -61,7 +60,6 @@ export class PaymentformComponent implements OnInit {
       this.creditState = true;
       console.log(this.creditState);
     }else{
-      
       this.creditState = false;
       console.log(this.creditState);
     }
@@ -79,8 +77,6 @@ export class PaymentformComponent implements OnInit {
     this.selecteddate = data.fdeldate;
   }
 
-
-
   //confirm order
   confirmOrder(){
     console.log("Order confirmed!");
@@ -91,9 +87,9 @@ export class PaymentformComponent implements OnInit {
       this.onDeliveryFormChanges(data);
     });
 
-    this.authService.user.subscribe(user => {
-      console.log(user);
-    });
+    // this.authService.user.subscribe(user => {
+    //   console.log(user);
+    // });
     
 
   }
