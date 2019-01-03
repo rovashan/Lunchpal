@@ -16,7 +16,8 @@ export class AfirestoreService {
 
   //check if user has active plan
   public getUser(uid: string) {
-    return this.firestore.collection("users").doc(uid).snapshotChanges();
+    //return this.firestore.collection("users").doc(uid).snapshotChanges();
+    return this.firestore.doc("/users/mkk1ZYKF3ENzBTX9dE1c").snapshotChanges();
   }
 
 }

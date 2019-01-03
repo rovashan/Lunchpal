@@ -74,24 +74,20 @@ export class AuthService {
   login(email:string, password:string){
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then((user)=>{
-      console.log(user.user.uid);
-      let uid = user.user.uid;
-      this.loginError = "";
-
-      // navigate to order view only if active user
-      //if (this.afirestore.isActiveUser)
-      this.afirestore.getUser(uid).subscribe(userInfo => {
-        console.log(user);
-        //if (user.payload.data)
-        let userinfo = userInfo.payload.data();
-        this.router.navigate(["/plans"]);
-      });
+    console.log(user.user.uid);
+    this.loginError = "";
+    //this.router.navigate(["/plans"]);
+    
+    this.afirestore.getUser(user.user.uid).subscribe(x => {
+      console.log(x.payload.data());
+    });
+    
     })
     .catch((err)=>{
-      console.log("An error ocurred");
-      this.loginError = err.message;
+    console.log("An error ocurred");
+    this.loginError = err.message;
     })
-  }
+    }
 
   
 
