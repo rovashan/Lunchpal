@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private notifications: OnesignalService
+    private notifications: OnesignalService,
+ 
   ) { }
 
   public loginForm = new FormGroup({
@@ -35,8 +36,10 @@ export class LoginComponent implements OnInit {
     
   }
   
+  
   ngOnInit() {
-    
+  
+     
   }
 
 }

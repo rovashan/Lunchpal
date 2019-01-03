@@ -1,113 +1,34 @@
 
-.plan {
-    background: #E0EAFC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-}
-.mealsContainer {
-    display: block;
-   
-}
-
-
-.meal {
-    background: #fff;
-    text-align: left;
-    padding: 10px;
+.menu {
+    width: 90%;
+    margin: 0 auto;
     -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
     -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
     box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
-    border-radius: 10px; 
-    margin: 20px auto;
-    max-width: 60%;
-    min-width: 300px;
+    background: #fff;
 }
 
-.mealContent {
-    display: flex;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-}
-
-.mealContent h3 {
-    color: #111;
-}
-.mealContent p {
-    color: #777;
-}
-
-.thumb {
-    width: 100%;
-    display: block;
-    height: 130px;
-    margin-right: 20px;
+.menu div {
    
-    background-size: 200% !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    border-radius:8px;
+    border-bottom: 1px solid #aaa;
 }
 
-.options {
-    display: flex;
-    width: 90%;
-    margin: 0px auto;
-    justify-content: center;
+.menu div a {
+    display: block;
+    text-decoration: none;
+    padding: 30px 0px;
 }
 
-.options input {
-    width: 50px;
-    margin-right: 5px;
-    border-radius: 8px;
-    border: 1px solid #aaa;
-    text-align: center;
+.menu div a:hover {
+    background: rgb(241, 245, 255);
+   
 }
-
-
-.price{
+.menu div:hover h3 {
     color: #5ec5ff;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-right: 20px;
 }
-
-.buy{
-  border: 1px solid #5ec5ff;
-  background: none;
-  color: #5ec5ff;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px; 
-  text-align: center;
-}
-
-.buy:hover {
-    background: #5ec5ff;
-    color: #fff;
-}
-
-
-
 
 @media screen and (min-width: 993px) {
-    .mealsContainer {
-        display: flex;
+    .menu {
+        width: 50%;
     }
-    
-    .mealContent {
-        display: block;
-    }
-
-    .meal {
-        width: 30%;
-    }
-
-    .thumb {
-        width: 100%;
-        display: block;
-        height: 200px;
-        margin-right: 0px;
-      }
-
 }

@@ -59,22 +59,22 @@ export class AuthService {
   //logout function
   logOut() {
     this.afAuth.auth.signOut()
-      .then(() => {
-        console.log("user signed Out successfully");
-        //send the user to the main page
-        this.router.navigate(["/"]);
-      }).catch((err) => {
-        console.log(err);
-      })
+    .then(()=>{
+      console.log("user signed Out successfully");
+      //send the user to the main page
+     this.router.navigate(["/"]);
+    
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   //login function
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user.user.uid);
-        this.loginError = "";
-
+    .then((user)=>{
+      console.log(user.user.uid);
+      this.loginError = "";
         this.afirestore.getUser(user.user.uid).subscribe(
           (x: User) => {
             switch (x.status) {

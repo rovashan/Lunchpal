@@ -27,6 +27,7 @@ import {OnesignalService} from "./onesignal/onesignal.service";
     AppComponent,
     NavComponent,
     FooterComponent,
+   
     
   ],
   imports: [
