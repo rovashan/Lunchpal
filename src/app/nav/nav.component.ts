@@ -9,7 +9,7 @@ import {AuthService} from "../auth/auth.service";
 })
 export class NavComponent implements OnInit {
 
-    constructor(private authService: AuthService) { }
+    constructor(public authService: AuthService) { }
     
 
     //---- Below is the implementation for the sidenav

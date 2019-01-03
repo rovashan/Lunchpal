@@ -13,7 +13,7 @@
     <input class="signupSubmit" type="submit" [disabled]="!signupForm.valid" value="Sign Up">
   </form>
   
-  <div *ngIf="authService.error != ''">
+  <div *ngIf="authService.signupError != ''">
     <p class="error">{{authService.signupError}}</p>
   </div>
 

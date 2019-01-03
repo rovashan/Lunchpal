@@ -15,7 +15,7 @@ import {AuthService} from "../auth/auth.service";
 export class SignupComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
