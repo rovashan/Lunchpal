@@ -47,7 +47,9 @@ export class PlansComponent implements OnInit {
     // if the users logs out inside this same component
     // the authSubscription becomes undefined
     // and the views are not loaded anymore
-    //this.authSubscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
     
     console.log('destroyed');
   }
