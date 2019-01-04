@@ -96,7 +96,6 @@ form input, .loginForm, .signupForm, .paymentContainer form input {
 
 form label {
   text-align: left;
-  text-transform: uppercase;
  
 }
 
@@ -108,7 +107,7 @@ form textarea{
 
 }
 
-.paymentContainer .continue, .paymentContainer .confirmOrder {
+.paymentContainer .continue, .paymentContainer .confirmOrder, .placeOrder {
   padding: 10px;
 }
 
@@ -117,7 +116,7 @@ form textarea{
   font-style: italic;
 }
 
-form input[type="submit"], .paymentContainer .continue, .paymentContainer .confirmOrder{
+form input[type="submit"], .paymentContainer .continue, .paymentContainer .confirmOrder, .placeOrder{
   display: block;
   width: 70%;
   max-width: 300px;
@@ -136,7 +135,7 @@ form input[type="submit"], .paymentContainer .continue, .paymentContainer .confi
   margin: 40px auto;
 }
 
-form input[type="submit"]:hover, .paymentContainer .confirmOrder:hover {
+form input[type="submit"]:hover, .paymentContainer .confirmOrder:hover, .placeOrder:hover {
   background: $hoverColor;
 
 }
@@ -201,8 +200,7 @@ input[type="submit"]:disabled:hover {
   display: block;
   height: 130px;
   margin-right: 20px;
- 
-  background-size: 100% !important;
+  background-size: 120% !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
   border-radius:8px;

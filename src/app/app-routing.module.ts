@@ -15,7 +15,11 @@ const routes: Routes = [
   { path: 'payment', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
   { path: 'plan', loadChildren: './planproducts/planproducts.module#PlanproductsModule'},
   { path: 'plan/mains', loadChildren: './menu/mains/mains.module#MainsModule'},
-  { path: 'plan/order', loadChildren: './menu/order/order.module#OrderModule'}
+  { path: 'plan/lightmeals', loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
+  { path: 'plan/drinks', loadChildren: './menu/drinks/drinks.module#DrinksModule'},
+  { path: 'plan/snacks', loadChildren: './menu/snacks/snacks.module#SnacksModule'},
+  { path: 'plan/order', loadChildren: './menu/order/order.module#OrderModule'},
+  
 ];
 
 @NgModule({

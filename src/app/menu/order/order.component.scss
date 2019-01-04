@@ -27,6 +27,16 @@
 .orderdetails > div p {
     text-indent: 10px;
 }
+.orderdetails .mat-radio-button.mat-accent {
+    display: block !important;
+    margin-bottom: 10px;
+  
+}
+
+.orderForm {
+    width: 100%;
+
+}
 
 @media screen and (min-width: 993px) {
     .order {

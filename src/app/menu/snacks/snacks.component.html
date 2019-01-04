@@ -1,0 +1,57 @@
+<section class="plan">
+  <h2>Snacks</h2>
+
+<div class="mealsContainer">
+
+  <div class="meal">
+   <div class="mealContent">
+    <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
+    
+    <div>
+      <h3>Snack</h3> 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+    </div> 
+   </div> 
+   <div class="mealoptions">
+     <p class="price">$12.95</p>
+     <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snackone" >
+     <button class="buy" (click)="addProduct(snackone, {price: 12.75, name: 'snack one'})">Add To Cart</button>
+   </div>
+  </div>
+  
+  <div class="meal">
+    <div class="mealContent">
+     <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
+     
+     <div>
+       <h3>Snack</h3> 
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+     </div> 
+    </div> 
+    <div class="mealoptions">
+      <p class="price">$19.95</p>
+      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snacktwo">
+      <button class="buy" (click)="addProduct(snacktwo, {price: 19.75, name: 'snack two'})">Add To Cart</button>
+     
+    </div>
+   </div>
+
+   <div class="meal">
+    <div class="mealContent">
+     <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
+     
+     <div>
+       <h3>Snack</h3> 
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+     </div> 
+    </div> 
+    <div class="mealoptions">
+      <p class="price">$5.65</p>
+      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snackthree">
+      <button class="buy"  (click)="addProduct(snackthree, {price: 5.65, name: 'snack three'})">Add To Cart</button>
+    </div>
+   </div>
+</div>
+
+
+</section>

@@ -18,10 +18,20 @@
   <div class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
-          <p>Chicken Curry</p>
-          <p>R65</p>
+       <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm"> 
+        <mat-radio-group formControlName="deliveryDate">
+          <mat-radio-button value="soon">As soon as possible</mat-radio-button>
+          <mat-radio-button value="later">Later</mat-radio-button>  
+        </mat-radio-group>
+        
+        <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder"/>
+      </form>
       </div>
       
     </div>
+
+   
   </div>
+
+  
 </section>
