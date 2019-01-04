@@ -13,12 +13,12 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
   { path: 'payment', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
-  { path: 'plan', loadChildren: './planproducts/planproducts.module#PlanproductsModule'},
-  { path: 'plan/mains', loadChildren: './menu/mains/mains.module#MainsModule'},
-  { path: 'plan/lightmeals', loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
-  { path: 'plan/drinks', loadChildren: './menu/drinks/drinks.module#DrinksModule'},
-  { path: 'plan/snacks', loadChildren: './menu/snacks/snacks.module#SnacksModule'},
-  { path: 'plan/order', loadChildren: './menu/order/order.module#OrderModule'},
+  { path: 'canteen', loadChildren: './canteen/canteen.module#CanteenModule'},
+  { path: 'canteen/mains', loadChildren: './menu/mains/mains.module#MainsModule'},
+  { path: 'canteen/lightmeals', loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
+  { path: 'canteen/drinks', loadChildren: './menu/drinks/drinks.module#DrinksModule'},
+  { path: 'canteen/snacks', loadChildren: './menu/snacks/snacks.module#SnacksModule'},
+  { path: 'canteen/order', loadChildren: './menu/order/order.module#OrderModule'},
   
 ];
 
