@@ -63,7 +63,15 @@ export class AuthService {
       console.log("user signed Out successfully");
       //send the user to the main page
      this.router.navigate(["/"]);
-    
+     
+     //remove cart
+     if(localStorage.getItem("cart")){
+       localStorage.removeItem("cart");
+     }
+    //remove meal
+     if(localStorage.getItem("meal")){
+      localStorage.removeItem("meal");
+     }
     }).catch((err) => {
       console.log(err);
     })

@@ -1,6 +1,13 @@
 <section class="plan">
   <h2>Snacks</h2>
-
+  <div class="backLink">
+      <a routerLink = "/canteen">
+        <i class="material-icons">
+          arrow_back
+        </i>
+        <p>Go Back </p>
+      </a>  
+    </div>
 <div class="mealsContainer">
 
   <div class="meal">
@@ -14,8 +21,9 @@
    </div> 
    <div class="mealoptions">
      <p class="price">$12.95</p>
-     <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snackone" >
-     <button class="buy" (click)="addProduct(snackone, {price: 12.75, name: 'snack one'})">Add To Cart</button>
+     <input type="number" name="snackone" value="0" min="0" placeholder="0" [(ngModel)]="snackone"  >
+     
+     <button class="buy" (click)="addProduct(snackone, {price: 12.75, name: 'snack one'}); changeUI($event);">Add To Cart</button>
    </div>
   </div>
   
@@ -30,8 +38,8 @@
     </div> 
     <div class="mealoptions">
       <p class="price">$19.95</p>
-      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snacktwo">
-      <button class="buy" (click)="addProduct(snacktwo, {price: 19.75, name: 'snack two'})">Add To Cart</button>
+      <input type="number" name="snacktwo"  value="0" min="0" placeholder="0"  [(ngModel)]="snacktwo">
+      <button class="buy" (click)="addProduct(snacktwo, {price: 19.75, name: 'snack two'}); changeUI($event);">Add To Cart</button>
      
     </div>
    </div>
@@ -47,8 +55,8 @@
     </div> 
     <div class="mealoptions">
       <p class="price">$5.65</p>
-      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="snackthree">
-      <button class="buy"  (click)="addProduct(snackthree, {price: 5.65, name: 'snack three'})">Add To Cart</button>
+      <input type="number" name="snackthree" value="0" min="0" placeholder="0" [(ngModel)]="snackthree">
+      <button class="buy"  (click)="addProduct(snackthree, {price: 5.65, name: 'snack three'}); changeUI($event);">Add To Cart</button>
     </div>
    </div>
 </div>

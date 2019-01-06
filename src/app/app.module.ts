@@ -22,13 +22,14 @@ import {AfirestoreService} from "./afirestore.service";
 //onesignal notifications service
 import {OnesignalService} from "./onesignal/onesignal.service";
 
+//shopingcart service
+import {ShoppingcartService} from "./shoppingcart.service";
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-   
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -40,7 +41,7 @@ import {OnesignalService} from "./onesignal/onesignal.service";
     MatToolbarModule,
     AppRoutingModule,
   ],
-  providers: [AuthService, AfirestoreService, OnesignalService],
+  providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

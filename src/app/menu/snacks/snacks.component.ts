@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShoppingcartService} from "../../shoppingcart.service";
 
 @Component({
   selector: 'app-snacks',
@@ -7,20 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnacksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shoppingcart: ShoppingcartService) { }
 
-  
-  //product selection control test
   addProduct(quantity: number, obj: Object){
-    
-    //assuming the "obj" will come from the database
-    //we should be able to access is
-    console.log(obj["name"], obj["price"], quantity);
-    let total = quantity * obj["price"];
-    console.log("total: ", total);
+    this.shoppingcart.addProduct(quantity, obj);
   }
-
+  changeUI($event: Event){
+    this.shoppingcart.orderedItems($event);
+   
+  }
+  
   ngOnInit() {
+    this.shoppingcart.updateItems();
   }
 
 }

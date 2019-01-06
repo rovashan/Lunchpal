@@ -4,7 +4,6 @@ import { SlideshowModule } from 'ng-simple-slideshow'; // ng-simple-slider carou
 import { MaterialModule } from './material';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-
 // Modules
 const modules = [
   CommonModule,

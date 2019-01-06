@@ -1,11 +1,18 @@
 <section class="plan">
   <h2>Drinks</h2>
-
+  <div class="backLink">
+      <a routerLink = "/canteen">
+        <i class="material-icons">
+          arrow_back
+        </i>
+        <p>Go Back </p>
+      </a>  
+    </div>
 <div class="mealsContainer">
 
   <div class="meal">
    <div class="mealContent">
-    <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
+    <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png'); "></div>
     
     <div>
       <h3>Drink</h3> 
@@ -14,8 +21,8 @@
    </div> 
    <div class="mealoptions">
      <p class="price">$3.75</p>
-     <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="Drinkone" >
-     <button class="buy" (click)="addProduct(Drinkone, {price: 3.75, name: 'Drink one'})">Add To Cart</button>
+     <input type="number" name="drinkone" value="0" min="0" placeholder="0" [(ngModel)]="Drinkone" >
+     <button class="buy" (click)="addProduct(Drinkone, {price: 3.75, name: 'Drink one'}); changeUI($event);">Add To Cart</button>
    </div>
   </div>
   
@@ -30,8 +37,8 @@
     </div> 
     <div class="mealoptions">
       <p class="price">$2.75</p>
-      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="Drinktwo">
-      <button class="buy" (click)="addProduct(Drinktwo, {price: 2.75, name: 'Drink two'})">Add To Cart</button>
+      <input type="number" name ="drinktwo"value="0" min="0" placeholder="0" [(ngModel)]="Drinktwo">
+      <button class="buy" (click)="addProduct(Drinktwo, {price: 2.75, name: 'Drink two'}); changeUI($event);">Add To Cart</button>
      
     </div>
    </div>
@@ -47,8 +54,8 @@
     </div> 
     <div class="mealoptions">
       <p class="price">$4.65</p>
-      <input matInput type="number" value="0" min="0" placeholder="0" [(ngModel)]="Drinkthree">
-      <button class="buy"  (click)="addProduct(Drinkthree, {price: 4.65, name: 'Drink three'})">Add To Cart</button>
+      <input type="number" name="drinkthree" value="0" min="0" placeholder="0" [(ngModel)]="Drinkthree">
+      <button class="buy" (click)="addProduct(Drinkthree, {price: 4.65, name: 'Drink three'}); changeUI($event);">Add To Cart</button>
     </div>
    </div>
 </div>

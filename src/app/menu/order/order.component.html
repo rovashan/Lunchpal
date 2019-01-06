@@ -1,10 +1,18 @@
 <section class="plan">
   <h2>Your Order</h2>
+  <div class="backLink">
+      <a href="#" (click)="goback($event)">
+        <i class="material-icons">
+          arrow_back
+        </i>
+        <p>Go Back </p>
+      </a>  
+    </div>
   <div class="order">
   <div class="orderdetails">
     <p class="title">Order</p>
-    <div>
-        <p>Chicken Curry</p>
+    <div *ngIf="mainmeal; else showProductsList">
+        <p>{{orderedItems}}</p>
         <p>R65</p>
     </div>
     
@@ -12,7 +20,7 @@
   <div class="orderdetails">
     <div>
       <p>Total</p>
-      <p>R65</p>
+      <p>{{orderTotal}}</p>
     </div>
   </div>
   <div class="orderdetails">
@@ -35,3 +43,13 @@
 
   
 </section>
+
+<ng-template #showProductsList>
+    <div *ngFor="let item of orderedItems">
+      <p>{{item.product}} x {{item.quantity}}</p>
+      <p>{{item.price * item.quantity}}</p>
+    </div>
+
+
+</ng-template>
+

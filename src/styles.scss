@@ -155,12 +155,26 @@ input[type="submit"]:disabled:hover {
   background: #b4c8d3;
 }
 
+.backLink a{
+  display: flex;
+  text-decoration: none;
+  color: #022033;
+  align-items: center;
+  justify-content: center;
+}
 
+.backLink {
+  width: 120px;
+  margin: 0 auto;
+  text-align: center;
+}
 .canteen {
+ /*
   background: #E0EAFC;
   background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC);  
   background: linear-gradient(to top, #CFDEF3, #E0EAFC); 
   
+  */
 }
 
 .mealsContainer {

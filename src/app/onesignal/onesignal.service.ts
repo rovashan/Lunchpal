@@ -69,5 +69,17 @@ export class OnesignalService {
     //OneSignal.log.setLevel('trace')
   }
 
+  customNotification(title: string, message: string){
+    OneSignal.sendSelfNotification(
+      title,
+      message,
+      'https://localhost:4200/plans',
+      'https://onesignal.com/images/notification_logo.png',
+      
+    );
+  }
+
+
 
 }
+

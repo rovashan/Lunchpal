@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+//authservice
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-canteen',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CanteenComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authservice: AuthService) { }
+
+
+  username;
+
 
   ngOnInit() {
+    if(this.authservice.user == null ){
+      this.username = null    
+    }else{
+      this.authservice.user.subscribe(user => {
+        this.username = user.email;
+    })
+    }  
   }
-
 }

@@ -1,7 +1,7 @@
 <section class="canteen">
   
   <h2>What's for lunch today?</h2>
-  <p>Hi, username</p>
+  <p *ngIf="username != null">Hi, {{username}}</p>
 
   <div class="menu">
     <div>
