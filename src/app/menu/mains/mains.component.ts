@@ -13,6 +13,7 @@ export class MainsComponent implements OnInit {
 
   order(meal: Object){
     this.shoppingcart.order(meal);
+    this.shoppingcart.removeItemsAfterMealSelected();
   }  
 
   ngOnInit() {

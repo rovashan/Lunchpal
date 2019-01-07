@@ -57,6 +57,23 @@ export class ShoppingcartService {
     }
   }
 
+  removeItemsAfterMealSelected(){
+    let arr = []; // Array to hold the keys
+    // Iterate over localStorage and insert the keys that meet the condition into arr
+    for (let i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i) !== 'meal' && localStorage.key(i) !== 'onesignal-notification-prompt' ) {
+            arr.push(localStorage.key(i));
+        }
+    }
+
+    // Iterate over arr and remove the items by key
+    for (var i = 0; i < arr.length; i++) {
+        localStorage.removeItem(arr[i]);
+    }
+  }
+
+
+
   loadCart(){
     this.total = 0;
     this.items = [];

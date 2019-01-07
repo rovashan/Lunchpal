@@ -14,6 +14,8 @@ export class LightmealsComponent implements OnInit {
 
   order(ligthmeal: Object){
     this.shoppingcart.order(ligthmeal);
+    
+    this.shoppingcart.removeItemsAfterMealSelected();
   }  
 
 
