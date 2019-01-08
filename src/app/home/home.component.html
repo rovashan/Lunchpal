@@ -40,14 +40,123 @@
 
 
 <section>
-  <h2>Menu For The Week</h2>
-  <h3>{{menuSelected}}</h3>
-  <div class="menusContainer">
+  <h2>Menu For This Week</h2>
+
+  <mat-tab-group [selectedIndex]="1">
+    <mat-tab label="Traditional">
+
+      <div class="scrolling-wrapper-flexbox">
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Steak with Pap and Chakalaka
+              </p>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              Beef Stew with Rice
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Mince curry with Rice and Potatoes
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Classic">
+
+      <div class="scrolling-wrapper-flexbox">
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Lemon Butter Hake with Chips
+              </p>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              Roast Chicken with Veggies
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Green Chicken Curry with Rice
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Lifestyle">
+
+      <div class="scrolling-wrapper-flexbox">
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Spicy Chicken with Cauliflower Rice
+              </p>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              Shrimp and Avocado salad
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="card">
+          <mat-card>
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Tuna Steak with Broccoli
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+
+
+  <!-- <div class="menusContainer">
     <div class="menus">
       <div>
-        <a href="#" id="menuOne" (click)="menuHandler($event)">Menu 1</a>
-        <a href="#" id="menuTwo" (click)="menuHandler($event)">Menu 2</a>
-        <a href="#" id="menuThree" (click)="menuHandler($event)">Menu 3</a>
+        <a href="#" id="menuOne" (click)="menuHandler($event)">Traditional</a>
+        <a href="#" id="menuTwo" (click)="menuHandler($event)">Classic</a>
+        <a href="#" id="menuThree" (click)="menuHandler($event)">Lifestyle</a>
       </div>
 
       <slideshow [minHeight]="'525px'" [autoPlay]="true" [showArrows]="true" [imageUrls]="imageSources" [lazyLoad]="imageSources?.length > 1"
@@ -55,7 +164,7 @@
       </slideshow>
 
     </div>
-  </div>
+  </div> -->
 </section>
 
 
