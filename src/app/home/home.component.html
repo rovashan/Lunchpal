@@ -9,29 +9,29 @@
 <section class="howitworks">
   <h2>How It Works</h2>
   <div class="stepsContainer">
-  <div class="steps">
-    <img src="./assets/images/delivering.svg" />
-    <div>
-      <p class="title">Pick A Plan</p>
-      <p>Select a plan that suits your tastebuds.</p>
+    <div class="steps">
+      <img src="./assets/images/delivering.svg" />
+      <div>
+        <p class="title">Pick A Plan</p>
+        <p>Select a plan that suits your tastebuds.</p>
+      </div>
     </div>
-  </div>
-  <div class="steps">
-    <img src="./assets/images/order.svg" />
-    <div>
-      <p class="title">Order</p>
-      <p>Choose one of the delicious options for the day.</p>
-    </div>
+    <div class="steps">
+      <img src="./assets/images/order.svg" />
+      <div>
+        <p class="title">Order</p>
+        <p>Choose one of the delicious options for the day.</p>
+      </div>
 
-  </div>
-  <div class="steps">
-    <img src="./assets/images/boxhome.svg" />
-    <div>
-      <p class="title">Get your food</p>
-      <p>Enjoy your lunch delivered to you.</p>
+    </div>
+    <div class="steps">
+      <img src="./assets/images/boxhome.svg" />
+      <div>
+        <p class="title">Get your food</p>
+        <p>Enjoy your lunch delivered to you.</p>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <div class="section">
@@ -49,52 +49,45 @@
         <a href="#" id="menuTwo" (click)="menuHandler($event)">Menu 2</a>
         <a href="#" id="menuThree" (click)="menuHandler($event)">Menu 3</a>
       </div>
-    
-      <slideshow 
-    
-      [minHeight]="'525px'"
-      [autoPlay]="true"
-      [showArrows]="true"
-      [imageUrls]="imageSources"
-      [lazyLoad]="imageSources?.length > 1"
-      [autoPlayWaitForLazyLoad]="true">
+
+      <slideshow [minHeight]="'525px'" [autoPlay]="true" [showArrows]="true" [imageUrls]="imageSources" [lazyLoad]="imageSources?.length > 1"
+        [autoPlayWaitForLazyLoad]="true">
       </slideshow>
-    
+
     </div>
   </div>
 </section>
 
 
 <section class="reasonsWhy">
-  <h2>Why Food Service?</h2>
+  <h2>Why Lunchpal?</h2>
   <div class="reasonsContainer">
+    <div class="reasons">
+      <img src="./assets/images/diet.svg" />
+      <div>
+        <p class="title">Fresh And Affordable</p>
+        <p>Cut down on greasy take-out and start living a healthy and active lifestyle.</p>
+      </div>
+    </div>
     <div class="reasons">
       <img src="./assets/images/vegetables.svg" />
       <div>
-        <p class="title">No skimpin’ on the chicken!</p>
-        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+        <p class="title">Snack Bar</p>
+        <p>Don't feel like a heavy lunch today? Order a sandwich from the snack bar.</p>
       </div>
     </div>
     <div class="reasons">
       <img src="./assets/images/appointment.svg" />
       <div>
-        <p class="title">No commitment whatsoever</p>
-        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+        <p class="title">Flexible Subscription</p>
+        <p>Pause, resume and switch subscriptions from week to week.</p>
       </div>
-  
     </div>
     <div class="reasons">
       <img src="./assets/images/favorites.svg" />
       <div>
-        <p class="title">The Most 5s Stars Reviews</p>
-        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
-      </div>
-    </div>
-    <div class="reasons">
-      <img src="./assets/images/diet.svg" />
-      <div>
-        <p class="title">Fresh And Affordable.</p>
-        <p>Donec maximus, neque vel lacinia dignissim, velit sapien convallis nisi, sed mattis lacus quam sed erat.</p>
+        <p class="title">Saves You Time</p>
+        <p>Removes the daily lunch hassle so you can focus on changing the world instead. </p>
       </div>
     </div>
   </div>
