@@ -8,6 +8,10 @@ import {ShoppingcartService} from "../../shoppingcart.service";
 })
 export class SnacksComponent implements OnInit {
 
+  snackone;
+  snacktwo;
+  snackthree;
+
   constructor(private shoppingcart: ShoppingcartService) { }
 
   addProduct(quantity: number, obj: Object){

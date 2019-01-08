@@ -8,6 +8,10 @@ import {ShoppingcartService} from "../../shoppingcart.service";
 })
 export class DrinksComponent implements OnInit {
 
+  Drinkone;
+  Drinktwo;
+  Drinkthree;
+
   constructor(private shoppingcart: ShoppingcartService) { }
 
   
