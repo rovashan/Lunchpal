@@ -130,10 +130,10 @@ li i {
 
 .login a {
     color: $color;
-    border: 1px solid $color;
+    border: 1px solid $color;   
     border-radius: 5px; 
     text-align: center;
-    width: 60px;
+    width: 50px;
 }
 
 .signup a {
@@ -142,7 +142,12 @@ li i {
     border: 1px solid;
     border-radius: 5px; 
     text-align: center;
-    width: 60px;
+    width: 50px;
+    margin-right: 0 !important;
+}
+
+.signup {
+    margin-right: 0 !important;
 }
 
 
