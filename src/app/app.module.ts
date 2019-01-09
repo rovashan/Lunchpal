@@ -30,6 +30,7 @@ import {ShoppingcartService} from "./shoppingcart.service";
     AppComponent,
     NavComponent,
     FooterComponent,
+   
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

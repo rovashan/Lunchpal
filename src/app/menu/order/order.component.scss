@@ -24,9 +24,6 @@
     justify-content: space-between;
 }
 
-.orderdetails > div p {
-    text-indent: 10px;
-}
 .orderdetails .mat-radio-button.mat-accent {
     display: block !important;
     margin-bottom: 10px;
@@ -37,6 +34,21 @@
     width: 100%;
 
 }
+
+.item {
+    position: relative;
+}
+
+.item p {
+    display: flex;
+    align-items: center;
+}
+.item p span {
+    margin-right: 10px;
+    color: red;
+    cursor: pointer;
+}
+
 
 @media screen and (min-width: 993px) {
     .order {

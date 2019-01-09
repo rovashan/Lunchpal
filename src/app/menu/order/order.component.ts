@@ -48,6 +48,8 @@ export class OrderComponent implements OnInit {
   orderedItems: any;
   orderTotal : number;
   mainmeal : boolean;
+  totalCredits: number = 65;
+  enoughCredits: boolean;
   emptyBasket = this.shoppingcart.emptyBasket;
 
 
@@ -80,6 +82,11 @@ export class OrderComponent implements OnInit {
 
   }
 
+  removeMeal(meal: string){
+    this.shoppingcart.removeMeal(meal);
+    console.log(meal);
+  }
+
   removeItemFromCart(item:string){
     this.shoppingcart.removeItem(item);
   }
@@ -110,8 +117,12 @@ export class OrderComponent implements OnInit {
       this.orderedItems = this.shoppingcart.items;
       this.orderTotal = this.shoppingcart.total;
 
+      if(this.orderTotal <= this.totalCredits ){
+        this.enoughCredits = true;
+      }else {
+        this.enoughCredits = false;
+      }  
       this.mainmeal = false;
-
       this.shoppingcart.emptyBasketChange.next(true);
       
       /*
@@ -130,6 +141,11 @@ export class OrderComponent implements OnInit {
       this.orderedItems = this.shoppingcart.meal["name"];
       this.orderTotal = this.shoppingcart.meal["price"];
       
+      if(this.orderTotal <= this.totalCredits ){
+        this.enoughCredits = true;
+      }else {
+        this.enoughCredits = false;
+      }  
       /*
       console.log("items", this.orderedItems);
       console.log("total", this.orderTotal);

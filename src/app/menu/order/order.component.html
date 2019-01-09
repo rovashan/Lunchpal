@@ -11,8 +11,12 @@
   <div *ngIf="emptyBasket; else showMessage" class="order">
   <div class="orderdetails">
     <p class="title">Order</p>
-    <div *ngIf="mainmeal; else showProductsList">
-        <p>{{orderedItems}} </p>
+    <div class="item" *ngIf="mainmeal; else showProductsList">
+        <p><span (click)="removeMeal(orderedItems)">
+            <i class="material-icons">
+              cancel
+            </i>
+        </span> {{orderedItems}} </p>
         <p>R65</p>
     </div>
     
@@ -23,7 +27,7 @@
       <p>{{orderTotal}}</p>
     </div>
   </div>
-  <div class="orderdetails">
+  <div *ngIf="enoughCredits; else showCreditsMessage" class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
        <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm"> 
@@ -44,6 +48,15 @@
   
 </section>
 
+
+<ng-template #showCreditsMessage>
+    <div>
+      <p>Your current <strong>Total R {{orderTotal}}</strong> exceeds your total <strong>Credits R {{totalCredits}}</strong> </p>
+    </div>
+  </ng-template>
+  
+  
+
 <ng-template #showMessage>
   <div class="order">
     <p>You have no items in your cart <span><a routerLink="/canteen">Select some here</a></span></p>
@@ -52,8 +65,13 @@
 
 
 <ng-template #showProductsList>
-    <div *ngFor="let item of orderedItems">
-      <p><span (click)="removeItemFromCart(item.product)">Deleete</span> {{item.product}} x {{item.quantity}}</p>
+    <div class="item" *ngFor="let item of orderedItems">
+      <p>
+        <span (click)="removeItemFromCart(item.product)">
+          <i class="material-icons">
+          cancel
+          </i>
+        </span> {{item.product}} x {{item.quantity}}</p>
       <p>{{item.price * item.quantity}}</p>
     </div>
 
