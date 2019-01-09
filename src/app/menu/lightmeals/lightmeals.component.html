@@ -1,5 +1,4 @@
 <section class="plan">
-
   <h2>Light Meals</h2>
   <div class="backLink">
       <a routerLink = "/canteen">
@@ -9,54 +8,58 @@
         <p>Go Back </p>
       </a>  
     </div>
-  <div class="mealsContainer">
-  
-    <div class="meal">
-     <div class="mealContent">
-      <div class="thumb" style="background: url('../../../assets/images/jannis-brandt-107231-unsplash.png');"></div>
-      
-      <div>
-        <h3>Light Meal One</h3> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-      </div> 
-     </div> 
-     <div class="mealoptions">
-       <p class="price">$12.95</p>
-       <button class="buy" (click)="order({price: 12.95, name: 'Light Meal one'})">Order Meal</button>
-     </div>
-    </div>
+<div class="mealsContainer">
+
+  <div class="meal">
+   <div class="mealContent">
+    <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
     
-    <div class="meal">
-      <div class="mealContent">
-       <div class="thumb" style="background: url('../../../assets/images/jannis-brandt-107231-unsplash.png');"></div>
-       
-       <div>
-         <h3>Light Meal Two</h3> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-       </div> 
-      </div> 
-      <div class="mealoptions">
-        <p class="price">$12.95</p>
-        <button class="buy">Order Meal</button>
-      </div>
-     </div>
-
-     <div class="meal">
-      <div class="mealContent">
-       <div class="thumb" style="background: url('../../../assets/images/jannis-brandt-107231-unsplash.png');"></div>
-       
-       <div>
-         <h3>Light Meal Three</h3> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-       </div> 
-      </div> 
-      <div class="mealoptions">
-        <p class="price">$12.95</p>
-        <button class="buy">Order Meal</button>
-      </div>
-     </div>
+    <div>
+      <h3>Snack</h3> 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+    </div> 
+   </div> 
+   <div class="mealoptions">
+     <p class="price">$12.95</p>
+     <input type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"  >
+     
+     <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event);">Add To Cart</button>
+   </div>
   </div>
+  
+  <div class="meal">
+    <div class="mealContent">
+     <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+     
+     <div>
+       <h3>Snack</h3> 
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+     </div> 
+    </div> 
+    <div class="mealoptions">
+      <p class="price">$19.95</p>
+      <input type="number" name="lightmealtwo"  value="0" min="0" placeholder="0"  [(ngModel)]="lightmealtwo">
+      <button class="buy" (click)="addProduct(lightmealtwo, {price: 19.75, name: 'light meal two'}); changeUI($event);">Add To Cart</button>
+     
+    </div>
+   </div>
+
+   <div class="meal">
+    <div class="mealContent">
+     <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+     
+     <div>
+       <h3>Snack</h3> 
+       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+     </div> 
+    </div> 
+    <div class="mealoptions">
+      <p class="price">$5.65</p>
+      <input type="number" name="lightmealthree" value="0" min="0" placeholder="0" [(ngModel)]="lightmealthree">
+      <button class="buy"  (click)="addProduct(lightmealthree, {price: 5.65, name: 'light meal three'}); changeUI($event);">Add To Cart</button>
+    </div>
+   </div>
+</div>
 
 
-</section> 
-
+</section>

@@ -8,11 +8,11 @@
         <p>Go Back </p>
       </a>  
     </div>
-  <div class="order">
+  <div *ngIf="emptyBasket; else showMessage" class="order">
   <div class="orderdetails">
     <p class="title">Order</p>
     <div *ngIf="mainmeal; else showProductsList">
-        <p>{{orderedItems}}</p>
+        <p>{{orderedItems}} </p>
         <p>R65</p>
     </div>
     
@@ -44,9 +44,16 @@
   
 </section>
 
+<ng-template #showMessage>
+  <div class="order">
+    <p>You have no items in your cart <span><a routerLink="/canteen">Select some here</a></span></p>
+  </div>
+</ng-template>
+
+
 <ng-template #showProductsList>
     <div *ngFor="let item of orderedItems">
-      <p>{{item.product}} x {{item.quantity}}</p>
+      <p><span (click)="removeItemFromCart(item.product)">Deleete</span> {{item.product}} x {{item.quantity}}</p>
       <p>{{item.price * item.quantity}}</p>
     </div>
 

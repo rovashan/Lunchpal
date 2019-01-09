@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 
+//shopping cart service
+import {ShoppingcartService} from "../shoppingcart.service";
 
 @Component({
   selector: 'app-nav',
@@ -9,10 +11,9 @@ import {AuthService} from "../auth/auth.service";
 })
 export class NavComponent implements OnInit {
 
-    constructor(public authService: AuthService) { }
+    constructor(public authService: AuthService, private shoppingcart: ShoppingcartService) { }
     
-
-    //---- Below is the implementation for the sidenav
+       //---- Below is the implementation for the sidenav
 
     //watch the sidenav
     @ViewChild('sidenav') menu: ElementRef;
@@ -45,8 +46,6 @@ export class NavComponent implements OnInit {
       this.menu.nativeElement.style.width = "";
     }
 
-
-
     //logout function from AuthService
     logout(event: Event){
       event.preventDefault();
@@ -54,12 +53,7 @@ export class NavComponent implements OnInit {
     }
 
     ngOnInit() {
-   /*
-      this.authService.user.subscribe(u => {
-      console.log(u)
-    });
-
-    */
+      
     }
 
 

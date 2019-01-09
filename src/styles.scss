@@ -168,6 +168,18 @@ input[type="submit"]:disabled:hover {
   margin: 0 auto;
   text-align: center;
 }
+
+.basket {
+  position: absolute;
+  right: 0px;
+  color: $color;
+  top: -15px;
+}
+
+.basket:hover {
+  color: $hoverColor;
+}
+
 .canteen {
  /*
   background: #E0EAFC;

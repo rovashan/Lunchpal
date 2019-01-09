@@ -29,6 +29,12 @@
 
 
   <ul class="options">
+      <li *ngIf="authService.user | async as user"><a class="basket" routerLink="/canteen/order">
+        <i class="material-icons">
+          shopping_basket
+        </i></a>
+      
+      </li>
       <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
   </ul>
 

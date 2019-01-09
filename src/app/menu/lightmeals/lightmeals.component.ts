@@ -12,14 +12,18 @@ export class LightmealsComponent implements OnInit {
   constructor(private shoppingcart: ShoppingcartService) { }
 
 
-  order(ligthmeal: Object){
-    this.shoppingcart.order(ligthmeal);
-    
-    this.shoppingcart.removeItemsAfterMealSelected();
+  addProduct(quantity: number, ligthmeal: Object){
+   
+    this.shoppingcart.addProduct(quantity, ligthmeal);
   }  
-
+  changeUI($event: Event){
+    this.shoppingcart.orderedItems($event);
+   
+  }
+  
 
   ngOnInit() {
+    this.shoppingcart.updateItems();
   }
 
 }

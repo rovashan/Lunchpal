@@ -7,7 +7,8 @@ import { MatToolbarModule,
    MatStepperModule,
    MatNativeDateModule,
    MatRadioModule,
-   MatTabsModule } from '@angular/material';
+   MatTabsModule
+  } from '@angular/material';
 
 // Modules
 const modules = [

@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 //item
 import {Item} from "./models/item";
 
+import {BehaviorSubject} from "rxjs";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,19 @@ export class ShoppingcartService {
   public total: number;
   public cart: any;
   public meal: any;
+  public emptyBasket: boolean;
+
+  public emptyBasketChange: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.emptyBasket);
+  //listen for the changes so we can update the basket icon
+  //on the nav
+ 
+  setEmptyBasket(bool: boolean): void{
+    this.emptyBasket = bool;
+    this.emptyBasketChange.next(bool);
+    
+  }
+
+
 
   //change ui 
   orderedItems($event: Event){
@@ -23,7 +38,7 @@ export class ShoppingcartService {
     let input = parent.querySelector("input");
     //add the input to localStorage
     localStorage.setItem(input.name, input.value);
-    
+  
   }
 
 
@@ -50,27 +65,45 @@ export class ShoppingcartService {
             arr.push(localStorage.key(i));
         }
     }
-
     // Iterate over arr and remove the items by key
     for (var i = 0; i < arr.length; i++) {
         localStorage.removeItem(arr[i]);
     }
+   
+  
   }
 
   removeItemsAfterMealSelected(){
-    let arr = []; // Array to hold the keys
-    // Iterate over localStorage and insert the keys that meet the condition into arr
+    let arr = []; 
     for (let i = 0; i < localStorage.length; i++){
         if (localStorage.key(i) !== 'meal' && localStorage.key(i) !== 'onesignal-notification-prompt' ) {
             arr.push(localStorage.key(i));
         }
     }
-
-    // Iterate over arr and remove the items by key
     for (var i = 0; i < arr.length; i++) {
         localStorage.removeItem(arr[i]);
     }
+    
   }
+
+  checkForEmpty(){
+    if(localStorage.getItem("cart").includes("product") || localStorage.getItem("meal")){
+      this.setEmptyBasket(true);
+      console.log("has products or meal", this.emptyBasket);
+      
+    }else{
+      this.setEmptyBasket(false);
+      console.log("has products or meal", this.emptyBasket);
+      
+    }    
+
+    //redirect to the same component
+    //in order to see the changes inside localStorage
+    this.router.navigateByUrl('canteen/order', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["canteen/order"]));
+
+
+}
 
 
 
@@ -102,27 +135,62 @@ export class ShoppingcartService {
 
   //remove item from cart
   removeItem(name: string){
-    console.log("removed", name);
+    console.log("item deleted");
+    let cart: any = JSON.parse(localStorage.getItem("cart"));
+    console.log(cart);
+    let index: number = -1;
+    for (var i = 0; i < cart.length; i++) {
+			let item: Item = JSON.parse(cart[i]);
+			if (item["product"] == name) {
+				cart.splice(i, 1);
+				break;
+			}
+    }
+    this.removeCurrentItem(name);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    //this.loadCart();
+    this.checkForEmpty();
   }
 
+  
+  removeCurrentItem(name: string){
+    let arr = []; 
+    for (let i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i) !== name && localStorage.key(i) !== 'onesignal-notification-prompt') {
+            arr.push(localStorage.key(i));
+        }
+    }
+    for (var i = 0; i < arr.length; i++) {
+        localStorage.removeItem(arr[i]);
+    }
+  
+   
+  }
 
   //order meal
   order(obj: Object){
-   
+  
     if(localStorage.getItem("cart")){
+      
       localStorage.removeItem("cart");
-      console.log("the user chose a meal, removed cart from storage");
-   }
+      console.log("the user selected a meal, removed cart from storage");
+    }
     //set meal variable on localStorage
     localStorage.setItem("meal", JSON.stringify(obj)); 
-    this.router.navigate(["/canteen/order"]);
+    
   }
 
 
   //add product to the cart
-  addProduct(quantity: number, obj: Object){
-    console.log("item added");     
+  addProduct(quantity: any, obj: Object){
     
+    //check if quantity is undefined
+    if(quantity == undefined || quantity == null ){
+      console.log("quantity is not defined");
+    }else{
+      
+    console.log("item added");     
+  
     //remove meal is the variable exists
     if(localStorage.getItem("meal")){
       localStorage.removeItem("meal");
@@ -171,6 +239,8 @@ export class ShoppingcartService {
     }
 
 
+    }
+    
 }
 
 }
