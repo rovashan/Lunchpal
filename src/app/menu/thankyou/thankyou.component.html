@@ -1,3 +1,13 @@
 <section>
-  <h2>Thank you</h2>
+  
+    <h2>Thank you</h2>
+    <img class="thankyouIcon" src="../../../assets/images/dish.svg" />
+    <p>Your meal will be delived at:</p>
+    <p *ngIf="deliveryTime; else showSoonMessage">{{deliveryTime}} {{meridian}}</p>
+  
+
+    <ng-template #showSoonMessage>
+        <p>As soon as we can.</p>
+    </ng-template>
+
 </section>

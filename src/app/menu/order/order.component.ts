@@ -42,6 +42,7 @@ export class OrderComponent implements OnInit {
   
     public orderForm = new FormGroup({
     deliveryDate: new FormControl('', Validators.required),
+    deliveryTime: new FormControl('', Validators.required)
     
   });
 
@@ -50,6 +51,7 @@ export class OrderComponent implements OnInit {
   mainmeal : boolean;
   totalCredits: number = 65;
   enoughCredits: boolean;
+  laterSelected: boolean;
   emptyBasket = this.shoppingcart.emptyBasket;
 
 
@@ -60,10 +62,8 @@ export class OrderComponent implements OnInit {
 
 
   placeOrder(formData: FormData){
-
-     
-    console.log("order sent", formData);
     
+    console.log("order sent", formData);
     //check if items
     if(localStorage.getItem("cart")){
       console.log("products details", this.orderedItems);
@@ -76,10 +76,10 @@ export class OrderComponent implements OnInit {
        //remove meal after submit 
       localStorage.removeItem("meal");
     }
-    this.router.navigate(["/"]);
+    this.router.navigate(["/canteen/thankyou"]);
     //send a push notification
     this.notifications.customNotification("Order Placed", "Your order has been placed, thanks for using Lunchpal");  
-
+    
   }
 
   removeMeal(meal: string){
@@ -91,14 +91,34 @@ export class OrderComponent implements OnInit {
     this.shoppingcart.removeItem(item);
   }
 
-  ngOnInit() {
+
+  getTime($event: Event){
+    //get the value of the time input
+    let timeValue = $event.target["value"];
+    this.shoppingcart.deliveryTime = timeValue;
     
+  }
+
+  //hide the input
+  soonSelected(){
+    this.laterSelected = false;
+    this.orderForm.controls.deliveryTime.setValue("00:00");
+  }
+
+  //show the time input
+  showTime(){
+    this.laterSelected = true;
+    this.orderForm.controls.deliveryTime.setValue(this.shoppingcart.deliveryTime);
+    
+  }
+
+  ngOnInit() {
+    //subscribe to the basket changes
     this.shoppingcart.emptyBasketChange.subscribe(x => this.emptyBasket = x);
     //load the shoppingcart
     this.shoppingcart.loadCart();
 
    
-    
     //nothing is defined
     if(localStorage.getItem("cart") == null && localStorage.getItem("meal") == null){
       this.shoppingcart.emptyBasketChange.next(false);

@@ -32,8 +32,9 @@
       <div>
        <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm"> 
         <mat-radio-group formControlName="deliveryDate">
-          <mat-radio-button value="soon">As soon as possible</mat-radio-button>
-          <mat-radio-button value="later">Later</mat-radio-button>  
+          <mat-radio-button value="soon" (change)="soonSelected()">As soon as possible</mat-radio-button>
+          <mat-radio-button value="later" (change)="showTime()">Later</mat-radio-button>  
+          <input (change)="getTime($event)" *ngIf="laterSelected" class="deliveryTime" type="time" name="deliveryTime" formControlName="deliveryTime" placeholder="time" />
         </mat-radio-group>
         
         <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder"/>

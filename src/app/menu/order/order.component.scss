@@ -50,6 +50,12 @@
 }
 
 
+input[type="time"]{
+    font-family: "Source Sans Pro";
+    font-size: 1.2rem;
+    width: 150px;
+}
+
 @media screen and (min-width: 993px) {
     .order {
         width: 50%;

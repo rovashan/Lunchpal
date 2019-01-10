@@ -18,6 +18,7 @@ export class ShoppingcartService {
   public cart: any;
   public meal: any;
   public emptyBasket: boolean;
+  public deliveryTime: any;
 
   public emptyBasketChange: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.emptyBasket);
   //listen for the changes so we can update the basket icon
@@ -160,7 +161,7 @@ export class ShoppingcartService {
     }
     this.removeCurrentItem(name);
     localStorage.setItem("cart", JSON.stringify(cart));
-    //this.loadCart();
+
     this.checkForEmpty();
   }
 
@@ -202,8 +203,6 @@ export class ShoppingcartService {
   //add product to the cart
   addProduct(quantity: any, obj: Object){
     
-    
-
     //check if quantity is undefined
     if(quantity == undefined || quantity == null ){
       console.log("quantity is not defined");
