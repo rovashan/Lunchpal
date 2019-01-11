@@ -81,6 +81,7 @@ export class OrderComponent implements OnInit {
   }
 
   removeItemFromCart(item:string){
+    console.log('remove item');
     this.shoppingcart.removeItem(item);
   }
 

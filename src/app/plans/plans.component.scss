@@ -1,5 +1,5 @@
-$color: #5ec5ff;
-$hoverColor: #0f93e0;
+$color: #0f93e0;
+$hoverColor: #1d8be6;
 
 .plansContainer, .faqsContainer {
     width: 80%;
@@ -7,9 +7,16 @@ $hoverColor: #0f93e0;
 }
 
 .plans {
-    margin: 20px;
-    max-width: 750px; // RS: I added this because the cards were resizing to the width of the text content
-                      // AC: changed to max width, check if that resolves the issue
+    margin: 20px;    
+    width: 750px;     // RS: I added this because the cards were resizing to the width of the text content
+    max-width: 750px; // AC: changed to max width, check if that resolves the issue
+                      // RS: Still resizing according to content
+
+    border-radius: 8px;
+}
+
+.menuitems {
+    border-radius: 8px;
 }
 
 .scrolling-wrapper-flexbox {
@@ -83,8 +90,8 @@ button.package {
     font-size: 1rem;
     border-radius: 8px;
     border:1px solid $color;
-    background: none;
-    color: $color;
+    background: $color;
+    color: #fff;
 }
 
 button.recommended {
@@ -100,8 +107,8 @@ button.recommended {
 }
 
 button.package:hover {
-    background: $hoverColor;
-    color: #fff;
+    // background: $hoverColor;
+    // color: #fff;
 }
 
 .menusContainer {
