@@ -14,9 +14,11 @@ export class ShoppingcartService {
 
   public items: Item[];
   public total: number;
+  public totalCredits: number;
   public cart: any;
   public meal: any;
   public emptyBasket: boolean;
+  public deliveryTime: any;
 
   public emptyBasketChange: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.emptyBasket);
   //listen for the changes so we can update the basket icon
@@ -87,10 +89,12 @@ export class ShoppingcartService {
   }
 
   checkForEmpty(){
-    if(localStorage.getItem("cart").includes("product") || localStorage.getItem("meal")){
+    if((localStorage.getItem("cart") != null && localStorage.getItem("cart").includes("product")) || localStorage.getItem("meal")){
       this.setEmptyBasket(true);
       console.log("has products or meal", this.emptyBasket);
       
+    }else if(localStorage.getItem("cart") == null){
+      this.setEmptyBasket(true);
     }else{
       this.setEmptyBasket(false);
       console.log("has products or meal", this.emptyBasket);
@@ -123,7 +127,8 @@ export class ShoppingcartService {
         });
         //get the total
         this.total += item["price"] * item["quantity"];
-        console.log("meal is null")
+        console.log("meal is null");
+        
     }
   }else{
     console.log("cart is null");
@@ -132,6 +137,14 @@ export class ShoppingcartService {
   }
 
   }
+
+  //remove meal
+  removeMeal(name:string){
+    console.log("meal removed");
+    localStorage.removeItem("meal");
+    this.checkForEmpty();
+  }
+
 
   //remove item from cart
   removeItem(name: string){
@@ -148,15 +161,22 @@ export class ShoppingcartService {
     }
     this.removeCurrentItem(name);
     localStorage.setItem("cart", JSON.stringify(cart));
-    //this.loadCart();
+
     this.checkForEmpty();
   }
 
   
   removeCurrentItem(name: string){
+    //process the name of the item
+    //in order to just delete that item from localStorage
+    //and to keep the other items
+    //to display the values on the ui
+    let noSpacesName = name.replace(/ /g, "");
+    let lowercase = noSpacesName.toLocaleLowerCase()
+
     let arr = []; 
     for (let i = 0; i < localStorage.length; i++){
-        if (localStorage.key(i) !== name && localStorage.key(i) !== 'onesignal-notification-prompt') {
+        if (localStorage.key(i) == lowercase && localStorage.key(i) !== 'onesignal-notification-prompt') {
             arr.push(localStorage.key(i));
         }
     }
@@ -164,7 +184,6 @@ export class ShoppingcartService {
         localStorage.removeItem(arr[i]);
     }
   
-   
   }
 
   //order meal
