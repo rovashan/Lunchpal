@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-paymentform',
@@ -13,28 +13,20 @@ export class PaymentformComponent implements OnInit {
   constructor(private authService: AuthService) { }
   selectedfirstname:string;
   selectedlastname:string;
-  selectedemail:string;
-  selectedaddress:string;
-  selectedcity:string;
-  selecteddate:string;
+  selectedphone: string;
+  startdate:string;
 
-
-  deliveryState:boolean = false;
+  personalState: boolean = false;
   creditState: boolean = false;
-
+  authSubscription: Subscription;
+  userEmail: string;
 
   //delivery form controls
-  public delivery = new FormGroup({
+  public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('',  Validators.required),
-    email: new FormControl('',  Validators.required),
-    street: new FormControl('',  Validators.required),
-    apartment: new FormControl('',  Validators.required),
-    city: new FormControl('',  Validators.required),
     phone: new FormControl('',  Validators.required),
-    fdeldate: new FormControl('',  Validators.required),
-   
-   
+    startdate: new FormControl('',  Validators.required),
   });
 
   //credit card form controls
@@ -45,13 +37,13 @@ export class PaymentformComponent implements OnInit {
     
   });
 
-  deliveryCompleted(){
-    if(this.delivery.valid){
-      this.deliveryState = true;
-      console.log(this.deliveryState);
+  personalCompleted(){
+    if(this.personal.valid){
+      this.personalState = true;
+      console.log(this.personalState);
     }else{
-      this.deliveryState = false;
-      console.log(this.deliveryState);
+      this.personalState = false;
+      console.log(this.personalState);
     }
   }
 
@@ -70,11 +62,9 @@ export class PaymentformComponent implements OnInit {
   //to display the user data
   onDeliveryFormChanges(data){
     this.selectedfirstname = data.firstname;
-    this.selectedlastname = data.lastname;
-    this.selectedemail = data.email;
-    this.selectedaddress = data.street;
-    this.selectedcity = data.city;
-    this.selecteddate = data.fdeldate;
+    this.selectedlastname = data.lastname
+    this.selectedphone = data.phone;
+    this.startdate = data.startdate;
   }
 
   //confirm order
@@ -83,14 +73,23 @@ export class PaymentformComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.delivery.valueChanges.subscribe( data => {
+    this.personal.valueChanges.subscribe( data => {
       this.onDeliveryFormChanges(data);
     });
 
-    // this.authService.user.subscribe(user => {
-    //   console.log(user);
-    // });
+    this.authSubscription = this.authService.user.subscribe(user => {
+      if (user) {
+        this.userEmail = user.email;
+      }
+    });
     
+  }
 
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+    
+    console.log('destroyed');
   }
 }

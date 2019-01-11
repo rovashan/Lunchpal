@@ -14,6 +14,8 @@
       <input class="signupSubmit" type="submit" [disabled]="!signupForm.valid" value="Create Account">
       <p>Already a member? <strong> <a routerLink="/login">Login here</a></strong></p> 
     </div>
+
+    
   </form>
   
   <div *ngIf="authService.signupError != ''">
