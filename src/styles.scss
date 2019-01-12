@@ -14,6 +14,7 @@ $app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $app-theme:   mat-light-theme($app-primary, $app-accent);
 $color: #5ec5ff;
 $hoverColor: #0f93e0;
+
 // Include the default theme styles.
 @include angular-material-theme($app-theme);
 
@@ -192,31 +193,55 @@ input[type="submit"]:disabled:hover {
   .card {
     flex: 0 0 auto;
     margin-right: 3px;
-   
+    width: 50%;
+    min-width: 90px;
   }
 }
 
-.card {
-  border: 1px solid white;
-  width: 150px;
-  height: 150px;
-  background: black;
-  text-align: left;
+
+mat-tab-group {
+  height: 430px;
 }
+
+.cardContent {
+  text-align: left;
+  padding: 0;
+}
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border: none;
+}
+
 
 .mat-tab-labels{
    justify-content: center;
 }
 
 
-.menuitems {
-  border-radius: 8px;
-  height: 180px;
-  max-height: 180px;
 
+mat-tab-body {
+  padding-top: 20px;
+  height: 430px;
 }
+
+
+.mat-card .mat-card-image {
+  width: 100%;
+  max-width: 330px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+//card heigh on mobile
+.menuitems.mat-card {
+  margin: 0px;
+  padding: 0px;  
+  max-width: 330px;
+  height: 220px;
+}
+
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
-  height: 235px;
+  height: auto;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
@@ -225,20 +250,10 @@ input[type="submit"]:disabled:hover {
 }
 
 
-.canteen {
- /*
-  background: #E0EAFC;
-  background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC);  
-  background: linear-gradient(to top, #CFDEF3, #E0EAFC); 
-  
-  */
-}
-
 .mealsContainer {
   display: block;
  
 }
-
 
 .meal {
   background: #fff;
@@ -250,7 +265,7 @@ input[type="submit"]:disabled:hover {
   border-radius: 10px; 
   margin: 20px auto;
   max-width: 60%;
-  min-width: 300px;
+  min-width: 280px;
 }
 
 .mealContent {
@@ -316,6 +331,11 @@ text-align: center;
 }
 
 @media screen and (min-width: 993px) {
+  
+  .menuitems.mat-card {
+    height: 100px;
+  }
+  
   .mealsContainer {
       display: flex;
   }
@@ -328,12 +348,8 @@ text-align: center;
       width: 25%;
   }
 
-  .thumb {
-      width: 100%;
-      display: block;
-      height: 200px;
-      margin-right: 0px;
-      background-size:100% !important; 
-    }
-
+  //card height on desktop
+  .menuitems.mat-card {
+    height: 350px;
+  }
 }
