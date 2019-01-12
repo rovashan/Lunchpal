@@ -19,6 +19,8 @@ export class ShoppingcartService {
   public meal: any;
   public emptyBasket: boolean;
   public deliveryTime: any;
+  public shake: boolean = false;
+
 
   public emptyBasketChange: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.emptyBasket);
   //listen for the changes so we can update the basket icon
@@ -30,7 +32,18 @@ export class ShoppingcartService {
     
   }
 
-
+  shakeBasket(){
+    console.log("basket is shaking");
+    let basket = document.getElementById("basket");
+   
+      basket.classList.add("shake");
+ 
+  
+    setTimeout(()=>{
+      basket.classList.remove("shake");
+    }, 500)
+    
+  }
 
   //change ui 
   orderedItems($event: Event){
@@ -194,6 +207,7 @@ export class ShoppingcartService {
       localStorage.removeItem("cart");
       console.log("the user selected a meal, removed cart from storage");
     }
+    this.shakeBasket();
     //set meal variable on localStorage
     localStorage.setItem("meal", JSON.stringify(obj)); 
     
@@ -202,12 +216,14 @@ export class ShoppingcartService {
 
   //add product to the cart
   addProduct(quantity: any, obj: Object){
-    
+   
+  
+
     //check if quantity is undefined
     if(quantity == undefined || quantity == null ){
       console.log("quantity is not defined");
     }else{
-      
+      this.shakeBasket();
     console.log("item added");     
   
     //remove meal is the variable exists

@@ -180,6 +180,51 @@ input[type="submit"]:disabled:hover {
   color: $hoverColor;
 }
 
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  //overflow-x: auto;
+  width: 40% !important;
+  margin: 0 auto;
+  justify-content: center;
+
+
+  .card {
+    flex: 0 0 auto;
+    margin-right: 3px;
+   
+  }
+}
+
+.card {
+  border: 1px solid white;
+  width: 150px;
+  height: 150px;
+  background: black;
+  text-align: left;
+}
+
+.mat-tab-labels{
+   justify-content: center;
+}
+
+
+.menuitems {
+  border-radius: 8px;
+  height: 180px;
+  max-height: 180px;
+
+}
+.scrolling-wrapper, .scrolling-wrapper-flexbox {
+  height: 235px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
 .canteen {
  /*
   background: #E0EAFC;

@@ -11,34 +11,6 @@ header{
   margin-bottom: 60px;
 }
 
-.scrolling-wrapper-flexbox {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  
-  .card {
-    flex: 0 0 auto;
-    margin-right: 3px;
-  }
-}
-
-.card {
-  border: 1px solid white;
-  width: 150px;
-  height: 150px;
-  background: black;
-  text-align: left;
-}
-
-
-.scrolling-wrapper, .scrolling-wrapper-flexbox {
-  height: 235px;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
 
 .info {
   width: 60%;
@@ -180,8 +152,4 @@ header{
   .steps div p, .reasons div p {
     text-align: center;
   }
-}
-
-.menuitems {
-  border-radius: 8px;
 }

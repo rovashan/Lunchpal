@@ -27,10 +27,10 @@ export class PaymentformComponent implements OnInit {
   public delivery = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('',  Validators.required),
-    email: new FormControl('',  Validators.required),
-    street: new FormControl('',  Validators.required),
-    apartment: new FormControl('',  Validators.required),
-    city: new FormControl('',  Validators.required),
+    //email: new FormControl('',  Validators.required),
+    //street: new FormControl('',  Validators.required),
+    //apartment: new FormControl('',  Validators.required),
+    //city: new FormControl('',  Validators.required),
     phone: new FormControl('',  Validators.required),
     fdeldate: new FormControl('',  Validators.required),
    
