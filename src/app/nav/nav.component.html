@@ -9,7 +9,7 @@
     <li><a routerLink="/plans">Our Plans</a><span class="lineBelow"></span></li>
     <li><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
     <li><a routerLink="/contactus">Contact Us</a><span class="lineBelow"></span></li>
-
+    <li *ngIf="authService.user | async as user"><a class="canteen" routerLink="/canteen">Canteen</a><span class="lineBelow"></span></li>  
   </ul>
 
 
@@ -20,6 +20,7 @@
   <li><a routerLink="/plans">Our Plans</a></li>
   <li><a routerLink="/faqs">FAQ</a></li>
   <li><a routerLink="/contactus">Contact Us</a></li>
+  <li *ngIf="authService.user | async as user"><a class="canteen" routerLink="/canteen">Canteen</a></li>  
 
   </ul>
 
@@ -29,7 +30,7 @@
 
 
   <ul class="options">
-    <li *ngIf="authService.user | async as user"><a class="basket" routerLink="/canteen/order">
+    <li *ngIf="authService.user | async as user"><a class="basket" id="basket" routerLink="/canteen/order">
         <i class="material-icons">
           shopping_basket
         </i></a>

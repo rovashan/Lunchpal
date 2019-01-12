@@ -41,7 +41,7 @@ nav {
 
 .topnav ul li {
     list-style-type: none;
-    margin: 0 5px;
+    margin: 0px 2px;
     position: relative;
 }
 
@@ -175,6 +175,13 @@ li i {
    background: #fff;
 }
 
+.topnav .sidenav li a.canteen {
+    color: $hoverColor;
+}
+
+.topnav .sidenav li a.canteen:hover {
+    color: #fff;
+}
 
 .icon {
     cursor: pointer;
@@ -196,6 +203,29 @@ li i {
 .credits {
     padding-top: 9px;  
 }
+
+
+.basket.shake{
+    animation: shake 0.700s ease-in-out;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
 
 
 @media screen and (max-width: 750px) {
