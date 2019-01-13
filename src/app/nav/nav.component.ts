@@ -13,10 +13,11 @@ export class NavComponent implements OnInit {
 
     constructor(public authService: AuthService, private shoppingcart: ShoppingcartService) { }
     
-       //---- Below is the implementation for the sidenav
+    //---- Below is the implementation for the sidenav
 
     //watch the sidenav
     @ViewChild('sidenav') menu: ElementRef;
+
 
     //check for click event to close the sidenav
     @HostListener("document:click", ["$event"])

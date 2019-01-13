@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { CarouselHandlerService } from "../carousel-handler.service";
+import { CarouselHandlerService } from "../carousel-handler.service";
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 
 import {ViewEncapsulation} from "@angular/core";
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'app-plans',
@@ -14,15 +15,34 @@ import {ViewEncapsulation} from "@angular/core";
 })
 export class PlansComponent implements OnInit {
 
+
+  selectedIndex= this.carouselHandler.selectedIndex;
+
+
   constructor(
     public authService: AuthService,
-    //private carouselHandler: CarouselHandlerService,
+    private carouselHandler: CarouselHandlerService,
     private router: Router
   ) { }
 
   menuSelected: string;
   imageSources: string[];
   authSubscription: Subscription;
+
+  
+
+    goNext(){
+      this.carouselHandler.goNext()
+    }
+
+    goPrev(){
+      this.carouselHandler.goPrev();
+    }
+
+    tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+     this.carouselHandler.tabChanged(tabChangeEvent);
+     
+    }
 
   /*
   menuHandler($event: Event) {
@@ -32,6 +52,10 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
    // this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
    // this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
+   this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
+   
+   
+    
   }
 
 

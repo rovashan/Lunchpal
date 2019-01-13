@@ -41,8 +41,19 @@
 
 <section>
   <h2>Menu For This Week</h2>
-
-  <mat-tab-group [selectedIndex]="1">
+  <div class="tabsControls">
+    <div class="next" (click)="goNext()">
+        <i class="material-icons">
+            keyboard_arrow_right
+        </i>
+    </div>
+    <div class="prev" (click)="goPrev()">
+        <i class="material-icons">
+            keyboard_arrow_left
+        </i>
+    </div>
+  </div>
+  <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChanged($event)">
     <mat-tab label="Traditional">
 
       <div class="scrolling-wrapper-flexbox">
@@ -50,9 +61,8 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
-                Steak with Pap and Chakalaka
-              </p>
+              <p class="cardContent">
+                Steak with Pap and Chakalaka</p>
             </mat-card-content>
           </mat-card>
 
@@ -61,7 +71,9 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              Beef Stew with Rice
+              <p class="cardContent">
+                Beef Stew with Rice
+              </p>
             </mat-card-content>
           </mat-card>
         </div>
@@ -69,7 +81,7 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
+              <p class="cardContent">
                 Mince curry with Rice and Potatoes
               </p>
             </mat-card-content>
@@ -85,7 +97,7 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
+              <p class="cardContent">
                 Lemon Butter Hake with Chips
               </p>
             </mat-card-content>
@@ -96,7 +108,9 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              Roast Chicken with Veggies
+              <p class="cardContent">
+                  Roast Chicken with Veggies
+              </p>
             </mat-card-content>
           </mat-card>
         </div>
@@ -104,7 +118,7 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
+              <p class="cardContent">
                 Green Chicken Curry with Rice
               </p>
             </mat-card-content>
@@ -120,7 +134,7 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
+              <p class="cardContent">
                 Spicy Chicken with Cauliflower Rice
               </p>
             </mat-card-content>
@@ -131,7 +145,9 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              Shrimp and Avocado salad
+              <p class="cardContent">
+                Shrimp and Avocado salad
+              </p>
             </mat-card-content>
           </mat-card>
         </div>
@@ -139,7 +155,7 @@
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <p>
+              <p class="cardContent">
                 Tuna Steak with Broccoli
               </p>
             </mat-card-content>
