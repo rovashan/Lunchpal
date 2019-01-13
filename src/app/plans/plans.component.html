@@ -59,7 +59,19 @@
     
 <section>
   <h2>Menu For This Week</h2>
-  <mat-tab-group [selectedIndex]="1">
+  <div class="tabsControls">
+    <div class="next" (click)="goNext()">
+        <i class="material-icons">
+            keyboard_arrow_right
+        </i>
+    </div>
+    <div class="prev" (click)="goPrev()">
+        <i class="material-icons">
+            keyboard_arrow_left
+        </i>
+    </div>
+  </div>
+  <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChanged($event)">
       <mat-tab label="Traditional">
   
         <div class="scrolling-wrapper-flexbox">

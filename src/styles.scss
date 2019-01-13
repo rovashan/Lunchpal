@@ -243,6 +243,7 @@ mat-tab-body {
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
   height: auto;
   width: 100%;
+  position: relative;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
@@ -330,6 +331,32 @@ text-align: center;
   color: #fff;
 }
 
+.tabsControls{
+  display: none;
+}
+
+.next i, .prev i {
+  font-size: 4rem;
+  background:rgba(20,186,236, 0.3);
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.next{
+  float: right;
+}
+
+.prev{
+  float: left;
+}
+
+.next:hover i, .prev:hover i {
+  background:rgba(20,186,236, 0.8);
+ }
+
+
+
 @media screen and (min-width: 993px) {
   
   .menuitems.mat-card {
@@ -352,4 +379,14 @@ text-align: center;
   .menuitems.mat-card {
     height: 350px;
   }
+
+  
+.tabsControls{
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  top: 200px;
+}
 }

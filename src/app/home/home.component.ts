@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselHandlerService } from "../carousel-handler.service";
-
+import { MatTabChangeEvent } from '@angular/material';
 
 import {ViewEncapsulation} from "@angular/core";
 
@@ -16,17 +16,25 @@ export class HomeComponent implements OnInit {
 
   constructor(private carouselHandler: CarouselHandlerService) { }
 
-  
-  menuSelected: string;
-  imageSources: string[];
+  selectedIndex= this.carouselHandler.selectedIndex;
 
-  menuHandler($event: Event) {
-    this.carouselHandler.menuHandler($event);
+  goNext(){
+    this.carouselHandler.goNext()
   }
 
+  goPrev(){
+    this.carouselHandler.goPrev();
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+  this.carouselHandler.tabChanged(tabChangeEvent);
+  
+  }
+
+
+
   ngOnInit() {
-    this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
-    this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
+    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
   }
 
 }
