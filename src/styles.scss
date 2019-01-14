@@ -238,6 +238,7 @@ mat-tab-body {
   padding: 0px;  
   max-width: 330px;
   height: 220px;
+  border-radius: 0px;
 }
 
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
@@ -377,7 +378,8 @@ text-align: center;
 
   //card height on desktop
   .menuitems.mat-card {
-    height: 350px;
+    width: 275px;
+    height: 325px;
   }
 
   
