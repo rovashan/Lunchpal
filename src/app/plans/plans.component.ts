@@ -25,6 +25,13 @@ export class PlansComponent implements OnInit {
     private router: Router
   ) { }
 
+      
+  //------------- scroll variables
+  startX;
+  curDown = false;
+  scrollLeft;
+  //------------- scroll variables
+
   menuSelected: string;
   imageSources: string[];
   authSubscription: Subscription;
@@ -43,6 +50,53 @@ export class PlansComponent implements OnInit {
      this.carouselHandler.tabChanged(tabChangeEvent);
      
     }
+
+
+
+  //------------- scroll functions 
+  
+  scrollDrag($event: MouseEvent){
+    $event.preventDefault();
+    let el = $event.srcElement.closest(".scroller");
+    
+    const x = $event.pageX - el["offsetLeft"];
+    const y = x - this.startX;
+
+    if(this.curDown === true){
+      el.scrollLeft = this.scrollLeft - y;
+      }else{
+      return;
+    }
+
+    
+   
+  
+ }
+
+  holdDrag($event: MouseEvent){
+    $event.preventDefault();
+    let el = $event.srcElement.closest(".scroller");
+    this.curDown = true;
+    this.startX = $event.pageX - el["offsetLeft"];
+    this.scrollLeft = el.scrollLeft;
+    
+  }
+
+  releaseDrag($event: MouseEvent){
+    this.curDown = false;
+ 
+  
+  }
+
+  leaveDrag($event:MouseEvent){
+    this.curDown = false;
+  
+  }
+
+
+  //------------- scroll functions 
+
+
 
   /*
   menuHandler($event: Event) {

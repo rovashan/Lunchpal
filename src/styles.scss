@@ -183,18 +183,17 @@ input[type="submit"]:disabled:hover {
 
 .scrolling-wrapper-flexbox {
   display: flex;
-  flex-wrap: nowrap;
+  //flex-wrap: nowrap;
   //overflow-x: auto;
-  width: 40% !important;
+  width: 70% !important;
   margin: 0 auto;
-  justify-content: center;
-
-
+  //justify-content: center;
+  
   .card {
     flex: 0 0 auto;
     margin-right: 3px;
-    width: 50%;
-    min-width: 90px;
+    width: 80%;
+  
   }
 }
 
@@ -221,7 +220,7 @@ mat-tab-group {
 
 mat-tab-body {
   padding-top: 20px;
-  height: 430px;
+  height: 470px;
 }
 
 
@@ -232,10 +231,11 @@ mat-tab-body {
   margin-bottom: 0px;
 }
 
-//card heigh on mobile
+//card height on mobile
 .menuitems.mat-card {
   margin: 0px;
   padding: 0px;  
+  width: auto;
   max-width: 330px;
   height: 220px;
   border-radius: 0px;
@@ -244,13 +244,32 @@ mat-tab-body {
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
   height: auto;
   width: 100%;
-  position: relative;
+  //position: relative;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
+
+.scroller {
+  width: 100%;
+  cursor: grabbing;
+  padding-top: 10px;
+  display: flex;
+  height: 370px;
+  white-space: nowrap;
+  margin: 0 auto;
+  overflow-x: auto;
+  box-sizing: content-box;
+  -webkit-overflow-scrolling: touch; /* [3] */
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+  
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
 
 .mealsContainer {
   display: block;
@@ -355,15 +374,16 @@ text-align: center;
 .next:hover i, .prev:hover i {
   background:rgba(20,186,236, 0.8);
  }
+ 
+/*
+.scroller::-webkit-scrollbar {
+  display: none;
+}
 
-
-
+*/
 @media screen and (min-width: 993px) {
   
-  .menuitems.mat-card {
-    height: 100px;
-  }
-  
+ 
   .mealsContainer {
       display: flex;
   }
@@ -390,5 +410,18 @@ text-align: center;
   position: relative;
   z-index: 10;
   top: 200px;
+}
+.scrolling-wrapper-flexbox {
+  width: 40% !important;
+  
+}
+
+}
+
+@media screen and (min-width: 400px) {
+  //card height on mobile
+.menuitems.mat-card {
+  height: 350px;
+  
 }
 }

@@ -10,7 +10,7 @@ const modules = [
   MaterialModule,
   SlideshowModule,
   FormsModule,
-  
+ 
   ReactiveFormsModule
 ];
 
