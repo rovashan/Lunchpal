@@ -30,8 +30,9 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     //init the OneSignal service
     //and check for changes
-    this.notifications.init();
-    this.notifications.updateChanges();
+    
+    //this.notifications.init();
+    //this.notifications.updateChanges();
     this.checkURL();
 
   }

@@ -78,7 +78,7 @@ export class OrderComponent implements OnInit {
     }
     this.router.navigate(["/canteen/thankyou"]);
     //send a push notification
-    this.notifications.customNotification("Order Placed", "Your order has been placed, thanks for using Lunchpal");  
+    //this.notifications.customNotification("Order Placed", "Your order has been placed, thanks for using Lunchpal");  
     
   }
 

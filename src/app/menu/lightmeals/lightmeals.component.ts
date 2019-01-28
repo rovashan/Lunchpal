@@ -9,6 +9,10 @@ import {ShoppingcartService} from "../../shoppingcart.service";
 })
 export class LightmealsComponent implements OnInit {
 
+  lightmealone: any;
+  lightmealtwo: any;
+  lightmealthree: any;
+
   constructor(private shoppingcart: ShoppingcartService) { }
 
 

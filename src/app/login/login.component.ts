@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   login(formData: FormData){
     this.authService.login(formData["email"], formData["password"]);
     //show the notification to remind the user to purchase a plan
-    this.notifications.sendReminder();
+    //this.notifications.sendReminder();
     
   }
   
