@@ -55,8 +55,7 @@
   </div>
   <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChanged($event)">
     <mat-tab label="Traditional">
-      <div class="scroller" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-        <div class="scrolling-wrapper-flexbox">
+        <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)"  class="scrolling-wrapper-flexbox">
                     <div class="card">
                       <mat-card class="menuitems">
                         <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
@@ -110,13 +109,12 @@
                     </div>
               
         </div>
-      </div>
+      
 
     </mat-tab>
     
     <mat-tab label="Classic">
-     <div class="scroller" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-      <div class="scrolling-wrapper-flexbox">
+     <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)" class="scrolling-wrapper-flexbox">
         <div class="card">
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
@@ -150,12 +148,11 @@
         </div>
       
     </div>
-  </div>
+ 
     </mat-tab>
     
     <mat-tab label="Lifestyle">
-    <div class="scroller" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="leaveDrag($event)">
-      <div class="scrolling-wrapper-flexbox">
+      <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)" class="scrolling-wrapper-flexbox">
         <div class="card">
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
@@ -188,26 +185,11 @@
           </mat-card>
         </div>
       </div>
-    </div>
+   
     </mat-tab>
     
   </mat-tab-group>
 
-
-  <!-- <div class="menusContainer">
-    <div class="menus">
-      <div>
-        <a href="#" id="menuOne" (click)="menuHandler($event)">Traditional</a>
-        <a href="#" id="menuTwo" (click)="menuHandler($event)">Classic</a>
-        <a href="#" id="menuThree" (click)="menuHandler($event)">Lifestyle</a>
-      </div>
-
-      <slideshow [minHeight]="'525px'" [autoPlay]="true" [showArrows]="true" [imageUrls]="imageSources" [lazyLoad]="imageSources?.length > 1"
-        [autoPlayWaitForLazyLoad]="true">
-      </slideshow>
-
-    </div>
-  </div> -->
 </section>
 
 

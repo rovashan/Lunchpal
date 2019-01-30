@@ -57,7 +57,7 @@ export class PlansComponent implements OnInit {
   
   scrollDrag($event: MouseEvent){
     $event.preventDefault();
-    let el = $event.srcElement.closest(".scroller");
+    let el = $event.srcElement.closest(".scrolling-wrapper-flexbox");
     
     const x = $event.pageX - el["offsetLeft"];
     const y = x - this.startX;
@@ -75,7 +75,7 @@ export class PlansComponent implements OnInit {
 
   holdDrag($event: MouseEvent){
     $event.preventDefault();
-    let el = $event.srcElement.closest(".scroller");
+    let el = $event.srcElement.closest(".scrolling-wrapper-flexbox");
     this.curDown = true;
     this.startX = $event.pageX - el["offsetLeft"];
     this.scrollLeft = el.scrollLeft;
