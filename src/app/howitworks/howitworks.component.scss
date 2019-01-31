@@ -11,14 +11,14 @@ section div div {
 
 .stepImages {
   width: 300px;
-  max-width: 700px;
   height: 300px;
-  
-  
+  max-width: 300px;
+  max-height: 300px;
+  //background-size: 100%;
 }
 
 .stepImages.one{
-  background: url("../../assets/images/rawpixel-651370-unsplash.png")left center;
+  background: url("../../assets/images/1pickaplan.jpg")left center;
 }
 .stepImages.two{
   background: url("../../assets/images/bench-accounting-49908-unsplash.png")center;
@@ -36,13 +36,17 @@ section div div {
   }
   
   .stepImages {
-    width: 300px;
-    height: 400px;
+    //width: 300px;
+    //height: 400px;
   }
 
   section div div{
     text-align: left;
     border-bottom: none;
+  }
+
+  section div {
+    width: 60%;
   }
 
 }
