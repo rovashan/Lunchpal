@@ -7,6 +7,7 @@ section div div {
   margin-bottom: 40px;
   border-bottom: 1px solid #eee;
   margin: 20px;
+  background-size: contain;
 }
 
 .stepImages {
@@ -14,17 +15,18 @@ section div div {
   height: 300px;
   max-width: 300px;
   max-height: 300px;
+  background-size: contain;
   //background-size: 100%;
 }
 
 .stepImages.one{
-  background: url("../../assets/images/1pickaplan.jpg")left center;
+  background: url("../../assets/images/photo-1535140728325-a4d3707eee61.jpg")left center;
 }
 .stepImages.two{
-  background: url("../../assets/images/bench-accounting-49908-unsplash.png")center;
+  background: url("../../assets/images/Abroad-Apps.jpg")center;
 }
 .stepImages.three{
-  background: url("../../assets/images/kevin-mccutcheon-698687-unsplash.png")center;
+  background: url("../../assets/images/photo-1488116977485-16651ccd3041.jpg")center;
 }
 
 
@@ -38,6 +40,7 @@ section div div {
   .stepImages {
     //width: 300px;
     //height: 400px;
+    //background-size: contain;
   }
 
   section div div{
