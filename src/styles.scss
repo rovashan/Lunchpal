@@ -215,10 +215,10 @@ mat-tab-body{
   text-align: left;
   padding: 10px;
   font-family: Vidaloka;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.8rem;
   line-height: 1.8rem;
-  color: #333;
+  color: #222;
 }
 
 .mat-tab-nav-bar, .mat-tab-header {
@@ -233,9 +233,9 @@ mat-tab-body{
 
 .mat-card .mat-card-image {
   width: 100%;
-  max-width: 340px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+  max-width: 300px;
+  padding: 0px;
+  margin: 0px;
   
 }
 
@@ -243,10 +243,10 @@ mat-tab-body{
 //card height on mobile
 .menuitems.mat-card {
   padding: 0px;
-  max-width: 340px;
-  min-width: 340px;
-  margin: 0px 10px;
-  height: 380px;
+  max-width: 300px;
+  min-width: 300px;
+  margin: 0px;
+  height: 350px;
   border-radius: 0px;
   overflow: hidden;
   
@@ -299,6 +299,54 @@ text-align: center;
   background:rgba(20,186,236, 0.8);
  }
 
+ 
+.slick-list {
+ // border: 1px solid red !important;
+}
+.slick-track {
+ 
+padding: 0px 20px !important;
+  display: flex !important;
+ //justify-content: center !important;
+  min-width: 320px !important;
+}
+
+.slide.slick-slide{
+ // border: 1px solid blue !important;
+ width: 300px !important;
+ max-width: 300px !important;
+ margin: 3px;
+ }
+  
+ .carousel {
+  width: 100%;
+  background: rgb(238, 238, 238) !important;
+  }
+
+ 
+
+
+@media screen and (min-width: 1000px){
+  .carousel {
+    width: 90%;
+    margin: 0 auto;
+  }
+ 
+  
+}
+
+@media screen and (min-width: 900px) {
+  .slick-track {
+   justify-content: center !important;
+    min-width: 300px !important;
+  }
+  button.slick-prev:before, button.slick-next:before {
+    color: rgb(255, 149, 10);
+  }
+ 
+}
+
+/*
 @media screen and (min-width: 993px) {
   
   
@@ -313,4 +361,4 @@ text-align: center;
 
 
 }
-
+*/
