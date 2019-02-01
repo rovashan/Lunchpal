@@ -10,8 +10,19 @@ export class AfirestoreService {
   constructor(private firestore: AngularFirestore ) { }
 
   //add users to the user database
-  public addUser(userData: User){
-    return this.firestore.collection("users").doc(userData.id).set(userData);
+  public addUser(userName: any, userId: any, plan: any){
+    
+    let data = {
+      userName: userName,
+      userId: userId,
+      planName: plan["planName"],
+      planInitDate: plan["initDate"],
+      planExpDate: plan["expDate"],
+    }
+  
+   this.firestore.collection("users").add(data);
+   
+   console.log(userName, userId);
   }
 
   public getUser(uid: string) {

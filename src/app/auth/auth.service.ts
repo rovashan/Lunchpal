@@ -21,6 +21,8 @@ export class AuthService {
 
   public loginError: string;
   public signupError: string;
+  public userId: string;
+  public userName: string;
 
   //user auth state
   user = this.afAuth.authState.pipe(
@@ -28,6 +30,8 @@ export class AuthService {
       if (!authState) {
         return null;
       } else {
+        this.userId = authState.uid;
+        this.userName = authState.email;
         return authState
       }
     })
@@ -38,14 +42,16 @@ export class AuthService {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
 
-        //add the user to the users database
+        //user wont be added to the database here
+        /*
         let userData: User = {
           id: user.user.uid,
           createdDate: new Date(),
           email: user.user.email,
           status: UserStatus.New
         }
-        this.afirestore.addUser(userData);
+        */
+        //this.afirestore.addUser(userData);
 
         this.signupError = "";
         this.router.navigate(["/plans"]);
@@ -83,6 +89,10 @@ export class AuthService {
     .then((user)=>{
       console.log(user.user.uid);
       this.loginError = "";
+
+      //we will check from the database not from the user object
+      //else every time a new instance will be created
+      /*
         this.afirestore.getUser(user.user.uid).subscribe(
           (x: User) => {
             switch (x.status) {
@@ -103,6 +113,7 @@ export class AuthService {
               }
             }
           });
+          */
       })
       .catch((err) => {
         console.log("An error ocurred");

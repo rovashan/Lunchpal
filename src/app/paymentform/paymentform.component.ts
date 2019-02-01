@@ -3,6 +3,11 @@ import {FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 
+
+//firestore services
+import {AfirestoreService} from "../afirestore.service";
+
+
 @Component({
   selector: 'app-paymentform',
   templateUrl: './paymentform.component.html',
@@ -10,7 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class PaymentformComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private aFirestore: AfirestoreService) { }
   selectedfirstname:string;
   selectedlastname:string;
   selectedphone: string;
@@ -70,6 +75,12 @@ export class PaymentformComponent implements OnInit {
   //confirm order
   confirmOrder(){
     console.log("Order confirmed!");
+    let plan = {
+      initDate: "Initial date",
+      expDate: "expiration date",
+      planName: "classic"
+    }
+    this.aFirestore.addUser(this.authService.userName, this.authService.userId, plan)
   }
  
   ngOnInit() {
