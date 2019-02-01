@@ -28,10 +28,11 @@ export class HomeComponent implements OnInit {
    //break point is below to that width
     'responsive': [
     { 'breakpoint': 1500, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 3, } },
-    { 'breakpoint': 1200, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
+    { 'breakpoint': 1200, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
     { 'breakpoint': 1100, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
     { 'breakpoint': 900, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
-    { 'breakpoint': 800, 'settings': { 'slidesToShow': 1, 'slidesToScroll': 1, } },
+    { 'breakpoint': 800, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
+    { 'breakpoint': 600, 'settings': { 'slidesToShow': 1, 'slidesToScroll': 1, } },
     
     ]
    };
