@@ -42,16 +42,13 @@ export class AuthService {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
 
-        //user wont be added to the database here
-        /*
-        let userData: User = {
+        let userObj: User = {
           id: user.user.uid,
           createdDate: new Date(),
           email: user.user.email,
           status: UserStatus.New
         }
-        */
-        //this.afirestore.addUser(userData);
+        this.afirestore.addUser(userObj);
 
         this.signupError = "";
         this.router.navigate(["/plans"]);
@@ -86,22 +83,25 @@ export class AuthService {
   //login function
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then((user)=>{
-      console.log(user.user.uid);
+    .then(()=>{
       this.loginError = "";
+      //the auth user ID will not match the id of the user document
+      //we will need to find the user manually and check for its status
+      this.afirestore.checkUser().subscribe(users=>{
+        users.map(user => {
+          console.log(user["email"])
+          
+          if(user["email"] === this.userName){
+            
+            let x = user["status"];
 
-      //we will check from the database not from the user object
-      //else every time a new instance will be created
-      /*
-        this.afirestore.getUser(user.user.uid).subscribe(
-          (x: User) => {
-            switch (x.status) {
+            switch (x){
               case UserStatus.New: {
                 this.router.navigate(["/plans"]);
                 break;
               }
               case UserStatus.Active: {
-                this.router.navigate(["/meals"]);
+                this.router.navigate(["/canteen"]);
                 break;
               }
               case UserStatus.Expired: {
@@ -112,15 +112,12 @@ export class AuthService {
                 break;
               }
             }
-          });
-          */
+            
+          }   
+        })
       })
-      .catch((err) => {
-        console.log("An error ocurred");
-        this.loginError = err.message;
-      })
-  }
-
-
-
-}
+      
+    })
+    }
+    
+    }

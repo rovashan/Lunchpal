@@ -3,7 +3,7 @@ import {FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 
-
+import {ActivatedRoute} from "@angular/router";
 //firestore services
 import {AfirestoreService} from "../afirestore.service";
 
@@ -15,7 +15,13 @@ import {AfirestoreService} from "../afirestore.service";
 })
 export class PaymentformComponent implements OnInit {
 
-  constructor(private authService: AuthService, private aFirestore: AfirestoreService) { }
+  constructor(
+    private authService: AuthService,
+    private aFirestore: AfirestoreService,
+    private route: ActivatedRoute
+    ){ }
+
+
   selectedfirstname:string;
   selectedlastname:string;
   selectedphone: string;
@@ -25,6 +31,9 @@ export class PaymentformComponent implements OnInit {
   creditState: boolean = false;
   authSubscription: Subscription;
   userEmail: string;
+
+  selectedPlan = null;
+
 
   //delivery form controls
   public personal = new FormGroup({
@@ -41,6 +50,15 @@ export class PaymentformComponent implements OnInit {
     seccode: new FormControl('',  Validators.required),
     
   });
+
+
+  //get the plan selected
+  getSelectedPlan(){
+    let planId = this.route.snapshot.paramMap.get("plan")
+    this.aFirestore.getSelectedPlan(planId).subscribe(plan => {
+      this.selectedPlan = plan;
+    })
+  }
 
   personalCompleted(){
     if(this.personal.valid){
@@ -74,13 +92,19 @@ export class PaymentformComponent implements OnInit {
 
   //confirm order
   confirmOrder(){
+   
     console.log("Order confirmed!");
     let plan = {
       initDate: "Initial date",
       expDate: "expiration date",
-      planName: "classic"
+      planId: this.route.snapshot.paramMap.get("plan"),
+      planName: this.selectedPlan["name"],  
+      
     }
-    this.aFirestore.addUser(this.authService.userName, this.authService.userId, plan)
+   
+    this.aFirestore.addSubscription(this.authService.userName, this.authService.userId, plan)
+  
+    //TODO --- change the user status using the user ID
   }
  
   ngOnInit() {
@@ -94,6 +118,7 @@ export class PaymentformComponent implements OnInit {
       }
     });
     
+    this.getSelectedPlan();
   }
 
   ngOnDestroy() {
