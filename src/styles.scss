@@ -201,13 +201,13 @@ input[type="submit"]:disabled:hover {
 
 //manages the tab-group height
 mat-tab-group {
-  height: 450px;
+  height: 420px;
   //border: 1px solid red;
 }
 
 //manages the content body height of the tabs
 mat-tab-body{
-  height: 450px;
+  height: 420px;
   //border: 1px solid blue;
 }
 
@@ -230,6 +230,9 @@ mat-tab-body{
    justify-content: center;
 }
 
+.mat-card {
+  box-shadow: none !important;
+}
 
 .mat-card .mat-card-image {
   width: 100%;
@@ -245,10 +248,11 @@ mat-tab-body{
   padding: 0px;
   max-width: 270px;
   min-width: 270px;
-  height: 320px;
+  height: 310px;
   border-radius: 0px;
   overflow: hidden;
-  
+ margin: 10px;
+
 }
 
 
@@ -298,50 +302,16 @@ text-align: center;
   background:rgba(20,186,236, 0.8);
  }
 
- 
-.slick-list {
- //border: 1px solid red !important;
-}
-.slick-track {
- 
-  display: flex !important;
- //justify-content: center !important;
-  min-width: 320px !important;
-}
-
-.slide.slick-slide{
- // border: 1px solid blue !important;
- 
- min-width: 270px !important;
- max-width: 270px !important;
- margin:5px;
-}
-  
- .carousel {
-  width: 100%;
-  //background: rgb(238, 238, 238) !important;
-  }
-
- 
-
-
 @media screen and (min-width: 1000px){
-  .carousel {
-    width: 90%;
-    margin: 0 auto;
-  }
- 
   
 }
 
 @media screen and (min-width: 900px) {
-  .slick-track {
+  .scrolling-wrapper-flexbox {
    justify-content: center !important;
-    min-width: 300px !important;
+   
   }
-  button.slick-prev:before, button.slick-next:before {
-    color: rgb(255, 149, 10);
-  }
+  
  
 }
 

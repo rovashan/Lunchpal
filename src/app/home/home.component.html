@@ -39,213 +39,158 @@
 </div>
 
 
+  
 <section>
-
-  <h2>This week's menu</h2>
-  <!--- 
+  <h2>Menu For This Week</h2>
   <div class="tabsControls">
     <div class="next" (click)="goNext()">
         <i class="material-icons">
             keyboard_arrow_right
         </i>
     </div>
-   
     <div class="prev" (click)="goPrev()">
         <i class="material-icons">
             keyboard_arrow_left
         </i>
     </div>
-  </div>
-
--->
-   
-   
-  <mat-tab-group [selectedIndex]="selectedIndex">
+  </div><mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChanged($event)">
     <mat-tab label="Traditional">
-      <ngx-slick-carousel class="carousel" 
-      #slickModal="slick-carousel" 
-      [config]="slideConfig" 
-      (init)="slickInit($event)"
-      (breakpoint)="breakpoint($event)"
-      (afterChange)="afterChange($event)"
-      (beforeChange)="beforeChange($event)">
-        <div ngxSlickItem class="slide">
-          <div class="card">
-          <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-          <p class="cardContent">
-          Steak with Pap and Chakalaka</p>
-          </mat-card-content>
-          </mat-card>
-          </div>
-        </div>
+        <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)"  class="scrolling-wrapper-flexbox">
+                    <div class="card">
+                      <mat-card class="menuitems">
+                        <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                          <p class="cardContent">
+                            Steak with Pap and Chakalaka</p>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                    <div class="card">
+                        <mat-card class="menuitems">
+                          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+                          <mat-card-content>
+                            <p class="cardContent">
+                              Steak with Pap and Chakalaka</p>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
 
-        <div ngxSlickItem class="slide">
-          <div class="card">
-          <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-          <p class="cardContent">
-          Steak with Pap and Chakalaka</p>
-          </mat-card-content>
-          </mat-card>
-          </div>
-        </div>
+                    <div class="card">
+                      <mat-card class="menuitems">
+                        <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                          <p class="cardContent">
+                            Beef Stew with Rice
+                          </p>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
 
-        <div ngxSlickItem class="slide">
-          <div class="card">
-          <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-          <p class="cardContent">
-          Beef Stew with Rice
-          </p>
-          </mat-card-content>
-          </mat-card>
-          </div>
+                    <div class="card">
+                      <mat-card class="menuitems">
+                        <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+                        <mat-card-content>
+                          <p class="cardContent">
+                            Mince curry with Rice and Potatoes
+                          </p>
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+                    
+                    <div class="card">
+                        <mat-card class="menuitems">
+                          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+                          <mat-card-content>
+                            <p class="cardContent">
+                              Mince curry with Rice and Potatoes
+                            </p>
+                          </mat-card-content>
+                        </mat-card>
+                    </div>
+              
         </div>
-        <div ngxSlickItem class="slide">
-          <div class="card">
-          <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-          <p class="cardContent">
-          Mince curry with Rice and Potatoes
-          </p>
-          </mat-card-content>
-          </mat-card>
-          </div>
-        </div>
-        <div ngxSlickItem class="slide">
-          <div class="card">
-          <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-          <p class="cardContent">
-          Mince curry with Rice and Potatoes
-          </p>
-          </mat-card-content>
-          </mat-card>
-          </div>
-        </div>
-      </ngx-slick-carousel>
+      
+
     </mat-tab>
     
     <mat-tab label="Classic">
-        <ngx-slick-carousel class="carousel" 
-        #slickModal="slick-carousel" 
-        [config]="slideConfig" 
-        (init)="slickInit($event)"
-        (breakpoint)="breakpoint($event)"
-        (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
-          
-        <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+     <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)" class="scrolling-wrapper-flexbox">
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Beef Stew with Rice
-            </p>
+              <p class="cardContent">
+                Lemon Butter Hake with Chips
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+          </mat-card>
+
+        </div>
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Beef Stew with Rice
-            </p>
+              <p class="cardContent">
+                  Roast Chicken with Veggies
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+          </mat-card>
+        </div>
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Mince curry with Rice and Potatoes
-            </p>
+              <p class="cardContent">
+                Green Chicken Curry with Rice
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
-            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-            <p class="cardContent">
-            Mince curry with Rice and Potatoes
-            </p>
-            </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-        </ngx-slick-carousel>
-   
+          </mat-card>
+        </div>
+      
+    </div>
+ 
     </mat-tab>
     
     <mat-tab label="Lifestyle">
-        <ngx-slick-carousel class="carousel" 
-        #slickModal="slick-carousel" 
-        [config]="slideConfig" 
-        (init)="slickInit($event)"
-        (breakpoint)="breakpoint($event)"
-        (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
-          
-      
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+      <div (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)" class="scrolling-wrapper-flexbox">
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Beef Stew with Rice
-            </p>
+              <p class="cardContent">
+                Spicy Chicken with Cauliflower Rice
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+          </mat-card>
+
+        </div>
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Mince curry with Rice and Potatoes
-            </p>
+              <p class="cardContent">
+                Shrimp and Avocado salad
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-          <div ngxSlickItem class="slide">
-            <div class="card">
-            <mat-card class="menuitems">
+          </mat-card>
+        </div>
+        <div class="card">
+          <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-            <p class="cardContent">
-            Mince curry with Rice and Potatoes
-            </p>
+              <p class="cardContent">
+                Tuna Steak with Broccoli
+              </p>
             </mat-card-content>
-            </mat-card>
-            </div>
-          </div>
-        </ngx-slick-carousel>
-      
+          </mat-card>
+        </div>
+      </div>
+   
     </mat-tab>
+    
   </mat-tab-group>
 
 </section>
-
 
 <section class="reasonsWhy">
   <h2>Why Lunchpal?</h2>

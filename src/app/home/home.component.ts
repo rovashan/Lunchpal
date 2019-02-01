@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private carouselHandler: CarouselHandlerService) { }
 
+  /*
   //ngx-slick-carousel config
   slideConfig = {
     "slidesToShow": 4,
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
 
 
   slickInit(e) {
-   
+  
   }
   
   breakpoint(e) {
@@ -54,10 +55,7 @@ export class HomeComponent implements OnInit {
     
   }
 
-
-
-/*
-
+*/
   //------------- scroll variables
   startX;
   curDown = false;
@@ -122,10 +120,10 @@ export class HomeComponent implements OnInit {
 
   //------------- scroll functions 
   
-*/
+
 
   ngOnInit() {
-    //this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
+    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
    
   }
   
