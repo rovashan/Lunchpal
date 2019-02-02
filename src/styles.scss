@@ -182,7 +182,7 @@ input[type="submit"]:disabled:hover {
 }
 
 .scrolling-wrapper-flexbox {
-  width: auto;
+  width: 60%;
   cursor: grabbing;
   padding-top: 10px;
   display: flex;
@@ -192,7 +192,6 @@ input[type="submit"]:disabled:hover {
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch; 
   -ms-overflow-style: -ms-autohiding-scrollbar; 
- 
 }
 
 .scrolling-wrapper-flexbox::-webkit-scrollbar {
@@ -219,6 +218,7 @@ mat-tab-body{
   font-size: 1.8rem;
   line-height: 1.8rem;
   color: #222;
+  
 }
 
 .mat-tab-nav-bar, .mat-tab-header {
@@ -248,11 +248,11 @@ mat-tab-body{
   padding: 0px;
   max-width: 270px;
   min-width: 270px;
-  height: 310px;
+  height: 300px;
   border-radius: 0px;
   overflow: hidden;
  margin: 10px;
-
+ border-bottom: 3px solid rgb(255, 123, 0);
 }
 
 
@@ -308,7 +308,7 @@ text-align: center;
 
 @media screen and (min-width: 900px) {
   .scrolling-wrapper-flexbox {
-   justify-content: center !important;
+  // justify-content: center !important;
    
   }
   

@@ -2,58 +2,26 @@
   <h2>Choose a plan</h2>
 
   <div class="plansContainer">
-    <mat-card class="plans">
+    <mat-card *ngFor = "let plan of plans" class="plans">
         <mat-card-header>
-          <mat-card-title><h3>Traditional</h3></mat-card-title>
+          <mat-card-title><h3>{{plan.data.name}}</h3></mat-card-title>
         </mat-card-header>
         <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
               South African homestyle meals at an afforable price.
           </p>
-          <strong>R55</strong>
-          <p>Per day</p >
+          <p>Credits Per Day <strong>{{plan.data.creditsPerDay}}</strong> </p>
+          <p class="planPrice"> <strong>R {{plan.data.price}}</strong> </p>
+         
+         
 
         </mat-card-content>
         <mat-card-actions>
-            <button class="package">Select this plan</button>
+            <button class="package" (click)="selectPlan(plan.id)">Select this plan</button>
         </mat-card-actions>
       </mat-card>
-
-      <mat-card class="plans">
-          <mat-card-header>
-            <mat-card-title><h3>Classic</h3></mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-                Our largest variety of balanced meals to keep you full and satisfied.
-            </p>
-            <strong>R70</strong>
-            <p>Per day</p>
-          </mat-card-content>
-          <mat-card-actions>
-              <button class="package" (click)="selectPlan()">Select this plan</button>
-          </mat-card-actions>
-        </mat-card>
-
-        <mat-card class="plans">
-            <mat-card-header>
-              <mat-card-title><h3>Lifestyle</h3></mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                  Fitness and lifestyle meals for low carb, high protein, gluten-free and keto diets.
-              </p>
-              <strong>R85</strong>
-              <p>Per day</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button class="package">Select this plan</button>
-            </mat-card-actions>
-          </mat-card>
-    </div>
+        </div>
 
 
     

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'contactus', loadChildren: './contact/contact.module#ContactModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
-  { path: 'payment', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
+  { path: 'payment/:plan', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
   { path: 'canteen', canActivate:[GuardGuard], loadChildren: './canteen/canteen.module#CanteenModule'},
   { path: 'canteen/mains', canActivate:[GuardGuard], loadChildren: './menu/mains/mains.module#MainsModule'},
   { path: 'canteen/lightmeals', canActivate:[GuardGuard], loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},

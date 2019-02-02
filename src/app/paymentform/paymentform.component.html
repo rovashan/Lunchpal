@@ -86,11 +86,13 @@
     </div>
 
     <div class="summary">
-      <div>
+      <div *ngIf="selectedPlan">
         <h3>Order Summary</h3>
-        <p class="planSelected">Classic Plan <span class="planType">R50</span></p>
+        
+        <p><strong> Plan: {{selectedPlan.name}} R {{selectedPlan.price}}</strong></p>
+        <p><strong> Credits Per Day: {{selectedPlan.creditsPerDay}}</strong> </p>
       </div>
-      <!-- TODO: wire the user info -->
+     
       <div>
         <h3>Personal Information</h3>
         <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>

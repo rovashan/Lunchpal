@@ -3,6 +3,7 @@ import { CarouselHandlerService } from "../carousel-handler.service";
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
+import { AfirestoreService} from "../afirestore.service";
 
 import {ViewEncapsulation} from "@angular/core";
 import { MatTabChangeEvent } from '@angular/material';
@@ -21,9 +22,28 @@ export class PlansComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    private afirestore: AfirestoreService,
     private carouselHandler: CarouselHandlerService,
     private router: Router
   ) { }
+
+    plans:any[];
+
+    public getplans(){
+      this.afirestore.getPlans().subscribe(plans => {
+        let _plans = [];
+      
+        plans.map(plan => {
+        _plans.push({
+          id: plan.payload.doc.id,
+          data: plan.payload.doc.data()
+        })
+       })
+       this.plans = _plans;
+      })
+    }
+
+
 
       
   //------------- scroll variables
@@ -37,7 +57,6 @@ export class PlansComponent implements OnInit {
   authSubscription: Subscription;
 
   
-
     goNext(){
       this.carouselHandler.goNext()
     }
@@ -103,20 +122,12 @@ export class PlansComponent implements OnInit {
     this.carouselHandler.menuHandler($event);
   }
  */
-  ngOnInit() {
-   // this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
-   // this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
-   this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
-   
-   
-    
-  }
+  
 
-
-  selectPlan() {
+  selectPlan(plan) {
     this.authSubscription = this.authService.user.subscribe(user => {
       if (user) {
-        this.router.navigate(["/payment"]);
+        this.router.navigate([`/payment/${plan}`]);
       } else {
         this.router.navigate(["/signup"]);
       }
@@ -124,6 +135,15 @@ export class PlansComponent implements OnInit {
   }
 
   
+  ngOnInit() {
+    // this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
+    // this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
+    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
+    
+    this.getplans();
+     
+   }
+ 
   ngOnDestroy() {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
