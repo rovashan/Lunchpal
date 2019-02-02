@@ -25,7 +25,7 @@ import {OnesignalService} from "./onesignal/onesignal.service";
 //shopingcart service
 import {ShoppingcartService} from "./shoppingcart.service";
 
-
+import { PaymentService } from './payment/payment.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import {ShoppingcartService} from "./shoppingcart.service";
     MatToolbarModule,
     AppRoutingModule,
   ],
-  providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService],
+  providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
