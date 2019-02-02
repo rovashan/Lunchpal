@@ -27,7 +27,7 @@ export class PlansComponent implements OnInit {
     private router: Router
   ) { }
 
-    plans:any[];
+    plans:any[] = [];  
 
     public getplans(){
       this.afirestore.getPlans().subscribe(plans => {
@@ -40,6 +40,7 @@ export class PlansComponent implements OnInit {
         })
        })
        this.plans = _plans;
+      console.log(this.plans)
       })
     }
 
@@ -136,11 +137,12 @@ export class PlansComponent implements OnInit {
 
   
   ngOnInit() {
+    this.getplans();
     // this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
     // this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
     this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
     
-    this.getplans();
+   
      
    }
  
