@@ -1,9 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 
-//shopping cart service
-import {ShoppingcartService} from "../shoppingcart.service";
-
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -11,7 +8,8 @@ import {ShoppingcartService} from "../shoppingcart.service";
 })
 export class NavComponent implements OnInit {
 
-    constructor(public authService: AuthService, private shoppingcart: ShoppingcartService) { }
+    constructor(
+      public authService: AuthService) { }
     
     //---- Below is the implementation for the sidenav
 
@@ -53,8 +51,9 @@ export class NavComponent implements OnInit {
       this.authService.logOut();
     }
 
+    
     ngOnInit() {
-      
+    
     }
 
 

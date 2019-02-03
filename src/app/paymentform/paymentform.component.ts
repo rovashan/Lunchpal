@@ -99,12 +99,20 @@ export class PaymentformComponent implements OnInit {
       expDate: "expiration date",
       planId: this.route.snapshot.paramMap.get("plan"),
       planName: this.selectedPlan["name"],  
+      planCredits: this.selectedPlan["creditsPerDay"]
       
     }
+    console.log(this.selectedPlan);
    
-    this.aFirestore.addSubscription(this.authService.userName, this.authService.userId, plan)
-  
-    //TODO --- change the user status using the user ID
+    //Create the user subscription
+    this.aFirestore.addSubscription(this.authService.userName, this.authService.userDocId, plan)
+    .then(data => {
+      //this is the document reference
+      console.log(data.path);
+      this.aFirestore.updateUserStatus(this.authService.userDocId);
+      this.aFirestore.updateUserSubscription(this.authService.userDocId , data.path);
+    }).catch()
+   
   }
  
   ngOnInit() {
