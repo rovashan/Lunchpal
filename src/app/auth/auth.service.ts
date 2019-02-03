@@ -16,13 +16,13 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afirestore: AfirestoreService,
-    private router: Router
-  ) { }
+    private router: Router  ) { }
 
   public loginError: string;
   public signupError: string;
   public userId: string;
   public userName: string;
+  public userDocId: string;
 
   //user auth state
   user = this.afAuth.authState.pipe(
@@ -46,7 +46,8 @@ export class AuthService {
           id: user.user.uid,
           createdDate: new Date(),
           email: user.user.email,
-          status: UserStatus.New
+          status: UserStatus.New,
+          subscription: ""
         }
         this.afirestore.addUser(userObj);
 
@@ -89,12 +90,13 @@ export class AuthService {
       //we will need to find the user manually and check for its status
       this.afirestore.checkUser().subscribe(users=>{
         users.map(user => {
-          console.log(user["email"])
           
-          if(user["email"] === this.userName){
-            
-            let x = user["status"];
-
+          
+          if(user.payload.doc.data()["email"] === this.userName){
+            //get us the document ID of the current user
+            this.userDocId = user.payload.doc.id;
+            let x = user.payload.doc.data()["status"];
+          
             switch (x){
               case UserStatus.New: {
                 this.router.navigate(["/plans"]);
@@ -112,7 +114,7 @@ export class AuthService {
                 break;
               }
             }
-            
+          
           }   
         })
       })

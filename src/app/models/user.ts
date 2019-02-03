@@ -5,5 +5,6 @@ export interface User {
     createdDate: Date;
     email: string;
     status: UserStatus;
+    subscription: string
     //name: string;
   }

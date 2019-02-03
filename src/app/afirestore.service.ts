@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
+
 import { User } from './models/user';
 
 @Injectable({
@@ -7,7 +8,10 @@ import { User } from './models/user';
 })
 export class AfirestoreService {
 
-  constructor(private firestore: AngularFirestore ) { }
+  constructor(
+    private firestore: AngularFirestore,
+    ) { }
+
 
   //get the plans
   public getPlans(){
@@ -25,13 +29,27 @@ export class AfirestoreService {
    
   }
 
-  
+  //get the plan details
+  public displayPlanData(currentUserID: any){
+    return this.getUser(currentUserID);
+  }
+
+  //update user status
+  public updateUserStatus(docId: string){
+    this.firestore.collection("users").doc(docId).update({status: "Active"});
+  }
+
+
+  public updateUserSubscription(docId: string, path: any){
+    this.firestore.collection("users").doc(docId).update({subscription: path })
+  }
+
   public getUser(uid: string) {
     //valueChanges excludes metadata so it's lighter than snapshotChanges
     return this.firestore.collection("users").doc(uid).valueChanges();
   }
 
-
+  //create the user subscription
   public addSubscription(userName: string, userId: string, plan: Object){
     let data = {
       userName: userName,
@@ -39,16 +57,22 @@ export class AfirestoreService {
       planName: plan["planName"],
       planInitDate: plan["initDate"],
       planExpDate: plan["expDate"],
-      planId: plan["planId"]
+      planId: plan["planId"],
+      planCredits: plan["planCredits"]
     }
-  
-    this.firestore.collection("subscriptions").add(data); 
-    //console.log(userName, userId);
+    
+    //return the function so we can use the observable
+    //to update the user subscription
+    return this.firestore.collection("subscriptions").add(data); 
   }
 
+  //get the users in order to check the status
   public checkUser(){
-    return this.firestore.collection("users", ref => ref.orderBy("email", "asc")).valueChanges();
+    return this.firestore.collection("users", ref => ref.orderBy("email", "asc")).snapshotChanges();
   }
+
+
+  
 
 
 }
