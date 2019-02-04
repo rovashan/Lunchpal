@@ -5,15 +5,15 @@
     
     <mat-card class="plans">
         <mat-card-header>
-          <mat-card-title><h3 *ngIf="plans.length > 0">{{plans[0].data.name}}</h3></mat-card-title>
+          <mat-card-title><h3>Classic</h3></mat-card-title>
         </mat-card-header>
         <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
               South African homestyle meals at an afforable price.
           </p>
-          <p>Credits Per Day <strong *ngIf="plans.length > 0">{{plans[0].data.creditsPerDay}}</strong> </p>
-          <p class="planPrice"> <strong *ngIf="plans.length > 0">R {{plans[0].data.price}}</strong> </p>
+          <p>Credits Per Day <strong>70</strong> </p>
+          <p class="planPrice"> <strong>R 350</strong> </p>
          </mat-card-content>
         <mat-card-actions>
             <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[0].id)">Select this plan</button>
@@ -22,15 +22,15 @@
 
       <mat-card class="plans">
         <mat-card-header>
-          <mat-card-title><h3 *ngIf="plans.length > 0">{{plans[1].data.name}}</h3></mat-card-title>
+          <mat-card-title><h3>Traditional</h3></mat-card-title>
         </mat-card-header>
         <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
               South African homestyle meals at an afforable price.
           </p>
-          <p>Credits Per Day <strong *ngIf="plans.length > 0">{{plans[1].data.creditsPerDay}}</strong> </p>
-          <p class="planPrice"> <strong *ngIf="plans.length > 0">R {{plans[1].data.price}}</strong> </p>
+          <p>Credits Per Day <strong>55</strong> </p>
+          <p class="planPrice"> <strong>R 275</strong> </p>
          
         </mat-card-content>
         <mat-card-actions>
@@ -40,15 +40,15 @@
       
       <mat-card class="plans">
         <mat-card-header>
-          <mat-card-title><h3 *ngIf="plans.length > 0">{{plans[2].data.name}}</h3></mat-card-title>
+          <mat-card-title><h3>Lifestyle</h3></mat-card-title>
         </mat-card-header>
         <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
               South African homestyle meals at an afforable price.
           </p>
-          <p>Credits Per Day <strong *ngIf="plans.length > 0">{{plans[2].data.creditsPerDay}}</strong> </p>
-          <p class="planPrice"> <strong *ngIf="plans.length > 0">R {{plans[2].data.price}}</strong> </p>
+          <p>Credits Per Day <strong>85</strong> </p>
+          <p class="planPrice"> <strong>R 425</strong></p>
         </mat-card-content>
         <mat-card-actions>
             <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[2].id)">Select this plan</button>

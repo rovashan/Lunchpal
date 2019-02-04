@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/firestore';
+import { AngularFirestore, DocumentReference, CollectionReference} from '@angular/fire/firestore';
 
 import { User } from './models/user';
 
@@ -12,6 +12,10 @@ export class AfirestoreService {
     private firestore: AngularFirestore,
     ) { }
 
+  //get current user subscription
+  public getUserSubscription(userSubscription: any){
+    return this.firestore.collection("subscriptions").doc(userSubscription).valueChanges();
+  }  
 
   //get the plans
   public getPlans(){
@@ -25,7 +29,7 @@ export class AfirestoreService {
   
   //add users to the user database
   public addUser(user: object){
-    this.firestore.collection("users").add(user);
+   return this.firestore.collection("users").add(user);
    
   }
 

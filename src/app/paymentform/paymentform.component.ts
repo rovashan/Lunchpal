@@ -104,13 +104,17 @@ export class PaymentformComponent implements OnInit {
     }
     console.log(this.selectedPlan);
    
+    console.log(this.authService.userName);
+    console.log(this.authService.userDocId);
+
     //Create the user subscription
     this.aFirestore.addSubscription(this.authService.userName, this.authService.userDocId, plan)
     .then(data => {
-      //this is the document reference
-      console.log(data.path);
+      //this is the documents ID reference
+      console.log(data.id);
       this.aFirestore.updateUserStatus(this.authService.userDocId);
-      this.aFirestore.updateUserSubscription(this.authService.userDocId , data.path);
+      this.aFirestore.updateUserSubscription(this.authService.userDocId , data.id);
+      
     }).catch()
    
   }
