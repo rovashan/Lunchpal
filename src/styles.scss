@@ -283,8 +283,9 @@ text-align: center;
 }
 
 .next i, .prev i {
-  font-size: 4rem;
-  background:rgba(20,186,236, 0.3);
+  font-size: 1.6rem;
+  background:rgba(255, 123, 0, 0.3);
+  border-radius: 100%;
   color: #fff;
   cursor: pointer;
 }
@@ -299,28 +300,14 @@ text-align: center;
 }
 
 .next:hover i, .prev:hover i {
-  background:rgba(20,186,236, 0.8);
+  background:rgba(255, 123, 0, 0.9);
  }
 
-@media screen and (min-width: 1000px){
-  
-}
 
-@media screen and (min-width: 900px) {
-  .scrolling-wrapper-flexbox {
-  // justify-content: center !important;
-   
-  }
-  
- 
-}
-
-/*
 @media screen and (min-width: 993px) {
-  
-  
+ 
 .tabsControls{
-  width: 80%;
+  width: 70%;
   display: block;
   margin: 0 auto;
   position: relative;
@@ -330,4 +317,4 @@ text-align: center;
 
 
 }
-*/
+

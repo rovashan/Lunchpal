@@ -76,7 +76,9 @@ export class AfirestoreService {
   }
 
 
-  
+  public createOrder(orders: object){
+    return this.firestore.collection("orders").add(orders);
+  }  
 
 
 }

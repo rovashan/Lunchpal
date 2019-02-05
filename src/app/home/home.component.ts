@@ -11,59 +11,48 @@ import {ViewEncapsulation} from "@angular/core";
   styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-
-
   
 export class HomeComponent implements OnInit {
   title = 'app';
 
   constructor(private carouselHandler: CarouselHandlerService) { }
 
-  /*
-  //ngx-slick-carousel config
-  slideConfig = {
-    "slidesToShow": 4,
-    "slidesToScroll": 3,
-    'infinite': false,
-    "arrows": true,
-   //break point is below to that width
-    'responsive': [
-    { 'breakpoint': 1500, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 3, } },
-    { 'breakpoint': 1200, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
-    { 'breakpoint': 1100, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
-    { 'breakpoint': 900, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
-    { 'breakpoint': 800, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
-    { 'breakpoint': 600, 'settings': { 'slidesToShow': 1, 'slidesToScroll': 1, } },
-    
-    ]
-   };
-
-
-  slickInit(e) {
   
-  }
-  
-  breakpoint(e) {
-    
-  }
-  
-  afterChange(e) {
-    
-  }
-  
-  beforeChange(e) {
-    
-  }
-
-*/
   //------------- scroll variables
   startX;
   curDown = false;
   scrollLeft;
   //------------- scroll variables
     
-  selectedIndex= this.carouselHandler.selectedIndex;
+  
+  goNext($event: Event){
+    console.log("next");
+    let icon = $event.srcElement.parentElement;
+    let tabControls= icon.parentElement;
+    let matTabBody = tabControls.parentElement;
+    let scrollElement = matTabBody.children[1];
+    scrollElement.scrollBy({
+      top: 0,
+      left: 600,
+     behavior: "smooth"
+    });
+   
+  }
 
+  goPrev($event: Event){
+    console.log("prev");
+    let icon = $event.srcElement.parentElement;
+    let tabControls= icon.parentElement;
+    let matTabBody = tabControls.parentElement;
+    let scrollElement = matTabBody.children[1];
+    scrollElement.scrollBy({
+      top: 0,
+      left: -600,
+     behavior: "smooth"
+    });
+  }
+
+  /*
   goNext(){
     this.carouselHandler.goNext()
   }
@@ -72,10 +61,12 @@ export class HomeComponent implements OnInit {
     this.carouselHandler.goPrev();
   }
 
+  
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
   this.carouselHandler.tabChanged(tabChangeEvent);
   
   }
+  */
 
   //------------- scroll functions 
   
@@ -120,11 +111,8 @@ export class HomeComponent implements OnInit {
 
   //------------- scroll functions 
   
-
-
   ngOnInit() {
-    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
-   
+  
   }
   
  
