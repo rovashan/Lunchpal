@@ -16,10 +16,6 @@ import { MatTabChangeEvent } from '@angular/material';
 })
 export class PlansComponent implements OnInit {
 
-
-  selectedIndex= this.carouselHandler.selectedIndex;
-
-
   constructor(
     public authService: AuthService,
     private afirestore: AfirestoreService,
@@ -58,19 +54,6 @@ export class PlansComponent implements OnInit {
   authSubscription: Subscription;
 
   
-    goNext(){
-      this.carouselHandler.goNext()
-    }
-
-    goPrev(){
-      this.carouselHandler.goPrev();
-    }
-
-    tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-     this.carouselHandler.tabChanged(tabChangeEvent);
-     
-    }
-
 
 
   //------------- scroll functions 
@@ -116,14 +99,15 @@ export class PlansComponent implements OnInit {
 
   //------------- scroll functions 
 
-
-
-  /*
-  menuHandler($event: Event) {
-    this.carouselHandler.menuHandler($event);
+  goNext($event: Event){
+    this.carouselHandler.goNext($event);
+   
   }
- */
-  
+
+  goPrev($event: Event){
+    this.carouselHandler.goPrev($event);
+  }
+
 
   selectPlan(plan) {
     this.authSubscription = this.authService.user.subscribe(user => {
@@ -138,11 +122,7 @@ export class PlansComponent implements OnInit {
   
   ngOnInit() {
     this.getplans();
-    // this.carouselHandler.sourcesChange.subscribe(x => this.imageSources = x);
-    // this.carouselHandler.labelsChange.subscribe(x => this.menuSelected = x);
-    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
     
-   
      
    }
  

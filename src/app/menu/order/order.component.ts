@@ -66,9 +66,41 @@ export class OrderComponent implements OnInit {
     this.location.back();
   }
 
+  meridian:string;
+
+  slipTime(){
+  
+  if(this.shoppingcart.deliveryTime !== "soon"){
+    let timeSplit = this.shoppingcart.deliveryTime.split(':'),
+    hours,
+    minutes,
+    meridian;
+
+    
+  hours = timeSplit[0];
+  minutes = timeSplit[1];
+  if (hours > 12) {
+    meridian = 'pm';
+    hours -= 12;
+  } else if (hours < 12) {
+    meridian = 'am';
+    if (hours == 0) {
+      hours = 12;
+    }
+    
+  } else {
+    meridian = 'pm';
+  }
+  this.meridian = meridian;
+
+  }else{
+    this.meridian = "";
+  }
+
+  }
 
   placeOrder(formData: FormData){
-    
+    this.slipTime();
     console.log("order sent", formData);
     //check if items
     if(localStorage.getItem("cart")){
@@ -77,9 +109,8 @@ export class OrderComponent implements OnInit {
       let order = {
         userId: this.authService.userDocId,
         userName: this.authService.userName,
-        quantity: "1",
         items: this.orderedItems,
-        delTime: this.shoppingcart.deliveryTime,
+        delTime: this.shoppingcart.deliveryTime + " " + this.meridian,
         total: this.totalCredits,
         status: "not delivered" 
       }
@@ -109,7 +140,7 @@ export class OrderComponent implements OnInit {
         userName: this.authService.userName,
         quantity: "1",
         items: this.orderedItems,
-        delTime: this.shoppingcart.deliveryTime,
+        delTime: this.shoppingcart.deliveryTime + " " + this.meridian,
         total: this.totalCredits,
         status: "not delivered" 
       }

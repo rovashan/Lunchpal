@@ -7,37 +7,34 @@ import { MatTabChangeEvent } from '@angular/material';
 })
 export class CarouselHandlerService {
 
-  selectedIndex: number = 1;
-  public tabChanges: BehaviorSubject<number> = new BehaviorSubject<number>(this.selectedIndex);
-  
-  setSelectedTabIndex(tabIndex: number): void {
-    this.selectedIndex = tabIndex;
-    this.tabChanges.next(tabIndex);
-    
-  }
-  
-  goNext(){
-      
-    if(this.selectedIndex < 2){
-      this.setSelectedTabIndex(this.selectedIndex += 1);
-    }
-    
-  }
-
-  goPrev(){
-        
-    if(this.selectedIndex > 0){
-      this.setSelectedTabIndex(this.selectedIndex -= 1);
-    }
-    
+ 
+  goNext($event: Event){
+    console.log("next");
+    let icon = $event.srcElement.parentElement;
+    let tabControls= icon.parentElement;
+    let matTabBody = tabControls.parentElement;
+    let scrollElement = matTabBody.children[1];
+    scrollElement.scrollBy({
+      top: 0,
+      left: 600,
+     behavior: "smooth"
+    });
+   
     
   }
 
-  tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
-    //console.log('index => ', tabChangeEvent.index);
-    //set the changed index to be the selectedIndex value
-    //in order for the arrows to know the index
-    this.setSelectedTabIndex(tabChangeEvent.index);
+  goPrev($event: Event){  
+    console.log("prev");
+    let icon = $event.srcElement.parentElement;
+    let tabControls= icon.parentElement;
+    let matTabBody = tabControls.parentElement;
+    let scrollElement = matTabBody.children[1];
+    scrollElement.scrollBy({
+      top: 0,
+      left: -600,
+     behavior: "smooth"
+    });
+    
   }
 
 }

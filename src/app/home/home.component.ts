@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { CarouselHandlerService } from "../carousel-handler.service";
-import { MatTabChangeEvent } from '@angular/material';
 
 import {ViewEncapsulation} from "@angular/core";
 
@@ -26,47 +25,13 @@ export class HomeComponent implements OnInit {
     
   
   goNext($event: Event){
-    console.log("next");
-    let icon = $event.srcElement.parentElement;
-    let tabControls= icon.parentElement;
-    let matTabBody = tabControls.parentElement;
-    let scrollElement = matTabBody.children[1];
-    scrollElement.scrollBy({
-      top: 0,
-      left: 600,
-     behavior: "smooth"
-    });
+    this.carouselHandler.goNext($event);
    
   }
 
   goPrev($event: Event){
-    console.log("prev");
-    let icon = $event.srcElement.parentElement;
-    let tabControls= icon.parentElement;
-    let matTabBody = tabControls.parentElement;
-    let scrollElement = matTabBody.children[1];
-    scrollElement.scrollBy({
-      top: 0,
-      left: -600,
-     behavior: "smooth"
-    });
+    this.carouselHandler.goPrev($event);
   }
-
-  /*
-  goNext(){
-    this.carouselHandler.goNext()
-  }
-
-  goPrev(){
-    this.carouselHandler.goPrev();
-  }
-
-  
-  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-  this.carouselHandler.tabChanged(tabChangeEvent);
-  
-  }
-  */
 
   //------------- scroll functions 
   
