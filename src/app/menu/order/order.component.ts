@@ -6,6 +6,10 @@ import { Router, NavigationEnd } from '@angular/router';
 import {ShoppingcartService} from "../../shoppingcart.service";
 //notifications service
 import {OnesignalService} from "../../onesignal/onesignal.service";
+//firestore service
+import {AfirestoreService} from "../../afirestore.service";
+//auth service
+import {AuthService} from "../../auth/auth.service";
 
 
 @Component({
@@ -19,7 +23,9 @@ export class OrderComponent implements OnInit {
     private shoppingcart: ShoppingcartService,
     private notifications: OnesignalService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private afirestore: AfirestoreService,
+    private authService: AuthService
   ) { 
     
     //actually redirect to the same component
@@ -60,20 +66,97 @@ export class OrderComponent implements OnInit {
     this.location.back();
   }
 
+  meridian:string;
+
+  slipTime(){
+  
+  if(this.shoppingcart.deliveryTime !== "soon"){
+    let timeSplit = this.shoppingcart.deliveryTime.split(':'),
+    hours,
+    minutes,
+    meridian;
+
+    
+  hours = timeSplit[0];
+  minutes = timeSplit[1];
+  if (hours > 12) {
+    meridian = 'pm';
+    hours -= 12;
+  } else if (hours < 12) {
+    meridian = 'am';
+    if (hours == 0) {
+      hours = 12;
+    }
+    
+  } else {
+    meridian = 'pm';
+  }
+  this.meridian = meridian;
+
+  }else{
+    this.meridian = "";
+  }
+
+  }
 
   placeOrder(formData: FormData){
-    
+    this.slipTime();
     console.log("order sent", formData);
     //check if items
     if(localStorage.getItem("cart")){
-      console.log("products details", this.orderedItems);
+      //console.log("products details", this.orderedItems);
+      
+      let order = {
+        userId: this.authService.userDocId,
+        userName: this.authService.userName,
+        items: this.orderedItems,
+        delTime: this.shoppingcart.deliveryTime + " " + this.meridian,
+        total: this.totalCredits,
+        status: "not delivered" 
+      }
+
+      console.log("order", order);
+      
+      //send the meal to the collection order
+      this.afirestore.createOrder(order).then(docRef => {
+        //get the id of the document
+        console.log("orderDocId", docRef.id);
+      }).catch( err => {
+        console.log("Error: ", err);
+      })
+
+
+      
       //remove cart after submit
       localStorage.removeItem("cart");  
+
+      //send the cart to the collection orders
       this.shoppingcart.removeUpdatedItems();
     }else{
       //meal
-      console.log("meal details", this.orderedItems);
-       //remove meal after submit 
+      //console.log("meal details", this.orderedItems);
+      let order = {
+        userId: this.authService.userDocId,
+        userName: this.authService.userName,
+        quantity: "1",
+        items: this.orderedItems,
+        delTime: this.shoppingcart.deliveryTime + " " + this.meridian,
+        total: this.totalCredits,
+        status: "not delivered" 
+      }
+
+      console.log("order", order);
+      
+      //send the meal to the collection order
+      this.afirestore.createOrder(order).then(docRef => {
+        //get the id of the document
+        console.log("orderDocId", docRef.id);
+      }).catch( err => {
+        console.log("Error: ", err);
+      })
+
+
+      //remove meal after submit 
       localStorage.removeItem("meal");
     }
     this.router.navigate(["/canteen/thankyou"]);
@@ -104,6 +187,7 @@ export class OrderComponent implements OnInit {
   soonSelected(){
     this.laterSelected = false;
     this.orderForm.controls.deliveryTime.setValue("00:00");
+    this.shoppingcart.deliveryTime = "soon";
   }
 
   //show the time input

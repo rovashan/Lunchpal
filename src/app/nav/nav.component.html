@@ -19,7 +19,7 @@
   <li><a routerLink="/plans">Plans</a></li>
   <li><a routerLink="/faqs">FAQ</a></li>
   <li><a routerLink="/contactus">Contact</a></li>
-
+    
   </ul>
 
   <ul class="mobileLogo">
@@ -28,13 +28,13 @@
 
 
   <ul class="options">
-    <li *ngIf="authService.user | async as user"><a class="basket" id="basket" routerLink="/canteen/order">
+    <li *ngIf="userSubscription"><a class="basket" id="basket" routerLink="/canteen/order">
         <i class="material-icons">
           shopping_basket
         </i></a>
       
       </li>
-      <li class="credits" *ngIf="authService.user | async as user"><span>R 65</span></li>  
+      <li class="credits" *ngIf="userSubscription"><span>R {{userSubscription.planCredits}}</span></li>  
     
       <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
   </ul>

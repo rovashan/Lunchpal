@@ -22,25 +22,34 @@ export class ThankyouComponent implements OnInit {
     if(this.deliveryTime == undefined || this.deliveryTime == null){
       console.log("no time received to split")
     }else{
-      let timeSplit = this.deliveryTime.split(':'),
-      hours,
-      minutes,
-      meridian;
-    hours = timeSplit[0];
-    minutes = timeSplit[1];
-    if (hours > 12) {
-      meridian = 'pm';
-      hours -= 12;
-    } else if (hours < 12) {
-      meridian = 'am';
-      if (hours == 0) {
-        hours = 12;
+      if(this.shoppingcart.deliveryTime !== "soon"){
+        let timeSplit = this.shoppingcart.deliveryTime.split(':'),
+        hours,
+        minutes,
+        meridian;
+    
+        
+      hours = timeSplit[0];
+      minutes = timeSplit[1];
+      if (hours > 12) {
+        meridian = 'pm';
+        hours -= 12;
+      } else if (hours < 12) {
+        meridian = 'am';
+        if (hours == 0) {
+          hours = 12;
+        }
+        
+      } else {
+        meridian = 'pm';
       }
-    } else {
-      meridian = 'pm';
-    }
-   this.meridian = meridian;
-    }
+      this.meridian = meridian;
+    
+      }else{
+        this.meridian = "";
+      }
+    
+      }
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
+import {AfirestoreService} from "../afirestore.service";
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,8 @@ import {AuthService} from "../auth/auth.service";
 export class NavComponent implements OnInit {
 
     constructor(
-      public authService: AuthService) { }
+      public authService: AuthService,
+      private afirestore: AfirestoreService) { }
     
     //---- Below is the implementation for the sidenav
 
@@ -37,6 +39,9 @@ export class NavComponent implements OnInit {
       }
     }
 
+    userSubscription = this.authService.userSubscription;
+
+
     showMenu(){
       this.menu.nativeElement.style.width = "250px";
     }
@@ -50,9 +55,9 @@ export class NavComponent implements OnInit {
       event.preventDefault();
       this.authService.logOut();
     }
-
     
     ngOnInit() {
+      this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
     
     }
 

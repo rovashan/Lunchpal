@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { CarouselHandlerService } from "../carousel-handler.service";
-import { MatTabChangeEvent } from '@angular/material';
 
 import {ViewEncapsulation} from "@angular/core";
 
@@ -11,70 +10,27 @@ import {ViewEncapsulation} from "@angular/core";
   styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-
-
   
 export class HomeComponent implements OnInit {
   title = 'app';
 
   constructor(private carouselHandler: CarouselHandlerService) { }
 
-  /*
-  //ngx-slick-carousel config
-  slideConfig = {
-    "slidesToShow": 4,
-    "slidesToScroll": 3,
-    'infinite': false,
-    "arrows": true,
-   //break point is below to that width
-    'responsive': [
-    { 'breakpoint': 1500, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 3, } },
-    { 'breakpoint': 1200, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
-    { 'breakpoint': 1100, 'settings': { 'slidesToShow': 3, 'slidesToScroll': 1, } },
-    { 'breakpoint': 900, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
-    { 'breakpoint': 800, 'settings': { 'slidesToShow': 2, 'slidesToScroll': 1, } },
-    { 'breakpoint': 600, 'settings': { 'slidesToShow': 1, 'slidesToScroll': 1, } },
-    
-    ]
-   };
-
-
-  slickInit(e) {
   
-  }
-  
-  breakpoint(e) {
-    
-  }
-  
-  afterChange(e) {
-    
-  }
-  
-  beforeChange(e) {
-    
-  }
-
-*/
   //------------- scroll variables
   startX;
   curDown = false;
   scrollLeft;
   //------------- scroll variables
     
-  selectedIndex= this.carouselHandler.selectedIndex;
-
-  goNext(){
-    this.carouselHandler.goNext()
-  }
-
-  goPrev(){
-    this.carouselHandler.goPrev();
-  }
-
-  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-  this.carouselHandler.tabChanged(tabChangeEvent);
   
+  goNext($event: Event){
+    this.carouselHandler.goNext($event);
+   
+  }
+
+  goPrev($event: Event){
+    this.carouselHandler.goPrev($event);
   }
 
   //------------- scroll functions 
@@ -120,11 +76,8 @@ export class HomeComponent implements OnInit {
 
   //------------- scroll functions 
   
-
-
   ngOnInit() {
-    this.carouselHandler.tabChanges.subscribe(x => this.selectedIndex = x);
-   
+  
   }
   
  
