@@ -10,19 +10,21 @@ import {AuthService} from "../auth/auth.service";
 })
 export class CanteenComponent implements OnInit {
 
-  constructor(private authservice: AuthService) { }
+  constructor(private authService: AuthService) { }
 
 
   username;
-
+  userStatus = this.authService.userStatus;
 
   ngOnInit() {
-    if(this.authservice.user == null ){
+    if(this.authService.user == null ){
       this.username = null    
     }else{
-      this.authservice.user.subscribe(user => {
+      this.authService.user.subscribe(user => {
         this.username = user.email;
     })
     }  
+    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
   }
+ 
 }

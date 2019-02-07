@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-drinks',
@@ -12,7 +13,8 @@ export class DrinksComponent implements OnInit {
   Drinktwo;
   Drinkthree;
 
-  constructor(private shoppingcart: ShoppingcartService) { }
+  constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService) { }
+  userStatus = this.authService.userStatus;
 
   
   addProduct(quantity: number, obj: Object){
@@ -25,6 +27,7 @@ export class DrinksComponent implements OnInit {
   
   ngOnInit() {
     this.shoppingcart.updateItems();
+    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
   }
 
 
