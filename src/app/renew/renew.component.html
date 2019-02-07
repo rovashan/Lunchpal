@@ -1,0 +1,59 @@
+<section>
+    <h2>Renew Your Plan.</h2>
+<div class="plansContainer">
+    
+  <mat-card class="plans">
+      <mat-card-header>
+        <mat-card-title><h3>Classic</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+            South African homestyle meals at an afforable price.
+        </p>
+        <p>Credits Per Day <strong>70</strong> </p>
+        <p class="planPrice"> <strong>R 350</strong> </p>
+       </mat-card-content>
+      <mat-card-actions>
+          <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[0].id)">Select this plan</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="plans">
+      <mat-card-header>
+        <mat-card-title><h3>Traditional</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+            South African homestyle meals at an afforable price.
+        </p>
+        <p>Credits Per Day <strong>55</strong> </p>
+        <p class="planPrice"> <strong>R 275</strong> </p>
+       
+      </mat-card-content>
+      <mat-card-actions>
+          <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[1].id)">Select this plan</button>
+      </mat-card-actions>
+    </mat-card>
+    
+    <mat-card class="plans">
+      <mat-card-header>
+        <mat-card-title><h3>Lifestyle</h3></mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+            South African homestyle meals at an afforable price.
+        </p>
+        <p>Credits Per Day <strong>85</strong> </p>
+        <p class="planPrice"> <strong>R 425</strong></p>
+      </mat-card-content>
+      <mat-card-actions>
+          <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[2].id)">Select this plan</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+
+</section>

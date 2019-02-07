@@ -1,7 +1,7 @@
 $color: #0f93e0;
 $hoverColor: #1d8be6;
 
-.plansContainer, .faqsContainer {
+.plansContainer {
     width: 80%;
     margin: 0 auto;
 }
@@ -21,45 +21,6 @@ $hoverColor: #1d8be6;
     font-size: 1.3rem;
 }
 
-.menus > div {
-    display: flex;
-    justify-content: center;
-  
-  }
-  
-
-  h3 {
-      font-size: 93%;
-  }
-
-
-  .menus a {
-    display: block;
-    padding: 10px;
-    color: #fff;
-    font-size: 16px;
-    border: 1px solid $color;
-    color: $color;
-    border-radius: 8px;
-    margin: 10px;
-    text-decoration: none;
-  }
-  
-  .menus a:hover{
-    background: $hoverColor;
-    color: #fff;
-  }
-
-.faqsContainer {
-    display: block;
-}
-
-.faqsContainer > div {
-    padding: 10px;
-    margin: 10px;
-    text-align: left;
-}
-
 button.package {
     cursor: pointer;
     width: 80%;
@@ -74,6 +35,12 @@ button.package {
    
 }
 
+div.mat-card-header-text{
+    margin: 0 auto;
+}
+
+
+
 button.recommended {
     cursor: pointer;
     width: 80%;
@@ -86,22 +53,6 @@ button.recommended {
     color: #fff;
 }
 
-
-div.mat-card-header-text{
-    margin: 0 auto;
-}
-
-
-button.package:hover {
-    // background: $hoverColor;
-    // color: #fff;
-}
-
-.menusContainer {
-    width: 70%;
-    margin: 0 auto;
-  }
-
 @media screen and (min-width: 890px) {
     .plans {
        margin: 0px 10px;
@@ -112,8 +63,4 @@ button.package:hover {
         justify-content: center;
     }
 
-    .menusContainer {
-        width: 50%;
-        
-    }
 }

@@ -70,6 +70,39 @@ export class AfirestoreService {
     return this.firestore.collection("subscriptions").add(data); 
   }
 
+  //get the users last subscription
+  public renewSubscription(userName: string, userId: string, subscriptionId: string, plan: Object) {
+    
+    //ref needed to delete past instance of the 
+    //user subscription
+    let subscriptionRef = this.firestore.collection("subscriptions").doc(subscriptionId);
+
+    //------------- may need user data for address other details**
+    
+    //create another subscription
+    let data = {
+        userName: userName,
+        userId: userId,
+        planName: plan["planName"],
+        planInitDate: plan["initDate"],
+        planExpDate: plan["expDate"],
+        planId: plan["planId"],
+        planCredits: plan["planCredits"]
+      }
+
+      console.log(data);
+
+      return this.firestore.collection("subscriptions").add(data).then((data) => {
+        console.log(data);
+       
+        this.updateUserStatus(userId);
+        this.updateUserSubscription(userId, data.id);
+        //delete the past subscription doc
+        subscriptionRef.delete();
+      });
+     
+  }
+
   //get the users in order to check the status
   public checkUser(){
     return this.firestore.collection("users", ref => ref.orderBy("email", "asc")).snapshotChanges();
