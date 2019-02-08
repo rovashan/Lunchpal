@@ -1,4 +1,4 @@
-<section class="plan">
+<section  *ngIf="userStatus === 'Active'; else showRenewMessage" class="plan">
 
   <h2>Main Meals</h2>
   <div class="backLink">
@@ -60,3 +60,10 @@
 
 
 </section> 
+
+<ng-template #showRenewMessage>
+  <section>
+    <h2>Your Lunchbox</h2>
+    <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
+</section>
+</ng-template>

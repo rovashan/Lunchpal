@@ -182,16 +182,17 @@ input[type="submit"]:disabled:hover {
 }
 
 .scrolling-wrapper-flexbox {
-  width: 60%;
+  width: 100%;
   cursor: grabbing;
   padding-top: 10px;
   display: flex;
-  height: 400px;
+  height: 380px;
   margin: 0 auto;
   overflow-x: auto;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch; 
   -ms-overflow-style: -ms-autohiding-scrollbar; 
+  justify-content: space-between; 
 }
 
 .scrolling-wrapper-flexbox::-webkit-scrollbar {
@@ -246,9 +247,9 @@ mat-tab-body{
 //card height on mobile
 .menuitems.mat-card {
   padding: 0px;
-  max-width: 270px;
-  min-width: 270px;
-  height: 300px;
+  max-width: 250px;
+  min-width: 250px;
+  height: 290px;
   border-radius: 0px;
   overflow: hidden;
  margin: 10px;
@@ -312,9 +313,11 @@ text-align: center;
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  top: 200px;
+  top: 160px;
 }
 
-
+.scrolling-wrapper-flexbox {
+  width: 60%;
+}
 }
 

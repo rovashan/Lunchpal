@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { AfirestoreService} from "../afirestore.service";
 
 import {ViewEncapsulation} from "@angular/core";
-import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'app-plans',

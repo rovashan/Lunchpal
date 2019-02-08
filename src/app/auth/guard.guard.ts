@@ -22,10 +22,10 @@ export class GuardGuard implements CanActivate {
         take(1),
         map(user => !!user),
         tap(logged => {
-          if(!logged){
+         if(!logged){
             console.log("User not Authenticated")
             this.router.navigate(["/login"])
-           }
+         }
         })
        ) 
      

@@ -39,8 +39,13 @@ export class NavComponent implements OnInit {
       }
     }
 
+   //---- End of implementation for the sidenav
+    
+   
+   
     userSubscription = this.authService.userSubscription;
-
+    userStatus = this.authService.userStatus;
+    
 
     showMenu(){
       this.menu.nativeElement.style.width = "250px";
@@ -57,7 +62,10 @@ export class NavComponent implements OnInit {
     }
     
     ngOnInit() {
+      //changes on user subscription
       this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
+      //changes on user status
+      this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
     
     }
 

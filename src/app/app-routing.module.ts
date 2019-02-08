@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'canteen/snacks', canActivate:[GuardGuard], loadChildren: './menu/snacks/snacks.module#SnacksModule'},
   { path: 'canteen/order', canActivate:[GuardGuard], loadChildren: './menu/order/order.module#OrderModule'},
   { path: 'canteen/thankyou', canActivate:[GuardGuard], loadChildren: './menu/thankyou/thankyou.module#ThankyouModule'},
-  
+  { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
-
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-lightmeals',
@@ -13,9 +13,9 @@ export class LightmealsComponent implements OnInit {
   lightmealtwo: any;
   lightmealthree: any;
 
-  constructor(private shoppingcart: ShoppingcartService) { }
+  constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService) { }
 
-
+  userStatus = this.authService.userStatus;
   addProduct(quantity: number, ligthmeal: Object){
    
     this.shoppingcart.addProduct(quantity, ligthmeal);
@@ -28,6 +28,7 @@ export class LightmealsComponent implements OnInit {
 
   ngOnInit() {
     this.shoppingcart.updateItems();
+    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
   }
 
 }

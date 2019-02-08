@@ -59,6 +59,8 @@ export class OrderComponent implements OnInit {
   enoughCredits: boolean;
   laterSelected: boolean;
   emptyBasket = this.shoppingcart.emptyBasket;
+  
+  userStatus = this.authService.userStatus;
 
 
   goback($event: Event){
@@ -256,7 +258,7 @@ export class OrderComponent implements OnInit {
       console.log("total", this.orderTotal);
       */
     }
-
+    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
     
 
   }

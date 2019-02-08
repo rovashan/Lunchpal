@@ -26,13 +26,12 @@ import {OnesignalService} from "./onesignal/onesignal.service";
 import {ShoppingcartService} from "./shoppingcart.service";
 
 import { PaymentService } from './payment/payment.service';
-
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-   
+  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

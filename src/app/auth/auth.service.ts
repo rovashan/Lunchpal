@@ -25,14 +25,20 @@ export class AuthService {
   public userName: string;
   public userDocId: string;
   public userSubscriptionId: string;
+  public userStatus: string;
   public userSubscription: object;
 
   public userSubscriptionChanges: BehaviorSubject<object> = new BehaviorSubject<object>(this.userSubscription);
+  public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
 
   setUserSubscription(userSubscriptionObj: object): void {
     this.userSubscription = userSubscriptionObj;
     this.userSubscriptionChanges.next(userSubscriptionObj);
     
+  }
+  setUserStatus(userStatus: string): void {
+    this.userStatus = userStatus;
+    this.userStatusChanges.next(userStatus);
   }
 
   //user auth state
@@ -108,10 +114,23 @@ export class AuthService {
           
           
           if(user.payload.doc.data()["email"] === this.userName){
+
+
             //get us the document ID of the current user
             this.userDocId = user.payload.doc.id;
             this.userSubscriptionId = user.payload.doc.data()["subscription"];
-            console.log(this.userSubscriptionId);
+            this.userStatus = user.payload.doc.data()["status"];
+            
+            //if the user status is expired
+            //makes the changes for the nav to hide the cart and credits
+            if(this.userStatus === "Expired"){
+              this.setUserStatus("Expired");
+              console.log(this.userStatus);
+            }else{
+              this.setUserStatus("Active");
+            }
+            console.log(this.userSubscriptionId, this.userStatus);
+            
 
             if(this.userSubscriptionId !== ""){
               this.afirestore.getUserSubscription(this.userSubscriptionId)
@@ -120,7 +139,7 @@ export class AuthService {
                 this.setUserSubscription(data);
                 console.log("User subscription", this.userSubscription)
               })
-            }else{
+            } else{
               console.log("user subscription is empty")
             }
             
@@ -137,6 +156,7 @@ export class AuthService {
                 break;
               }
               case UserStatus.Expired: {
+             
                 this.router.navigate(["/renew"]);
                 break;
               }

@@ -1,4 +1,5 @@
-<section class="canteen">
+
+<section *ngIf="userStatus === 'Active'; else showRenewMessage" class="canteen">
   
   <h2>What's for lunch today?</h2>
   <p *ngIf="username != null">Hi, {{username}}</p>
@@ -28,3 +29,9 @@
 
 </section>
 
+<ng-template #showRenewMessage>
+    <section>
+        <h2>What's for lunch today?</h2>
+      <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
+  </section>
+</ng-template>
