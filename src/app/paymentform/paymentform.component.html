@@ -11,14 +11,14 @@
             <div class="controls">
               <div>
                 <label for="firstname">First Name: </label>
-                <input name="firstname" placeholder="First Name" formControlName="firstname" required>
+                <input name="firstname" placeholder="First Name" formControlName="firstname" >
                 <div *ngIf="personal.get('firstname').hasError('required') && (personal.get('firstname').dirty || personal.get('firstname').touched)">
                   <span class="error">First name is required.</span>
                 </div>
               </div>
               <div>
                 <label for="">Last Name: </label>
-                <input name="lastname" placeholder="Last Name" formControlName="lastname" required>
+                <input name="lastname" placeholder="Last Name" formControlName="lastname" >
                 <div *ngIf="personal.get('lastname').hasError('required') && (personal.get('lastname').dirty || personal.get('lastname').touched)">
                   <span class="error">Last name is required.</span>
                 </div>
@@ -28,7 +28,7 @@
             <div class="controls">
               <div>
                 <label for="phone">Phone Number: </label>
-                <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone" required>
+                <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone" >
                 <div *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
                   <span class="error">Phone is required.</span>
                 </div>
@@ -36,13 +36,13 @@
               <div>
                 <label for="fdeldate">Start Date: </label>
                 <div>
-                  <mat-form-field>
-                    <input matInput class="datePickerInput" (ngModelChange)="personalCompleted()" [matDatepicker]="picker" formControlName="startdate"
-                      placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-form-field [floatLabel]="'never'">
+                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="personalCompleted()" [matDatepicker]="picker" formControlName="startdate">
+                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
+
 
                 <div *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
                   <span class="error">Start date is required.</span>
@@ -50,6 +50,12 @@
               </div>
             </div>
 
+            <div class="controls">
+              <div>
+                <label for="phone">Address: </label>
+                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName="address" (onAddressChange)="handleAddressChange($event)"/>
+              </div>
+              </div>
 
           </form>
 

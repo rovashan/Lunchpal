@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -6,20 +6,30 @@ import { Subscription } from 'rxjs';
 import {ActivatedRoute} from "@angular/router";
 //firestore services
 import {AfirestoreService} from "../afirestore.service";
+import {ViewEncapsulation} from "@angular/core";
 
 
 @Component({
   selector: 'app-paymentform',
   templateUrl: './paymentform.component.html',
-  styleUrls: ['./paymentform.component.scss']
+  styleUrls: ['./paymentform.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PaymentformComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
     private aFirestore: AfirestoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+
     ){ }
+
+    @ViewChild("placesRef") placesRef;
+    
+    public handleAddressChange(address: string) {
+    // Do some stuff
+    console.log(address);
+}
 
 
   selectedfirstname:string;
@@ -41,6 +51,7 @@ export class PaymentformComponent implements OnInit {
     lastname: new FormControl('',  Validators.required),
     phone: new FormControl('',  Validators.required),
     startdate: new FormControl('',  Validators.required),
+    address: new FormControl('',  Validators.required),
   });
 
   //credit card form controls

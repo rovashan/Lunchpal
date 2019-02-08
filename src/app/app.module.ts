@@ -24,6 +24,8 @@ import {OnesignalService} from "./onesignal/onesignal.service";
 
 //shopingcart service
 import {ShoppingcartService} from "./shoppingcart.service";
+//Google Places Autocomplete
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {ShoppingcartService} from "./shoppingcart.service";
     BrowserAnimationsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    GooglePlaceModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
