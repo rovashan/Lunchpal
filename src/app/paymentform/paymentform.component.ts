@@ -28,7 +28,8 @@ export class PaymentformComponent implements OnInit {
     
     public handleAddressChange(address: string) {
     // Do some stuff
-    console.log(address);
+   this.selectedAddress = address["name"];
+ 
 }
 
 
@@ -36,7 +37,7 @@ export class PaymentformComponent implements OnInit {
   selectedlastname:string;
   selectedphone: string;
   startdate:string;
-
+  selectedAddress: string;
   personalState: boolean = false;
   creditState: boolean = false;
   authSubscription: Subscription;
@@ -97,22 +98,29 @@ export class PaymentformComponent implements OnInit {
   onDeliveryFormChanges(data){
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
-    this.selectedphone = data.phone;
+    //this.selectedphone = data.phone;
+   // this.selectedAddress = data.address;
     this.startdate = data.startdate;
   }
 
-  //confirm order
+  //------ this is the function that sends the data to firestore
+  //------ you will only need to call it after you get the response
+  
+  //------ we need to be careful since hard redirects can break the flow of the app
   confirmOrder(){
    
     console.log("Order confirmed!");
+    
     let plan = {
       initDate: "Initial date",
       expDate: "expiration date",
       planId: this.route.snapshot.paramMap.get("plan"),
       planName: this.selectedPlan["name"],  
-      planCredits: this.selectedPlan["creditsPerDay"]
+      planCredits: this.selectedPlan["creditsPerDay"],
+      deliveryAddress: this.selectedAddress
       
     }
+
     console.log(this.selectedPlan);
    
     console.log(this.authService.userName);
@@ -126,10 +134,14 @@ export class PaymentformComponent implements OnInit {
       this.aFirestore.updateUserStatus(this.authService.userDocId);
       this.aFirestore.updateUserSubscription(this.authService.userDocId , data.id);
       
-    }).catch()
-   
+    }).catch(err => {
+      console.log(err);
+    })
+  
   }
- 
+  //------ this is the end of the function that sends the data to firestore
+
+
   ngOnInit() {
     this.personal.valueChanges.subscribe( data => {
       this.onDeliveryFormChanges(data);
@@ -142,6 +154,7 @@ export class PaymentformComponent implements OnInit {
     });
     
     this.getSelectedPlan();
+
   }
 
   ngOnDestroy() {
