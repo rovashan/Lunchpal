@@ -41,8 +41,10 @@ export class AuthService {
     this.userStatusChanges.next(userStatus);
   }
 
+  
+
   //user auth state
-  user = this.afAuth.authState.pipe(
+ public user: any = this.afAuth.authState.pipe(
     map(authState => {
       if (!authState) {
         return null;
@@ -102,8 +104,56 @@ export class AuthService {
     })
   }
 
+  //this function gets the current user persisted by firestore
+  //at first it will run with an error, but once the user is logged in
+  //it will re-fill the needed variables so the interface can react properly
+  userChanges(){
+    this.afAuth.auth.onAuthStateChanged(currentUser => {
+     //console.log("current User", currentUser);
+     this.userId = currentUser["uid"];
+     this.userName = currentUser["email"];
+     console.log("current user email", this.userName)
+     this.afirestore.checkUser().subscribe(users =>{
+        users.map(user => {
+          if(user.payload.doc.data()["email"] === this.userName){
+            
+             console.log("user ", user.payload.doc.data());
+              //get us the document ID of the current user
+              this.userDocId = user.payload.doc.id;
+              this.userSubscriptionId = user.payload.doc.data()["subscription"];
+              this.userStatus = user.payload.doc.data()["status"];
+
+              console.log("subscription status", user.payload.doc.data()["status"]);
+              
+              if(this.userStatus === "Expired"){
+                this.setUserStatus("Expired");
+                console.log(this.userStatus);
+              }else{
+                this.setUserStatus("Active");
+              }
+
+              if(this.userSubscriptionId !== ""){
+                this.afirestore.getUserSubscription(this.userSubscriptionId)
+                .subscribe(data =>{
+                  //this.userSubscription = data;
+                  this.setUserSubscription(data);
+                  console.log("User subscription", this.userSubscription)
+                })
+             } else{
+                console.log("user subscription is empty")
+              }
+
+           }
+          
+        })
+     })
+    })
+  }
+
+
   //login function
   login(email: string, password: string) {
+   
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then(()=>{
       this.loginError = "";

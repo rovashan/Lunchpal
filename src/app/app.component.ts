@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 //onesignal service
 import {OnesignalService} from "./onesignal/onesignal.service";
+import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import {OnesignalService} from "./onesignal/onesignal.service";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private notifications: OnesignalService, private location: Location, private router: Router){}
+  constructor(private notifications: OnesignalService, private location: Location, private router: Router, private authService: AuthService){}
   
   canteen:boolean = true;
   
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
     //this.notifications.init();
     //this.notifications.updateChanges();
     this.checkURL();
-
+    this.authService.userChanges();
+    
   }
 
 
