@@ -2,7 +2,7 @@
   <h2>personal & Payment Form</h2>
   <div class="structureContainer">
     <div class="paymentContainer">
-    <!-- <div> -->
+      <!-- <div> -->
       <mat-horizontal-stepper linear>
         <mat-step [completed]="personalState" label="Personal Information">
 
@@ -11,14 +11,14 @@
             <div class="controls">
               <div>
                 <label for="firstname">First Name: </label>
-                <input name="firstname" placeholder="First Name" formControlName="firstname" >
+                <input name="firstname" placeholder="First Name" formControlName="firstname">
                 <div *ngIf="personal.get('firstname').hasError('required') && (personal.get('firstname').dirty || personal.get('firstname').touched)">
                   <span class="error">First name is required.</span>
                 </div>
               </div>
               <div>
                 <label for="">Last Name: </label>
-                <input name="lastname" placeholder="Last Name" formControlName="lastname" >
+                <input name="lastname" placeholder="Last Name" formControlName="lastname">
                 <div *ngIf="personal.get('lastname').hasError('required') && (personal.get('lastname').dirty || personal.get('lastname').touched)">
                   <span class="error">Last name is required.</span>
                 </div>
@@ -28,7 +28,7 @@
             <div class="controls">
               <div>
                 <label for="phone">Phone Number: </label>
-                <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone" >
+                <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone">
                 <div *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
                   <span class="error">Phone is required.</span>
                 </div>
@@ -37,8 +37,9 @@
                 <label for="fdeldate">Start Date: </label>
                 <div>
                   <mat-form-field [floatLabel]="'never'">
-                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="personalCompleted()" [matDatepicker]="picker" formControlName="startdate">
-                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="personalCompleted()"
+                      [matDatepicker]="picker" formControlName="startdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
@@ -53,17 +54,18 @@
             <div class="controls">
               <div>
                 <label for="phone">Address: </label>
-                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName="address" (onAddressChange)="handleAddressChange($event)"/>
+                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName="address"
+                  (onAddressChange)="handleAddressChange($event)" />
               </div>
-              </div>
+            </div>
 
           </form>
 
           <button [disabled]="!personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
         </mat-step>
 
-        <mat-step [completed]="creditState" label="Credit Card Information">
-          <form [formGroup]="creditCard" (change)="creditCompleted()">
+        <mat-step [completed]="deliveryState" label="Delivery Information">
+          <!-- <form [formGroup]="creditCard" (change)="creditCompleted()">
             <p>Please fill the form below with your credit card information: </p>
             <div class="controls">
               <div>
@@ -80,13 +82,50 @@
               </div>
             </div>
 
-          </form>
-          <button class="continue" *ngIf="creditCard.valid" matStepperNext type="button" (click)="creditCompleted()">Continue</button>
+          </form> -->
+          <button class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
         </mat-step>
-        <mat-step label="Confirmation">
-          <p>Please confirm your order.</p>
-          <img class="confirmIcon" src="../../assets/images/box.svg" />
-          <button class="confirmOrder" (click)="confirmOrder()">Confirm Order</button>
+        <mat-step label="Payment">
+          <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
+          <img class="confirmIcon" src="../../assets/images/padlock.svg" />
+          <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
+
+          <form #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
+            <input type="hidden" name="VERSION" formControlName="VERSION">
+            <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
+            <input type="hidden" name="REFERENCE" formControlName="REFERENCE">
+            <input type="hidden" name="AMOUNT" formControlName="AMOUNT">
+            <input type="hidden" name="CURRENCY" formControlName="CURRENCY">
+            <input type="hidden" name="RETURN_URL" formControlName="RETURN_URL">
+            <input type="hidden" name="TRANSACTION_DATE" formControlName="TRANSACTION_DATE">
+            <input type="hidden" name="EMAIL" formControlName="EMAIL">
+            <input type="hidden" name="SUBS_START_DATE" formControlName="SUBS_START_DATE">
+            <input type="hidden" name="SUBS_END_DATE" formControlName="SUBS_END_DATE">
+            <input type="hidden" name="SUBS_FREQUENCY" formControlName="SUBS_FREQUENCY">
+            <input type="hidden" name="PROCESS_NOW" formControlName="PROCESS_NOW">
+            <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
+            <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
+            <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button>
+          </form>
+
+          <!-- <form #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
+            <input type="hidden" formControlName="VERSIONS">
+            <input type="hidden" formControlName="PAYGATE_ID">
+            <input type="hidden" formControlName="REFERENCE">
+            <input type="hidden" formControlName="AMOUNT">
+            <input type="hidden" formControlName="CURRENCY">
+            <input type="hidden" formControlName="RETURN_URL">
+            <input type="hidden" formControlName="TRANSACTION_DATE">
+            <input type="hidden" formControlName="EMAIL">
+            <input type="hidden" formControlName="SUBS_START_DATE">
+            <input type="hidden" formControlName="SUBS_END_DATE">
+            <input type="hidden" formControlName="SUBS_FREQUENCY">
+            <input type="hidden" formControlName="PROCESS_NOW">
+            <input type="hidden" formControlName="PROCESS_NOW_AMOUNT">
+            <input type="hidden" formControlName="CHECKSUM">
+            <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button>
+          </form> -->
+
         </mat-step>
       </mat-horizontal-stepper>
     </div>
@@ -94,11 +133,11 @@
     <div class="summary">
       <div *ngIf="selectedPlan">
         <h3>Order Summary</h3>
-        
+
         <p><strong> Plan: {{selectedPlan.name}} R {{selectedPlan.price}}</strong></p>
         <p><strong> Credits Per Day: {{selectedPlan.creditsPerDay}}</strong> </p>
       </div>
-     
+
       <div>
         <h3>Personal Information</h3>
         <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>

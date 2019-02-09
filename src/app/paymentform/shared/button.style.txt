@@ -1,0 +1,1 @@
+font-size: 14px; background-color: #5ec5ff; color:#fff; border: 1px solid; border-radius: 5px; width: 100px; height: 50px; text-decoration: none;
