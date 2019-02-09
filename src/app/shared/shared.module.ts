@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { SlickCarouselModule } from 'ngx-slick-carousel'; // ngx-slick-carousel
 import { MaterialModule } from './material';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 // Modules
 const modules = [
   CommonModule,
   MaterialModule,
   FormsModule,
+  GooglePlaceModule,
   SlickCarouselModule,
   ReactiveFormsModule
 ];
