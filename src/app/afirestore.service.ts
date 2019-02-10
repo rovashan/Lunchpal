@@ -62,7 +62,8 @@ export class AfirestoreService {
       planInitDate: plan["initDate"],
       planExpDate: plan["expDate"],
       planId: plan["planId"],
-      planCredits: plan["planCredits"]
+      planCredits: plan["planCredits"],
+      address: plan["deliveryAddress"]
     }
     
     //return the function so we can use the observable
