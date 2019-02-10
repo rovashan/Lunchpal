@@ -28,6 +28,7 @@ import {ShoppingcartService} from "./shoppingcart.service";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { PaymentService } from './paymentform/shared/payment.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PaymentService } from './paymentform/shared/payment.service';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService],
   bootstrap: [AppComponent]

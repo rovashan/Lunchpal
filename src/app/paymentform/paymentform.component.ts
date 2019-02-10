@@ -97,10 +97,8 @@ export class PaymentformComponent implements OnInit {
 
     // show loader
 
-    // get form
-    // set form values
-
-    this.payment.setValue({
+    // setup object
+    let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
       REFERENCE: 'Customer1',
@@ -116,10 +114,40 @@ export class PaymentformComponent implements OnInit {
 
       PROCESS_NOW: 'YES',
       PROCESS_NOW_AMOUNT: '3299',
-      CHECKSUM: '3c0ccff652c91f3010f5512eceee8edc'
-    })
+      CHECKSUM: ''
+    }
 
-    this.deliveryState = true;
+    // calc and wait for observable
+    this.paymentService.calc(preq).subscribe(
+      data => {
+        console.log("POST Request is successful ", data);
+
+        // setup payment form fields
+        this.payment.setValue({
+          VERSION: preq.VERSION,
+          PAYGATE_ID: preq.PAYGATE_ID,
+          REFERENCE: preq.REFERENCE,
+          AMOUNT: preq.AMOUNT,
+          CURRENCY: preq.CURRENCY,
+          RETURN_URL: preq.RETURN_URL,
+    
+          TRANSACTION_DATE: preq.TRANSACTION_DATE,
+          EMAIL: preq.EMAIL,
+          SUBS_START_DATE: preq.SUBS_START_DATE,
+          SUBS_END_DATE: preq.SUBS_END_DATE,
+          SUBS_FREQUENCY: preq.SUBS_FREQUENCY,
+    
+          PROCESS_NOW: preq.PROCESS_NOW,
+          PROCESS_NOW_AMOUNT: preq.PROCESS_NOW_AMOUNT,
+          CHECKSUM: preq.CHECKSUM
+        })
+    
+        this.deliveryState = true;
+      },
+      error => {
+        console.log("Error", error);
+      });
+
   }
 
   //update the summary overview
