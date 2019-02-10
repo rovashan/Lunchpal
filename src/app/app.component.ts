@@ -32,10 +32,23 @@ export class AppComponent implements OnInit {
     //init the OneSignal service
     //and check for changes
     
+  
+    this.authService.user.subscribe(user => {
+      //console.log("checking user", user)
+      if(user !== null){
+        this.authService.userChanges();
+      }
+      
+    });
+  
+  
+    //this.router.navigate(["/canteen"]);
+  
+
     //this.notifications.init();
     //this.notifications.updateChanges();
     this.checkURL();
-    this.authService.userChanges();
+    //this.authService.userChanges();
     
   }
 
