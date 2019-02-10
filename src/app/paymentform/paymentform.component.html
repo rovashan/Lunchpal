@@ -63,9 +63,10 @@
 
           <button [disabled]="!personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
         </mat-step>
-
+  
         <mat-step [completed]="deliveryState" label="Delivery Information">
-          <!-- <form [formGroup]="creditCard" (change)="creditCompleted()">
+         <!--
+          <form [formGroup]="creditCard" (change)="creditCompleted()">
             <p>Please fill the form below with your credit card information: </p>
             <div class="controls">
               <div>
@@ -82,15 +83,17 @@
               </div>
             </div>
 
-          </form> -->
+          </form> 
+          -->
           <button class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
         </mat-step>
+        
         <mat-step label="Payment">
           <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
           <img class="confirmIcon" src="../../assets/images/padlock.svg" />
           <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
 
-          <form #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
+          <form (ngSubmit)="onSubmit($event, payment.value)" #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
             <input type="hidden" name="VERSION" formControlName="VERSION">
             <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
             <input type="hidden" name="REFERENCE" formControlName="REFERENCE">
@@ -105,7 +108,12 @@
             <input type="hidden" name="PROCESS_NOW" formControlName="PROCESS_NOW">
             <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
             <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
+            
+            <input type="submit" value="paymentSubmit">
+            
+            <!--
             <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button>
+             --> 
           </form>
 
           <!-- <form #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
@@ -127,7 +135,7 @@
           </form> -->
 
           </mat-step>
-        --> 
+    
         </mat-horizontal-stepper>
     </div>
 

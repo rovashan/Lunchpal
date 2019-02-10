@@ -106,7 +106,7 @@ export class PaymentformComponent implements OnInit {
       REFERENCE: 'Customer1',
       AMOUNT: '3299',
       CURRENCY: 'ZAR',
-      RETURN_URL: 'https://localhost',
+      RETURN_URL: "https://lunchpal-6437d.firebaseapp.com",
 
       TRANSACTION_DATE: '2019-02-10 18:30',
       EMAIL: 'customer@email.com',
@@ -208,6 +208,13 @@ export class PaymentformComponent implements OnInit {
     // this.paymentService.post(preq);
   }
 
+
+  onSubmit($event: Event, form: FormData){
+    $event.preventDefault();  
+    console.log(form);
+  }
+
+
   ngOnInit() {
     this.personal.valueChanges.subscribe(data => {
       this.onDeliveryFormChanges(data);
@@ -220,7 +227,7 @@ export class PaymentformComponent implements OnInit {
     });
 
     this.getSelectedPlan();
-
+/*
     this.personal.setValue({
       firstname: 'Ro',
       lastname: 'S',
@@ -228,13 +235,14 @@ export class PaymentformComponent implements OnInit {
       startdate: '2018-02-09',
       address: '1 tana road',
     })
+  */
   }
 
   ngOnDestroy() {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
     }
-
+    
     console.log('destroyed');
   }
 }
