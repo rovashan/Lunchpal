@@ -99,6 +99,7 @@ export class PaymentformComponent implements OnInit {
     // show loader
 
     // setup object
+
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
@@ -107,10 +108,10 @@ export class PaymentformComponent implements OnInit {
       CURRENCY: 'ZAR',
       RETURN_URL: 'https://localhost',
 
-      TRANSACTION_DATE: '2019-02-09 15:08',
-      EMAIL: 'rovashan@gmail.com',
-      SUBS_START_DATE: '2019-02-11',
-      SUBS_END_DATE: '2020-02-11',
+      TRANSACTION_DATE: '2019-02-10 18:30',
+      EMAIL: 'customer@email.com',
+      SUBS_START_DATE: '2019-02-18',
+      SUBS_END_DATE: '2020-02-18',
       SUBS_FREQUENCY: '112',
 
       PROCESS_NOW: 'YES',
@@ -118,7 +119,7 @@ export class PaymentformComponent implements OnInit {
       CHECKSUM: ''
     }
 
-    // calc and wait for observable
+    //calc and wait for observable
     this.paymentService.calc(preq).subscribe(
       data => {
         console.log("POST Request is successful ", data);
