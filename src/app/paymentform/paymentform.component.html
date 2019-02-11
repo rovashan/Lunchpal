@@ -92,8 +92,9 @@
           <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
           <img class="confirmIcon" src="../../assets/images/padlock.svg" />
           <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
-
-          <form (ngSubmit)="onSubmit($event, payment.value)" #payForm [formGroup]="payment" action="https://www.paygate.co.za/paysubs/process.trans" method="POST">
+<!-- action="https://www.paygate.co.za/paysubs/process.trans" method="POST" -->
+<!--  (ngSubmit)="onSubmit($event, payment.value)"-->       
+            <form  #payForm id="payForm" action="https://www.paygate.co.za/paysubs/process.trans" method="POST" [formGroup]="payment">
             <input type="hidden" name="VERSION" formControlName="VERSION">
             <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
             <input type="hidden" name="REFERENCE" formControlName="REFERENCE">
@@ -109,10 +110,12 @@
             <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
             <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
             
-            <input type="submit" value="paymentSubmit">
-            
+            <button type="submit" class="confirmPay" (click)="pay()">Pay Now</button>
+           
             <!--
-            <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button>
+            <input type="submit" value="paymentSubmit">
+         <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button> 
+
              --> 
           </form>
 

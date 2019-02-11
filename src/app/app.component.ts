@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 //onesignal service
 import {OnesignalService} from "./onesignal/onesignal.service";
 import {AuthService} from "./auth/auth.service";
+import {AfirestoreService} from "./afirestore.service";
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,13 @@ import {AuthService} from "./auth/auth.service";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private notifications: OnesignalService, private location: Location, private router: Router, private authService: AuthService){}
+  constructor(
+    private notifications: OnesignalService,
+    private location: Location,
+    private router: Router,
+    private authService: AuthService,
+    private afirestore: AfirestoreService
+    ){}
   
   canteen:boolean = true;
   
@@ -27,12 +35,18 @@ export class AppComponent implements OnInit {
     });
   }
 
+  x(){
+    this.afirestore.collectionChanges().subscribe(x => {
+      console.log(x);
+    })
+  }
 
   ngOnInit(){
     //init the OneSignal service
     //and check for changes
-    
   
+    this.x();
+
     this.authService.user.subscribe(user => {
       //console.log("checking user", user)
       if(user !== null){

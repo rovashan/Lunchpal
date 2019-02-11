@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
+import {HttpClient} from "@angular/common/http";
 
 import { ActivatedRoute } from "@angular/router";
 //firestore services
@@ -23,7 +24,9 @@ export class PaymentformComponent implements OnInit {
     private authService: AuthService,
     private aFirestore: AfirestoreService,
     private route: ActivatedRoute,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private httpClient: HttpClient
+    
 
   ) { }
 
@@ -106,7 +109,7 @@ export class PaymentformComponent implements OnInit {
       REFERENCE: 'Customer1',
       AMOUNT: '3299',
       CURRENCY: 'ZAR',
-      RETURN_URL: "https://lunchpal-6437d.firebaseapp.com",
+      RETURN_URL: "https://localhost:4200/home",
 
       TRANSACTION_DATE: '2019-02-10 18:30',
       EMAIL: 'customer@email.com',
@@ -200,6 +203,10 @@ export class PaymentformComponent implements OnInit {
   }
   //------ this is the end of the function that sends the data to firestore
 
+pay() {
+  let x: any = document.getElementById("payForm");
+  x.submit(); 
+}
 
   confirmPay() {
     // let preq: PReq = new PReq();
@@ -208,14 +215,23 @@ export class PaymentformComponent implements OnInit {
     // this.paymentService.post(preq);
   }
 
-
+/*
   onSubmit($event: Event, form: FormData){
     $event.preventDefault();  
+    const headers = new HttpHeaders()
+    .set("Access-Control-Allow-Origin", "*");
+    ;
     console.log(form);
+    this.httpClient.post("https://www.paygate.co.za/paysubs/process.trans", form, {headers: headers})
+    .subscribe(data => {
+      console.log(data);
+    })
   }
-
+*/
 
   ngOnInit() {
+
+    
     this.personal.valueChanges.subscribe(data => {
       this.onDeliveryFormChanges(data);
     });
@@ -227,7 +243,7 @@ export class PaymentformComponent implements OnInit {
     });
 
     this.getSelectedPlan();
-/*
+
     this.personal.setValue({
       firstname: 'Ro',
       lastname: 'S',
@@ -235,7 +251,7 @@ export class PaymentformComponent implements OnInit {
       startdate: '2018-02-09',
       address: '1 tana road',
     })
-  */
+
   }
 
   ngOnDestroy() {

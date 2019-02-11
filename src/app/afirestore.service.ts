@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference, CollectionReference} from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 import { User } from './models/user';
 
@@ -8,12 +8,28 @@ import { User } from './models/user';
 })
 export class AfirestoreService {
 
+
+  private itemsCollection: any;
+  items:any;
+
   constructor(
     private firestore: AngularFirestore,
-    ) { }
+    ) {
+      /*
+      this.itemsCollection = firestore.collection('subscriptions');
+      this.items = this.itemsCollection.stateChanges();
+    */
+    }
 
+    public collectionChanges(){
+      //checks the changes in the subscriptions collection
+      //only the modified data
+      return this.firestore.collection("subscriptions").stateChanges(["modified"]);
+    }
+    
   //get current user subscription
   public getUserSubscription(userSubscription: any){
+     
     return this.firestore.collection("subscriptions").doc(userSubscription).valueChanges();
   }  
 
@@ -78,6 +94,7 @@ export class AfirestoreService {
     //user subscription
     let subscriptionRef = this.firestore.collection("subscriptions").doc(subscriptionId);
 
+    
     //------------- may need user data for address other details**
     
     //create another subscription
