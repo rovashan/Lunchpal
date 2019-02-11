@@ -34,7 +34,7 @@ export class PaymentformComponent implements OnInit {
 
   public handleAddressChange(address: string) {
     // Do some stuff
-   this.selectedAddress = address["name"];
+   this.selectedAddress = address["name"] + ", " + address["formatted_address"];
  
   }
 
@@ -56,9 +56,12 @@ export class PaymentformComponent implements OnInit {
     lastname: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     startdate: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
+    
   });
 
+  public deliveryInfo = new FormGroup({
+    address: new FormControl('', Validators.required),
+  })
   //delivery form controls
   public payment = new FormGroup({
     VERSION: new FormControl('', Validators.required),
@@ -97,30 +100,54 @@ export class PaymentformComponent implements OnInit {
     }
   }
 
+  
   deliveryCompleted() {
-
+    if(this.deliveryInfo.valid){
+      this.deliveryState = true;
+      console.log(this.deliveryState);
+    }else{
+      this.deliveryState = false;
+      console.log(this.deliveryState);
+    }
     // show loader
-
-    // setup object
-
+ 
+    //get the next Monday
+    let d = new Date();
+    let x;
+    let currentDate;
+    //if today is Monday
+    if(d.getDay() === 1 ){
+      x = d.setDate(d.getDate());
+      currentDate = new Date(x);
+      console.log("today is Monday: ", currentDate);
+    }else{
+      //else get the next Monday in the calendar
+      x = d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
+      currentDate = new Date(x);
+      console.log("next Monday is : ", currentDate);
+    }
+    
+    
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
-      REFERENCE: 'Customer1',
-      AMOUNT: '3299',
+      REFERENCE:  this.selectedfirstname + " " + this.selectedlastname,
+      AMOUNT: this.selectedPlan["price"] * 100,
       CURRENCY: 'ZAR',
-      RETURN_URL: "https://localhost:4200/home",
+      RETURN_URL: "https://us-central1-lunch-api-8ff4b.cloudfunctions.net/webApi",
 
       TRANSACTION_DATE: '2019-02-10 18:30',
-      EMAIL: 'customer@email.com',
-      SUBS_START_DATE: '2019-02-18',
+      EMAIL: this.authService.userName,
+      SUBS_START_DATE: currentDate,
       SUBS_END_DATE: '2020-02-18',
       SUBS_FREQUENCY: '112',
 
       PROCESS_NOW: 'YES',
-      PROCESS_NOW_AMOUNT: '3299',
+      PROCESS_NOW_AMOUNT: this.selectedPlan["price"] * 100,
       CHECKSUM: ''
     }
+
+
 
     //calc and wait for observable
     this.paymentService.calc(preq).subscribe(
@@ -147,7 +174,7 @@ export class PaymentformComponent implements OnInit {
           CHECKSUM: data.CHECKSUM
         })
     
-        this.deliveryState = true;
+        //this.deliveryState = true;
       },
       error => {
         console.log("Error", error);
@@ -160,16 +187,11 @@ export class PaymentformComponent implements OnInit {
   onDeliveryFormChanges(data) {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
-    //this.selectedphone = data.phone;
-   // this.selectedAddress = data.address;
     this.startdate = data.startdate;
   }
 
-  //------ this is the function that sends the data to firestore
-  //------ you will only need to call it after you get the response
-  
-  //------ we need to be careful since hard redirects can break the flow of the app
-  confirmOrder() {
+/*
+  createUserSubscription() {
 
     console.log("Order confirmed!");
     
@@ -201,34 +223,37 @@ export class PaymentformComponent implements OnInit {
     })
   
   }
+ */ 
   //------ this is the end of the function that sends the data to firestore
 
 pay() {
   let x: any = document.getElementById("payForm");
+  
+  let plan = {
+    initDate: "Initial date",
+    expDate: "expiration date",
+    planId: this.route.snapshot.paramMap.get("plan"),
+    planName: this.selectedPlan["name"],
+    planCredits: this.selectedPlan["creditsPerDay"],
+    deliveryAddress: this.selectedAddress
+
+  }
   x.submit(); 
+
+  /*
+  //make the post request with the current data of the user
+  //to the cloud function
+  this.httpClient.post("https://us-central1-lunch-api-8ff4b.cloudfunctions.net/webApi", plan)
+  .subscribe(data => {
+    console.log(data);
+    //submit the payment form
+    
+  })
+  
+ */
 }
 
-  confirmPay() {
-    // let preq: PReq = new PReq();
-    // preq.VERSION = "21";
-
-    // this.paymentService.post(preq);
-  }
-
-/*
-  onSubmit($event: Event, form: FormData){
-    $event.preventDefault();  
-    const headers = new HttpHeaders()
-    .set("Access-Control-Allow-Origin", "*");
-    ;
-    console.log(form);
-    this.httpClient.post("https://www.paygate.co.za/paysubs/process.trans", form, {headers: headers})
-    .subscribe(data => {
-      console.log(data);
-    })
-  }
-*/
-
+ 
   ngOnInit() {
 
     
@@ -243,14 +268,6 @@ pay() {
     });
 
     this.getSelectedPlan();
-
-    this.personal.setValue({
-      firstname: 'Ro',
-      lastname: 'S',
-      phone: '1',
-      startdate: '2018-02-09',
-      address: '1 tana road',
-    })
 
   }
 

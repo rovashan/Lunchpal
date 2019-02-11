@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PReq } from './p-req';
 import { Observable } from 'rxjs';
 
-const configUrl = 'https://mutex.co.za/api/calc';
+const configUrl = 'https://mutex.co.za/api/calcrequest';
 
 @Injectable({
   providedIn: 'root'

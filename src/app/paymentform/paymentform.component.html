@@ -51,6 +51,15 @@
               </div>
             </div>
 
+          </form>
+
+          <button *ngIf="personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
+        </mat-step>
+  
+        <mat-step [completed]="deliveryState" label="Delivery Information">
+      
+          <form [formGroup]="deliveryInfo" (change)="deliveryCompleted()">
+           <p>This is the address on which we will deliver your meals.</p>
             <div class="controls">
               <div>
                 <label for="phone">Address: </label>
@@ -59,41 +68,16 @@
               </div>
             </div>
 
-          </form>
-
-          <button [disabled]="!personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
-        </mat-step>
-  
-        <mat-step [completed]="deliveryState" label="Delivery Information">
-         <!--
-          <form [formGroup]="creditCard" (change)="creditCompleted()">
-            <p>Please fill the form below with your credit card information: </p>
-            <div class="controls">
-              <div>
-                <label for="cardnumber">Credit Card Number: </label>
-                <input name="cardnumber" placeholder="Credit Card Number" formControlName="cardnumber" required>
-              </div>
-              <div class="small">
-                <label for="expdate">Expiry Date: </label>
-                <input name="expdate" placeholder="Expiry Date" formControlName="expdate" required>
-              </div>
-              <div class="small">
-                <label for="seccode">Security Code: </label>
-                <input name="seccode" placeholder="Security Code" formControlName="seccode" required>
-              </div>
-            </div>
-
           </form> 
-          -->
-          <button class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
+   
+          <button *ngIf="deliveryInfo.valid" class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
         </mat-step>
         
         <mat-step label="Payment">
           <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
           <img class="confirmIcon" src="../../assets/images/padlock.svg" />
           <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
-<!-- action="https://www.paygate.co.za/paysubs/process.trans" method="POST" -->
-<!--  (ngSubmit)="onSubmit($event, payment.value)"-->       
+
             <form  #payForm id="payForm" action="https://www.paygate.co.za/paysubs/process.trans" method="POST" [formGroup]="payment">
             <input type="hidden" name="VERSION" formControlName="VERSION">
             <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
@@ -109,12 +93,13 @@
             <input type="hidden" name="PROCESS_NOW" formControlName="PROCESS_NOW">
             <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
             <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
-            
+
+          
             <button type="submit" class="confirmPay" (click)="pay()">Pay Now</button>
-           
+        
             <!--
             <input type="submit" value="paymentSubmit">
-         <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button> 
+           <button type="submit" class="confirmPay" (click)="payForm.submit()">Pay Now</button>
 
              --> 
           </form>
@@ -154,7 +139,7 @@
         <h3>Personal Information</h3>
         <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>
         <p>Email: <span class="personalinfo">{{userEmail}}</span> </p>
-        <p>Phone: <span class="personalinfo">{{selectedphone}}</span> </p>
+        <!--<p>Phone: <span class="personalinfo">{{selectedphone}}</span> </p>-->
       </div>
       <div>
         <h3>Address</h3>
