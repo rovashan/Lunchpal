@@ -84,7 +84,7 @@ export class PaymentformComponent implements OnInit {
 
   //get the plan selected
   getSelectedPlan() {
-    let planId = this.route.snapshot.paramMap.get("plan")
+    let planId = this.route.snapshot.paramMap.get("plan");
     this.aFirestore.getSelectedPlan(planId).subscribe(plan => {
       this.selectedPlan = plan;
     })
@@ -190,7 +190,7 @@ export class PaymentformComponent implements OnInit {
     this.startdate = data.startdate;
   }
 
-
+/*
   createUserSubscription() {
 
     console.log("Order confirmed!");
@@ -231,13 +231,25 @@ export class PaymentformComponent implements OnInit {
     })
   
   }
+*/
+
+createPaymentDoc(){
+  this.aFirestore.addPaymentReference(
+    this.authService.userName,
+    this.authService.userDocId,
+    this.route.snapshot.paramMap.get("plan"),
+    this.selectedfirstname,
+    
+  )
+}
 
   //------ this is the end of the function that sends the data to firestore
 
 pay() {
   let x: any = document.getElementById("payForm");
-  
-  this.createUserSubscription();
+  this.createPaymentDoc();
+
+  //this.createUserSubscription();
   
   //submit the PayGate Form
   //x.submit(); 
