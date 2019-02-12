@@ -131,7 +131,7 @@ export class PaymentformComponent implements OnInit {
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
-      REFERENCE:  this.selectedfirstname + " " + this.selectedlastname,
+      REFERENCE:  this.selectedfirstname,
       AMOUNT: this.selectedPlan["price"] * 100,
       CURRENCY: 'ZAR',
       RETURN_URL: "https://us-central1-lunch-api-8ff4b.cloudfunctions.net/webApi",
@@ -190,7 +190,7 @@ export class PaymentformComponent implements OnInit {
     this.startdate = data.startdate;
   }
 
-/*
+
   createUserSubscription() {
 
     console.log("Order confirmed!");
@@ -217,40 +217,31 @@ export class PaymentformComponent implements OnInit {
         console.log(data.id);
         this.aFirestore.updateUserStatus(this.authService.userDocId);
         this.aFirestore.updateUserSubscription(this.authService.userDocId, data.id);
+        
+        //create the payment doc with the subscription docID
+        this.aFirestore.addPaymentReference(
+          this.authService.userName,
+          this.authService.userDocId,
+          this.selectedfirstname,
+          data.id
+        )
 
     }).catch(err => {
       console.log(err);
     })
   
   }
- */ 
+
   //------ this is the end of the function that sends the data to firestore
 
 pay() {
   let x: any = document.getElementById("payForm");
   
-  let plan = {
-    initDate: "Initial date",
-    expDate: "expiration date",
-    planId: this.route.snapshot.paramMap.get("plan"),
-    planName: this.selectedPlan["name"],
-    planCredits: this.selectedPlan["creditsPerDay"],
-    deliveryAddress: this.selectedAddress
-
-  }
-  x.submit(); 
-
-  /*
-  //make the post request with the current data of the user
-  //to the cloud function
-  this.httpClient.post("https://us-central1-lunch-api-8ff4b.cloudfunctions.net/webApi", plan)
-  .subscribe(data => {
-    console.log(data);
-    //submit the payment form
-    
-  })
+  this.createUserSubscription();
   
- */
+  //submit the PayGate Form
+  //x.submit(); 
+ 
 }
 
  

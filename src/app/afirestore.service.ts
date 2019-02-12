@@ -87,6 +87,18 @@ export class AfirestoreService {
     return this.firestore.collection("subscriptions").add(data); 
   }
 
+  public addPaymentReference(user: string, userDocId: string, paymentReference: string, subscriptionId: string){
+    let data = {
+      username: user,
+      userReference: userDocId,
+      paymentReference: paymentReference, 
+      subscriptionId: subscriptionId,
+      paymentStatus: null
+    }
+    return this.firestore.collection("payments").add(data)
+  }
+
+
   //get the users last subscription
   public renewSubscription(userName: string, userId: string, subscriptionId: string, plan: Object) {
     
