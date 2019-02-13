@@ -112,15 +112,22 @@ export class PaymentformComponent implements OnInit {
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
     let currentDate;
-    
+    let endDate;
+
     //if today is monday or monday hasnt passed
     if(today <= monday){
-      currentDate = moment().isoWeekday(monday).format("YYYY/MM/DD");
+      currentDate = moment().utc().isoWeekday(monday).format("YYYY/MM/DD");
+      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
     }else{
       //else add 2 weeks to that and give me that week's monday
-      currentDate = moment().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
+      currentDate = moment().utc().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
+      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
     }
     
+    console.log("start: ", currentDate);
+    console.log("ends: ", endDate);
+
+
     // show loader
  /*
     //get the next Monday
@@ -150,8 +157,8 @@ export class PaymentformComponent implements OnInit {
 
       TRANSACTION_DATE: '2019-02-10 18:30',
       EMAIL: this.authService.userName,
-      SUBS_START_DATE: moment().utc(currentDate).format(),
-      SUBS_END_DATE: '2020-02-18',
+      SUBS_START_DATE: currentDate,
+      SUBS_END_DATE: endDate,
       SUBS_FREQUENCY: '112',
 
       PROCESS_NOW: 'YES',
@@ -186,7 +193,7 @@ export class PaymentformComponent implements OnInit {
           CHECKSUM: data.CHECKSUM
         })
     
-        //this.deliveryState = true;
+     
       },
       error => {
         console.log("Error", error);
