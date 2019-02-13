@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
-import {HttpClient} from "@angular/common/http";
 
 import { ActivatedRoute } from "@angular/router";
 //firestore services
@@ -10,6 +9,8 @@ import { AfirestoreService } from "../afirestore.service";
 import { ViewEncapsulation } from "@angular/core";
 import { PaymentService } from './shared/payment.service';
 import { PReq } from './shared/p-req';
+//momentjs
+import * as moment from "moment";
 
 
 @Component({
@@ -25,9 +26,7 @@ export class PaymentformComponent implements OnInit {
     private aFirestore: AfirestoreService,
     private route: ActivatedRoute,
     private paymentService: PaymentService,
-    private httpClient: HttpClient
     
-
   ) { }
 
   @ViewChild("placesRef") placesRef;
@@ -109,8 +108,21 @@ export class PaymentformComponent implements OnInit {
       this.deliveryState = false;
       console.log(this.deliveryState);
     }
-    // show loader
  
+    const monday = 1; //monday
+    const today = moment().isoWeekday(); //today
+    let currentDate;
+    
+    //if today is monday or monday hasnt passed
+    if(today <= monday){
+      currentDate = moment().isoWeekday(monday).format("YYYY/MM/DD");
+    }else{
+      //else add 2 weeks to that and give me that week's monday
+      currentDate = moment().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
+    }
+    
+    // show loader
+ /*
     //get the next Monday
     let d = new Date();
     let x;
@@ -127,18 +139,18 @@ export class PaymentformComponent implements OnInit {
       console.log("next Monday is : ", currentDate);
     }
     
-    
+   */ 
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
       REFERENCE:  this.selectedfirstname,
       AMOUNT: this.selectedPlan["price"] * 100,
       CURRENCY: 'ZAR',
-      RETURN_URL: "https://us-central1-lunch-api-8ff4b.cloudfunctions.net/webApi",
+      RETURN_URL: "https://lunch-api-8ff4b.firebaseapp.com/api/pay",
 
       TRANSACTION_DATE: '2019-02-10 18:30',
       EMAIL: this.authService.userName,
-      SUBS_START_DATE: currentDate,
+      SUBS_START_DATE: moment().utc(currentDate).format(),
       SUBS_END_DATE: '2020-02-18',
       SUBS_FREQUENCY: '112',
 
@@ -234,10 +246,18 @@ export class PaymentformComponent implements OnInit {
 */
 
 createPaymentDoc(){
+
+  let plan = {
+    planName: this.selectedPlan["name"],
+    planPrice: this.selectedPlan["price"],
+    creditsPerDay: this.selectedPlan["creditsPerDay"],
+    planDocId: this.route.snapshot.paramMap.get("plan")
+  }
+
   this.aFirestore.addPaymentReference(
     this.authService.userName,
     this.authService.userDocId,
-    this.route.snapshot.paramMap.get("plan"),
+    plan,
     this.selectedfirstname,
     
   )
@@ -247,12 +267,10 @@ createPaymentDoc(){
 
 pay() {
   let x: any = document.getElementById("payForm");
+  //create the plan document
   this.createPaymentDoc();
-
-  //this.createUserSubscription();
-  
   //submit the PayGate Form
-  //x.submit(); 
+  x.submit(); 
  
 }
 

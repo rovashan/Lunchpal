@@ -29,6 +29,9 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { PaymentService } from './paymentform/shared/payment.service';
 import { HttpClientModule } from '@angular/common/http';
+//moment js
+import { MomentModule } from 'ngx-moment';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentModule
   ],
   providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService],
   bootstrap: [AppComponent]
