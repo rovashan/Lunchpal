@@ -75,8 +75,8 @@ export class AfirestoreService {
       userName: userName,
       userId: userId,
       planName: plan["planName"],
-      startDate: plan["initDate"],
-      endDate: plan["expDate"],
+      planInitDate: plan["initDate"],
+      planExpDate: plan["expDate"],
       planId: plan["planId"],
       planCredits: plan["planCredits"],
       address: plan["deliveryAddress"]
@@ -88,12 +88,10 @@ export class AfirestoreService {
   }
 
 
-  public addPaymentReference(user: string, userDocId: string, planId: string, paymentReference: string, startDate: Date){
+  public addPaymentReference(user: string, userDocId: string, planId: string, paymentReference: string){
     let data = {
-      createdDate: new Date(),
       username: user,
       subscribedPlan: planId,
-      startDate: startDate,
       userReference: userDocId,
       paymentReference: paymentReference,
       paymentStatus: null
