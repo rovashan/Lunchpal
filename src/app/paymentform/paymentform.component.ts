@@ -226,7 +226,7 @@ export class PaymentformComponent implements OnInit {
 
           // Set stepper completed and move
           this.stepper.selected.completed = true;
-          this.stepper.next();
+          //this.stepper.next();
 
         },
         error => {

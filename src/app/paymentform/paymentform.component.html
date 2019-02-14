@@ -91,7 +91,7 @@
 
           </form> 
    
-          <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()">Continue</button>
+          <button [disabled]="!deliveryInfo.valid" class="continue" matStepperNext  type="button" (click)="deliveryCompleted()">Continue</button>
         </mat-step>
         
         <mat-step label="Payment">
