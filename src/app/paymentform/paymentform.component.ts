@@ -11,6 +11,7 @@ import { PaymentService } from './shared/payment.service';
 import { PReq } from './shared/p-req';
 //momentjs
 import * as moment from "moment";
+import { MatStepper } from '@angular/material/stepper';
 
 
 @Component({
@@ -20,6 +21,7 @@ import * as moment from "moment";
   encapsulation: ViewEncapsulation.None
 })
 export class PaymentformComponent implements OnInit {
+
 
   constructor(
     private authService: AuthService,
@@ -49,7 +51,7 @@ export class PaymentformComponent implements OnInit {
 
   selectedPlan = null;
 
-  //delivery form controls
+  //personal form controls
   public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -58,10 +60,12 @@ export class PaymentformComponent implements OnInit {
 
   });
 
+  //delivery form controls
   public deliveryInfo = new FormGroup({
     address: new FormControl('', Validators.required),
   })
-  //delivery form controls
+
+  //payment request form
   public payment = new FormGroup({
     VERSION: new FormControl('', Validators.required),
     PAYGATE_ID: new FormControl('', Validators.required),
@@ -99,135 +103,131 @@ export class PaymentformComponent implements OnInit {
     }
   }
 
-
-  deliveryCompleted() {
+  deliveryChanged() {
     if (this.deliveryInfo.valid) {
-
-      const monday = 1; //monday
-      const today = moment().isoWeekday(); //today
-      let currentDate;
-      let endDate;
-
-      //if today is monday or monday hasnt passed
-      if (today <= monday) {
-        currentDate = moment().utc().isoWeekday(monday).format("YYYY/MM/DD");
-        endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
-      } else {
-        //else add 2 weeks to that and give me that week's monday
-        currentDate = moment().utc().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
-        endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
-      }
-
-      console.log("start: ", currentDate);
-      console.log("ends: ", endDate);
-
-
-      // show loader
-      /*
-         //get the next Monday
-         let d = new Date();
-         let x;
-         let currentDate;
-         //if today is Monday
-         if(d.getDay() === 1 ){
-           x = d.setDate(d.getDate());
-           currentDate = new Date(x);
-           console.log("today is Monday: ", currentDate);
-         }else{
-           //else get the next Monday in the calendar
-           x = d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
-           currentDate = new Date(x);
-           console.log("next Monday is : ", currentDate);
-         }
-         
-        */
-      let preq: PReq = {
-        VERSION: '21',
-        PAYGATE_ID: '10011072130',
-        REFERENCE: this.selectedfirstname,
-        AMOUNT: this.selectedPlan["price"] * 100,
-        CURRENCY: 'ZAR',
-        RETURN_URL: "https://lunch-api-8ff4b.firebaseapp.com/api/pay",
-
-        TRANSACTION_DATE: '2019-02-10 18:30',
-        EMAIL: this.authService.userName,
-        SUBS_START_DATE: currentDate,
-        SUBS_END_DATE: endDate,
-        SUBS_FREQUENCY: '112',
-
-        PROCESS_NOW: 'YES',
-        PROCESS_NOW_AMOUNT: this.selectedPlan["price"] * 100,
-        CHECKSUM: ''
-      }
-
-      //create the payment document 
-      let plan = {
-        planName: this.selectedPlan["name"],
-        planPrice: this.selectedPlan["price"],
-        creditsPerDay: this.selectedPlan["creditsPerDay"],
-        planDocId: this.route.snapshot.paramMap.get("plan")
-      }
-
-      this.aFirestore.addPaymentReference(
-        this.authService.userName,
-        this.authService.userDocId,
-        plan,
-        this.selectedfirstname
-      ).then((docRef) => {
-        // only if payment doc successfully created
-        // set reference to new payment doc id
-        preq.REFERENCE = docRef.id;
-
-        //calc request
-        this.paymentService.calc(preq).subscribe(
-          data => {
-            console.log("Calc Request is successful ", data);
-            // only if request calc successful
-            // setup payment form fields
-            this.payment.setValue({
-              VERSION: data.VERSION,
-              PAYGATE_ID: data.PAYGATE_ID,
-              REFERENCE: data.REFERENCE,
-              AMOUNT: data.AMOUNT,
-              CURRENCY: data.CURRENCY,
-              RETURN_URL: data.RETURN_URL,
-
-              TRANSACTION_DATE: data.TRANSACTION_DATE,
-              EMAIL: data.EMAIL,
-              SUBS_START_DATE: data.SUBS_START_DATE,
-              SUBS_END_DATE: data.SUBS_END_DATE,
-              SUBS_FREQUENCY: data.SUBS_FREQUENCY,
-
-              PROCESS_NOW: data.PROCESS_NOW,
-              PROCESS_NOW_AMOUNT: data.PROCESS_NOW_AMOUNT,
-              CHECKSUM: data.CHECKSUM
-            })
-
-            // now move stepper
-            this.deliveryState = true;
-            console.log(this.deliveryState);
-
-          },
-          error => {
-            console.log("Error", error);
-          });
-
-
-
-
-      }).catch(err => {
-        console.log('Error creating payment document: ', err);
-      });
-
-
-
+      this.deliveryState = true;
+      console.log('deliveryState: ', this.deliveryState);
     } else {
       this.deliveryState = false;
-      console.log(this.deliveryState);
+      console.log('deliveryState: ', this.deliveryState);
+    }
+  }
+
+
+  deliveryCompleted() {
+    const monday = 1; //monday
+    const today = moment().isoWeekday(); //today
+    let currentDate;
+    let endDate;
+
+    //if today is monday or monday hasnt passed
+    if (today <= monday) {
+      currentDate = moment().utc().isoWeekday(monday).format("YYYY/MM/DD");
+      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
+    } else {
+      //else add 2 weeks to that and give me that week's monday
+      currentDate = moment().utc().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
+      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
     }
 
+    console.log("start: ", currentDate);
+    console.log("ends: ", endDate);
 
 
+    // show loader
+    /*
+       //get the next Monday
+       let d = new Date();
+       let x;
+       let currentDate;
+       //if today is Monday
+       if(d.getDay() === 1 ){
+         x = d.setDate(d.getDate());
+         currentDate = new Date(x);
+         console.log("today is Monday: ", currentDate);
+       }else{
+         //else get the next Monday in the calendar
+         x = d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
+         currentDate = new Date(x);
+         console.log("next Monday is : ", currentDate);
+       }
+       
+      */
+    let preq: PReq = {
+      VERSION: '21',
+      PAYGATE_ID: '10011072130',
+      REFERENCE: this.selectedfirstname,
+      AMOUNT: this.selectedPlan["price"] * 100,
+      CURRENCY: 'ZAR',
+      RETURN_URL: "https://lunch-api-8ff4b.firebaseapp.com/api/pay",
+
+      TRANSACTION_DATE: '2019-02-10 18:30',
+      EMAIL: this.authService.userName,
+      SUBS_START_DATE: currentDate,
+      SUBS_END_DATE: endDate,
+      SUBS_FREQUENCY: '112',
+
+      PROCESS_NOW: 'YES',
+      PROCESS_NOW_AMOUNT: this.selectedPlan["price"] * 100,
+      CHECKSUM: ''
+    }
+
+    //create the payment document 
+    let plan = {
+      planName: this.selectedPlan["name"],
+      planPrice: this.selectedPlan["price"],
+      creditsPerDay: this.selectedPlan["creditsPerDay"],
+      planDocId: this.route.snapshot.paramMap.get("plan")
+    }
+
+    this.aFirestore.addPaymentReference(
+      this.authService.userName,
+      this.authService.userDocId,
+      plan,
+      this.selectedfirstname
+    ).then((docRef) => {
+      // only if payment doc successfully created
+      // set request reference to new payment doc id
+      preq.REFERENCE = docRef.id;
+
+      //calc request
+      this.paymentService.calc(preq).subscribe(
+        data => {
+          console.log("Calc Request is successful ", data);
+          // only if request calc successful
+          // setup payment form fields
+          this.payment.setValue({
+            VERSION: data.VERSION,
+            PAYGATE_ID: data.PAYGATE_ID,
+            REFERENCE: data.REFERENCE,
+            AMOUNT: data.AMOUNT,
+            CURRENCY: data.CURRENCY,
+            RETURN_URL: data.RETURN_URL,
+
+            TRANSACTION_DATE: data.TRANSACTION_DATE,
+            EMAIL: data.EMAIL,
+            SUBS_START_DATE: data.SUBS_START_DATE,
+            SUBS_END_DATE: data.SUBS_END_DATE,
+            SUBS_FREQUENCY: data.SUBS_FREQUENCY,
+
+            PROCESS_NOW: data.PROCESS_NOW,
+            PROCESS_NOW_AMOUNT: data.PROCESS_NOW_AMOUNT,
+            CHECKSUM: data.CHECKSUM
+          });
+
+          this.deliveryState = true;
+
+        },
+        error => {
+          console.log("Error", error);
+        });
+
+
+
+
+    }).catch(err => {
+      console.log('Error creating payment document: ', err);
+    });
   }
 
   //update the summary overview

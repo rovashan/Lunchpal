@@ -4,7 +4,7 @@
     <div class="paymentContainer">
       <!-- <div> -->
       <mat-horizontal-stepper linear>
-        <mat-step [completed]="personalState" label="Personal Information">
+        <mat-step #stepper [completed]="personalState" label="Personal Information">
 
           <form [formGroup]="personal" (change)="personalCompleted()">
             <!-- <p>Please fill the form below with your personal information: </p> -->
@@ -58,7 +58,7 @@
   
         <mat-step [completed]="deliveryState" label="Delivery Information">
       
-          <form [formGroup]="deliveryInfo" (change)="deliveryCompleted()">
+          <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
            <p>This is the address on which we will deliver your meals.</p>
             <div class="controls">
               <div>
@@ -70,7 +70,7 @@
 
           </form> 
    
-          <button *ngIf="deliveryInfo.valid" class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
+          <button [disabled]="!deliveryInfo.valid" class="continue" matStepperNext type="button" (click)="deliveryCompleted()">Continue</button>
         </mat-step>
         
         <mat-step label="Payment">
