@@ -32,6 +32,8 @@ export class PaymentformComponent implements OnInit {
   ) { }
 
   @ViewChild("placesRef") placesRef;
+  @ViewChild("stepper") stepper: MatStepper;
+  //@ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
 
   public handleAddressChange(address: string) {
     // Do some stuff
@@ -215,15 +217,14 @@ export class PaymentformComponent implements OnInit {
             CHECKSUM: data.CHECKSUM
           });
 
-          this.deliveryState = true;
+          // Set stepper completed and move
+          this.stepper.selected.completed = true;
+          this.stepper.next();
 
         },
         error => {
           console.log("Error", error);
         });
-
-
-
 
     }).catch(err => {
       console.log('Error creating payment document: ', err);
