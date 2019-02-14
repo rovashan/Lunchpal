@@ -90,8 +90,8 @@
             </div>
 
           </form> 
-          <p *ngIf="callDone">wait a second</p>
-           <button  class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
+          <p *ngIf="callDone"> <mat-spinner></mat-spinner> wait a second</p>
+           <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
         
           </mat-step>
         
