@@ -54,6 +54,11 @@ export class PaymentformComponent implements OnInit {
 
   selectedPlan = null;
 
+  myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day == 1 ;
+    }
   //personal form controls
   public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
