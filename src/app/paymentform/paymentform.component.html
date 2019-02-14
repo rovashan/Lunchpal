@@ -34,10 +34,27 @@
                 </div>
               </div>
               <div>
-                <label for="fdeldate">Start Date: </label>
+                  <!--
+                <ngb-datepicker  (select)="onDateSelection($event)" #d [dayTemplate]="t" outsideDays="hidden"></ngb-datepicker>
+                
+                <ng-template #t let-date let-focused="focused">
+                  <span class="custom-day"
+                        [class.focused]="focused"
+                        [class.range]="isRange(date)"
+                        [class.faded]="isHovered(date) || isInside(date)"
+                        (mouseenter)="hoveredDate = date"
+                        (mouseleave)="hoveredDate = null">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+                <pre>From: {{ fromDate | json }} </pre>
+                <pre>To: {{ toDate | json }} </pre>
+               -->
+                <label for="fdeldate">Select a Monday for the start of your Subscription: </label>
                 <div>
+                  <!--(ngModelChange)="personalCompleted()"-->
                   <mat-form-field [floatLabel]="'never'">
-                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="personalCompleted()"
+                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="checkDate($event); personalCompleted()"
                       [matDatepicker]="picker" formControlName="startdate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -48,12 +65,16 @@
                 <div *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
                   <span class="error">Start date is required.</span>
                 </div>
+                <div *ngIf="(personal.get('startdate').touched) && mondayState == false">
+                    <span class="error">Please select a Monday</span>
+                  </div>
+           
               </div>
             </div>
 
           </form>
 
-          <button *ngIf="personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
+          <button *ngIf="personal.valid && mondayState" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
         </mat-step>
   
         <mat-step label="Delivery Information">

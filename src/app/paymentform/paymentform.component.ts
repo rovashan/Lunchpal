@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,6 @@ import { PReq } from './shared/p-req';
 //momentjs
 import * as moment from "moment";
 import { MatStepper } from '@angular/material/stepper';
-
 
 @Component({
   selector: 'app-paymentform',
@@ -41,6 +40,11 @@ export class PaymentformComponent implements OnInit {
 
   }
 
+  hoveredDate: NgbDate;
+
+  fromDate: NgbDate;
+  toDate: NgbDate;
+
   selectedfirstname: string;
   selectedlastname: string;
   selectedphone: string;
@@ -50,6 +54,7 @@ export class PaymentformComponent implements OnInit {
   deliveryState: boolean = false;
   authSubscription: Subscription;
   userEmail: string;
+  mondayState : boolean = false;
 
   selectedPlan = null;
 
@@ -58,6 +63,7 @@ export class PaymentformComponent implements OnInit {
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
+    //week: new FormControl('', Validators.required),
     startdate: new FormControl('', Validators.required),
 
   });
@@ -237,6 +243,24 @@ export class PaymentformComponent implements OnInit {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
     this.startdate = data.startdate;
+  }
+  onDateSelection(date: NgbDate) {
+    
+    console.log(date);
+    
+    
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
+     // this.toDate = date;
+    let startOfWeek = moment().isoWeek();
+    let endOfWeek = moment().endOf('isoWeek');
+    console.log(startOfWeek, endOfWeek)
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+    
   }
 
   /*

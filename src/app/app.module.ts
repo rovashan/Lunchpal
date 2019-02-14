@@ -41,6 +41,7 @@ import { MomentModule } from 'ngx-moment';
   
   ],
   imports: [
+   
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AngularFirestoreModule,
