@@ -37,7 +37,7 @@ export class PaymentformComponent implements OnInit {
   public handleAddressChange(address: string) {
     // Do some stuff
     this.selectedAddress = address["name"] + ", " + address["formatted_address"];
-
+    this.deliveryCompleted();
   }
 
 
@@ -51,7 +51,7 @@ export class PaymentformComponent implements OnInit {
   authSubscription: Subscription;
   userEmail: string;
   mondayState : boolean = false;
-
+  callDone: boolean = false;
   selectedPlan = null;
 
   myFilter = (d: Date): boolean => {
@@ -122,7 +122,6 @@ export class PaymentformComponent implements OnInit {
     }
   }
 
-
   deliveryCompleted() {
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
@@ -143,25 +142,6 @@ export class PaymentformComponent implements OnInit {
     console.log("ends: ", endDate);
 
 
-    // show loader
-    /*
-       //get the next Monday
-       let d = new Date();
-       let x;
-       let currentDate;
-       //if today is Monday
-       if(d.getDay() === 1 ){
-         x = d.setDate(d.getDate());
-         currentDate = new Date(x);
-         console.log("today is Monday: ", currentDate);
-       }else{
-         //else get the next Monday in the calendar
-         x = d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
-         currentDate = new Date(x);
-         console.log("next Monday is : ", currentDate);
-       }
-       
-      */
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',
@@ -225,9 +205,9 @@ export class PaymentformComponent implements OnInit {
           });
 
           // Set stepper completed and move
-          this.stepper.selected.completed = true;
-          //this.stepper.next();
-
+         this.stepper.selected.completed = true;
+        
+          this.stepper.next();
         },
         error => {
           console.log("Error", error);
