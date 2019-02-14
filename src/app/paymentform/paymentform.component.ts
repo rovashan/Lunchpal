@@ -40,10 +40,6 @@ export class PaymentformComponent implements OnInit {
 
   }
 
-  hoveredDate: NgbDate;
-
-  fromDate: NgbDate;
-  toDate: NgbDate;
 
   selectedfirstname: string;
   selectedlastname: string;
@@ -244,25 +240,7 @@ export class PaymentformComponent implements OnInit {
     this.selectedlastname = data.lastname
     this.startdate = data.startdate;
   }
-  onDateSelection(date: NgbDate) {
-    
-    console.log(date);
-    
-    
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-     // this.toDate = date;
-    let startOfWeek = moment().isoWeek();
-    let endOfWeek = moment().endOf('isoWeek');
-    console.log(startOfWeek, endOfWeek)
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-    
-  }
-
+  
   /*
     createUserSubscription() {
   
@@ -314,7 +292,24 @@ export class PaymentformComponent implements OnInit {
     //submit the PayGate Form
     x.submit();
   }
-
+  checkDate($event: any){
+    let day = moment($event).utc().format("dddd");
+    
+    if(day === "Monday") {
+      console.log("monday");
+      this.personal.controls.startdate.valid;
+      this.mondayState = true;
+      console.log(this.personal.controls.startdate.valid)
+     
+    }else{
+      console.log("please select a monday");
+      this.personal.controls.startdate.invalid;
+    this.mondayState = false;
+      console.log(this.personal.controls.startdate.invalid)
+    }
+    
+  
+  }
 
   ngOnInit() {
 
