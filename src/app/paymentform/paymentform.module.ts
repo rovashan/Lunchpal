@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared';
 import { PaymentformRoutingModule } from './paymentform-routing.module';
 import { PaymentformComponent } from './paymentform.component';
+import { DateAdapter } from '@angular/material';
+import { CustomDateAdapter } from './shared/dateAdapter';
 
 @NgModule({
   imports: [
@@ -11,6 +13,9 @@ import { PaymentformComponent } from './paymentform.component';
     //NgbModule,
     PaymentformRoutingModule
   ],
-  declarations: [PaymentformComponent]
+  declarations: [PaymentformComponent],
+  providers:[
+    {provide: DateAdapter, useClass: CustomDateAdapter}
+  ]
 })
 export class PaymentformModule { }
