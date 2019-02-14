@@ -74,7 +74,7 @@
 
           </form>
 
-          <button *ngIf="personal.valid && mondayState" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
+          <button [disabled]="!personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
         </mat-step>
   
         <mat-step label="Delivery Information">
