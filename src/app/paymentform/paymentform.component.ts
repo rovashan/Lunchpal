@@ -37,10 +37,10 @@ export class PaymentformComponent implements OnInit {
   public handleAddressChange(address: string) {
     // Do some stuff
     this.selectedAddress = address["name"] + ", " + address["formatted_address"];
-    this.deliveryCompleted();
+   
   }
 
-callDoneMessage: boolean;
+
   selectedfirstname: string;
   selectedlastname: string;
   selectedphone: string;
@@ -51,7 +51,7 @@ callDoneMessage: boolean;
   authSubscription: Subscription;
   userEmail: string;
   mondayState : boolean = false;
-  callDone: boolean = false;
+  callDone: boolean;
   selectedPlan = null;
 
   myFilter = (d: Date): boolean => {
@@ -124,9 +124,7 @@ callDoneMessage: boolean;
 
   deliveryCompleted() {
     
-    this.callDoneMessage = true;
-
-    
+  this.callDone = true;   
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
     let currentDate;
@@ -210,9 +208,10 @@ callDoneMessage: boolean;
           });
 
           // Set stepper completed and move
-         this.stepper.selected.completed = true;
-          this.callDone = true;
-     this.callDoneMessage = false;
+          this.stepper.selected.completed = true;
+          this.callDone = false;
+          this.stepper.next();
+    
         },
         error => {
           console.log("Error", error);
