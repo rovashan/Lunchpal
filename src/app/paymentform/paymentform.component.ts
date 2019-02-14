@@ -176,7 +176,8 @@ export class PaymentformComponent implements OnInit {
       this.authService.userName,
       this.authService.userDocId,
       plan,
-      this.selectedfirstname
+      this.selectedfirstname,
+      this.selectedAddress
     ).then((docRef) => {
       // only if payment doc successfully created
       // set request reference to new payment doc id

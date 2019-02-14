@@ -91,7 +91,7 @@
 
           </form> 
           <p *ngIf="callDone">wait a second</p>
-           <button  class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
+           <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
         
           </mat-step>
         

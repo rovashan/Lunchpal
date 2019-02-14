@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
 
 import { User } from './models/user';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Injectable({
   providedIn: 'root'
@@ -88,13 +89,14 @@ export class AfirestoreService {
   }
 
 
-  public addPaymentReference(user: string, userDocId: string, plan: object, paymentReference: string){
+  public addPaymentReference(user: string, userDocId: string, plan: object, paymentReference: string, address: string){
     let data = {
       username: user,
       subscribedPlan: plan,
       userReference: userDocId,
+      userAddress: address,
       paymentReference: paymentReference,
-      paymentStatus: null
+      paymentStatus: null      
     }
     return this.firestore.collection("payments").add(data)
   }
