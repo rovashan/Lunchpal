@@ -40,7 +40,7 @@ export class PaymentformComponent implements OnInit {
     this.deliveryCompleted();
   }
 
-
+callDoneMessage: boolean;
   selectedfirstname: string;
   selectedlastname: string;
   selectedphone: string;
@@ -123,6 +123,10 @@ export class PaymentformComponent implements OnInit {
   }
 
   deliveryCompleted() {
+    
+    this.callDoneMessage = true;
+
+    
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
     let currentDate;
@@ -168,6 +172,7 @@ export class PaymentformComponent implements OnInit {
       creditsPerDay: this.selectedPlan["creditsPerDay"],
       planDocId: this.route.snapshot.paramMap.get("plan")
     }
+    
 
     this.aFirestore.addPaymentReference(
       this.authService.userName,
@@ -207,7 +212,7 @@ export class PaymentformComponent implements OnInit {
           // Set stepper completed and move
          this.stepper.selected.completed = true;
           this.callDone = true;
-     
+     this.callDoneMessage = false;
         },
         error => {
           console.log("Error", error);
