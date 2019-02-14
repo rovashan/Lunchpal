@@ -90,8 +90,8 @@
             </div>
 
           </form> 
-          <!-- <button [disabled]="!callDone" class="continue"  type="button" (click)="deliveryCompleted()" >Continue</button>
-         -->
+           <button [disabled]="!callDone" class="continue"  type="button"  matStepperNext (click)="deliveryCompleted()" >Continue</button>
+        
           </mat-step>
         
         <mat-step label="Payment">
