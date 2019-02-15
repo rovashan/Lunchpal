@@ -56,6 +56,7 @@ export class PaymentformComponent implements OnInit {
   mondayState: boolean = false;
   callDone: boolean;
   selectedPlan = null;
+  minDate = new Date();
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
