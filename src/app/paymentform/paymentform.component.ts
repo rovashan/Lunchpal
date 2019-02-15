@@ -56,6 +56,7 @@ export class PaymentformComponent implements OnInit {
   mondayState: boolean = false;
   isBusy: boolean;
   selectedPlan = null;
+  minDate = new Date();
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
@@ -127,24 +128,9 @@ export class PaymentformComponent implements OnInit {
     //console.log('User address: ', this.selectedAddress);
 
     this.isBusy = true;
-    const monday = 1; //monday
-    const today = moment().isoWeekday(); //today
-    let currentDate;
-    let endDate;
-
-    //if today is monday or monday hasnt passed
-    if (today <= monday) {
-      currentDate = moment().utc().isoWeekday(monday).format("YYYY/MM/DD");
-      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
-    } else {
-      //else add 2 weeks to that and give me that week's monday
-      currentDate = moment().utc().add(2, "week").isoWeekday(monday).format("YYYY/MM/DD");
-      endDate = moment(currentDate, "YYYY/MM/DD").utc().add(5, "weeks").isoWeekday(monday).format("YYYY/MM/DD");
-    }
-
-    console.log("start: ", currentDate);
-    console.log("ends: ", endDate);
-
+    let userSelectedDate = this.startdate
+    let subsStartDate = moment(userSelectedDate, "YYYY/MM/DD").utc().add(1, "week").format("YYYY/MM/DD");
+    let subsEndDate= moment(subsStartDate, "YYYY/MM/DD").utc().add(12, "months").format("YYYY/MM/DD");;
 
     let preq: PReq = {
       VERSION: '21',
@@ -156,8 +142,8 @@ export class PaymentformComponent implements OnInit {
 
       TRANSACTION_DATE: '2019-02-10 18:30',
       EMAIL: this.authService.userName,
-      SUBS_START_DATE: currentDate,
-      SUBS_END_DATE: endDate,
+      SUBS_START_DATE: subsStartDate,
+      SUBS_END_DATE: subsEndDate,
       SUBS_FREQUENCY: '112',
 
       PROCESS_NOW: 'YES',
@@ -225,6 +211,7 @@ export class PaymentformComponent implements OnInit {
       this.isBusy = false;
       console.log('Error creating payment document: ', err);
     });
+  
   }
 
   //update the summary overview
