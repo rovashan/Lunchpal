@@ -175,11 +175,10 @@ export class PaymentformComponent implements OnInit {
     
 
     this.aFirestore.addPaymentReference(
-      this.authService.userName,
       this.authService.userDocId,
+      this.authService.userName,
+      this.selectedAddress,
       plan,
-      this.selectedfirstname,
-      this.selectedAddress
     ).then((docRef) => {
       // only if payment doc successfully created
       // set request reference to new payment doc id
