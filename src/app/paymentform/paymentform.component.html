@@ -78,20 +78,20 @@
         <mat-step label="Delivery Information">
       
           <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
-           <p>This is the address on which we will deliver your meals.</p>
+           <p>Where do you want your lunch delivered?</p>
             <div class="controls">
               <div>
                 <label for="phone">Address: </label>
                 <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName="address"
-                  (onAddressChange)="handleAddressChange($event)" />
+                  (onAddressChange)="handleAddressChange($event)" (change)="inputAddressChange($event)" />
               </div>
             </div>
 
           </form> 
         
           <div class="buttonControls">
-           <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
-           <p *ngIf="callDone"><mat-spinner></mat-spinner> Preparing Payment Gateway, Please Wait.</p>
+           <button [disabled]="!deliveryInfo.valid || !selectedAddress" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
+           <p *ngIf="callDone"><mat-spinner></mat-spinner> Setting up payment...</p>
           
           </div>
           </mat-step>

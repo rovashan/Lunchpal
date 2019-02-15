@@ -36,8 +36,13 @@ export class PaymentformComponent implements OnInit {
 
   public handleAddressChange(address: string) {
     // Do some stuff
+    console.log('handleAddressChange');
     this.selectedAddress = address["name"] + ", " + address["formatted_address"];
-   
+  }
+
+  public inputAddressChange(event) {
+    console.log(event.srcElement.value);
+    this.selectedAddress = event.srcElement.value;
   }
 
 
@@ -50,16 +55,16 @@ export class PaymentformComponent implements OnInit {
   deliveryState: boolean = false;
   authSubscription: Subscription;
   userEmail: string;
-  mondayState : boolean = false;
+  mondayState: boolean = false;
   callDone: boolean;
   selectedPlan = null;
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
-    return day == 1 ;
+    return day == 1;
   }
 
-  
+
 
   //personal form controls
   public personal = new FormGroup({
@@ -125,8 +130,9 @@ export class PaymentformComponent implements OnInit {
   }
 
   deliveryCompleted() {
-    
-  this.callDone = true;   
+    //console.log('User address: ', this.selectedAddress);
+
+    this.callDone = true;
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
     let currentDate;
@@ -172,7 +178,7 @@ export class PaymentformComponent implements OnInit {
       creditsPerDay: this.selectedPlan["creditsPerDay"],
       planDocId: this.route.snapshot.paramMap.get("plan")
     }
-    
+
 
     this.aFirestore.addPaymentReference(
       this.authService.userDocId,
@@ -213,13 +219,15 @@ export class PaymentformComponent implements OnInit {
           this.stepper.selected.completed = true;
           this.callDone = false;
           this.stepper.next();
-    
+
         },
         error => {
+          this.callDone = false;
           console.log("Error", error);
         });
 
     }).catch(err => {
+      this.callDone = false;
       console.log('Error creating payment document: ', err);
     });
   }
@@ -229,9 +237,9 @@ export class PaymentformComponent implements OnInit {
   onDeliveryFormChanges(data) {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
-   
+
   }
-  
+
   /*
     createUserSubscription() {
   
@@ -284,14 +292,14 @@ export class PaymentformComponent implements OnInit {
     x.submit();
   }
 
-  checkDate($event: any){
+  checkDate($event: any) {
     //let day = moment($event).utc().format("dddd");
     this.startdate = moment($event, "YYYY/MM/DD").utc().format("YYYY/MM/DD")
-  
+
   }
 
   ngOnInit() {
-
+    console.log('User address: ', this.selectedAddress);
 
     this.personal.valueChanges.subscribe(data => {
       this.onDeliveryFormChanges(data);
