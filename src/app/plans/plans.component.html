@@ -16,7 +16,7 @@
           <p class="planPrice"> <strong>R 350</strong> </p>
          </mat-card-content>
         <mat-card-actions>
-            <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[0].id)">Select this plan</button>
+            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[0].id)">Select this plan</button>
         </mat-card-actions>
       </mat-card>
 
@@ -34,7 +34,7 @@
          
         </mat-card-content>
         <mat-card-actions>
-            <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[1].id)">Select this plan</button>
+            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[1].id)">Select this plan</button>
         </mat-card-actions>
       </mat-card>
       
@@ -51,7 +51,7 @@
           <p class="planPrice"> <strong>R 425</strong></p>
         </mat-card-content>
         <mat-card-actions>
-            <button *ngIf="plans.length > 0" class="package" (click)="selectPlan(plans[2].id)">Select this plan</button>
+            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[2].id)">Select this plan</button>
         </mat-card-actions>
       </mat-card>
   
