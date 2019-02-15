@@ -30,7 +30,8 @@
             <div class="controls">
               <div>
                 <label for="phone">Phone Number: </label>
-                <input type="text" mask='(000) 000 0000 0000' name="phone" placeholder="Phone Number" formControlName="phone">
+                <input type="text" mask='(000) 000 0000 0000' name="phone" placeholder="Phone Number"
+                  formControlName="phone">
                 <div
                   *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
                   <span class="error">Phone is required.</span>
@@ -71,6 +72,10 @@
                 <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                   formControlName="address" (onAddressChange)="handleAddressChange($event)"
                   (change)="inputAddressChange($event)" />
+                <div
+                  *ngIf="deliveryInfo.get('address').hasError('required') && (deliveryInfo.get('address').dirty || deliveryInfo.get('address').touched)">
+                  <span class="error">Address is required.</span>
+                </div>
               </div>
             </div>
 
