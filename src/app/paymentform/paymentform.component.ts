@@ -230,7 +230,7 @@ export class PaymentformComponent implements OnInit {
   onDeliveryFormChanges(data) {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
-    this.startdate = data.startdate;
+   
   }
   
   /*
