@@ -32,7 +32,6 @@ export class PaymentformComponent implements OnInit {
 
   @ViewChild("placesRef") placesRef;
   @ViewChild("stepper") stepper: MatStepper;
-  //@ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
 
   public handleAddressChange(address: string) {
     // Do some stuff
@@ -44,7 +43,6 @@ export class PaymentformComponent implements OnInit {
     console.log(event.srcElement.value);
     this.selectedAddress = event.srcElement.value;
   }
-
 
   selectedfirstname: string;
   selectedlastname: string;
@@ -64,16 +62,12 @@ export class PaymentformComponent implements OnInit {
     return day == 1;
   }
 
-
-
   //personal form controls
   public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    //week: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),  //, Validators.pattern(/^[0-9-+s()]*$/) 
     startdate: new FormControl('', Validators.required),
-
   });
 
   //delivery form controls
@@ -171,7 +165,7 @@ export class PaymentformComponent implements OnInit {
       CHECKSUM: ''
     }
 
-    //create the payment document 
+    //create the payment document    
     let plan = {
       planName: this.selectedPlan["name"],
       planPrice: this.selectedPlan["price"],
@@ -179,10 +173,11 @@ export class PaymentformComponent implements OnInit {
       planDocId: this.route.snapshot.paramMap.get("plan")
     }
 
-
     this.aFirestore.addPaymentReference(
       this.authService.userDocId,
-      this.authService.userName,
+      this.selectedfirstname,
+      this.selectedlastname,
+      this.selectedphone,
       this.selectedAddress,
       plan,
     ).then((docRef) => {
@@ -237,7 +232,10 @@ export class PaymentformComponent implements OnInit {
   onDeliveryFormChanges(data) {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
-
+    this.selectedphone = data.phone;
+    
+    console.log('data.address: ', data.address);
+    this.selectedAddress = data.address;
   }
 
   /*

@@ -12,14 +12,16 @@
               <div>
                 <label for="firstname">First Name: </label>
                 <input name="firstname" placeholder="First Name" formControlName="firstname">
-                <div *ngIf="personal.get('firstname').hasError('required') && (personal.get('firstname').dirty || personal.get('firstname').touched)">
+                <div
+                  *ngIf="personal.get('firstname').hasError('required') && (personal.get('firstname').dirty || personal.get('firstname').touched)">
                   <span class="error">First name is required.</span>
                 </div>
               </div>
               <div>
                 <label for="">Last Name: </label>
                 <input name="lastname" placeholder="Last Name" formControlName="lastname">
-                <div *ngIf="personal.get('lastname').hasError('required') && (personal.get('lastname').dirty || personal.get('lastname').touched)">
+                <div
+                  *ngIf="personal.get('lastname').hasError('required') && (personal.get('lastname').dirty || personal.get('lastname').touched)">
                   <span class="error">Last name is required.</span>
                 </div>
               </div>
@@ -29,79 +31,68 @@
               <div>
                 <label for="phone">Phone Number: </label>
                 <input type="tel" name="phone" placeholder="Phone Number" formControlName="phone">
-                <div *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
+                <div
+                  *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
                   <span class="error">Phone is required.</span>
                 </div>
               </div>
               <div>
-                  <!--
-                <ngb-datepicker  (select)="onDateSelection($event)" #d [dayTemplate]="t" outsideDays="hidden"></ngb-datepicker>
-                
-                <ng-template #t let-date let-focused="focused">
-                  <span class="custom-day"
-                        [class.focused]="focused"
-                        [class.range]="isRange(date)"
-                        [class.faded]="isHovered(date) || isInside(date)"
-                        (mouseenter)="hoveredDate = date"
-                        (mouseleave)="hoveredDate = null">
-                    {{ date.day }}
-                  </span>
-                </ng-template>
-                <pre>From: {{ fromDate | json }} </pre>
-                <pre>To: {{ toDate | json }} </pre>
-               -->
                 <label for="fdeldate">Start Week </label>
                 <div>
                   <!--(ngModelChange)="personalCompleted()"-->
                   <mat-form-field [floatLabel]="'never'">
-                    <input placeholder="Choose a Monday to start" matInput class="datePickerInput" (ngModelChange)="checkDate($event, $event); personalCompleted()"
-                      [matDatepicker]="picker" [matDatepickerFilter]="myFilter" formControlName="startdate">
+                    <input placeholder="Choose a Monday to start" matInput class="datePickerInput"
+                      (ngModelChange)="checkDate($event, $event); personalCompleted()" [matDatepicker]="picker"
+                      [matDatepickerFilter]="myFilter" formControlName="startdate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
 
-
-                <div *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
+                <div
+                  *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
                   <span class="error">Start date is required.</span>
                 </div>
-               
-           
+
+              </div>
+            </div>
+          </form>
+          <button [disabled]="!personal.valid" class="continue" matStepperNext type="button"
+            (click)="personalCompleted()">Continue</button>
+        </mat-step>
+
+        <mat-step label="Delivery Information">
+
+          <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
+            <p>Where do you want your lunch delivered?</p>
+            <div class="controls">
+              <div>
+                <label for="phone">Address: </label>
+                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                  formControlName="address" (onAddressChange)="handleAddressChange($event)"
+                  (change)="inputAddressChange($event)" />
               </div>
             </div>
 
           </form>
 
-          <button [disabled]="!personal.valid" class="continue" matStepperNext type="button" (click)="personalCompleted()">Continue</button>
-        </mat-step>
-  
-        <mat-step label="Delivery Information">
-      
-          <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
-           <p>Where do you want your lunch delivered?</p>
-            <div class="controls">
-              <div>
-                <label for="phone">Address: </label>
-                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName="address"
-                  (onAddressChange)="handleAddressChange($event)" (change)="inputAddressChange($event)" />
-              </div>
-            </div>
-
-          </form> 
-        
           <div class="buttonControls">
-           <button [disabled]="!deliveryInfo.valid || !selectedAddress || callDone" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
-           <p *ngIf="callDone"><mat-spinner></mat-spinner> Setting up payment...</p>
-          
+            <button [disabled]="!deliveryInfo.valid || !selectedAddress || callDone" class="continue" type="button"
+              (click)="deliveryCompleted()">Continue</button>
+            <p *ngIf="callDone">
+              <mat-spinner></mat-spinner> Setting up payment...
+            </p>
+
           </div>
-          </mat-step>
-        
+        </mat-step>
+
         <mat-step label="Payment">
           <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
           <img class="confirmIcon" src="../../assets/images/padlock.svg" />
           <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
 
-            <form  #payForm id="payForm" action="https://www.paygate.co.za/paysubs/process.trans" method="POST" [formGroup]="payment">
+          <form #payForm id="payForm" action="https://www.paygate.co.za/paysubs/process.trans" method="POST"
+            [formGroup]="payment">
             <input type="hidden" name="VERSION" formControlName="VERSION">
             <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
             <input type="hidden" name="REFERENCE" formControlName="REFERENCE">
@@ -117,13 +108,10 @@
             <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
             <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
 
-          
-            <button type="submit" class="confirmPay continue" (click)="pay()">Pay Now</button>       
+            <button type="submit" class="confirmPay continue" (click)="pay()">Pay Now</button>
           </form>
-
-          </mat-step>
-    
-        </mat-horizontal-stepper>
+        </mat-step>
+      </mat-horizontal-stepper>
     </div>
 
     <div class="summary">
@@ -138,12 +126,12 @@
         <h3>Personal Information</h3>
         <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>
         <p>Email: <span class="personalinfo">{{userEmail}}</span> </p>
-        <!--<p>Phone: <span class="personalinfo">{{selectedphone}}</span> </p>-->
+        <p>Phone: <span class="personalinfo">{{selectedphone}}</span> </p>
       </div>
       <div>
         <h3>Address</h3>
         <p>Address: <span class="personalinfo">{{selectedAddress}}</span> </p>
-      
+
       </div>
       <div>
         <h3>Start Date</h3>
