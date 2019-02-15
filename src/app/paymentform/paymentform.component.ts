@@ -129,6 +129,7 @@ export class PaymentformComponent implements OnInit {
 
     this.isBusy = true;
     let userSelectedDate = this.startdate;
+    let endDate = moment(userSelectedDate).utc().add(12, "months").format("YYYY-MM-DD");
 
     console.log('userSelectedDate: ', userSelectedDate);
 
@@ -169,7 +170,8 @@ export class PaymentformComponent implements OnInit {
       this.selectedphone,
       this.selectedAddress,
       plan,
-      this.startdate
+      this.startdate,
+      endDate
     ).then((docRef) => {
       // only if payment doc successfully created
       // set request reference to new payment doc id

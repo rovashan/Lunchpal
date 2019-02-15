@@ -90,16 +90,17 @@ export class AfirestoreService {
 
 
   public addPaymentReference(userDocId: string, firstName: string, lastName: string, phone: string, 
-                             address: string, plan: object, subscriptionStartDate: string) {
+                             address: string, plan: object, subscriptionStartDate: string, subscriptionEndDate: string) {
     let data = {
       createdDate: new Date(),
-      subscriptionStartDate: subscriptionStartDate, 
       userId: userDocId,
       firstName: firstName,
       lastName: lastName,
       phone: phone,
       userAddress: address,
       subscribedPlan: plan,
+      subscriptionStartDate: subscriptionStartDate, 
+      subscriptionEndDate: subscriptionEndDate,
       paymentStatus: null    
     }
     return this.firestore.collection("payments").add(data)
