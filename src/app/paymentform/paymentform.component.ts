@@ -128,9 +128,12 @@ export class PaymentformComponent implements OnInit {
     //console.log('User address: ', this.selectedAddress);
 
     this.isBusy = true;
-    let userSelectedDate = this.startdate
-    let subsStartDate = moment(userSelectedDate, "YYYY/MM/DD").utc().add(1, "week").format("YYYY/MM/DD");
-    let subsEndDate= moment(subsStartDate, "YYYY/MM/DD").utc().add(12, "months").format("YYYY/MM/DD");;
+    let userSelectedDate = this.startdate;
+
+    console.log('userSelectedDate: ', userSelectedDate);
+
+    let subsStartDate = moment(userSelectedDate).utc().add(1, "week").format("YYYY-MM-DD");
+    let subsEndDate= moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
 
     let preq: PReq = {
       VERSION: '21',
@@ -166,6 +169,7 @@ export class PaymentformComponent implements OnInit {
       this.selectedphone,
       this.selectedAddress,
       plan,
+      this.startdate
     ).then((docRef) => {
       // only if payment doc successfully created
       // set request reference to new payment doc id
@@ -281,8 +285,7 @@ export class PaymentformComponent implements OnInit {
 
   checkDate($event: any) {
     //let day = moment($event).utc().format("dddd");
-    this.startdate = moment($event, "YYYY/MM/DD").utc().format("YYYY/MM/DD")
-
+    this.startdate = moment($event).format("YYYY-MM-DD");
   }
 
   ngOnInit() {

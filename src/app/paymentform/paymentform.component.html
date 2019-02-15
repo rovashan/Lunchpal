@@ -84,7 +84,7 @@
           <div class="buttonControls">
             <button [disabled]="!deliveryInfo.valid || !selectedAddress || isBusy" class="continue" type="button"
               (click)="deliveryCompleted()">Continue</button>
-            <p *ngIf="isBusyS">
+            <p *ngIf="isBusy">
               <mat-spinner></mat-spinner> Setting up payment...
             </p>
 
