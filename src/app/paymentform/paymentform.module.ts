@@ -6,12 +6,14 @@ import { PaymentformRoutingModule } from './paymentform-routing.module';
 import { PaymentformComponent } from './paymentform.component';
 import { DateAdapter } from '@angular/material';
 import { CustomDateAdapter } from './shared/dateAdapter';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   imports: [
     SharedModule,
     //NgbModule,
-    PaymentformRoutingModule
+    PaymentformRoutingModule,
+    NgxMaskModule.forRoot()
   ],
   declarations: [PaymentformComponent],
   providers:[

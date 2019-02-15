@@ -66,7 +66,7 @@ export class PaymentformComponent implements OnInit {
   public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),  //, Validators.pattern(/^[0-9-+s()]*$/) 
+    phone: new FormControl('', Validators.required),
     startdate: new FormControl('', Validators.required),
   });
 

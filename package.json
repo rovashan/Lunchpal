@@ -33,6 +33,7 @@
     "moment": "^2.24.0",
     "ng-simple-slideshow": "^1.2.6",
     "ngx-google-places-autocomplete": "^2.0.3",
+    "ngx-mask": "^7.3.6",
     "ngx-moment": "^3.3.0",
     "ngx-slick-carousel": "^0.4.4",
     "rxjs": "^6.3.3",
