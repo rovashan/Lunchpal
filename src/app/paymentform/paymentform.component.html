@@ -82,9 +82,9 @@
           </form>
 
           <div class="buttonControls">
-            <button [disabled]="!deliveryInfo.valid || !selectedAddress || callDone" class="continue" type="button"
+            <button [disabled]="!deliveryInfo.valid || !selectedAddress || isBusy" class="continue" type="button"
               (click)="deliveryCompleted()">Continue</button>
-            <p *ngIf="callDone">
+            <p *ngIf="isBusyS">
               <mat-spinner></mat-spinner> Setting up payment...
             </p>
 

@@ -54,7 +54,7 @@ export class PaymentformComponent implements OnInit {
   authSubscription: Subscription;
   userEmail: string;
   mondayState: boolean = false;
-  callDone: boolean;
+  isBusy: boolean;
   selectedPlan = null;
 
   myFilter = (d: Date): boolean => {
@@ -126,7 +126,7 @@ export class PaymentformComponent implements OnInit {
   deliveryCompleted() {
     //console.log('User address: ', this.selectedAddress);
 
-    this.callDone = true;
+    this.isBusy = true;
     const monday = 1; //monday
     const today = moment().isoWeekday(); //today
     let currentDate;
@@ -212,17 +212,17 @@ export class PaymentformComponent implements OnInit {
 
           // Set stepper completed and move
           this.stepper.selected.completed = true;
-          this.callDone = false;
+          this.isBusy = false;
           this.stepper.next();
 
         },
         error => {
-          this.callDone = false;
+          this.isBusy = false;
           console.log("Error", error);
         });
 
     }).catch(err => {
-      this.callDone = false;
+      this.isBusy = false;
       console.log('Error creating payment document: ', err);
     });
   }
