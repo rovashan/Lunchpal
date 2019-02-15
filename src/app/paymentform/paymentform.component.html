@@ -90,7 +90,7 @@
           </form> 
         
           <div class="buttonControls">
-           <button [disabled]="!deliveryInfo.valid || !selectedAddress" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
+           <button [disabled]="!deliveryInfo.valid || !selectedAddress || callDone" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
            <p *ngIf="callDone"><mat-spinner></mat-spinner> Setting up payment...</p>
           
           </div>
