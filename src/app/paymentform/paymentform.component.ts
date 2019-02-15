@@ -235,7 +235,9 @@ export class PaymentformComponent implements OnInit {
     this.selectedphone = data.phone;
     
     console.log('data.address: ', data.address);
-    this.selectedAddress = data.address;
+    if (data.address) {
+      this.selectedAddress = data.address;
+    }
   }
 
   /*
