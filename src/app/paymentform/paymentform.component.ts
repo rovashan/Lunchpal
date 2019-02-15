@@ -56,9 +56,11 @@ export class PaymentformComponent implements OnInit {
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
-    // Prevent Saturday and Sunday from being selected.
     return day == 1 ;
-    }
+  }
+
+  
+
   //personal form controls
   public personal = new FormGroup({
     firstname: new FormControl('', Validators.required),
@@ -282,22 +284,10 @@ export class PaymentformComponent implements OnInit {
     //submit the PayGate Form
     x.submit();
   }
+
   checkDate($event: any){
-    let day = moment($event).utc().format("dddd");
-    
-    if(day === "Monday") {
-      console.log("monday");
-      this.personal.controls.startdate.valid;
-      this.mondayState = true;
-      console.log(this.personal.controls.startdate.valid)
-     
-    }else{
-      console.log("please select a monday");
-      this.personal.controls.startdate.invalid;
-    this.mondayState = false;
-      console.log(this.personal.controls.startdate.invalid)
-    }
-    
+    //let day = moment($event).utc().format("dddd");
+    this.startdate = moment($event, "YYYY/MM/DD").utc().format("YYYY/MM/DD")
   
   }
 

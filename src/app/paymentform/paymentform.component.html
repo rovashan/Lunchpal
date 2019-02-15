@@ -50,11 +50,11 @@
                 <pre>From: {{ fromDate | json }} </pre>
                 <pre>To: {{ toDate | json }} </pre>
                -->
-                <label for="fdeldate">Select a Monday for the start of your Subscription: </label>
+                <label for="fdeldate">Select A Monday To Start </label>
                 <div>
                   <!--(ngModelChange)="personalCompleted()"-->
                   <mat-form-field [floatLabel]="'never'">
-                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="checkDate($event); personalCompleted()"
+                    <input placeholder="Start Date" matInput class="datePickerInput" (ngModelChange)="checkDate($event, $event); personalCompleted()"
                       [matDatepicker]="picker" [matDatepickerFilter]="myFilter" formControlName="startdate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -65,9 +65,7 @@
                 <div *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
                   <span class="error">Start date is required.</span>
                 </div>
-                <div *ngIf="(personal.get('startdate').touched) && mondayState == false">
-                    <span class="error">Please select a Monday</span>
-                  </div>
+               
            
               </div>
             </div>
@@ -90,9 +88,12 @@
             </div>
 
           </form> 
-          <p *ngIf="callDone"> <mat-spinner></mat-spinner> wait a second</p>
-           <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
         
+          <div class="buttonControls">
+           <button [disabled]="!deliveryInfo.valid" class="continue" type="button" (click)="deliveryCompleted()" >Continue</button>
+           <p *ngIf="callDone"><mat-spinner></mat-spinner> Preparing Payment Gateway, Please Wait.</p>
+          
+          </div>
           </mat-step>
         
         <mat-step label="Payment">
