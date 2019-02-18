@@ -11,6 +11,12 @@ header{
   margin-bottom: 60px;
 }
 
+.areasCovered {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
 
 .info {
   width: 60%;
