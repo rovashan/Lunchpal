@@ -98,7 +98,7 @@ export class AfirestoreService {
       lastName: lastName,
       phone: phone,
       userAddress: address,
-      userBuilding: building,
+      userBuilding: building ? building : "Not set",  //if building defined else "Not Set"
       subscribedPlan: plan,
       subscriptionStartDate: subscriptionStartDate, 
       subscriptionEndDate: subscriptionEndDate,
