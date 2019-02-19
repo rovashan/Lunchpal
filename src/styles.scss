@@ -281,7 +281,7 @@ mat-tab-body{
 
 .price{
   color: #5ec5ff;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -289,19 +289,19 @@ mat-tab-body{
 
 .items {
   width: 30px;
-  padding: 13px 5px;
+  padding: 10px 5px;
   border: none;
   border:1px solid #aaa;
   border-radius: 4px;
 }
 .price img {
-  width: 40px;
+  width: 24px;
 }
 .buy{
 border: 1px solid #5ec5ff;
 background: none;
 color: #5ec5ff;
-padding: 14px;
+padding: 10px;
 cursor: pointer;
 border-radius: 5px; 
 text-align: center;
@@ -340,27 +340,35 @@ max-height: 50px;
 
 
 .meal {
-  //display: flex;
+  display: flex;
   background: #fff;
-  padding: 10px;
+  padding: 0px 5px;
   margin: 10px;
-  
+  align-items: center;
+  max-width: 400px;
+  border-radius: 10px;
+ 
 }
 .mealContent {
   text-align: left;
   margin-left: 10px;
+  width: 80%;
 }
+
+
 .thumb {
-  width: 100%;
-  height: 200px;
+  width: 130px;
+  height: 130px;
   background-size: 100% !important;
+  border-radius: 5px;
 }
 
 .mealoptions {
   display: flex;
   align-items: center;
   justify-content: space-around;
- 
+  padding: 0px; 
+  margin-top: -8px;
 }
 
 .lunchbox {
@@ -401,28 +409,26 @@ max-height: 50px;
 }
 
 .mealsContainer {
+  //display: block;
+  display: flex;
+  flex-wrap: wrap;
+ justify-content: center;
   padding-bottom: 100px;
 }
-@media screen and (min-width:500px){
-  .meal {
-   display: flex;
-    
+
+@media screen and (max-width: 350px){
+  .mealoptions {
+    display: block;
+    text-align: center;
+  }
+  .price{
+    justify-content: center;
   }
 }
-
 
 @media screen and (min-width: 993px) {
  
-
-  .meal {
-    display: block;
-    max-width: 400px;
-  }
-
-  .mealsContainer {
-    display: flex;
-  }
-
+  
 .tabsControls{
   width: 70%;
   display: block;

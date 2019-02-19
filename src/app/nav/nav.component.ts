@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {AfirestoreService} from "../afirestore.service";
+import { window } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,11 @@ export class NavComponent implements OnInit {
       public authService: AuthService,
       private afirestore: AfirestoreService) { }
     
+
+    hideNavbarLogin = false;
+    browserWindow;  
     //---- Below is the implementation for the sidenav
+
 
     //watch the sidenav
     @ViewChild('sidenav') menu: ElementRef;
@@ -35,10 +40,13 @@ export class NavComponent implements OnInit {
      onResize(event){
       if(event.target.innerWidth > 599){
         this.menu.nativeElement.style.width = "0px";
-      
+        this.hideNavbarLogin = false;
+      }else{
+        this.hideNavbarLogin = true;
       }
     }
 
+   
    //---- End of implementation for the sidenav
     
    
@@ -61,13 +69,28 @@ export class NavComponent implements OnInit {
       this.authService.logOut();
     }
     
+    /*
+    //get the window obj
+    getWindow(){
+      this.browserWindow = window;
+    }    
+  */
     ngOnInit() {
+  //    this.getWindow();
       //changes on user subscription
       this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
       //changes on user status
       this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-    
+  
+      /*
+      if(this.browserWindow.innerWidth > 599){
+        this.hideNavbarLogin = false;
+      }else{
+        this.hideNavbarLogin = true;
+      }
+*/
+
     }
 
-
+    
 }

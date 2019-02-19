@@ -19,7 +19,8 @@
   <li><a routerLink="/plans">Plans</a></li>
   <li><a routerLink="/faqs">FAQ</a></li>
   <li><a routerLink="/contactus">Contact</a></li>
-    
+  <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>
+     
   </ul>
 
   <ul class="mobileLogo">
@@ -36,15 +37,22 @@
       
       </li>
      --> 
-    
-      <li title="credits per day" class="credits" *ngIf="userSubscription && userStatus !== 'Expired'"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{userSubscription.plan.creditsPerDay}}</li>  
-    
-      <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
-  </ul>
+     <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
+     
+    </ul>
 
+    <ul class="creditsmobile">
+      <li title="credits per day" class="credits" *ngIf="userSubscription && userStatus !== 'Expired'">Credits <img src="../../../assets/icons/lunchpalcoin.svg" /> {{userSubscription.plan.creditsPerDay}}</li>  
+    </ul>
+
+    
   <ng-template #showsignup>
     <li class="signup"><a routerLink="/signup">Sign Up</a></li>
     <li class="login"><a routerLink="/login">Log In</a></li>
+  </ng-template>
+  <ng-template #showsidesignup>
+    <li class="sidesignup"><a routerLink="/signup">Sign Up</a></li>
+    <li class="sidelogin"><a routerLink="/login">Log In</a></li>
   </ng-template>
 
   <p class="clear"></p>

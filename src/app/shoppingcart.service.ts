@@ -280,9 +280,11 @@ export class ShoppingcartService {
       console.log("item added", item);     
       cart.push(JSON.stringify(item));
       //set the local cart var to the localStorage
-      //use the first value added to be the item price
-      //when the cart is created
-      this.fakeTotal = item["price"];
+     
+      //use the first value added to be the item price * quantity
+      //when the cart is created,
+      //this is the only time we will need this value
+      this.fakeTotal = (item["price"] * item["quantity"]);
       this.setTotalChange(this.fakeTotal);
       localStorage.setItem("cart", JSON.stringify(cart));
      

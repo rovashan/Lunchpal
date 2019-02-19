@@ -33,11 +33,13 @@ nav {
 }
 
 
-.topnav .options {
+
+.topnav .options, .topnav .creditsmobile {
 
     float: right;
 
 }
+
 
 .topnav ul li {
     list-style-type: none;
@@ -105,12 +107,26 @@ nav {
 }
 
 .topnav .sidenav li:last-of-type{
-  border-bottom: 1px solid $color;
+ /* border-bottom: 1px solid $color; */
 }
 .topnav .sidenav li:first-of-type{
     border-bottom: none;   
 }
 
+.sidesignup, .sidelogout {
+  border-top: 1px solid $color;
+  
+}
+
+.sidesignup a, .sidelogin a, .sidelogout a{
+  color: #555 !important;
+  
+}
+
+.sidesignup:hover a, .sidelogin:hover a, .sidelogout:hover a{
+  color: #fff !important;
+  
+}
 
 .topnav .sidenav li a {
     color: #111;
@@ -179,11 +195,15 @@ li i {
   display: flex;
   align-items: center;
   position: relative;
-  top: -5px;
-font-size: 14px;
+  top: -1px;
+  font-size: 14px;
+  padding-top: 11px;
+  padding-right: 4px;
+  padding-left: 4px;
+ 
 }
 .credits img {
-  width: 30px;
+  width: 24px;
 }
 .icon {
     cursor: pointer;
@@ -193,6 +213,7 @@ font-size: 14px;
 
 .options .logout a{
     color: #111;
+    border-left: 1px solid rgb(228, 228, 228);
 }
 
 .options .logout:hover a{
@@ -202,9 +223,6 @@ font-size: 14px;
     background: none !important;
 }
 
-.credits {
-    padding-top: 9px;  
-}
 
 
 .basket.shake{
@@ -253,5 +271,8 @@ font-size: 14px;
       font-size: 1.4rem;
       padding: 0;
       margin-top: 10px;
+    }
+    .topnav .options {
+      display: none;
     }
   }
