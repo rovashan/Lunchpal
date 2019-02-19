@@ -1,3 +1,5 @@
+/// <reference types="@types/googlemaps" />
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from '../auth/auth.service';
@@ -36,6 +38,7 @@ export class PaymentformComponent implements OnInit {
   public handleAddressChange(address: string) {
     // Do some stuff
     console.log('handleAddressChange');
+    console.log('handleAddressChange: ', address);
     this.selectedAddress = address["name"] + ", " + address["formatted_address"];
   }
 
@@ -57,6 +60,11 @@ export class PaymentformComponent implements OnInit {
   isBusy: boolean;
   selectedPlan = null;
   minDate = new Date();
+
+  defaultBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(-26.139873, 27.944540),
+    new google.maps.LatLng(-26.029446, 28.087677));
+
 
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
@@ -134,7 +142,7 @@ export class PaymentformComponent implements OnInit {
     console.log('userSelectedDate: ', userSelectedDate);
 
     let subsStartDate = moment(userSelectedDate).utc().add(1, "week").format("YYYY-MM-DD");
-    let subsEndDate= moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
+    let subsEndDate = moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
 
     let preq: PReq = {
       VERSION: '21',
@@ -217,7 +225,7 @@ export class PaymentformComponent implements OnInit {
       this.isBusy = false;
       console.log('Error creating payment document: ', err);
     });
-  
+
   }
 
   //update the summary overview
@@ -226,7 +234,7 @@ export class PaymentformComponent implements OnInit {
     this.selectedfirstname = data.firstname;
     this.selectedlastname = data.lastname
     this.selectedphone = data.phone;
-    
+
     console.log('data.address: ', data.address);
     if (data.address) {
       this.selectedAddress = data.address;
@@ -304,6 +312,13 @@ export class PaymentformComponent implements OnInit {
     });
 
     this.getSelectedPlan();
+
+    this.personal.setValue({
+      firstname: 'Ro',
+      lastname: 'S',
+      phone: '0',
+      startdate: '2019-02-25'
+    });
 
   }
 

@@ -69,8 +69,11 @@
             <div class="controls">
               <div>
                 <label for="phone">Address: </label>
-                <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-                  formControlName="address" (onAddressChange)="handleAddressChange($event)"
+                <input ngx-google-places-autocomplete 
+                  [options]="{ bounds: defaultBounds,
+                               strictBounds: true, 
+                               componentRestrictions: { country: 'ZA'} }"
+                  #placesRef="ngx-places" formControlName="address" (onAddressChange)="handleAddressChange($event)"
                   (change)="inputAddressChange($event)" />
                 <div
                   *ngIf="deliveryInfo.get('address').hasError('required') && (deliveryInfo.get('address').dirty || deliveryInfo.get('address').touched)">
