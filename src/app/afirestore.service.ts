@@ -90,7 +90,7 @@ export class AfirestoreService {
 
 
   public addPaymentReference(userDocId: string, firstName: string, lastName: string, phone: string, 
-                             address: string, plan: object, subscriptionStartDate: string, subscriptionEndDate: string) {
+                             address: string, building: string, plan: object, subscriptionStartDate: string, subscriptionEndDate: string) {
     let data = {
       createdDate: new Date(),
       userId: userDocId,
@@ -98,6 +98,7 @@ export class AfirestoreService {
       lastName: lastName,
       phone: phone,
       userAddress: address,
+      userBuilding: building,
       subscribedPlan: plan,
       subscriptionStartDate: subscriptionStartDate, 
       subscriptionEndDate: subscriptionEndDate,

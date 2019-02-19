@@ -47,11 +47,18 @@ export class PaymentformComponent implements OnInit {
     this.selectedAddress = event.srcElement.value;
   }
 
+  public inputBuildingChange(event) {
+    // Do some stuff
+    console.log('inputBuildingChange: ', event.srcElement.value);
+    this.selectedBuilding = event.srcElement.value;
+  }
+
   selectedfirstname: string;
   selectedlastname: string;
   selectedphone: string;
   startdate: string;
   selectedAddress: string;
+  selectedBuilding: string;
   personalState: boolean = false;
   deliveryState: boolean = false;
   authSubscription: Subscription;
@@ -82,6 +89,7 @@ export class PaymentformComponent implements OnInit {
   //delivery form controls
   public deliveryInfo = new FormGroup({
     address: new FormControl('', Validators.required),
+    building: new FormControl()
   })
 
   //payment request form
@@ -177,6 +185,7 @@ export class PaymentformComponent implements OnInit {
       this.selectedlastname,
       this.selectedphone,
       this.selectedAddress,
+      this.selectedBuilding,
       plan,
       this.startdate,
       endDate
@@ -238,6 +247,10 @@ export class PaymentformComponent implements OnInit {
     console.log('data.address: ', data.address);
     if (data.address) {
       this.selectedAddress = data.address;
+    }
+
+    if (data.building) {
+      this.selectedBuilding = data.building;
     }
   }
 
@@ -313,12 +326,12 @@ export class PaymentformComponent implements OnInit {
 
     this.getSelectedPlan();
 
-    this.personal.setValue({
-      firstname: 'Ro',
-      lastname: 'S',
-      phone: '0',
-      startdate: '2019-02-25'
-    });
+    // this.personal.setValue({
+    //   firstname: 'Ro',
+    //   lastname: 'S',
+    //   phone: '0',
+    //   startdate: '2019-02-25'
+    // });
 
   }
 

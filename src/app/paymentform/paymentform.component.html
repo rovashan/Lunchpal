@@ -79,6 +79,16 @@
                   *ngIf="deliveryInfo.get('address').hasError('required') && (deliveryInfo.get('address').dirty || deliveryInfo.get('address').touched)">
                   <span class="error">Address is required.</span>
                 </div>
+                <label for="phone">Building (optional): </label>
+                <input name="building" placeholder="Building name" formControlName="building" (change)="inputBuildingChange($event)">
+                <p>These areas are covered. More areas coming soon.</p>
+                <div>
+                  <mat-chip-list>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Sandton</mat-chip>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Bryanston</mat-chip>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Rosebank</mat-chip>
+                  </mat-chip-list>
+                </div>
               </div>
             </div>
 
@@ -139,6 +149,7 @@
       <div>
         <h3>Address</h3>
         <p>Address: <span class="personalinfo">{{selectedAddress}}</span> </p>
+        <p>Building: <span class="personalinfo">{{selectedBuilding}}</span> </p>
 
       </div>
       <div>
