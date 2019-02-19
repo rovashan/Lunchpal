@@ -8,11 +8,11 @@ import {AuthService} from "../../auth/auth.service";
   styleUrls: ['./lightmeals.component.scss']
 })
 export class LightmealsComponent implements OnInit {
-
+/*
   lightmealone: any;
   lightmealtwo: any;
   lightmealthree: any;
-
+*/
   constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService) { }
 
   userStatus = this.authService.userStatus;

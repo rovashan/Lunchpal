@@ -2,4 +2,12 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+
+<div *ngIf="lunchbox && basketChange" class="lunchbox">
+  <div>
+    <p>Total: <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{total}}</strong></p> 
+    <p><a [routerLink]="['/canteen/order']">View LuchBox</a></p>
+  </div>
+</div>
+
 <app-footer *ngIf="canteen"></app-footer>

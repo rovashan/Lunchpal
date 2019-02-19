@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import {OnesignalService} from "./onesignal/onesignal.service";
 import {AuthService} from "./auth/auth.service";
 import {AfirestoreService} from "./afirestore.service";
-
+import {ShoppingcartService} from "./shoppingcart.service";
 
 @Component({
   selector: 'app-root',
@@ -19,11 +19,16 @@ export class AppComponent implements OnInit {
     private location: Location,
     private router: Router,
     private authService: AuthService,
-    private afirestore: AfirestoreService
+    private afirestore: AfirestoreService,
+    private shoppingcartService: ShoppingcartService
     ){}
   
   canteen:boolean = true;
-  
+  lunchbox: boolean = false;
+  total: any = this.shoppingcartService.totalChange;
+  basketChange: any = this.shoppingcartService.emptyBasket;
+
+
   //checks url in order to show or hide the footer
   checkURL(){
     this.router.events.subscribe((x) => {
@@ -33,19 +38,37 @@ export class AppComponent implements OnInit {
         this.canteen = true;
       }
     });
-  }
 
+    this.router.events.subscribe((x) => {
+      if(!this.router.url.indexOf("/canteen")){
+        this.lunchbox = true;
+      } else {
+        this.lunchbox = false;
+      }
+      if(!this.router.url.indexOf("/canteen/order")){
+        this.lunchbox = false;
+      }
+    });
+
+    
+  }
+/*
   x(){
     this.afirestore.collectionChanges().subscribe(x => {
       console.log(x);
     })
   }
-
+*/
   ngOnInit(){
-    //init the OneSignal service
-    //and check for changes
-  
-    this.x();
+    
+    this.shoppingcartService.emptyBasketChange.subscribe(x => {
+      this.basketChange = x;
+    });
+   
+    this.shoppingcartService.totalChanges.subscribe(x => {
+      this.total = x;
+    })
+
 
     this.authService.user.subscribe(user => {
       //console.log("checking user", user)

@@ -77,7 +77,7 @@ export class AuthService {
         this.router.navigate(["/plans"]);
       })
       .catch((err) => {
-        console.log("An error ocurred: ", err);
+        //console.log("An error ocurred: ", err);
         this.signupError = err.message;
       })
   }
@@ -87,7 +87,7 @@ export class AuthService {
     this.afAuth.auth.signOut()
     .then(()=>{
       this.setUserSubscription(null);
-      console.log("user signed Out successfully");
+      //console.log("user signed Out successfully");
       //send the user to the main page
      this.router.navigate(["/"]);
      
@@ -112,18 +112,18 @@ export class AuthService {
      //console.log("current User", currentUser);
      this.userId = currentUser["uid"];
      this.userName = currentUser["email"];
-     console.log("current user email", this.userName)
+     //console.log("current user email", this.userName)
      this.afirestore.checkUser().subscribe(users =>{
         users.map(user => {
           if(user.payload.doc.data()["email"] === this.userName){
             
-             console.log("user ", user.payload.doc.data());
+             //console.log("user ", user.payload.doc.data());
               //get us the document ID of the current user
               this.userDocId = user.payload.doc.id;
               this.userSubscriptionId = user.payload.doc.data()["subscription"];
               this.userStatus = user.payload.doc.data()["status"];
 
-              console.log("subscription status", user.payload.doc.data()["status"]);
+             //console.log("subscription status", user.payload.doc.data()["status"]);
               
               if(this.userStatus === "Expired"){
                 this.setUserStatus("Expired");
@@ -137,7 +137,7 @@ export class AuthService {
                 .subscribe(data =>{
                   //this.userSubscription = data;
                   this.setUserSubscription(data);
-                  console.log("User subscription", this.userSubscription)
+                  //console.log("User subscription", this.userSubscription)
                 })
              } else{
                 console.log("user subscription is empty")
@@ -175,11 +175,11 @@ export class AuthService {
             //makes the changes for the nav to hide the cart and credits
             if(this.userStatus === "Expired"){
               this.setUserStatus("Expired");
-              console.log(this.userStatus);
+              //console.log(this.userStatus);
             }else{
               this.setUserStatus("Active");
             }
-            console.log(this.userSubscriptionId, this.userStatus);
+            //console.log(this.userSubscriptionId, this.userStatus);
             
 
             if(this.userSubscriptionId !== ""){
@@ -187,7 +187,7 @@ export class AuthService {
               .subscribe(data =>{
                 //this.userSubscription = data;
                 this.setUserSubscription(data);
-                console.log("User subscription", this.userSubscription)
+                //console.log("User subscription", this.userSubscription)
               })
             } else{
               console.log("user subscription is empty")

@@ -1,13 +1,16 @@
 
 .menu {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
     -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
     box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
     background: #fff;
+   
 }
-
+.canteen {
+    padding-bottom: 100px;
+}
 .menu div {
    
     border-bottom: 1px solid #aaa;

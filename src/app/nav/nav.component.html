@@ -28,13 +28,16 @@
 
 
   <ul class="options">
+    <!--
     <li *ngIf="userSubscription && userStatus !== 'Expired'"><a class="basket" id="basket" routerLink="/canteen/order">
         <i class="material-icons">
           shopping_basket
         </i></a>
       
       </li>
-      <li class="credits" *ngIf="userSubscription && userStatus !== 'Expired'"><span>R {{userSubscription.planCredits}}</span></li>  
+     --> 
+    
+      <li title="credits per day" class="credits" *ngIf="userSubscription && userStatus !== 'Expired'"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{userSubscription.plan.creditsPerDay}}</li>  
     
       <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
   </ul>

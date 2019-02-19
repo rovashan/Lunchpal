@@ -9,7 +9,43 @@
       </a>  
     </div>
 <div class="mealsContainer">
-
+  <div class="meal">
+    <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
+    <div class="mealContent">
+       
+    <div>
+      <h3>Drink One</h3> 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+      <div class="mealoptions">
+        <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 3.75 </p>
+        <div>
+         <input class="items" type="number" name="drinkone" value="0" min="0" placeholder="0" [(ngModel)]="Drinkone"> &nbsp;
+        <button class="buy" (click)="addProduct(Drinkone, {price: 3.75, name: 'Drink one'}); changeUI($event);">Add To Cart</button>
+      </div> 
+      </div>
+    </div>
+    
+   </div>
+  </div>
+  <div class="meal">
+    <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
+    <div class="mealContent">
+       
+    <div>
+      <h3>Drink Two</h3> 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+      <div class="mealoptions">
+        <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 3.75 </p>
+        <div>
+         <input class="items" type="number" name="drinktwo" value="0" min="0" placeholder="0" [(ngModel)]="Drinktwo"> &nbsp;
+        <button class="buy" (click)="addProduct(Drinktwo, {price: 3.75, name: 'Drink two'}); changeUI($event);">Add To Cart</button>
+      </div> 
+      </div>
+    </div>
+    
+   </div>
+  </div>
+  <!--
   <div class="meal">
    <div class="mealContent">
     <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png'); "></div>
@@ -58,7 +94,8 @@
       <button class="buy" (click)="addProduct(Drinkthree, {price: 4.65, name: 'Drink three'}); changeUI($event);">Add To Cart</button>
     </div>
    </div>
-</div>
+-->
+  </div>
 
 
 </section>

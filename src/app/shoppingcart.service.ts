@@ -14,24 +14,31 @@ export class ShoppingcartService {
 
   public items: Item[];
   public total: number;
+  public fakeTotal:number = 0;
   public totalCredits: number;
   public cart: any;
   public meal: any;
   public emptyBasket: boolean;
   public deliveryTime: any;
-  public shake: boolean = false;
-
+  //public shake: boolean = false;
+  public totalChange: any;
 
   public emptyBasketChange: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.emptyBasket);
-  //listen for the changes so we can update the basket icon
-  //on the nav
- 
+  public totalChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.totalChange);
+
   setEmptyBasket(bool: boolean): void{
     this.emptyBasket = bool;
     this.emptyBasketChange.next(bool);
     
   }
 
+  setTotalChange(total: any): void {
+    this.totalChange = total;
+    this.totalChanges.next(total);
+  }
+
+
+/*
   shakeBasket(){
     console.log("basket is shaking");
     let basket = document.getElementById("basket");
@@ -44,7 +51,7 @@ export class ShoppingcartService {
     }, 500)
     
   }
-
+*/
   //change ui 
   orderedItems($event: Event){
    
@@ -53,7 +60,7 @@ export class ShoppingcartService {
     let input = parent.querySelector("input");
     //add the input to localStorage
     localStorage.setItem(input.name, input.value);
-  
+    this.setEmptyBasket(true);
   }
 
 
@@ -122,6 +129,29 @@ export class ShoppingcartService {
 
 }
 
+  calcTotal(){
+    this.total = 0;
+    this.items = [];
+    if(localStorage.getItem("cart") != null){
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      for(let i = 0; i < cart.length; i++){
+        //parse each item in the cart
+        let item = JSON.parse(cart[i]);
+        //push the items to the array
+        this.items.push({
+          product: item["product"],
+          quantity: item["quantity"],
+          price: item["price"]
+        });
+        //get the total
+        this.total += item["price"] * item["quantity"];
+        this.fakeTotal = this.total;
+        this.setTotalChange(this.fakeTotal);
+        console.log(this.items)
+      
+    }
+  }
+}
 
 
   loadCart(){
@@ -140,6 +170,8 @@ export class ShoppingcartService {
         });
         //get the total
         this.total += item["price"] * item["quantity"];
+        console.log(this.items)
+        
         console.log("meal is null");
         
     }
@@ -207,25 +239,24 @@ export class ShoppingcartService {
       localStorage.removeItem("cart");
       console.log("the user selected a meal, removed cart from storage");
     }
-    this.shakeBasket();
+    //this.shakeBasket();
     //set meal variable on localStorage
     localStorage.setItem("meal", JSON.stringify(obj)); 
+    this.setEmptyBasket(true);
+    this.setTotalChange(obj["price"]);
     
   }
 
 
   //add product to the cart
   addProduct(quantity: any, obj: Object){
-   
-  
+   let total;
 
     //check if quantity is undefined
     if(quantity == undefined || quantity == null ){
       console.log("quantity is not defined");
     }else{
-      this.shakeBasket();
-    console.log("item added");     
-  
+   
     //remove meal is the variable exists
     if(localStorage.getItem("meal")){
       localStorage.removeItem("meal");
@@ -239,37 +270,85 @@ export class ShoppingcartService {
       price: obj["price"]
     } 
 
+
     //check if the cart exists
     if(localStorage.getItem("cart") == null){
+      //the cart doesnt exist
       let cart: any = [];
       //push the item
+    
+      console.log("item added", item);     
       cart.push(JSON.stringify(item));
       //set the local cart var to the localStorage
+      //use the first value added to be the item price
+      //when the cart is created
+      this.fakeTotal = item["price"];
+      this.setTotalChange(this.fakeTotal);
       localStorage.setItem("cart", JSON.stringify(cart));
-    
-    
+     
+   
     }else{
       //the cart is already set
+   
       let cart: any = JSON.parse(localStorage.getItem("cart"));
       let index: number = -1;
 
         for(let i = 0; i < cart.length; i++){
           let item: Item = JSON.parse(cart[i]);
           if(item.product == obj["name"]){
+        
             index = i;
             break;
           }
         }
-        
+        /*
+        let added =  item.price;
+        total += added;
+        this.setTotalChange(total);
+      */
         if(index == -1){
+         //item doesnt exist, add it
           cart.push(JSON.stringify(item));
+          console.log("new item added", item);
+              
+          this.fakeTotal += (item["price"] * item["quantity"]);
+        
+          this.setTotalChange(this.fakeTotal);
           localStorage.setItem("cart", JSON.stringify(cart));
+       
         }else{
+          //item already exists, add to the quantity
+        
           let item: Item = JSON.parse(cart[index]);
           item.quantity = quantity;
-          
+          console.log("item already exits", item);  
           cart[index] = JSON.stringify(item);
+         
           localStorage.setItem("cart", JSON.stringify(cart));
+        
+          //loop through the localStorage
+          //reset the total and calculate it using the items in the local Storage
+          total = 0;
+          let items = [];
+          if(localStorage.getItem("cart") != null){
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            for(let i = 0; i < cart.length; i++){
+              //parse each item in the cart
+              let item = JSON.parse(cart[i]);
+              //push the items to the array
+              items.push({
+                product: item["product"],
+                quantity: item["quantity"],
+                price: item["price"]
+              });
+              //get the total
+              total += (item["price"] * item["quantity"]);
+              console.log(total);
+              this.fakeTotal = total;
+              this.setTotalChange(this.fakeTotal);
+            
+           }
+        
         }
     }
 
@@ -278,4 +357,5 @@ export class ShoppingcartService {
     
 }
 
+}
 }

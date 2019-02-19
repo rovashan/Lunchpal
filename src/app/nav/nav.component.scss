@@ -151,7 +151,7 @@ li i {
 }
 
 
-.topnav .menu li a.logo, {
+.topnav .menu li a.logo {
   padding-left: 10px;
   font-size: 1.4rem;
   margin-top: -4px;
@@ -175,7 +175,16 @@ li i {
    background: #fff;
 }
 
-
+.credits {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -5px;
+font-size: 14px;
+}
+.credits img {
+  width: 30px;
+}
 .icon {
     cursor: pointer;
   }
