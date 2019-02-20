@@ -9,6 +9,64 @@
       </a>  
     </div>
 <div class="mealsContainer">
+    <div class="meal">
+        <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+        <div class="mealContent">
+           
+        <div>
+          <h3>Light Meal One</h3> 
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+          <div class="mealoptions">
+            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 12.95 </p>
+            <div>
+                <mat-select placeholder="0" name="lightmealone" [(ngModel)]="lightmealone">
+                    <mat-option value="0">0</mat-option>  
+                    <mat-option  value="1">1</mat-option>
+                    <mat-option  value="2">2</mat-option>
+                    <mat-option  value="3">3</mat-option>
+                    <mat-option  value="4">4</mat-option>
+                    <mat-option  value="5">5</mat-option>
+                </mat-select>
+                <!--
+             <input  class="items" type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"> &nbsp;
+             -->
+             <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event, lightmealone, 'light meal one');">Add To Cart</button>
+          </div> 
+          </div>
+        </div>
+        
+       </div>
+      </div>
+      <div class="meal">
+          <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+          <div class="mealContent">
+             
+          <div>
+            <h3>Light Meal Two</h3> 
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+            <div class="mealoptions">
+              <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 12.95 </p>
+              <div>
+                  <mat-select placeholder="0" name="lightmealtwo" [(ngModel)]="lightmealtwo">
+                      <mat-option value="0">0</mat-option>  
+                      <mat-option  value="1">1</mat-option>
+                      <mat-option  value="2">2</mat-option>
+                      <mat-option  value="3">3</mat-option>
+                      <mat-option  value="4">4</mat-option>
+                      <mat-option  value="5">5</mat-option>
+                  </mat-select>
+                  <!--
+               <input  class="items" type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"> &nbsp;
+               -->
+               <button class="buy" (click)="addProduct(lightmealtwo, {price: 12.75, name: 'light meal two'}); changeUI($event, lightmealtwo, 'light meal two');">Add To Cart</button>
+            </div> 
+            </div>
+          </div>
+          
+         </div>
+        </div>
+
+<!--
   <div class="meal">
     <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
     <div class="mealContent">
@@ -45,58 +103,8 @@
     
    </div>
   </div>
-<!--
-  <div class="meal">
-   <div class="mealContent">
-    <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
-    
-    <div>
-      <h3>Snack</h3> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-    </div> 
-   </div> 
-   <div class="mealoptions">
-     <p class="price">$12.95</p>
-     <input type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"  >
-     
-     <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event);">Add To Cart</button>
-   </div>
-  </div>
-  
-  <div class="meal">
-    <div class="mealContent">
-     <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
-     
-     <div>
-       <h3>Snack</h3> 
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-     </div> 
-    </div> 
-    <div class="mealoptions">
-      <p class="price">$19.95</p>
-      <input type="number" name="lightmealtwo"  value="0" min="0" placeholder="0"  [(ngModel)]="lightmealtwo">
-      <button class="buy" (click)="addProduct(lightmealtwo, {price: 19.75, name: 'light meal two'}); changeUI($event);">Add To Cart</button>
-     
-    </div>
-   </div>
-
-   <div class="meal">
-    <div class="mealContent">
-     <div class="thumb" style="background: url('../../assets/images/brooke-lark-194252-unsplash.png');"></div>
-     
-     <div>
-       <h3>Snack</h3> 
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-     </div> 
-    </div> 
-    <div class="mealoptions">
-      <p class="price">$5.65</p>
-      <input type="number" name="lightmealthree" value="0" min="0" placeholder="0" [(ngModel)]="lightmealthree">
-      <button class="buy"  (click)="addProduct(lightmealthree, {price: 5.65, name: 'light meal three'}); changeUI($event);">Add To Cart</button>
-    </div>
-   </div>
 -->
-  </div>
+</div>
 
 
 </section>

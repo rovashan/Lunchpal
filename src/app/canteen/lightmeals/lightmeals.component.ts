@@ -8,11 +8,7 @@ import {AuthService} from "../../auth/auth.service";
   styleUrls: ['./lightmeals.component.scss']
 })
 export class LightmealsComponent implements OnInit {
-/*
-  lightmealone: any;
-  lightmealtwo: any;
-  lightmealthree: any;
-*/
+
   constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService) { }
 
   userStatus = this.authService.userStatus;
@@ -20,9 +16,9 @@ export class LightmealsComponent implements OnInit {
    
     this.shoppingcart.addProduct(quantity, ligthmeal);
   }  
-  changeUI($event: Event){
-    this.shoppingcart.orderedItems($event);
-   
+  changeUI($event: Event, item: any, name: string){
+    //this.shoppingcart.orderedItems($event);
+    this.shoppingcart.orderedItems($event, item, name);
   }
   
 

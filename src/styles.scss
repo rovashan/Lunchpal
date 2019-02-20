@@ -415,7 +415,11 @@ max-height: 50px;
  justify-content: center;
   padding-bottom: 100px;
 }
-
+.mat-select {
+  width: 30px !important;
+  padding: 7px 0px !important;
+ 
+}
 @media screen and (max-width: 440px){
   .mealoptions {
     display: block;

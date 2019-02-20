@@ -11,7 +11,8 @@ import { MatToolbarModule,
    MatFormFieldModule,
    MatInputModule,
    MatProgressSpinnerModule,
-   MatChipsModule
+   MatChipsModule,
+   MatSelectModule
   } from '@angular/material';
 
 // Modules
@@ -28,7 +29,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule ,
   MatProgressSpinnerModule,
-  MatChipsModule
+  MatChipsModule,
+  MatSelectModule
 ];
 
 @NgModule({

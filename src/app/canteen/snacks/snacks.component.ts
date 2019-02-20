@@ -16,7 +16,7 @@ export class SnacksComponent implements OnInit {
     this.shoppingcart.addProduct(quantity, obj);
   }
   changeUI($event: Event){
-    this.shoppingcart.orderedItems($event);
+    //this.shoppingcart.orderedItems($event);
    
   }
   

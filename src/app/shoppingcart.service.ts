@@ -53,16 +53,25 @@ export class ShoppingcartService {
   }
 */
   //change ui 
+  /*
   orderedItems($event: Event){
-   
+  
     let parent = $event.srcElement.parentElement;
     
     let input = parent.querySelector("input");
     //add the input to localStorage
+    
     localStorage.setItem(input.name, input.value);
     this.setEmptyBasket(true);
+  
   }
+*/
+orderedItems($event: Event, item: any, name: string){
+  console.log(item, name);
+  localStorage.setItem(name, item);
+  this.setEmptyBasket(true);
 
+}
 
   //update items
   updateItems(){
@@ -262,7 +271,7 @@ export class ShoppingcartService {
       localStorage.removeItem("meal");
        console.log("products added, removed meal from local storage")
     }
-    
+      
     //build each item
     let item: Item = {
       product: obj["name"],
@@ -303,11 +312,6 @@ export class ShoppingcartService {
             break;
           }
         }
-        /*
-        let added =  item.price;
-        total += added;
-        this.setTotalChange(total);
-      */
         if(index == -1){
          //item doesnt exist, add it
           cart.push(JSON.stringify(item));
@@ -356,7 +360,7 @@ export class ShoppingcartService {
 
 
     }
-    
+  
 }
 
 }
