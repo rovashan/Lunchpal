@@ -346,7 +346,7 @@ max-height: 50px;
   margin: 10px;
   align-items: center;
   max-width: 400px;
-  border-radius: 10px;
+  border-radius: 0px;
  
 }
 .mealContent {
@@ -357,10 +357,10 @@ max-height: 50px;
 
 
 .thumb {
-  width: 130px;
-  height: 130px;
+  width: 60%;
+  height: 100%;
   background-size: 100% !important;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 .mealoptions {
@@ -416,10 +416,14 @@ max-height: 50px;
   padding-bottom: 100px;
 }
 
-@media screen and (max-width: 350px){
+@media screen and (max-width: 368px){
   .mealoptions {
     display: block;
     text-align: center;
+  }
+  .thumb {
+   // height: 210px;
+    background-size: 160% !important;
   }
   .price{
     justify-content: center;
