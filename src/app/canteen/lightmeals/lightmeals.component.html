@@ -19,8 +19,8 @@
       <div class="mealoptions">
         <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 12.95 </p>
         <div>
-         <input class="items" type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"> &nbsp;
-        <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event);">Add To Cart</button>
+         <input matInput class="items" type="number" name="lightmealone" value="0" min="0" placeholder="0" [(ngModel)]="lightmealone"> &nbsp;
+         <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event);">Add To Cart</button>
       </div> 
       </div>
     </div>
