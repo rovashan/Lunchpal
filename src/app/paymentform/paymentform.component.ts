@@ -37,19 +37,18 @@ export class PaymentformComponent implements OnInit {
 
   public handleAddressChange(address: string) {
     // Do some stuff
-    console.log('handleAddressChange');
-    console.log('handleAddressChange: ', address);
+    //console.log('handleAddressChange: ', address);
     this.selectedAddress = address["name"] + ", " + address["formatted_address"];
   }
 
   public inputAddressChange(event) {
-    console.log(event.srcElement.value);
+    //console.log(event.srcElement.value);
     this.selectedAddress = event.srcElement.value;
   }
 
   public inputBuildingChange(event) {
     // Do some stuff
-    console.log('inputBuildingChange: ', event.srcElement.value);
+    //console.log('inputBuildingChange: ', event.srcElement.value);
     this.selectedBuilding = event.srcElement.value;
   }
 
