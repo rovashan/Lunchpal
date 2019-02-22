@@ -77,8 +77,6 @@ orderedItems($event: Event, item: any, name: string){
   updateItems(){
     console.log("updateItems called");
     //wait for the component to be available
-    setTimeout(() => {
-    //look for the mat selects
     let matSelectElems = document.getElementsByTagName("mat-select");
     for(let i = 0; i < matSelectElems.length; i++){
       //get the number of items on localStorage
@@ -91,25 +89,7 @@ orderedItems($event: Event, item: any, name: string){
       }
       
     }       
-  
-    }, 300);
-  
-    /*
-    for(let i = 0; i < inputs.length; i++){
-    if(localStorage.getItem(inputs[i]["name"])){
-     let x= document.getElementsByTagName(inputs[i]["name"]);
-      console.log(x);  
-      
-      
-      
-      let x = document.getElementsByName(inputs[i]["name"]);
-      x[0].setAttribute("value", localStorage.getItem(inputs[i]["name"]))
-      x[0].setAttribute("placeholder", localStorage.getItem(inputs[i]["name"]))
-   
-    }
-    
-   }
-   */
+
   }
 
 

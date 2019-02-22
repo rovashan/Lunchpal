@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
 import {AuthService} from "../../auth/auth.service";
 
@@ -7,7 +7,7 @@ import {AuthService} from "../../auth/auth.service";
   templateUrl: './drinks.component.html',
   styleUrls: ['./drinks.component.scss']
 })
-export class DrinksComponent implements OnInit {
+export class DrinksComponent implements OnInit, AfterViewInit {
 
   constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService) { }
   userStatus = this.authService.userStatus;
@@ -23,9 +23,11 @@ export class DrinksComponent implements OnInit {
   
   
   ngOnInit() {
-    this.shoppingcart.updateItems();
+    
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
   }
-
+  ngAfterViewInit(){
+    this.shoppingcart.updateItems();
+  }
 
 }
