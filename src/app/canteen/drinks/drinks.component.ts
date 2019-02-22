@@ -16,10 +16,11 @@ export class DrinksComponent implements OnInit {
   addProduct(quantity: number, obj: Object){
     this.shoppingcart.addProduct(quantity, obj);
   }
-  changeUI($event: Event){
-    //this.shoppingcart.orderedItems($event);
+  changeUI($event: Event, item: any, name: string){
    
+    this.shoppingcart.orderedItems($event, item, name);
   }
+  
   
   ngOnInit() {
     this.shoppingcart.updateItems();

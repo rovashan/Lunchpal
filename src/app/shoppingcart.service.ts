@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import {Router} from "@angular/router";
 //item
 import {Item} from "./models/item";
@@ -67,7 +67,7 @@ export class ShoppingcartService {
   }
 */
 orderedItems($event: Event, item: any, name: string){
-  console.log(item, name);
+  //console.log(item, name);
   localStorage.setItem(name, item);
   this.setEmptyBasket(true);
 
@@ -75,16 +75,41 @@ orderedItems($event: Event, item: any, name: string){
 
   //update items
   updateItems(){
-    let inputs = document.getElementsByTagName("input");
-   
+    console.log("updateItems called");
+    //wait for the component to be available
+    setTimeout(() => {
+    //look for the mat selects
+    let matSelectElems = document.getElementsByTagName("mat-select");
+    for(let i = 0; i < matSelectElems.length; i++){
+      //get the number of items on localStorage
+      let name = matSelectElems[i].getAttribute("name");
+      if(localStorage.getItem(name)){
+        let children = matSelectElems[i].firstChild.firstChild;
+        children.textContent = localStorage.getItem(name);
+        console.log(name)
+        console.log(children);
+      }
+      
+    }       
+  
+    }, 300);
+  
+    /*
     for(let i = 0; i < inputs.length; i++){
     if(localStorage.getItem(inputs[i]["name"])){
+     let x= document.getElementsByTagName(inputs[i]["name"]);
+      console.log(x);  
+      
+      
+      
       let x = document.getElementsByName(inputs[i]["name"]);
       x[0].setAttribute("value", localStorage.getItem(inputs[i]["name"]))
       x[0].setAttribute("placeholder", localStorage.getItem(inputs[i]["name"]))
-    }
-   }
    
+    }
+    
+   }
+   */
   }
 
 
@@ -213,8 +238,31 @@ orderedItems($event: Event, item: any, name: string){
 				break;
 			}
     }
+    //pass the name of the item to the remove function
     this.removeCurrentItem(name);
     localStorage.setItem("cart", JSON.stringify(cart));
+    let total = 0;
+    let items = [];
+    if(localStorage.getItem("cart") != null){
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      for(let i = 0; i < cart.length; i++){
+        //parse each item in the cart
+        let item = JSON.parse(cart[i]);
+        //push the items to the array
+        items.push({
+          product: item["product"],
+          quantity: item["quantity"],
+          price: item["price"]
+        });
+        //get the total
+        total += (item["price"] * item["quantity"]);
+        console.log(total);
+        this.fakeTotal = total;
+        this.setTotalChange(this.fakeTotal);
+      
+     }
+  
+  }    
 
     this.checkForEmpty();
   }
@@ -225,19 +273,18 @@ orderedItems($event: Event, item: any, name: string){
     //in order to just delete that item from localStorage
     //and to keep the other items
     //to display the values on the ui
-    let noSpacesName = name.replace(/ /g, "");
-    let lowercase = noSpacesName.toLocaleLowerCase()
-
+    
     let arr = []; 
     for (let i = 0; i < localStorage.length; i++){
-        if (localStorage.key(i) == lowercase && localStorage.key(i) !== 'onesignal-notification-prompt') {
+        if (localStorage.key(i) == name && localStorage.key(i) !== 'onesignal-notification-prompt') {
             arr.push(localStorage.key(i));
         }
     }
     for (var i = 0; i < arr.length; i++) {
         localStorage.removeItem(arr[i]);
-    }
-  
+      }
+   
+
   }
 
   //order meal

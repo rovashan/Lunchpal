@@ -9,6 +9,7 @@
       </a>  
     </div>
 <div class="mealsContainer">
+
     <div class="meal">
         <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
         <div class="mealContent">
@@ -19,8 +20,16 @@
           <div class="mealoptions">
             <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 3.75 </p>
             <div>
-             <input class="items" type="number" name="snackone" value="0" min="0" placeholder="0" [(ngModel)]="snackone"> &nbsp;
-            <button class="buy" (click)="addProduct(snackone, {price: 3.75, name: 'snack one'}); changeUI($event);">Add To Cart</button>
+                <mat-select placeholder="0" name="snack one" [(ngModel)]="snackone">
+                    <mat-option value="0">0</mat-option>  
+                    <mat-option  value="1">1</mat-option>
+                    <mat-option  value="2">2</mat-option>
+                    <mat-option  value="3">3</mat-option>
+                    <mat-option  value="4">4</mat-option>
+                    <mat-option  value="5">5</mat-option>
+                </mat-select>
+           
+             <button class="buy" (click)="addProduct(snackone, {price: 3.75, name: 'snack one'}); changeUI($event, snackone, 'snack one');">Add To Cart</button>
           </div> 
           </div>
         </div>
@@ -33,54 +42,28 @@
           <div class="mealContent">
              
           <div>
-            <h3>Snack Four</h3> 
+            <h3>Snack Two</h3> 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
             <div class="mealoptions">
               <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 4.75 </p>
               <div>
-               <input class="items" type="number" name="snackfour" value="0" min="0" placeholder="0" [(ngModel)]="snackfour"> &nbsp;
-              <button class="buy" (click)="addProduct(snackfour, {price: 4.75, name: 'snack four'}); changeUI($event);">Add To Cart</button>
+                  <mat-select placeholder="0" name="snack two" [(ngModel)]="snacktwo">
+                      <mat-option value="0">0</mat-option>  
+                      <mat-option  value="1">1</mat-option>
+                      <mat-option  value="2">2</mat-option>
+                      <mat-option  value="3">3</mat-option>
+                      <mat-option  value="4">4</mat-option>
+                      <mat-option  value="5">5</mat-option>
+                  </mat-select>
+             
+               <button class="buy" (click)="addProduct(snacktwo, {price: 4.75, name: 'snack two'}); changeUI($event, snacktwo, 'snack two');">Add To Cart</button>
             </div> 
             </div>
           </div>
           
          </div>
         </div>
- 
-  <!--
-  <div class="meal">
-    <div class="mealContent">
-     <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
-     
-     <div>
-       <h3>Snack</h3> 
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-     </div> 
-    </div> 
-    <div class="mealoptions">
-      <p class="price">$19.95</p>
-      <input type="number" name="snacktwo"  value="0" min="0" placeholder="0"  [(ngModel)]="snacktwo">
-      <button class="buy" (click)="addProduct(snacktwo, {price: 19.75, name: 'snack two'}); changeUI($event);">Add To Cart</button>
-     
-    </div>
-   </div>
-
-   <div class="meal">
-    <div class="mealContent">
-     <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
-     
-     <div>
-       <h3>Snack</h3> 
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
-     </div> 
-    </div> 
-    <div class="mealoptions">
-      <p class="price">$5.65</p>
-      <input type="number" name="snackthree" value="0" min="0" placeholder="0" [(ngModel)]="snackthree">
-      <button class="buy"  (click)="addProduct(snackthree, {price: 5.65, name: 'snack three'}); changeUI($event);">Add To Cart</button>
-    </div>
-   </div>
--->
+  
   </div>
 
 

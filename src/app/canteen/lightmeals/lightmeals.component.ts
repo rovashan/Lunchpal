@@ -13,11 +13,10 @@ export class LightmealsComponent implements OnInit {
 
   userStatus = this.authService.userStatus;
   addProduct(quantity: number, ligthmeal: Object){
-   
     this.shoppingcart.addProduct(quantity, ligthmeal);
   }  
   changeUI($event: Event, item: any, name: string){
-    //this.shoppingcart.orderedItems($event);
+  
     this.shoppingcart.orderedItems($event, item, name);
   }
   
@@ -25,6 +24,7 @@ export class LightmealsComponent implements OnInit {
   ngOnInit() {
     this.shoppingcart.updateItems();
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+    
   }
 
 }
