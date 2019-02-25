@@ -23,13 +23,22 @@ export class AuthService {
   public signupError: string;
   public userId: string;
   public userName: string;
+  public _userFullName: string;
   public userDocId: string;
   public userSubscriptionId: string;
   public userStatus: string;
   public userSubscription: object;
+  public userFullName: any;
 
   public userSubscriptionChanges: BehaviorSubject<object> = new BehaviorSubject<object>(this.userSubscription);
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
+  public userFullNameChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.userFullName);
+
+  setUserFullName(userFullName: any): void {
+    this.userFullName = userFullName;
+    this.userFullNameChanges.next(userFullName);
+  }
+
 
   setUserSubscription(userSubscriptionObj: object): void {
     this.userSubscription = userSubscriptionObj;
@@ -122,7 +131,10 @@ export class AuthService {
               this.userDocId = user.payload.doc.id;
               this.userSubscriptionId = user.payload.doc.data()["subscription"];
               this.userStatus = user.payload.doc.data()["status"];
+              this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
 
+              this.setUserFullName(this._userFullName);
+            
              //console.log("subscription status", user.payload.doc.data()["status"]);
               
               if(this.userStatus === "Expired"){
@@ -161,16 +173,18 @@ export class AuthService {
       //we will need to find the user manually and check for its status
       this.afirestore.checkUser().subscribe(users=>{
         users.map(user => {
-          
+        
           
           if(user.payload.doc.data()["email"] === this.userName){
-
 
             //get us the document ID of the current user
             this.userDocId = user.payload.doc.id;
             this.userSubscriptionId = user.payload.doc.data()["subscription"];
             this.userStatus = user.payload.doc.data()["status"];
-            
+            this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
+            this.setUserFullName(this._userFullName);
+
+       
             //if the user status is expired
             //makes the changes for the nav to hide the cart and credits
             if(this.userStatus === "Expired"){
