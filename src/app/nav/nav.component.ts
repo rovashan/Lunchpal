@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
-import {AfirestoreService} from "../afirestore.service";
-import { window } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -12,14 +11,15 @@ export class NavComponent implements OnInit {
 
     constructor(
       public authService: AuthService,
-      private afirestore: AfirestoreService) { }
+      private router: Router,
+    ) { }
     
 
     hideNavbarLogin = false;
-    browserWindow;  
+  
     //---- Below is the implementation for the sidenav
 
-
+    canteen;
     //watch the sidenav
     @ViewChild('sidenav') menu: ElementRef;
 
@@ -45,6 +45,16 @@ export class NavComponent implements OnInit {
         this.hideNavbarLogin = true;
       }
     }
+
+   checkCanteen(){
+    this.router.events.subscribe((x) => {
+      if(!this.router.url.indexOf("/canteen")){
+        this.canteen = false;
+      } else {
+        this.canteen = true;
+      }
+    });
+   }
 
    
    //---- End of implementation for the sidenav
@@ -81,7 +91,7 @@ export class NavComponent implements OnInit {
       this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
       //changes on user status
       this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-  
+    this.checkCanteen();
       /*
       if(this.browserWindow.innerWidth > 599){
         this.hideNavbarLogin = false;

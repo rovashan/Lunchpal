@@ -13,18 +13,23 @@ export class CanteenComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
 
-  username;
+  user;
+  username = this.authService.userFullName;
+  
   userStatus = this.authService.userStatus;
 
   ngOnInit() {
     if(this.authService.user == null ){
-      this.username = null    
+      this.user = null    
     }else{
       this.authService.user.subscribe(user => {
-        this.username = user.email;
+        this.user = true;
+       
     })
     }  
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+    
+    this.authService.userFullNameChanges.subscribe(x => this.username = x);
   }
  
 }

@@ -1,28 +1,35 @@
 
 <section *ngIf="userStatus === 'Active'; else showRenewMessage" class="canteen">
-  
+  <p class="username" *ngIf="user != null">Hi, {{username}}</p>
   <h2>What's for lunch today?</h2>
-  <p *ngIf="username != null">Hi, {{username}}</p>
-
+  
   <div class="menu">
-    <div>
+    <div class="mealsSection">
+      
       <a routerLink="/canteen/mains">
         <h3>Mains</h3>
+        <div class="overlay"></div>
       </a>
     </div>
-    <div>
+
+    <div class="lightmealsSection">
         <a routerLink="/canteen/lightmeals">
           <h3>Light Meals</h3>
+          <div class="overlay"></div>
         </a>
     </div>
-    <div>
+
+    <div class="snacksSection">
         <a routerLink="/canteen/snacks">
           <h3>Snacks</h3>
+          <div class="overlay"></div>
         </a>
     </div>
-    <div>
+
+    <div class="drinksSection">
         <a routerLink="/canteen/drinks">
           <h3>Drinks</h3>
+          <div class="overlay"></div>
         </a>
     </div>
   </div>
