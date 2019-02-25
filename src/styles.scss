@@ -255,6 +255,7 @@ mat-tab-body{
   box-shadow: none !important;
 }
 
+
 .mat-card .mat-card-image {
   width: 100%;
   max-width: 300px;
@@ -262,7 +263,14 @@ mat-tab-body{
   margin: 0px;
   
 }
-
+.mat-card-content {
+  margin-top: 14px;
+}
+.mat-card-content h3, .mat-card-content p  {
+  
+  margin: 0px;
+  padding: 0px;
+}
 
 //card height on mobile
 .menuitems.mat-card {
@@ -429,6 +437,9 @@ select {
   padding: 8px;
 }
 
+select > option {
+  padding: 10px;
+}
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
   background: #ff7b00;
