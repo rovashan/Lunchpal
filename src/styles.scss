@@ -234,14 +234,12 @@ mat-tab-body{
 }
 
 .cardContent {
-  text-align: left;
+  text-align: center;
   padding: 10px;
-  font-family: Vidaloka;
-  font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 1.8rem;
+  font-family: "Source Sans Pro";
+  font-size: 1rem;
+  line-height: 1.4rem;
   color: #222;
-  
 }
 
 .mat-tab-nav-bar, .mat-tab-header {
@@ -272,10 +270,10 @@ mat-tab-body{
   max-width: 250px;
   min-width: 250px;
   height: 290px;
-  border-radius: 0px;
+  border-radius: 8px;
   overflow: hidden;
- margin: 10px;
- border-bottom: 3px solid rgb(255, 123, 0);
+  margin: 10px;
+  border-bottom: 3px solid #cfa464;//rgb(255, 123, 0);
 }
 
 
