@@ -41,11 +41,11 @@
 
 
 <section>
-  <h2>Menu For This Week</h2>
+  <h2>This week's menu</h2>
 
 
-  <mat-tab-group>
-    <mat-tab label="Traditional">
+  <mat-tab-group [selectedIndex]="1">
+    <mat-tab label="TRADITIONAL">
       <div class="tabsControls">
         <div class="next" (click)="goNext($event)">
           <i class="material-icons">
@@ -117,7 +117,7 @@
 
     </mat-tab>
 
-    <mat-tab label="Classic">
+    <mat-tab label="CLASSIC">
       <div class="tabsControls">
         <div class="next" (click)="goNext($event)">
           <i class="material-icons">
@@ -178,7 +178,7 @@
       </div>
 
     </mat-tab>
-    <mat-tab label="Lifestyle">
+    <mat-tab label="LIFESTYLE">
       <div class="tabsControls">
         <div class="next" (click)="goNext($event)">
           <i class="material-icons">
