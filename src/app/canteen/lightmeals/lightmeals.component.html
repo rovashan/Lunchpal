@@ -20,13 +20,14 @@
           <div class="mealoptions">
             <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 12.95 </p>
             <div>
-                <mat-select placeholder="0" name="light meal one" [(ngModel)]="lightmealone">
-                    <mat-option value="0">0</mat-option>  
-                    <mat-option  value="1">1</mat-option>
-                    <mat-option  value="2">2</mat-option>
-                    <mat-option  value="3">3</mat-option>
-                    <mat-option  value="4">4</mat-option>
-                </mat-select>
+                <select placeholder="0" name="light meal one" [(ngModel)]="lightmealone">
+                    <option value="0">0</option>  
+                    <option  value="1">1</option>
+                    <option  value="2">2</option>
+                    <option  value="3">3</option>
+                    <option  value="4">4</option>
+                    <option  value="5">5</option>
+                </select>
             
              <button class="buy" (click)="addProduct(lightmealone, {price: 12.75, name: 'light meal one'}); changeUI($event, lightmealone, 'light meal one');">Add To Order</button>
           </div> 
@@ -45,14 +46,14 @@
             <div class="mealoptions">
               <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 12.95 </p>
               <div>
-                  <mat-select placeholder="0" name="light meal two" [(ngModel)]="lightmealtwo">
-                      <mat-option value="0">0</mat-option>  
-                      <mat-option  value="1">1</mat-option>
-                      <mat-option  value="2">2</mat-option>
-                      <mat-option  value="3">3</mat-option>
-                      <mat-option  value="4">4</mat-option>
-                      <mat-option  value="5">5</mat-option>
-                  </mat-select>
+                  <select placeholder="0" name="light meal two" [(ngModel)]="lightmealtwo">
+                      <option value="0">0</option>  
+                      <option  value="1">1</option>
+                      <option  value="2">2</option>
+                      <option  value="3">3</option>
+                      <option  value="4">4</option>
+                      <option  value="5">5</option>
+                  </select>
              
                <button class="buy" (click)="addProduct(lightmealtwo, {price: 12.75, name: 'light meal two'}); changeUI($event, lightmealtwo, 'light meal two');">Add To Order</button>
             </div> 
