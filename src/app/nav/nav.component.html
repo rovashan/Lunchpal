@@ -15,10 +15,10 @@
 <!-- class="menu" -->
   <ul #sidenav class="sidenav">
   <li><a class="logo" routerLink="/canteen">LUNCHPAL</a></li>
-  <li><a routerLink="/howitworks"> How It Works</a></li>
-  <li><a routerLink="/plans">Plans</a></li>
-  <li><a routerLink="/faqs">FAQ</a></li>
-  <li><a routerLink="/contactus">Contact</a></li>
+  <li><a *ngIf="canteen" routerLink="/howitworks"> How It Works</a></li>
+  <li><a *ngIf="canteen" routerLink="/plans">Plans</a></li>
+  <li><a *ngIf="canteen" routerLink="/faqs">FAQ</a></li>
+  <li><a *ngIf="canteen" routerLink="/contactus">Contact</a></li>
   <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>
      
   </ul>
