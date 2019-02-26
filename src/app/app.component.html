@@ -4,10 +4,20 @@
 </main>
 
 <div *ngIf="lunchbox && basketChange" class="lunchbox">
+   
   <div>
-    <p>Total: <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{total}}</strong></p> 
-    <p><a [routerLink]="['/canteen/order']">View Lunchbox</a></p>
+    <p>Credits Available:  <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{userSubscription.plan.creditsPerDay - total }}</strong></p>
+    <p>Meals Total: <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{total}}</strong></p> 
+    <p *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0; else showCreditsAvailable"> <span class="error">Not Enough Credits</span></p>
+   
   </div>
+   
+  <ng-template #showCreditsAvailable>
+      <a [routerLink]="['/canteen/order']">View Lunchbox</a>  
+   
+  </ng-template>
+
+
 </div>
 
 <app-footer *ngIf="canteen"></app-footer>

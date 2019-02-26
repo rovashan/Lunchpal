@@ -271,6 +271,9 @@ mat-tab-body{
   margin: 0px;
   padding: 0px;
 }
+.cdk-overlay-pane{
+  transform: none !important;
+}
 
 //card height on mobile
 .menuitems.mat-card {
@@ -399,15 +402,18 @@ margin-left: 10px;
   width: 100%;
   text-align: center;
 }
-.lunchbox div p:first-of-type {
+.lunchbox div p {
   margin-right: 10px;
 }
 
-.lunchbox div p:first-of-type {
+.lunchbox div p {
   display: flex;
   align-items: center;
   padding-right: 10px;
   border-right: 1px solid #222;
+}
+.lunchbox div p:last-of-type {
+  border-right: none;
 }
 
 .lunchbox div p img {

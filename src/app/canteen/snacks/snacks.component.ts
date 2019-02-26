@@ -8,9 +8,8 @@ import {AuthService} from "../../auth/auth.service";
   styleUrls: ['./snacks.component.scss']
 })
 export class SnacksComponent implements OnInit, AfterViewInit {
-  snackone;
-  snacktwo;
 
+  
   constructor(private shoppingcart: ShoppingcartService, private authService: AuthService) { }
   userStatus = this.authService.userStatus;
   addProduct(quantity: number, obj: Object){

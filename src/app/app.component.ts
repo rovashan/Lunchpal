@@ -26,8 +26,8 @@ export class AppComponent implements OnInit {
   canteen:boolean = true;
   lunchbox: boolean = false;
   total: any = this.shoppingcartService.totalChange;
+  userSubscription: any = this.authService.userSubscription;
   basketChange: any = this.shoppingcartService.emptyBasket;
-
 
   //checks url in order to show or hide the footer
   checkURL(){
@@ -65,6 +65,12 @@ export class AppComponent implements OnInit {
       this.basketChange = x;
     });
    
+  
+  this.authService.userSubscriptionChanges.subscribe(x => 
+    {
+      this.userSubscription = x;
+      console.log(x);
+    });
     this.shoppingcartService.totalChanges.subscribe(x => {
       this.total = x;
     })
