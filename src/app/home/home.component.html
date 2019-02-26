@@ -195,13 +195,13 @@
       <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
         (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
 
-        <div class="card" *ngFor="let item of classicMenu">
+        <div class="card" *ngFor="let item of classicMenu | keyvalue">
           <mat-card class="menuitems">
             <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
             <mat-card-content>
-              <h3>{{item.name}}</h3> 
+              <h3>{{item.key}}</h3> 
               <p class="cardContent">
-                {{item.description}}</p>
+                {{item.value.description}}</p>
             </mat-card-content>
           </mat-card>
         </div>
