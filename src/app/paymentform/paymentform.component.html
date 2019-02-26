@@ -4,7 +4,7 @@
     <div class="paymentContainer">
       <!-- <div> -->
       <mat-horizontal-stepper #stepper linear>
-        <mat-step [completed]="personalState" label="Personal Information">
+        <mat-step [completed]="personalState" label="Personal">
 
           <form [formGroup]="personal" (change)="personalCompleted()">
             <!-- <p>Please fill the form below with your personal information: </p> -->
@@ -62,7 +62,7 @@
             (click)="personalCompleted()">Continue</button>
         </mat-step>
 
-        <mat-step label="Delivery Information">
+        <mat-step label="Delivery">
 
           <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
             <p>Where do you want your lunch delivered?</p>
