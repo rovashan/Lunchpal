@@ -9,6 +9,8 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class SnacksComponent implements OnInit, AfterViewInit {
 
+  snackone;
+  snacktwo;
   
   constructor(private shoppingcart: ShoppingcartService, private authService: AuthService) { }
   userStatus = this.authService.userStatus;
