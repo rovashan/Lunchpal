@@ -117,7 +117,7 @@
 
     </mat-tab>
 
-    <mat-tab label="Classic">
+    <!-- <mat-tab label="Classic">
       <div class="tabsControls">
         <div class="next" (click)="goNext($event)">
           <i class="material-icons">
@@ -175,10 +175,41 @@
           </mat-card>
         </div>
 
+      </div>
+    </mat-tab> -->
 
+    <mat-tab label="Classic">
+      <div class="tabsControls">
+        <div class="next" (click)="goNext($event)">
+          <i class="material-icons">
+            keyboard_arrow_right
+          </i>
+        </div>
+        <div class="prev" (click)="goPrev($event)">
+          <i class="material-icons">
+            keyboard_arrow_left
+          </i>
+        </div>
       </div>
 
+      <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+        (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
+
+        <div class="card" *ngFor="let item of classicMenu">
+          <mat-card class="menuitems">
+            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <h3>{{item.name}}</h3> 
+              <p class="cardContent">
+                {{item.description}}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+      </div>
     </mat-tab>
+    
+
     <mat-tab label="Lifestyle">
       <div class="tabsControls">
         <div class="next" (click)="goNext($event)">
