@@ -15,7 +15,9 @@ import { toArray } from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
   title = 'app';
+  traditionalMenu: any;
   classicMenu: any;
+  lifestyleMenu: any;
 
   constructor(private carouselHandler: CarouselHandlerService,
     private afirestore: AfirestoreService, ) { }
@@ -78,15 +80,27 @@ export class HomeComponent implements OnInit {
   //------------- scroll functions 
 
   ngOnInit() {
+    this.getTraditionalMenu();
     this.getClassicMenu();
+    this.getLifestyleMenu();
   }
 
   getClassicMenu() {
     this.afirestore.getClassicMenu().subscribe(items => {
-      console.log('classicMenu: ', items);
       this.classicMenu = items;
-    })
+    });
   }
 
+  getTraditionalMenu() {
+    this.afirestore.getTraditionalMenu().subscribe(items => {
+      this.traditionalMenu = items;
+    });
+  }
+
+  getLifestyleMenu() {
+    this.afirestore.getLifestyleMenu().subscribe(items => {
+      this.lifestyleMenu = items;
+    });
+  }
 
 }

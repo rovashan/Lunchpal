@@ -155,8 +155,14 @@ export class AfirestoreService {
   }
 
   //get the menu for landing pages
+  public getTraditionalMenu() {
+    return this.firestore.doc('landing/traditionalMenu').valueChanges();
+  }
   public getClassicMenu() {
     return this.firestore.doc('landing/classicMenu').valueChanges();
+  }
+  public getLifestyleMenu() {
+    return this.firestore.doc('landing/lifestyleMenu').valueChanges();
   }
 
   //get weeklymenus for canteen

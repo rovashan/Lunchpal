@@ -64,185 +64,107 @@
   <h2>Menu For This Week</h2>
  
 
-  <mat-tab-group>
-    <mat-tab label="Traditional">
-        <div class="tabsControls">
+  <mat-tab-group [selectedIndex]="1">
+      <mat-tab label="Traditional">
+          <div class="tabsControls">
             <div class="next" (click)="goNext($event)">
-                <i class="material-icons">
-                    keyboard_arrow_right
-                </i>
+              <i class="material-icons">
+                keyboard_arrow_right
+              </i>
             </div>
             <div class="prev" (click)="goPrev($event)">
-                <i class="material-icons">
-                    keyboard_arrow_left
-                </i>
+              <i class="material-icons">
+                keyboard_arrow_left
+              </i>
             </div>
           </div>
-
-      <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-        <div class="card">
-          <mat-card class="menuitems">
-            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p class="cardContent">
-                Steak with Pap and Chakalaka</p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="card">
-            <mat-card class="menuitems">
-              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p class="cardContent">
-                  Steak with Pap and Chakalaka</p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-
-        <div class="card">
-          <mat-card class="menuitems">
-            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p class="cardContent">
-                Beef Stew with Rice
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-        <div class="card">
-          <mat-card class="menuitems">
-            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p class="cardContent">
-                Mince curry with Rice and Potatoes
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        
-        <div class="card">
-            <mat-card class="menuitems">
-              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p class="cardContent">
-                  Mince curry with Rice and Potatoes
-                </p>
-              </mat-card-content>
-            </mat-card>
-        </div>
+          <!---->
+          <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+            (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
+            (mouseleave)="releaseDrag($event)">
   
-      </div>
-
-    </mat-tab>
-
-    <mat-tab label="Classic">
-      <div class="tabsControls">
+            <div class="card" *ngFor="let item of traditionalMenu | keyvalue">
+              <mat-card class="menuitems">
+                <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
+                  alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <h3>{{item.value.name}}</h3>
+                  <p class="cardContent">
+                    {{item.value.description}}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+  
+          </div>
+  
+      </mat-tab>
+  
+  
+      <mat-tab label="Classic">
+        <div class="tabsControls">
           <div class="next" (click)="goNext($event)">
-              <i class="material-icons">
-                  keyboard_arrow_right
-              </i>
+            <i class="material-icons">
+              keyboard_arrow_right
+            </i>
           </div>
           <div class="prev" (click)="goPrev($event)">
-              <i class="material-icons">
-                  keyboard_arrow_left
-              </i>
+            <i class="material-icons">
+              keyboard_arrow_left
+            </i>
           </div>
         </div>
-
-    <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-      <div class="card">
-        <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p class="cardContent">
-              Steak with Pap and Chakalaka</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="card">
-          <mat-card class="menuitems">
-            <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p class="cardContent">
-                Steak with Pap and Chakalaka</p>
-            </mat-card-content>
-          </mat-card>
+  
+        <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
+  
+          <div class="card" *ngFor="let item of classicMenu | keyvalue">
+            <mat-card class="menuitems">
+              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+              <mat-card-content>
+                <h3>{{item.value.name}}</h3>
+                <p class="cardContent">
+                  {{item.value.description}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+  
         </div>
-
-      <div class="card">
-        <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p class="cardContent">
-              Beef Stew with Rice
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div class="card">
-        <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p class="cardContent">
-              Mince curry with Rice and Potatoes
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      
-
-    </div>
-
-  </mat-tab>
-  <mat-tab label="Lifestyle">
-    <div class="tabsControls">
-        <div class="next" (click)="goNext($event)">
+      </mat-tab>
+  
+  
+      <mat-tab label="Lifestyle">
+        <div class="tabsControls">
+          <div class="next" (click)="goNext($event)">
             <i class="material-icons">
-                keyboard_arrow_right
+              keyboard_arrow_right
             </i>
-        </div>
-        <div class="prev" (click)="goPrev($event)">
+          </div>
+          <div class="prev" (click)="goPrev($event)">
             <i class="material-icons">
-                keyboard_arrow_left
+              keyboard_arrow_left
             </i>
+          </div>
         </div>
-      </div>
+  
+        <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
+  
+          <div class="card" *ngFor="let item of lifestyleMenu | keyvalue">
+            <mat-card class="menuitems">
+              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+              <mat-card-content>
+                <h3>{{item.value.name}}</h3>
+                <p class="cardContent">
+                  {{item.value.description}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+  
+        </div>
+  
+      </mat-tab>
+  
 
-  <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false" (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-    <div class="card">
-      <mat-card class="menuitems">
-        <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p class="cardContent">
-            Steak with Pap and Chakalaka</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div class="card">
-        <mat-card class="menuitems">
-          <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p class="cardContent">
-              Steak with Pap and Chakalaka</p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-    <div class="card">
-      <mat-card class="menuitems">
-        <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p class="cardContent">
-            Beef Stew with Rice
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-
-</mat-tab>
 </mat-tab-group>
 
 </section>

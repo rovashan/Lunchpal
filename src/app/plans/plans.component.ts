@@ -14,6 +14,9 @@ import {ViewEncapsulation} from "@angular/core";
   encapsulation: ViewEncapsulation.None
 })
 export class PlansComponent implements OnInit {
+  traditionalMenu: any;
+  classicMenu: any;
+  lifestyleMenu: any;
 
   constructor(
     public authService: AuthService,
@@ -122,7 +125,9 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
     this.getplans();
     
-     
+    this.getTraditionalMenu();
+    this.getClassicMenu();
+    this.getLifestyleMenu(); 
    }
  
   ngOnDestroy() {
@@ -133,4 +138,22 @@ export class PlansComponent implements OnInit {
     console.log('destroyed');
   }
   
+
+  getClassicMenu() {
+    this.afirestore.getClassicMenu().subscribe(items => {
+      this.classicMenu = items;
+    });
+  }
+
+  getTraditionalMenu() {
+    this.afirestore.getTraditionalMenu().subscribe(items => {
+      this.traditionalMenu = items;
+    });
+  }
+
+  getLifestyleMenu() {
+    this.afirestore.getLifestyleMenu().subscribe(items => {
+      this.lifestyleMenu = items;
+    });
+  }
 }
