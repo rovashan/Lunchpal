@@ -75,17 +75,18 @@ orderedItems($event: Event, item: any, name: string){
 
   //update items
   updateItems(){
-    console.log("updateItems called");
+   // console.log("updateItems called");
     //wait for the component to be available
     let matSelectElems = document.getElementsByTagName("mat-select");
-    for(let i = 0; i < matSelectElems.length; i++){
+   
+   for(let i = 0; i < matSelectElems.length; i++){
       //get the number of items on localStorage
-      let name = matSelectElems[i].getAttribute("name");
+      let name = matSelectElems[i].getAttribute("ng-reflect-name");
       if(localStorage.getItem(name)){
         let children = matSelectElems[i].firstChild.firstChild;
         children.textContent = localStorage.getItem(name);
-        console.log(name)
-        console.log(children);
+       // console.log(name)
+       // console.log(children);
       }
       
     }       

@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
   this.authService.userSubscriptionChanges.subscribe(x => 
     {
       this.userSubscription = x;
-      console.log(x);
+      //console.log(x);
     });
     this.shoppingcartService.totalChanges.subscribe(x => {
       this.total = x;
