@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 //onesignal service
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
     //this.router.navigate(["/canteen"]);
   
 
-    //this.notifications.init();
+    this.notifications.init();
     //this.notifications.updateChanges();
     this.checkURL();
     //this.authService.userChanges();
