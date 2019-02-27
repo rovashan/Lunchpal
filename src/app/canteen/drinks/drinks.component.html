@@ -8,20 +8,20 @@
         <p>Back </p>
       </a>  
     </div>
-<div class="mealsContainer">
+<div  *ngIf="drinks" class="mealsContainer">
   
   
-    <div class="meal">
+    <div *ngFor="let drink of drinks" class="meal">
         <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
         <div class="mealContent">
-           
+        
         <div>
-          <h3>Drink One</h3> 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non accumsan orci.</p>
+          <h3>{{drink.name}}</h3> 
+          <p>{{drink.description}}</p>
           <div class="mealoptions">
-            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> 5.75 </p>
+            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{drink.price}}</p>
             <div>
-                <mat-select placeholder="0" name="drink one" [(ngModel)]="drinkone">
+                <mat-select placeholder="0" [name]="drink.name" [(ngModel)]="drink[name]">
                     <mat-option value="0">0</mat-option>  
                     <mat-option  value="1">1</mat-option>
                     <mat-option  value="2">2</mat-option>
@@ -30,14 +30,14 @@
                     <mat-option  value="5">5</mat-option>
                 </mat-select>
            
-             <button class="buy" (click)="addProduct(drinkone, {price: 5.75, name: 'drink one'}); changeUI($event, drinkone, 'drink one');">Add To Order</button>
+             <button class="buy" (click)="addProduct(drink[name], {price:  drink.price, name: drink.name }); changeUI($event, drink[name], drink.name);">Add To Order</button>
           </div> 
           </div>
         </div>
         
        </div>
       </div>
-
+<!--
       <div class="meal">
           <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
           <div class="mealContent">
@@ -64,7 +64,8 @@
           
          </div>
         </div>
-</div>
+-->
+      </div>
 
 
 </section>

@@ -10,8 +10,27 @@
     </a>  
   </div>
   
-  <div class="mealsContainer">
+  <div *ngIf="weeklyMeals" class="mealsContainer">
+
+    <div *ngFor="let meal of weeklyMeals" class="meal">
+      <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+      <div class="mealContent">
+         
+      <div>
+        <h3>{{meal.name}}</h3> 
+        <p>{{meal.description}}</p>
+        <div class="mealoptions">
+          <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{meal.price}} </p>
+          <button class="buy" (click)="order({price: meal.price, name: meal.name })">Add To Order</button>
+        </div>
+      </div>
+      
+     </div>
+    </div>
+
   
+
+  <!--
     <div class="meal">
       <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
       <div class="mealContent">
@@ -43,7 +62,7 @@
       
      </div>
     </div>
-    
+-->    
   </div>
 
 

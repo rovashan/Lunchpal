@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import {BehaviorSubject} from "rxjs";
+/*
 import { User } from './models/user';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
-
+*/
 @Injectable({
   providedIn: 'root'
 })
 export class AfirestoreService {
-
-
-  private itemsCollection: any;
-  items: any;
-
   constructor(
     private firestore: AngularFirestore,
-  ) {
-    /*
-    this.itemsCollection = firestore.collection('subscriptions');
-    this.items = this.itemsCollection.stateChanges();
-  */
-  }
+  ) {}
 
+
+  items: any;
+  meals: any[];
+  public userMealsChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.meals);
+  
+  setUserWeeklyMeals(meals: any): void {
+    this.meals = meals;
+    this.userMealsChanges.next(meals);
+    
+  }
+/*
   public collectionChanges() {
     //checks the changes in the subscriptions collection
     //only the modified data
     return this.firestore.collection("subscriptions").stateChanges(["modified"]);
   }
-
+*/
   //get current user subscription
   public getUserSubscription(userSubscription: any) {
 
@@ -157,4 +159,38 @@ export class AfirestoreService {
     return this.firestore.doc('landing/classicMenu').valueChanges();
   }
 
+  //get weeklymenus for canteen
+  public getWeeklyMenusCanteen(currentDate: any, planSelected: string, weekday:string){
+    this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
+    .subscribe(data => {
+      let weeklyMeals = [];
+      this.setUserWeeklyMeals([]);
+      Object.keys(data).forEach((key) => {
+        // console.log(key, data[key])
+        this.firestore.doc(data[key]).valueChanges().subscribe(x =>{
+          //push to the meals array
+          //console.log(x)
+          weeklyMeals.push(x);
+         
+        })
+      
+      });
+      //console.log("weeklyMeals", weeklyMeals);
+      this.setUserWeeklyMeals(weeklyMeals)
+      //console.log(this.meals);
+    });    
+  }
+
+  //get other products for the canteen
+  public getCanteenDrinks(){
+    return this.firestore.collection("menu/drinks/products").valueChanges();
+  }
+
+  public getCanteenSnacks(){
+    return this.firestore.collection("menu/snacks/products").valueChanges();
+  }
+
+  public getCanteenLightMeals(){
+    return this.firestore.collection("menu/lightmeals/products").valueChanges();
+  }
 }
