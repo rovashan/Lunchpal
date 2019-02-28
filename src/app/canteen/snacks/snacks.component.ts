@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnDestroy } from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
 import {AuthService} from "../../auth/auth.service";
 import {AfirestoreService} from "../../afirestore.service";
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './snacks.component.html',
   styleUrls: ['./snacks.component.scss']
 })
-export class SnacksComponent implements OnInit, AfterContentChecked  {
+export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  {
 
   constructor(private shoppingcart: ShoppingcartService, private authService: AuthService,  private aFirestore:AfirestoreService) { }
   userStatus = this.authService.userStatus;
@@ -48,4 +48,9 @@ export class SnacksComponent implements OnInit, AfterContentChecked  {
   }
 }
 
+
+ngOnDestroy(): void {
+  this.canteenSubscription.unsubscribe();
+  
+}
 }
