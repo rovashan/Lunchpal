@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'canteen/thankyou', canActivate:[GuardGuard], loadChildren: './canteen/thankyou/thankyou.module#ThankyouModule'},
   { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},  
   { path: 'terms-and-conditions', canActivate:[GuardGuard], loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
+  { path: 'privacy', canActivate:[GuardGuard], loadChildren: './privacy/privacy.module#PrivacyModule'},
+
 ];
 
 @NgModule({
