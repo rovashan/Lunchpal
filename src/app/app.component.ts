@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 //onesignal service
 import {OnesignalService} from "./onesignal/onesignal.service";
 import {AuthService} from "./auth/auth.service";
@@ -60,7 +60,13 @@ export class AppComponent implements OnInit {
   }
 */
   ngOnInit(){
-    
+    //scroll to top after route navigation
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if(event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
+
     this.shoppingcartService.emptyBasketChange.subscribe(x => {
       this.basketChange = x;
     });

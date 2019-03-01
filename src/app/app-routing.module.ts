@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'canteen/order', canActivate:[GuardGuard], loadChildren: './canteen/order/order.module#OrderModule'},
   { path: 'canteen/thankyou', canActivate:[GuardGuard], loadChildren: './canteen/thankyou/thankyou.module#ThankyouModule'},
   { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},  
-  { path: 'terms-and-conditions', canActivate:[GuardGuard], loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
-  { path: 'privacy', canActivate:[GuardGuard], loadChildren: './privacy/privacy.module#PrivacyModule'},
+  { path: 'terms-and-conditions', loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
+  { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyModule'},
 
 ];
 
