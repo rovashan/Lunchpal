@@ -80,11 +80,23 @@ form > p, .paymentContainer form > p{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   padding-left: 15px;
   padding-right: 15px;
+  margin: 50px auto;
+  width: 80%;
+  text-align: left;
+}
+
+.msgSentForm {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 50px auto;
+  width: 80%;
+  text-align: center;
 }
 
 .loginForm, .signupForm {
   margin: 100px auto;
-  width: 70%;
+  width: 80%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 .datePickerInput {
@@ -505,6 +517,23 @@ select > option {
 
 @media screen and (min-width: 993px) {
  
+  .contactForm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 50px auto;
+    width: 50%;
+    text-align: left;
+  }
+
+  .msgSentForm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 50px auto;
+    width: 50%;
+    text-align: center;
+}
  
 .tabsControls{
   width: 70%;

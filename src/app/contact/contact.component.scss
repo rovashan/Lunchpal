@@ -5,17 +5,33 @@ $hoverColor: #0f93e0;
 .formContainer{
     //display: flex;
     //margin: 0 auto;
+//     display: flex;
+//     flex-direction: column;
+//     width: 60%;
+//      justify-content: center;
+//    align-items: center;
 }
 
 
 form {
-    width: 60%;
-    margin: 0 auto;
+//     width: 60%;
+//      //margin: auto;
+//   display: flex;
+//   flex-direction: column;
+//   //justify-content: center;
+//   //align-items: center;
+//   //text-align: center;
+//   min-height: 100vh;
 }
 
 form * {
-    display: block;
+    //display: block;
 }
+
+.textArea {
+    margin-top: 10px !important;
+}
+
 
 
 
@@ -30,7 +46,7 @@ form input[type=submit]{
 }
 
 .contactDetails {
-    padding-top: 5px;
+    //padding-top: 5px;
     font-size: 90%;
     //color: rgba(255, 255, 255, 0.068);
 }

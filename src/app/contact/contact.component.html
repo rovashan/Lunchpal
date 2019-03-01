@@ -1,11 +1,9 @@
 <section>
 
   <h2>Get in Touch</h2>
-  <div class="formContainer" *ngIf="!messageSent">
-  
-    <p>Please send a message if you have any questions.</p>
+    <p>If you have any queries, please send a message and a representative will contact you.</p>
 
-    <form class="contactForm" (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
+    <form *ngIf="!messageSent" class="contactForm" (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
       <label for="name">Name:</label>
       <input type="text" formControlName="name">
 
@@ -13,19 +11,18 @@
       <input type="email" name="email" formControlName="email" email>
 
 
-      <label for="message" style="padding-bottom: 10px;">Message:</label>
-      <textarea formControlName="message"></textarea>
+      <label for="message">Message:</label>
+      <textarea formControlName="message" class="textArea"></textarea>
 
       <input type="submit" [disabled]="!contactForm.valid" value="Send">
     </form>
 
-  </div>
 
   <div class="formContainer" *ngIf="messageSent">
   
-    <form class="contactForm">
+    <form class="msgSentForm">
         <img class="messageSentIcon" src="../../../assets/images/messageSent.svg" />
-      <label for="name" style="text-align: center;">Thanks for the message! You will be contacted shortly. </label>
+      <label for="name">Thanks for the message! You will be contacted shortly. </label>
     </form> 
 
   </div>
