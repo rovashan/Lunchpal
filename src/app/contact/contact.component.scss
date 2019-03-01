@@ -35,6 +35,13 @@ form input[type=submit]{
     //color: rgba(255, 255, 255, 0.068);
 }
 
+.messageSentIcon {
+    width: 30%;
+    max-width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
 @media screen and (min-width: 690px) {
   .formContainer{
       //display: flex;

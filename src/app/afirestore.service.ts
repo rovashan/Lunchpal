@@ -199,4 +199,15 @@ export class AfirestoreService {
   public getCanteenLightMeals(){
     return this.firestore.collection("menu/lightmeals/products").valueChanges();
   }
+
+  public sendMessage(name: string, email: string, message: string) {
+    
+    let data = {
+      createdDate: new Date(),
+      name: name,
+      email: email,
+      message: message
+    }
+    return this.firestore.collection("messages").add(data)
+  }
 }

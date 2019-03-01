@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators } from "@angular/forms";
+import { AfirestoreService } from '../afirestore.service';
 
 
 @Component({
@@ -9,8 +10,9 @@ import {FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  messageSent: boolean = false;
 
+  constructor(private aFirestore: AfirestoreService,) { }
   
   public contactForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -19,10 +21,14 @@ export class ContactComponent implements OnInit {
    
   });
 
-  //basic form implementation
-  //just consoling the values to test
+  //just saving to firestore
   sendMessage(formdata: FormData){
-    console.log(formdata);
+    //console.log(formdata);
+
+    this.aFirestore.sendMessage(formdata['name'], formdata['email'], formdata['message']).then( () => {
+      this.messageSent = true;
+    });
+
     //set the values to an empty string, to clear the form
     this.contactForm.setValue({
       name: '',
