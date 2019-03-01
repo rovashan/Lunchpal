@@ -63,7 +63,7 @@ section > h2 {
 }
 
 form {
-  border-radius: 3px;
+  border-radius: 8px;
   padding: 20px 10px;
   background: #fff;
 }
@@ -78,7 +78,8 @@ form > p, .paymentContainer form > p{
 
 .contactForm {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .loginForm, .signupForm {

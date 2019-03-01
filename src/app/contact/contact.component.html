@@ -1,24 +1,32 @@
 <section>
 
-  <h2>Contact Us</h2>
-<div class="formContainer">
-  <div class="imageDecorator"></div>
+  <h2>Get in Touch</h2>
+  <div class="formContainer">
+    <!-- <div class="imageDecorator"></div> -->
+    <!-- 
+  <h4>Please send a message if you have any questions.</h4> -->
+    <p>Please send a message if you have any questions.</p>
+
+    <form class="contactForm" (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
+      <!-- <p>Please send a message if you have any questions.</p> -->
+
+      <label for="name">Name:</label>
+      <input type="text" formControlName="name">
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" formControlName="email">
 
 
-  <form class="contactForm" (ngSubmit)="sendMessage(contactForm.value)" [formGroup]="contactForm">
-    <p>If you have any doubt or question, send us a message.</p>
+      <label for="message" style="padding-bottom: 10px;">Message:</label>
+      <textarea formControlName="message"></textarea>
 
-    <label for="name">Name:</label>
-    <input type="text" formControlName="name">
+      <input type="submit" [disabled]="!contactForm.valid" value="Send">
+    </form>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" formControlName="email">
-  
-    
-    <label for="message">Message:</label>
-    <textarea formControlName="message"></textarea>
+    <div class="contactDetails">
+      <p style="color: #333;">1 Tana Road, Sunninghill, Johannesburg</p>
+      <a href="mailto:info@lunchpal.co.za">info@lunchpal.co.za</a>
+    </div>
 
-    <input type="submit" [disabled]="!contactForm.valid" value="Send">
-  </form>
-</div> 
+  </div>
 </section>

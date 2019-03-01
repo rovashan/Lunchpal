@@ -3,7 +3,8 @@ $color: #5ec5ff;
 $hoverColor: #0f93e0;
 
 .formContainer{
-    display: block;
+    //display: flex;
+    //margin: 0 auto;
 }
 
 
@@ -28,9 +29,16 @@ form input[type=submit]{
     background: url("../../assets/images/hero-image.png") bottom center;
 }
 
+.contactDetails {
+    padding-top: 5px;
+    font-size: 90%;
+    //color: rgba(255, 255, 255, 0.068);
+}
+
 @media screen and (min-width: 690px) {
   .formContainer{
-      display: flex;
+      //display: flex;
+      //padding-left: 100px;
   }
   .imageDecorator{
     width: 35%;
