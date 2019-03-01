@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'plans', loadChildren: './plans/plans.module#PlansModule' },
   { path: 'howitworks', loadChildren: './howitworks/howitworks.module#HowitworksModule' },
   { path: 'faqs', loadChildren: './faqs/faqs.module#FaqsModule' },
-  { path: 'contactus', loadChildren: './contact/contact.module#ContactModule' },
+  { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
   { path: 'payment/:plan', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
