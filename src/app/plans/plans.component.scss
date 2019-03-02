@@ -51,7 +51,17 @@ $hoverColor: #1d8be6;
   }
 
 .faqsContainer {
-    display: block;
+     display: block;
+    // align-items: center;
+    // text-align: center;
+    //display: flex;
+  //justify-content: space-between;
+  //margin: 0 auto;
+}
+
+.faqPost {
+    max-width: 250px;
+    //display: block;
 }
 
 .faqsContainer > div {
