@@ -11,7 +11,7 @@ nav {
     top:0px;
     position: fixed;
     width: 100%;
-    //max-width: 1920px;
+    //max-width: 200px;
     z-index: 98;
   
 }
@@ -78,6 +78,11 @@ nav {
     color: $color;
 }
 
+// .sidenav li:active a {
+//   color: #e04a0f !important;
+//   width: 25px;
+// }
+
 .topnav ul li:hover .lineBelow {
     width: 100%;
 }
@@ -131,7 +136,7 @@ nav {
 .topnav .sidenav li a {
     color: #111;
     display: inline-block;
-    width: 200px;
+    width: 227px;
     font-size: 1rem;
 }
 
