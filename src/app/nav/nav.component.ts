@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   
     //---- Below is the implementation for the sidenav
 
-    canteen;
+    canteen = false;
     //watch the sidenav
     @ViewChild('sidenav') menu: ElementRef;
 
@@ -50,11 +50,15 @@ export class NavComponent implements OnInit {
 
    checkCanteen(){
     this.router.events.subscribe((x) => {
-      if(!this.router.url.indexOf("/canteen")){
+      
+      //console.log('this.router.url: ', this.router.url);
+      
+      if (this.router.url.indexOf("/canteen") === -1) {
         this.canteen = false;
       } else {
         this.canteen = true;
       }
+      //console.log('canteen: ', this.canteen);
     });
    }
 
@@ -100,7 +104,7 @@ export class NavComponent implements OnInit {
       this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
       //changes on user status
       this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-    this.checkCanteen();
+      this.checkCanteen();
       /*
       if(this.browserWindow.innerWidth > 599){
         this.hideNavbarLogin = false;
