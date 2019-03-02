@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
-import {AuthService} from "../auth/auth.service";
-import { Router } from '@angular/router';
+import { AuthService } from "../auth/auth.service";
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -28,8 +28,10 @@ export class NavComponent implements OnInit {
     @HostListener("document:click", ["$event"])
     onClick(event){
         if(event.target.closest(".sidenav") || event.target.closest(".icon")){
+          //console.log('event: ', event);
           return;
         }else{
+            //console.log('close sidenav');
             this.menu.nativeElement.style.width = "0px";       
         }
 
@@ -86,6 +88,13 @@ export class NavComponent implements OnInit {
     }    
   */
     ngOnInit() {
+      // close sidenav on router change
+      this.router.events.subscribe((event: NavigationStart) => {
+        if(event instanceof NavigationStart) {
+          this.menu.nativeElement.style.width = "0px";       
+        }
+      });
+
   //    this.getWindow();
       //changes on user subscription
       this.authService.userSubscriptionChanges.subscribe(x => this.userSubscription = x);
