@@ -1,4 +1,4 @@
-$color: #0f93e0;
+$color: #5ec5ff;
 $hoverColor: #1d8be6;
 
 .plansContainer, .faqsContainer {
@@ -15,10 +15,29 @@ $hoverColor: #1d8be6;
     width: 90%;
     max-width: 300px;
     margin: 10px auto;
+    border-radius: 6px !important;
 }
 
 .planPrice {
     font-size: 1.3rem;
+    padding-top: 15px !important;
+}
+
+.planDesc {
+    margin-top: -10px !important;
+}
+
+.perWeek {
+    font-style: italic;
+    padding-bottom: 15px !important;
+}
+
+.planTitle {
+    //color: #f37601; 
+    font-size: 1.6em; 
+    //font-weight: 500;
+    color: #f37702;     
+    font-family: "Source Sans Pro";
 }
 
 .menus > div {
@@ -70,6 +89,10 @@ $hoverColor: #1d8be6;
     text-align: left;
 }
 
+.package {
+    //margin-top: -10px !important;
+}
+
 button.package {
     cursor: pointer;
     width: 80%;
@@ -81,7 +104,6 @@ button.package {
     border:1px solid $color;
     background: $color;
     color: #fff;
-   
 }
 
 button.recommended {
@@ -99,12 +121,15 @@ button.recommended {
 
 div.mat-card-header-text{
     margin: 0 auto;
+    // margin-top: -20px;
+    // font-size: 1.2em;
+    // font-weight: 500;
+    // color: #1d8be6;
 }
 
-
 button.package:hover {
-    // background: $hoverColor;
-    // color: #fff;
+     background: $hoverColor;
+     color: #fff;
 }
 
 .menusContainer {

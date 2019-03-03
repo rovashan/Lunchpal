@@ -39,7 +39,7 @@ export class AfirestoreService {
   //get the plans
   public getPlans() {
     //we need the document ID for the plan reference
-    return this.firestore.collection("plans").snapshotChanges();
+    return this.firestore.collection("plans", ref => ref.orderBy('price')). snapshotChanges();
   }
 
   public getSelectedPlan(planId: string) {

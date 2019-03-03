@@ -2,104 +2,120 @@
   <h2>Choose a plan</h2>
 
   <div class="plansContainer">
-    
+
     <mat-card class="plans">
-        <mat-card-header>
-          <mat-card-title><h3>Classic</h3></mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-              South African homestyle meals at an afforable price.
+      <mat-card-header>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <h4 class="planTitle">Traditional</h4>
+        <p class=planDesc>
+          Homestyle and Ethnic Meals
+        </p>
+        <p class="planPrice"> 
+            <strong>R 425</strong>
           </p>
-          <p>Credits Per Day <strong>70</strong> </p>
-          <p class="planPrice"> <strong>R 350</strong> </p>
-         </mat-card-content>
-        <mat-card-actions>
-            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[0].id)">Select this plan</button>
-        </mat-card-actions>
-      </mat-card>
+          <p class="perWeek">Per Week</p>
+          
+          <p>Amount per day: <strong>R85</strong> </p>
+      </mat-card-content>
+      <mat-card-actions style="margin-top: -10px; padding-bottom: 10px;">
+        <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[0].id)">Select this
+          plan</button>
+      </mat-card-actions>
+    </mat-card>
 
-      <mat-card class="plans">
-        <mat-card-header>
-          <mat-card-title><h3>Traditional</h3></mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-              South African homestyle meals at an afforable price.
+    <mat-card class="plans">
+      <mat-card-header>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <h4 class="planTitle">Classic</h4>
+        <p class=planDesc>
+          Widest variety of balanced meals.
+        </p>
+        <p class="planPrice"> 
+            <strong>R 425</strong>
           </p>
-          <p>Credits Per Day <strong>55</strong> </p>
-          <p class="planPrice"> <strong>R 275</strong> </p>
-         
-        </mat-card-content>
-        <mat-card-actions>
-            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[1].id)">Select this plan</button>
-        </mat-card-actions>
-      </mat-card>
-      
-      <mat-card class="plans">
-        <mat-card-header>
-          <mat-card-title><h3>Lifestyle</h3></mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-              South African homestyle meals at an afforable price.
-          </p>
-          <p>Credits Per Day <strong>85</strong> </p>
-          <p class="planPrice"> <strong>R 425</strong></p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[2].id)">Select this plan</button>
-        </mat-card-actions>
-      </mat-card>
-  
-    </div>
+          <p class="perWeek">Per Week</p>
+          
+          <p>Amount per day: <strong>R85</strong> </p>
+
+      </mat-card-content>
+      <mat-card-actions style="margin-top: -10px; padding-bottom: 10px;">
+        <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[1].id)">Select this
+          plan</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="plans">
+      <mat-card-header>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <h4 class="planTitle">Lifestyle</h4>
+        <p class=planDesc>
+          Fitness and lifestyle meals.
+        </p>
+
+        <p class="planPrice"> 
+          <strong>R 425</strong>
+        </p>
+        <p class="perWeek">Per Week</p>
+        
+        <p>Amount per day: <strong>R85</strong> </p>
+      </mat-card-content>
+      <mat-card-actions style="margin-top: -10px; padding-bottom: 10px;">
+        <button [disabled]="plans.length < 1" class="package" (click)="selectPlan(plans[2].id)">Select this
+          plan</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
 
 
-    
-  
-<section>
-  <h2>Menu For This Week</h2>
- 
 
-  <mat-tab-group [selectedIndex]="1">
+
+  <section>
+    <h2>Menu For This Week</h2>
+
+
+    <mat-tab-group [selectedIndex]="1">
       <mat-tab label="Traditional">
-          <div class="tabsControls">
-            <div class="next" (click)="goNext($event)">
-              <i class="material-icons">
-                keyboard_arrow_right
-              </i>
-            </div>
-            <div class="prev" (click)="goPrev($event)">
-              <i class="material-icons">
-                keyboard_arrow_left
-              </i>
-            </div>
+        <div class="tabsControls">
+          <div class="next" (click)="goNext($event)">
+            <i class="material-icons">
+              keyboard_arrow_right
+            </i>
           </div>
-          <!---->
-          <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
-            (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
-            (mouseleave)="releaseDrag($event)">
-  
-            <div class="card" *ngFor="let item of traditionalMenu | keyvalue">
-              <mat-card class="menuitems">
-                <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
-                  alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                  <h3>{{item.value.name}}</h3>
-                  <p class="cardContent">
-                    {{item.value.description}}</p>
-                </mat-card-content>
-              </mat-card>
-            </div>
-  
+          <div class="prev" (click)="goPrev($event)">
+            <i class="material-icons">
+              keyboard_arrow_left
+            </i>
           </div>
-  
+        </div>
+        <!---->
+        <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
+          (mouseleave)="releaseDrag($event)">
+
+          <div class="card" *ngFor="let item of traditionalMenu | keyvalue">
+            <mat-card class="menuitems">
+              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
+                alt="Photo of a Shiba Inu">
+              <mat-card-content>
+                <h3>{{item.value.name}}</h3>
+                <p class="cardContent">
+                  {{item.value.description}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+        </div>
+
       </mat-tab>
-  
-  
+
+
       <mat-tab label="Classic">
         <div class="tabsControls">
           <div class="next" (click)="goNext($event)">
@@ -113,13 +129,15 @@
             </i>
           </div>
         </div>
-  
+
         <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
-          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-  
+          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
+          (mouseleave)="releaseDrag($event)">
+
           <div class="card" *ngFor="let item of classicMenu | keyvalue">
             <mat-card class="menuitems">
-              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
+                alt="Photo of a Shiba Inu">
               <mat-card-content>
                 <h3>{{item.value.name}}</h3>
                 <p class="cardContent">
@@ -127,11 +145,11 @@
               </mat-card-content>
             </mat-card>
           </div>
-  
+
         </div>
       </mat-tab>
-  
-  
+
+
       <mat-tab label="Lifestyle">
         <div class="tabsControls">
           <div class="next" (click)="goNext($event)">
@@ -145,13 +163,15 @@
             </i>
           </div>
         </div>
-  
+
         <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
-          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false" (mouseleave)="releaseDrag($event)">
-  
+          (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
+          (mouseleave)="releaseDrag($event)">
+
           <div class="card" *ngFor="let item of lifestyleMenu | keyvalue">
             <mat-card class="menuitems">
-              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg" alt="Photo of a Shiba Inu">
+              <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
+                alt="Photo of a Shiba Inu">
               <mat-card-content>
                 <h3>{{item.value.name}}</h3>
                 <p class="cardContent">
@@ -159,45 +179,46 @@
               </mat-card-content>
             </mat-card>
           </div>
-  
+
         </div>
-  
+
       </mat-tab>
-  
 
-</mat-tab-group>
 
-</section>
-<section>
+    </mat-tab-group>
 
-  <h2>FAQs</h2>
-  
-  <div class="faqsContainer">
+  </section>
+  <section>
 
-    <div class="faqPost">
-      <h4 class="title">How many meals can I choose from each day?</h4>
-      <p>There are 3 main meals you can choose from each day, as well a selection of items from the Snack Bar.</p>
+    <h2>FAQs</h2>
+
+    <div class="faqsContainer">
+
+      <div class="faqPost">
+        <h4 class="title">How many meals can I choose from each day?</h4>
+        <p>There are 3 main meals you can choose from each day, as well a selection of items from the Snack Bar.</p>
+
+      </div>
+
+      <div class="faqPost">
+        <h4 class="title">Are the meals frozen or prepared in advance?</h4>
+        <p>No, all meals are freshly prepared on the day.</p>
+
+      </div>
+
+      <div class="faqPost">
+        <h4 class="title">What if I have special dietary requirements?</h4>
+        <p>The Lifestyle plan caters for special dietary requirements including low-carb, keto and high-protein diets.
+        </p>
+
+      </div>
+
+
 
     </div>
 
-    <div class="faqPost">
-      <h4 class="title">Are the meals frozen or prepared in advance?</h4>
-      <p>No, all meals are freshly prepared on the day.</p>
 
-    </div>
-
-    <div class="faqPost">
-      <h4 class="title">What if I have special dietary requirements?</h4>
-      <p>The Lifestyle plan caters for special dietary requirements including low-carb, keto and high-protein diets.</p>
-
-    </div>
-
-
-
-  </div>
-
-
-</section>
+  </section>
 
 
 </section>
