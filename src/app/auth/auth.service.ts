@@ -131,7 +131,8 @@ export class AuthService {
               this.userDocId = user.payload.doc.id;
               this.userSubscriptionId = user.payload.doc.data()["subscription"];
               this.userStatus = user.payload.doc.data()["status"];
-              this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
+              //this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
+              this._userFullName = user.payload.doc.data()["firstName"];
 
               this.setUserFullName(this._userFullName);
             

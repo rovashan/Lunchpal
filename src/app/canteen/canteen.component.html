@@ -1,11 +1,13 @@
-
 <section *ngIf="userStatus === 'Active'; else showRenewMessage" class="canteen">
-  <p class="username" *ngIf="user != null">Hi, {{username}}</p>
-  <h2>What's for lunch today?</h2>
   
+  <div class="welcomeSection">
+    <h2 class="username" *ngIf="user != null">Good Morning<br>{{username}}</h2>
+    <p class="whatsForLunch">What's for lunch today?</p>
+  </div>
+
   <div class="menu">
     <div class="mealsSection">
-      
+
       <a routerLink="/canteen/mains">
         <h3>Mains</h3>
         <div class="overlay"></div>
@@ -13,32 +15,32 @@
     </div>
 
     <div class="lightmealsSection">
-        <a routerLink="/canteen/lightmeals">
-          <h3>Light Meals</h3>
-          <div class="overlay"></div>
-        </a>
+      <a routerLink="/canteen/lightmeals">
+        <h3>Light Meals</h3>
+        <div class="overlay"></div>
+      </a>
     </div>
 
     <div class="snacksSection">
-        <a routerLink="/canteen/snacks">
-          <h3>Snacks</h3>
-          <div class="overlay"></div>
-        </a>
+      <a routerLink="/canteen/snacks">
+        <h3>Snacks</h3>
+        <div class="overlay"></div>
+      </a>
     </div>
 
     <div class="drinksSection">
-        <a routerLink="/canteen/drinks">
-          <h3>Drinks</h3>
-          <div class="overlay"></div>
-        </a>
+      <a routerLink="/canteen/drinks">
+        <h3>Drinks</h3>
+        <div class="overlay"></div>
+      </a>
     </div>
   </div>
 
 </section>
 
 <ng-template #showRenewMessage>
-    <section>
-        <h2>What's for lunch today?</h2>
-      <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
+  <section>
+    <h2>What's for lunch today?</h2>
+    <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
   </section>
 </ng-template>
