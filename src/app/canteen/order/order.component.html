@@ -14,7 +14,7 @@
     <div class="item" *ngIf="mainmeal; else showProductsList">
         <p><span (click)="removeMeal(orderedItems)">
             <i class="material-icons">
-              cancel
+              delete
             </i>
         </span> {{orderedItems}} </p>
         <p>R65</p>
@@ -70,7 +70,7 @@
       <p>
         <span (click)="removeItemFromCart(item.product)">
           <i class="material-icons">
-          cancel
+          delete
           </i>
         </span> {{item.product}} x {{item.quantity}}</p>
       <p>{{item.price * item.quantity}}</p>

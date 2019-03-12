@@ -6,9 +6,8 @@
 <div *ngIf="lunchbox && basketChange" class="lunchbox">
    
   <div>
-    <p>Credits Available:  <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{userSubscription.plan.creditsPerDay - total }}</strong></p>
-    <p>Meals Total: <img src="../assets/icons/lunchpalcoin.svg"> <strong>{{total}}</strong></p> 
-    <p *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0; else showCreditsAvailable"> <span class="error">Not Enough Credits</span></p>
+    <p>Total: <img src="../assets/icons/lunchpalcoin.svg"> <strong>R{{total}} | </strong></p> 
+    <p *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0; else showCreditsAvailable"> <span class="error">You have exceeded your daily amount</span></p>
    
   </div>
    
