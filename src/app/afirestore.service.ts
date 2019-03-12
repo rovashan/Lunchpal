@@ -155,8 +155,8 @@ export class AfirestoreService {
   }
 
   //get the menu for landing pages
-  public getTraditionalMenu() {
-    return this.firestore.doc('landing/traditionalMenu').valueChanges();
+  public getVeggieMenu() {
+    return this.firestore.doc('landing/veggieMenu').valueChanges();
   }
   public getClassicMenu() {
     return this.firestore.doc('landing/classicMenu').valueChanges();

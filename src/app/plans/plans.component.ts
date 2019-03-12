@@ -14,7 +14,7 @@ import {ViewEncapsulation} from "@angular/core";
   encapsulation: ViewEncapsulation.None
 })
 export class PlansComponent implements OnInit {
-  traditionalMenu: any;
+  veggieMenu: any;
   classicMenu: any;
   lifestyleMenu: any;
 
@@ -125,7 +125,7 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
     this.getplans();
     
-    this.getTraditionalMenu();
+    this.getVeggieMenu();
     this.getClassicMenu();
     this.getLifestyleMenu(); 
    }
@@ -145,9 +145,9 @@ export class PlansComponent implements OnInit {
     });
   }
 
-  getTraditionalMenu() {
-    this.afirestore.getTraditionalMenu().subscribe(items => {
-      this.traditionalMenu = items;
+  getVeggieMenu() {
+    this.afirestore.getVeggieMenu().subscribe(items => {
+      this.veggieMenu = items;
     });
   }
 

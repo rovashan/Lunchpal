@@ -44,7 +44,7 @@
   <h2>This week's menu</h2>
 
   <mat-tab-group [selectedIndex]="1">
-    <mat-tab label="Traditional">
+    <mat-tab label="Veggie">
         <div class="tabsControls">
           <div class="next" (click)="goNext($event)">
             <i class="material-icons">
@@ -62,7 +62,7 @@
           (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
           (mouseleave)="releaseDrag($event)">
 
-          <div class="card" *ngFor="let item of traditionalMenu | keyvalue">
+          <div class="card" *ngFor="let item of veggieMenu | keyvalue">
             <mat-card class="menuitems">
               <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
                 alt="Photo of a Shiba Inu">

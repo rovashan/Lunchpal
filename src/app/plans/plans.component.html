@@ -8,9 +8,9 @@
       </mat-card-header>
       <img mat-card-image src="../../assets/images/kelsey-chance-575535-unsplash.png" alt="Photo of a Shiba Inu">
       <mat-card-content>
-        <h4 class="planTitle">Traditional</h4>
+        <h4 class="planTitle">Veggie</h4>
         <p class=planDesc>
-          Homestyle and Ethnic Meals
+          Vegetarian and plant based protein meals.
         </p>
         <p class="planPrice"> 
             <strong>R 425</strong>
@@ -81,7 +81,7 @@
 
 
     <mat-tab-group [selectedIndex]="1">
-      <mat-tab label="Traditional">
+      <mat-tab label="Veggie">
         <div class="tabsControls">
           <div class="next" (click)="goNext($event)">
             <i class="material-icons">
@@ -99,7 +99,7 @@
           (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
           (mouseleave)="releaseDrag($event)">
 
-          <div class="card" *ngFor="let item of traditionalMenu | keyvalue">
+          <div class="card" *ngFor="let item of veggieMenu | keyvalue">
             <mat-card class="menuitems">
               <img mat-card-image src="../../assets/images/asian-food-bowl-cuisine-699953.jpg"
                 alt="Photo of a Shiba Inu">

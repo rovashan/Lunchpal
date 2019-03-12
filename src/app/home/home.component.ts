@@ -15,7 +15,7 @@ import { toArray } from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
   title = 'app';
-  traditionalMenu: any;
+  veggieMenu: any;
   classicMenu: any;
   lifestyleMenu: any;
 
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   //------------- scroll functions 
 
   ngOnInit() {
-    this.getTraditionalMenu();
+    this.getVeggieMenu();
     this.getClassicMenu();
     this.getLifestyleMenu();
   }
@@ -91,9 +91,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getTraditionalMenu() {
-    this.afirestore.getTraditionalMenu().subscribe(items => {
-      this.traditionalMenu = items;
+  getVeggieMenu() {
+    this.afirestore.getVeggieMenu().subscribe(items => {
+      this.veggieMenu = items;
     });
   }
 
