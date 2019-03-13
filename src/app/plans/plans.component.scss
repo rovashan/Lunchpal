@@ -6,6 +6,10 @@ $hoverColor: #1d8be6;
     margin: 0 auto;
 }
 
+.menuImage{
+    height: 200px; /* adjust as needed */
+    object-fit: contain;
+}
 
 .menuitems {
     border-radius: 8px;
