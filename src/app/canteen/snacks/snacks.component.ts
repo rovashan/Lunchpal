@@ -29,6 +29,9 @@ export class SnacksComponent implements OnInit, AfterContentChecked  {
     this.canteenSubscription = this.aFirestore.getCanteenSnacks().subscribe(snacks => {
       let menuSnacks = [];
       snacks.map(snack => {
+        let thisSnack: any = snack;
+        thisSnack.qty = '1';
+
         menuSnacks.push(snack);
         this.snacks = menuSnacks;
       })

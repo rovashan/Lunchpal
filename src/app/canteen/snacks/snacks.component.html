@@ -24,8 +24,7 @@
               <label style="vertical-align:middle">&nbsp;R{{snack.price}}</label>
             </p>
             <div>
-              <mat-select placeholder="0" [name]="snack.name" [(ngModel)]="snack[name]">
-                <mat-option value="0">0</mat-option>
+              <mat-select [name]="snack.qty" [(ngModel)]="snack.qty">
                 <mat-option value="1">1</mat-option>
                 <mat-option value="2">2</mat-option>
                 <mat-option value="3">3</mat-option>
@@ -34,7 +33,7 @@
               </mat-select>
 
               <button class="buy"
-                (click)="addProduct(snack[name], {price:  snack.price, name: snack.name }); changeUI($event, snack[name], snack.name);">
+                (click)="addProduct(snack.qty, {price:  snack.price, name: snack.name }); changeUI($event, snack.qty, snack.name);">
                 Add to Order</button>
             </div>
           </div>

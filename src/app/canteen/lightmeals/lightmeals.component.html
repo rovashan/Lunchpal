@@ -22,7 +22,7 @@
               <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
             </p>
             <div>
-                <mat-select placeholder="1" [name]="lightmeal.name" [(ngModel)]="lightmeal[name]">
+                <mat-select [name]="lightmeal.qty" [(ngModel)]="lightmeal.qty">
                     <mat-option  value="1">1</mat-option>
                     <mat-option  value="2">2</mat-option>
                     <mat-option  value="3">3</mat-option>
@@ -30,7 +30,7 @@
                     <mat-option  value="5">5</mat-option>
                 </mat-select>
            
-             <button class="buy" (click)="addProduct(lightmeal[name], {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal[name], lightmeal.name);">Add to Order</button>
+             <button class="buy" (click)="addProduct(lightmeal.qty, {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal.qty, lightmeal.name);">Add to Order</button>
           </div> 
           </div>
         </div>

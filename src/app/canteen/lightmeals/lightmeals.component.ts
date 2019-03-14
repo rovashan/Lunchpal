@@ -33,6 +33,9 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
      
       let menuLightMeals = [];
       lightmeals.map(lightmeal => {
+        let thisLightMeal: any = lightmeal;
+        thisLightMeal.qty = '1';
+
         menuLightMeals.push(lightmeal)
         this.lightmeals = menuLightMeals;
       })

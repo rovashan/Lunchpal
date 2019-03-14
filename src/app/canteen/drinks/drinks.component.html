@@ -24,8 +24,9 @@
               <label style="vertical-align:middle">&nbsp;R{{drink.price}}</label>
             </p>
             <div>
-              <mat-select placeholder="0" [name]="drink.name" [(ngModel)]="drink[name]">
-                <mat-option value="0">0</mat-option>
+
+
+              <mat-select [name]="drink.qty" [(ngModel)]="drink.qty">
                 <mat-option value="1">1</mat-option>
                 <mat-option value="2">2</mat-option>
                 <mat-option value="3">3</mat-option>
@@ -33,8 +34,14 @@
                 <mat-option value="5">5</mat-option>
               </mat-select>
 
+              <!-- <select matNativeControl placeholder="user-type" name="usertype" required>
+                  <option value="" disabled selected></option>
+                  <option value="type1">type1</option>
+                  <option value="type2">type2</option>
+                </select> -->
+
               <button class="buy"
-                (click)="addProduct(drink[name], {price:  drink.price, name: drink.name }); changeUI($event, drink[name], drink.name);">Add
+                (click)="addProduct(drink.qty, {price:  drink.price, name: drink.name }); changeUI($event, drink.qty, drink.name);">Add
                 to Order</button>
             </div>
           </div>

@@ -19,7 +19,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
   userStatus = this.authService.userStatus;
   canteenSubscription: Subscription;
   drinks:any[] = [];  
-
+  
   addProduct(quantity: number, obj: Object){
     this.shoppingcart.addProduct(quantity, obj);
   }
@@ -34,7 +34,11 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
    this.canteenSubscription = this.aFirestore.getCanteenDrinks().subscribe(drinks => {
       let menuDrinks = [];
       drinks.map(drink => {
-        menuDrinks.push(drink)
+        console.log('drink: ', drink);
+        let thisDrink: any = drink;
+        thisDrink.qty = '1';
+
+        menuDrinks.push(thisDrink)
         this.drinks = menuDrinks;
       })
       console.log(this.drinks);
