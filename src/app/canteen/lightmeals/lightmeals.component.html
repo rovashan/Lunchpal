@@ -17,10 +17,12 @@
           <h3>{{lightmeal.name}}</h3> 
           <p>{{lightmeal.description}}</p>
           <div class="mealoptions">
-            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{lightmeal.price}}</p>
+            <p class="price">
+              <img style="vertical-align:middle;" src="../../../assets/icons/lunchpalcoin2.png" /> 
+              <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
+            </p>
             <div>
-                <mat-select placeholder="0" [name]="lightmeal.name" [(ngModel)]="lightmeal[name]">
-                    <mat-option value="0">0</mat-option>  
+                <mat-select placeholder="1" [name]="lightmeal.name" [(ngModel)]="lightmeal[name]">
                     <mat-option  value="1">1</mat-option>
                     <mat-option  value="2">2</mat-option>
                     <mat-option  value="3">3</mat-option>
@@ -28,7 +30,7 @@
                     <mat-option  value="5">5</mat-option>
                 </mat-select>
            
-             <button class="buy" (click)="addProduct(lightmeal[name], {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal[name], lightmeal.name);">Add To Order</button>
+             <button class="buy" (click)="addProduct(lightmeal[name], {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal[name], lightmeal.name);">Add to Order</button>
           </div> 
           </div>
         </div>

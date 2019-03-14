@@ -1,43 +1,48 @@
-<section  *ngIf="userStatus === 'Active'; else showRenewMessage" class="plan">
+<section *ngIf="userStatus === 'Active'; else showRenewMessage" class="plan">
   <h2>Drinks</h2>
   <div class="backLink">
-      <a routerLink = "/canteen">
-        <i class="material-icons">
-          arrow_back
-        </i>
-        <p>Back </p>
-      </a>  
-    </div>
-<div  *ngIf="drinks" class="mealsContainer">
-  
-  
+    <a routerLink="/canteen">
+      <i class="material-icons">
+        arrow_back
+      </i>
+      <p>Back </p>
+    </a>
+  </div>
+  <div *ngIf="drinks" class="mealsContainer">
+
+
     <div *ngFor="let drink of drinks" class="meal">
-        <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
-        <div class="mealContent">
-        
+      <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
+      <div class="mealContent">
+
         <div>
-          <h3>{{drink.name}}</h3> 
+          <h3>{{drink.name}}</h3>
           <p>{{drink.description}}</p>
           <div class="mealoptions">
-            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{drink.price}}</p>
+            <p class="price">
+              <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />
+              <label style="vertical-align:middle">&nbsp;R{{drink.price}}</label>
+            </p>
             <div>
-                <mat-select placeholder="0" [name]="drink.name" [(ngModel)]="drink[name]">
-                    <mat-option value="0">0</mat-option>  
-                    <mat-option  value="1">1</mat-option>
-                    <mat-option  value="2">2</mat-option>
-                    <mat-option  value="3">3</mat-option>
-                    <mat-option  value="4">4</mat-option>
-                    <mat-option  value="5">5</mat-option>
-                </mat-select>
-           
-             <button class="buy" (click)="addProduct(drink[name], {price:  drink.price, name: drink.name }); changeUI($event, drink[name], drink.name);">Add To Order</button>
-          </div> 
+              <mat-select placeholder="0" [name]="drink.name" [(ngModel)]="drink[name]">
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+
+              <button class="buy"
+                (click)="addProduct(drink[name], {price:  drink.price, name: drink.name }); changeUI($event, drink[name], drink.name);">Add
+                to Order</button>
+            </div>
           </div>
         </div>
-        
-       </div>
+
       </div>
-<!--
+    </div>
+    <!--
       <div class="meal">
           <div class="thumb" style="background: url('../../assets/images/leighann-renee-799319-unsplash.png');"></div>
           <div class="mealContent">
@@ -65,7 +70,7 @@
          </div>
         </div>
 -->
-      </div>
+  </div>
 
 
 </section>
@@ -74,5 +79,5 @@
   <section>
     <h2>Your Lunchbox</h2>
     <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
-</section>
+  </section>
 </ng-template>

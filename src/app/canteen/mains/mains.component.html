@@ -20,8 +20,11 @@
         <h3>{{meal.name}}</h3> 
         <p>{{meal.description}}</p>
         <div class="mealoptions">
-          <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{meal.price}} </p>
-          <button class="buy" (click)="order({price: meal.price, name: meal.name })">Add To Order</button>
+            <p class="price">
+                <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" /> 
+                <label style="vertical-align:middle">&nbsp;R{{meal.price}}</label>
+              </p>
+          <button class="buy" (click)="order({price: meal.price, name: meal.name })">Add to Order</button>
         </div>
       </div>
       

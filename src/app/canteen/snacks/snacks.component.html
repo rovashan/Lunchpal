@@ -1,43 +1,48 @@
 <section class="plan">
   <h2>Snacks</h2>
   <div class="backLink">
-      <a routerLink = "/canteen">
-        <i class="material-icons">
-          arrow_back
-        </i>
-        <p>Back </p>
-      </a>  
-    </div>
+    <a routerLink="/canteen">
+      <i class="material-icons">
+        arrow_back
+      </i>
+      <p>Back </p>
+    </a>
+  </div>
 
-<div *ngIf="snacks" class="mealsContainer">
-    
-  <div *ngFor="let snack of snacks" class="meal">
-        <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
-        <div class="mealContent">
-        
+  <div *ngIf="snacks" class="mealsContainer">
+
+    <div *ngFor="let snack of snacks" class="meal">
+      <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
+      <div class="mealContent">
+
         <div>
-          <h3>{{snack.name}}</h3> 
+          <h3>{{snack.name}}</h3>
           <p>{{snack.description}}</p>
           <div class="mealoptions">
-            <p class="price"><img src="../../../assets/icons/lunchpalcoin.svg" /> {{snack.price}}</p>
+            <p class="price">
+              <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />
+              <label style="vertical-align:middle">&nbsp;R{{snack.price}}</label>
+            </p>
             <div>
-                <mat-select placeholder="0" [name]="snack.name" [(ngModel)]="snack[name]">
-                    <mat-option value="0">0</mat-option>  
-                    <mat-option  value="1">1</mat-option>
-                    <mat-option  value="2">2</mat-option>
-                    <mat-option  value="3">3</mat-option>
-                    <mat-option  value="4">4</mat-option>
-                    <mat-option  value="5">5</mat-option>
-                </mat-select>
-           
-             <button class="buy" (click)="addProduct(snack[name], {price:  snack.price, name: snack.name }); changeUI($event, snack[name], snack.name);">Add To Order</button>
-          </div> 
+              <mat-select placeholder="0" [name]="snack.name" [(ngModel)]="snack[name]">
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+
+              <button class="buy"
+                (click)="addProduct(snack[name], {price:  snack.price, name: snack.name }); changeUI($event, snack[name], snack.name);">
+                Add to Order</button>
+            </div>
           </div>
         </div>
-        
-       </div>
+
       </div>
-<!--
+    </div>
+    <!--
     <div class="meal">
         <div class="thumb" style="background: url('../../assets/images/erik-dungan-1079095-unsplash.png');"></div>
         <div class="mealContent">

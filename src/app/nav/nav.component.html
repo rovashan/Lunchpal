@@ -42,7 +42,7 @@
     </ul>
 
     <ul class="creditsmobile">
-      <li title="credits per day" class="credits" *ngIf="userSubscription && userStatus !== 'Expired'">
+      <li title="credits per day" class="credits" *ngIf="canteen && userSubscription && userStatus !== 'Expired'">
           <img src="../../../assets/icons/lunchpalcoin.svg" />
           Available:<strong>&nbsp;R{{userSubscription.plan.creditsPerDay}}</strong></li>  
     </ul>
