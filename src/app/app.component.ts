@@ -46,25 +46,7 @@ export class AppComponent implements OnInit {
 
       } else {
         this.canteen = true;
-      }
-      if ((localStorage.getItem("cart") === null)) {
-        this.basketChange = false;
-      }
 
-    });
-
-    this.router.events.subscribe((x) => {
-
-
-
-
-      // if (!this.router.url.indexOf("/canteen")) {
-      //   this.lunchbox = true;
-      // } else {
-      //   this.lunchbox = false;
-      // }
-
-      if (this.router.url.indexOf("/canteen") !== -1) {
         this.lunchbox = true;
 
         if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
@@ -72,24 +54,52 @@ export class AppComponent implements OnInit {
 
           this.lunchbox = false;
         }
+
+        if ((localStorage.getItem("cart") === null)) {
+          this.basketChange = false;
+        }
       }
 
-      // if ( (this.router.url.indexOf("/canteen") !== -1)  || 
-      //      (this.router.url.indexOf("/canteen/thankyou") === -1) ||
-      //      (this.router.url.indexOf("/canteen/order") === -1)  ) {
-      //   this.lunchbox = false;
-      // } else {
-      //   this.lunchbox = true;
-      // }
 
-
-
-
-
-      // if (!this.router.url.indexOf("/canteen/order")) {
-      //   this.lunchbox = false;
-      // }
     });
+
+    // this.router.events.subscribe((x) => {
+
+
+
+
+    //   // if (!this.router.url.indexOf("/canteen")) {
+    //   //   this.lunchbox = true;
+    //   // } else {
+    //   //   this.lunchbox = false;
+    //   // }
+
+    //   if (this.router.url.indexOf("/canteen") !== -1) {
+    //     this.lunchbox = true;
+
+    //     if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
+    //       (this.router.url.indexOf("/canteen/order") !== -1)) {
+
+    //       this.lunchbox = false;
+    //     }
+    //   }
+
+    //   // if ( (this.router.url.indexOf("/canteen") !== -1)  || 
+    //   //      (this.router.url.indexOf("/canteen/thankyou") === -1) ||
+    //   //      (this.router.url.indexOf("/canteen/order") === -1)  ) {
+    //   //   this.lunchbox = false;
+    //   // } else {
+    //   //   this.lunchbox = true;
+    //   // }
+
+
+
+
+
+    //   // if (!this.router.url.indexOf("/canteen/order")) {
+    //   //   this.lunchbox = false;
+    //   // }
+    // });
 
 
   }
