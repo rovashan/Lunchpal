@@ -134,6 +134,9 @@ export class OrderComponent implements OnInit {
 
       //send the cart to the collection orders
       this.shoppingcart.removeUpdatedItems();
+
+      //set empty basket
+      this.shoppingcart.setEmptyBasket(true);
     }else{
       //meal
       //console.log("meal details", this.orderedItems);

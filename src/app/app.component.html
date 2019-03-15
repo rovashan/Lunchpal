@@ -10,7 +10,7 @@
           <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" /> 
           <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
         </p> -->
-    <p>Total: <img style="vertical-align:middle; width: 24px;" src="../assets/icons/lunchpalcoin2.png">
+    <p>Total: &nbsp;<img style="vertical-align:middle; width: 24px;" src="../assets/icons/lunchpalcoin2.png">
        <strong style="vertical-align:middle;">R{{total}} | </strong></p> 
     <p *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0; else showCreditsAvailable"> <span class="error">You have exceeded your daily amount</span></p>
    
@@ -24,4 +24,4 @@
 
 </div>
 
-<app-footer *ngIf="canteen"></app-footer>
+<app-footer *ngIf="!canteen"></app-footer>
