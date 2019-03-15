@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
           this.lunchbox = false;
         }
 
-        if ((localStorage.getItem("cart") === null)) {
+        if ((localStorage.getItem("cart") === null) && (localStorage.getItem("meal") === null) ) {
           this.basketChange = false;
         }
       }

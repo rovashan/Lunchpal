@@ -10,6 +10,26 @@
     border-radius: 6px;
 }
 
+.emptyLunchbox {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px 10px;
+    background: #fff;
+    text-align: center;
+    -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    border-radius: 6px;
+}
+
+
+.lunchboxIcon {
+    width: 30%;
+    max-width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
 .orderdetails {
     border-bottom: 1px solid #eee;
     

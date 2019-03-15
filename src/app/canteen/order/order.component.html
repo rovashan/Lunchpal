@@ -1,80 +1,86 @@
 <section *ngIf="userStatus === 'Active'; else showRenewMessage" class="plan">
   <h2>Your Lunchbox</h2>
   <div class="backLink">
-      <a href="#" (click)="goback($event)">
-        <i class="material-icons">
-          arrow_back
-        </i>
-        <p>Back </p>
-      </a>  
-    </div>
+    <a href="#" (click)="goback($event)">
+      <i class="material-icons">
+        arrow_back
+      </i>
+      <p>Back </p>
+    </a>
+  </div>
   <div *ngIf="emptyBasket; else showMessage" class="order">
-  <div class="orderdetails">
-    <p class="title">Order</p>
-    <div class="item" *ngIf="mainmeal; else showProductsList">
+    <div class="orderdetails">
+      <p class="title">Order</p>
+      <div class="item" *ngIf="mainmeal; else showProductsList">
         <p><span (click)="removeMeal(orderedItems)">
             <i class="material-icons">
               delete
             </i>
-        </span> {{orderedItems}} </p>
+          </span> {{orderedItems}} </p>
         <p>R65</p>
+      </div>
+
     </div>
-    
-  </div>
-  <div class="orderdetails">
-    <div>
-      <p>Total</p>
-      <p>{{orderTotal}}</p>
+    <div class="orderdetails">
+      <div>
+        <p>Total</p>
+        <p>{{orderTotal}}</p>
+      </div>
     </div>
-  </div>
-  <div *ngIf="enoughCredits; else showCreditsMessage" class="orderdetails">
+    <div *ngIf="enoughCredits; else showCreditsMessage" class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
-       <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm"> 
-        <mat-radio-group formControlName="deliveryDate">
-          <mat-radio-button value="soon" (change)="soonSelected()">As soon as possible</mat-radio-button>
-          <mat-radio-button value="later" (change)="showTime()">Later</mat-radio-button>  
-          <input (change)="getTime($event)" *ngIf="laterSelected" class="deliveryTime" type="time" name="deliveryTime" formControlName="deliveryTime" placeholder="time" />
-        </mat-radio-group>
-        
-        <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder"/>
-      </form>
+        <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm">
+          <mat-radio-group formControlName="deliveryDate">
+            <mat-radio-button value="soon" (change)="soonSelected()">As soon as possible</mat-radio-button>
+            <mat-radio-button value="later" (change)="showTime()">Later</mat-radio-button>
+            <input (change)="getTime($event)" *ngIf="laterSelected" class="deliveryTime" type="time" name="deliveryTime"
+              formControlName="deliveryTime" placeholder="time" />
+          </mat-radio-group>
+
+          <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder" />
+        </form>
       </div>
-      
+
     </div>
 
-   
+
   </div>
 
-  
+
 </section>
 
 
 <ng-template #showCreditsMessage>
-    <div>
-      <p>Your current <strong>Total R {{orderTotal}}</strong> exceeds your total <strong>Credits R {{totalCredits}}</strong> </p>
-    </div>
-  </ng-template>
-  
-  
+  <div>
+    <p>Your current <strong>Total R {{orderTotal}}</strong> exceeds your total <strong>Credits R
+        {{totalCredits}}</strong> </p>
+  </div>
+</ng-template>
+
+
 
 <ng-template #showMessage>
-  <div class="order">
-    <p>You have no items in your cart <span><a routerLink="/canteen">Select some here</a></span></p>
+  <div class="emptyLunchbox">
+    <img class="lunchboxIcon" src="../../../assets/images/tupperware2.svg" />
+    <p>You have no items in your lunchbox.</p>
+    <span>
+      <a routerLink="/canteen">Select some here</a>
+    </span>
   </div>
 </ng-template>
 
 
 <ng-template #showProductsList>
-    <div class="item" *ngFor="let item of orderedItems">
-      <p>
-        <span (click)="removeItemFromCart(item.product)">
-          <i class="material-icons">
+  <div class="item" *ngFor="let item of orderedItems">
+    <p>
+      <span (click)="removeItemFromCart(item.product)">
+        <i class="material-icons">
           delete
-          </i>
-        </span> {{item.product}} x {{item.quantity}}</p>
-      <p>{{item.price * item.quantity}}</p>
-    </div>
+        </i>
+      </span> {{item.product}} x {{item.quantity}}</p>
+    <p>{{item.price * item.quantity}}</p>
+  </div>
 
 
 </ng-template>
@@ -83,5 +89,5 @@
   <section>
     <h2>Your Lunchbox</h2>
     <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
-</section>
+  </section>
 </ng-template>

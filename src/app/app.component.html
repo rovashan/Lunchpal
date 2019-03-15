@@ -4,24 +4,22 @@
 </main>
 
 <div *ngIf="lunchbox && basketChange" class="lunchbox">
-   
+
   <div>
-      <!-- <p class="price">
+    <!-- <p class="price">
           <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" /> 
           <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
         </p> -->
     <p>Total: &nbsp;<img style="vertical-align:middle; width: 24px;" src="../assets/icons/lunchpalcoin2.png">
-       <strong style="vertical-align:middle;">R{{total}} | </strong></p> 
-    <p *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0; else showCreditsAvailable"> <span class="error">You have exceeded your daily amount</span></p>
+      <strong style="vertical-align:middle;">R{{total}} &nbsp;&nbsp;|</strong>
+      <a [routerLink]="['/canteen/order']">&nbsp;&nbsp;&nbsp;View Lunchbox</a>
+    </p>
    
   </div>
-   
-  <ng-template #showCreditsAvailable>
-      <a [routerLink]="['/canteen/order']">View Lunchbox</a>  
-   
-  </ng-template>
 
-
+  <div *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0" style="height: 10px; margin-top: -20px; padding-bottom: 15px;">
+    <span class="error">Daily amount exceeded</span>
+  </div>
 </div>
 
 <app-footer *ngIf="!canteen"></app-footer>
