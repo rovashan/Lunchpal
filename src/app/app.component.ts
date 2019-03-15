@@ -23,8 +23,10 @@ export class AppComponent implements OnInit {
     private shoppingcartService: ShoppingcartService
   ) { }
 
-  canteen: boolean = true;
+  canteen: boolean = false;
   lunchbox: boolean = false;
+  dailyLimitSetting: boolean;
+
   total: any = this.shoppingcartService.totalChange;
   userSubscription: any = this.authService.userSubscription;
   basketChange: any = this.shoppingcartService.emptyBasket;
@@ -50,12 +52,12 @@ export class AppComponent implements OnInit {
         this.lunchbox = true;
 
         if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
-          (this.router.url.indexOf("/canteen/order") !== -1) || 
+          (this.router.url.indexOf("/canteen/order") !== -1) ||
           (this.router.url.indexOf("/canteen/settings") !== -1)) {
           this.lunchbox = false;
         }
 
-        if ((localStorage.getItem("cart") === null) && (localStorage.getItem("meal") === null) ) {
+        if ((localStorage.getItem("cart") === null) && (localStorage.getItem("meal") === null)) {
           this.basketChange = false;
         }
       }
@@ -125,8 +127,16 @@ export class AppComponent implements OnInit {
 
     this.authService.userSubscriptionChanges.subscribe(x => {
       this.userSubscription = x;
-      //console.log(x);
+      console.log(x);
+
+      if (this.canteen) {
+        this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
+          this.dailyLimitSetting = settings['dailyLimit'];
+          console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+        });
+      }
     });
+
     this.shoppingcartService.totalChanges.subscribe(x => {
       this.total = x;
     })

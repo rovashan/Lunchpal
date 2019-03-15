@@ -52,6 +52,7 @@ export class OrderComponent implements OnInit {
     
   });
 
+  dailyLimitSetting: boolean = false;
   orderedItems: any;
   orderTotal : number;
   mainmeal : boolean;
@@ -207,6 +208,11 @@ export class OrderComponent implements OnInit {
     this.shoppingcart.emptyBasketChange.subscribe(x => this.emptyBasket = x);
     //load the shoppingcart
     this.shoppingcart.loadCart();
+
+    this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
+      this.dailyLimitSetting = settings['dailyLimit'];
+      console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+    });
 
    
     //nothing is defined

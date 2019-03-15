@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
     this.afirestore.getSettings(this.authService.userDocId).subscribe( settings => {
       this.dailyLimitSetting = settings['dailyLimit'];
       this.remindersSetting = settings['reminders'];
-      console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+      //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
     });
   }
 

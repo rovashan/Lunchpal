@@ -17,7 +17,7 @@
    
   </div>
 
-  <div *ngIf="(userSubscription.plan.creditsPerDay - total) <= 0" style="height: 10px; margin-top: -20px; padding-bottom: 15px;">
+  <div *ngIf="dailyLimitSetting && (userSubscription?.plan.creditsPerDay - total) <= 0" style="height: 10px; margin-top: -20px; padding-bottom: 15px;">
     <span style="color: #f37702;font-style: italic;">Daily Limit exceeded</span>
   </div>
 </div>

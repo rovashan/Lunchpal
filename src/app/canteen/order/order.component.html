@@ -27,7 +27,7 @@
         <strong style="vertical-align: middle; padding-top: 15px;">R{{orderTotal}}</strong>
       </div>
     </div>
-    <div *ngIf="enoughCredits; else showCreditsMessage" class="orderdetails">
+    <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage" class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
         <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm">
