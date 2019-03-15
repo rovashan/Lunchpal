@@ -210,4 +210,16 @@ export class AfirestoreService {
     }
     return this.firestore.collection("messages").add(data)
   }
+
+  public getSettings(userId: string) {
+    return this.firestore.collection("settings").doc(userId).valueChanges();
+  }
+
+  public updateDailyLimitSetting(userId: string, value: any) {
+    return this.firestore.collection("settings").doc(userId).update({ dailyLimit: value })
+  }
+
+  public updateRemindersSetting(userId: string, value: any) {
+    return this.firestore.collection("settings").doc(userId).update({ reminders: value })
+  }
 }

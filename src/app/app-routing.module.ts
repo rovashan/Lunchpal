@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},  
   { path: 'terms-and-conditions', loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
   { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyModule'},
+  { path: 'canteen/settings', loadChildren: './canteen/settings/settings.module#SettingsModule'},
 
 ];
 

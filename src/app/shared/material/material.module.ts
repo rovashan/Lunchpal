@@ -12,7 +12,8 @@ import { MatToolbarModule,
    MatInputModule,
    MatProgressSpinnerModule,
    MatChipsModule,
-   MatSelectModule
+   MatSelectModule,
+   MatSlideToggleModule
   } from '@angular/material';
 
 // Modules
@@ -30,7 +31,8 @@ const modules = [
   MatInputModule ,
   MatProgressSpinnerModule,
   MatChipsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({

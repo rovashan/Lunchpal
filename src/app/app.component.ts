@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
         this.lunchbox = true;
 
         if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
-          (this.router.url.indexOf("/canteen/order") !== -1)) {
-
+          (this.router.url.indexOf("/canteen/order") !== -1) || 
+          (this.router.url.indexOf("/canteen/settings") !== -1)) {
           this.lunchbox = false;
         }
 

@@ -1,0 +1,20 @@
+<section>
+    <h2>Settings</h2>
+    <div class="backLink">
+        <a routerLink="/canteen">
+            <i class="material-icons">
+                home
+            </i>
+            <label style="font-size: 1.2em;">Home</label>
+        </a>
+    </div>
+    <div class="settings">
+        <mat-slide-toggle [(ngModel)]="dailyLimitSetting" (change)="updateDailyLimitSetting($event)">Daily Limit</mat-slide-toggle> 
+        <p>You can use a daily limit to help control your spending for the week.</p>
+
+        <br>
+
+        <mat-slide-toggle [(ngModel)]="remindersSetting" (change)="updateRemindersSetting($event)">Reminders</mat-slide-toggle> 
+        <p>App notifications remindingf you to order lunch each morning.</p>
+    </div>
+</section>
