@@ -24,7 +24,7 @@
     <div class="orderdetails">
       <div>
         <p>Total</p>
-        <p>{{orderTotal}}</p>
+        <strong style="vertical-align: middle; padding-top: 15px;">R{{orderTotal}}</strong>
       </div>
     </div>
     <div *ngIf="enoughCredits; else showCreditsMessage" class="orderdetails">
@@ -52,9 +52,15 @@
 
 
 <ng-template #showCreditsMessage>
-  <div>
-    <p>Your current <strong>Total R {{orderTotal}}</strong> exceeds your total <strong>Credits R
+  <div style="text-align: center;">
+    <p><strong>Total R {{orderTotal}}</strong> exceeds your daily <strong>Amount R
         {{totalCredits}}</strong> </p>
+        <p style="color: #f37702;">
+          You can switch off Daily Limit in 
+          <span>
+              <a style="color: #5ec5ff;" routerLink="/canteen">Settings</a>
+          </span>
+        </p>
   </div>
 </ng-template>
 
@@ -63,9 +69,9 @@
 <ng-template #showMessage>
   <div class="emptyLunchbox">
     <img class="lunchboxIcon" src="../../../assets/images/tupperware2.svg" />
-    <p>You have no items in your lunchbox.</p>
+    <p style="color: #f37702;">You have no items in your lunchbox.</p>
     <span>
-      <a routerLink="/canteen">Select some here</a>
+      <a style="color: #5ec5ff;" routerLink="/canteen">Select some here</a>
     </span>
   </div>
 </ng-template>
@@ -79,7 +85,7 @@
           delete
         </i>
       </span> {{item.product}} x {{item.quantity}}</p>
-    <p>{{item.price * item.quantity}}</p>
+    <p>R{{item.price * item.quantity}}</p>
   </div>
 
 
