@@ -21,8 +21,7 @@
   <li><a *ngIf="!canteen" routerLink="/faqs">FAQ</a></li>
   <li><a *ngIf="!canteen" routerLink="/contact">Contact</a></li>
   <li><a *ngIf="canteen" routerLink="/canteen/settings">Settings</a></li>
-  <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>
-     
+  <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>   
   </ul>
 
   <ul class="mobileLogo">

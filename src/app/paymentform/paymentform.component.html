@@ -59,6 +59,7 @@
             </div>
           </form>
           <button [disabled]="!personal.valid" class="continue" matStepperNext type="button"
+          [ngStyle]="{'background' : (personal.valid) ? '#5ec5ff' : '#b4c8d3'}"
             (click)="personalCompleted()">Continue</button>
         </mat-step>
 
@@ -69,18 +70,18 @@
             <div class="controls">
               <div>
                 <label for="phone">Address: </label>
-                <input ngx-google-places-autocomplete 
-                  [options]="{ bounds: defaultBounds,
-                               strictBounds: true, 
-                               componentRestrictions: { country: 'ZA'} }"
-                  #placesRef="ngx-places" formControlName="address" (onAddressChange)="handleAddressChange($event)"
+                <input ngx-google-places-autocomplete [options]="{ bounds: defaultBounds,
+                               strictBounds: false, 
+                               componentRestrictions: { country: 'ZA'} }" #placesRef="ngx-places"
+                  formControlName="address" (onAddressChange)="handleAddressChange($event)"
                   (change)="inputAddressChange($event)" />
                 <div
                   *ngIf="deliveryInfo.get('address').hasError('required') && (deliveryInfo.get('address').dirty || deliveryInfo.get('address').touched)">
                   <span class="error">Address is required.</span>
                 </div>
                 <label for="phone">Building (optional): </label>
-                <input name="building" placeholder="Building name" formControlName="building" (change)="inputBuildingChange($event)">
+                <input name="building" placeholder="Building name" formControlName="building"
+                  (change)="inputBuildingChange($event)">
                 <p>These areas are covered. More areas coming soon.</p>
                 <div>
                   <mat-chip-list>
@@ -96,6 +97,7 @@
 
           <div class="buttonControls">
             <button [disabled]="!deliveryInfo.valid || !selectedAddress || isBusy" class="continue" type="button"
+            [ngStyle]="{'background' : (deliveryInfo.valid) ? '#5ec5ff' : '#b4c8d3'}"
               (click)="deliveryCompleted()">Continue</button>
             <p *ngIf="isBusy">
               <mat-spinner></mat-spinner> Setting up payment...
@@ -126,7 +128,8 @@
             <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
             <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
 
-            <button type="submit" class="confirmPay continue" (click)="pay()">Pay Now</button>
+            <button type="submit" class="confirmPay continue" style="margin: 0 auto;" (click)="pay()">Pay Now</button>
+
           </form>
         </mat-step>
       </mat-horizontal-stepper>

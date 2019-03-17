@@ -163,10 +163,6 @@ form input[type="submit"], .paymentContainer .continue, .paymentContainer .confi
   cursor: pointer;
 }
 
-form input[type="submit"], .continue:disabled {
-    // background: #cccccc !important;
-    // color: #666666 !important;
-}
 
 .paymentContainer .confirmOrder{
   margin: 40px auto;
