@@ -3,7 +3,8 @@
     
     .signupForm {
         width: 50%;
-        max-width: 600px;
+        max-width: 500px;
+        padding: 20px 15px;
     }
     
     .buttonHolder{
@@ -15,3 +16,17 @@
     }   
     
 }
+
+.signupForm {
+    width: 80%;
+    max-width: 500px;
+    padding: 20px 15px;
+}
+
+.buttonHolder{
+    text-align: center;
+}
+
+.signupSubmit {
+    display: inline;
+}  

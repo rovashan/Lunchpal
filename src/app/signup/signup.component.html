@@ -1,8 +1,8 @@
 <section>
     <h2>Get Started with Lunchpal</h2>
-  
+    <p>Create an account to start using Lunchpal.</p> 
+
   <form class="signupForm" (ngSubmit)="signup(signupForm.value)" [formGroup]="signupForm">
-    <p>Create an account and let the delish begin</p> 
     
     <label for="email">Email Address:</label>
     <input type="email" formControlName="email">
@@ -12,7 +12,7 @@
   
     <div class="buttonHolder">
       <input class="signupSubmit" type="submit" [disabled]="!signupForm.valid" value="Create Account">
-      <p>Already a member? <strong> <a routerLink="/login">Login here</a></strong></p> 
+      <p>Already a member? <strong> <a style="color: #f37702;" routerLink="/login">Login here</a></strong></p> 
     </div>
 
     
