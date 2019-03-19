@@ -13,6 +13,7 @@ import {AuthService} from "../auth/auth.service";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  isBusy: boolean;
 
   constructor(
     public authService: AuthService,
@@ -27,7 +28,17 @@ export class SignupComponent implements OnInit {
 
   //pass the form data to the service signup function  
   signup(formData: FormData){
-    this.authService.signUp(formData["email"], formData["password"]);
+    this.isBusy = true;
+
+    this.authService.signUp(formData["email"], formData["password"])
+    .then( () => {
+      this.isBusy = false;
+      this.router.navigate(["/plans"]);
+    })
+    .catch((err) => {
+      this.isBusy = false;
+      console.log("An error ocurred: ", err);
+    });
   }
 
   ngOnInit() {

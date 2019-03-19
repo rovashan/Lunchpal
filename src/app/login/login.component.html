@@ -1,23 +1,26 @@
 <section>
   <h2>Login To Order</h2>
-  <p>Please provide your credentials to login.</p> 
+  <p>Please provide your credentials to login.</p>
 
-<form class="loginForm" (ngSubmit)="login(loginForm.value)" [formGroup]="loginForm">
- 
-  <label for="email">Email Address:</label>
-  <input type="email" formControlName="email">
+  <form class="loginForm" (ngSubmit)="login(loginForm.value)" [formGroup]="loginForm">
 
-  <label for="password">Password:</label>
-  <input type="password" name="password" formControlName="password">
-  
-  <div class="buttonHolder">
-    <input class="loginSubmit" type="submit" [disabled]="!loginForm.valid" value="Login">
+    <label for="email">Email Address:</label>
+    <input type="email" formControlName="email">
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" formControlName="password">
+
+    <div class="buttonHolder">
+      <input class="loginSubmit" type="submit" [disabled]="!loginForm.valid" value="Login">
+    </div>
+  </form>
+
+  <p *ngIf="isBusy">
+    <mat-spinner></mat-spinner> Logging in
+  </p>
+
+  <div *ngIf="authService.loginError != ''">
+    <p class="error">{{authService.loginError}}</p>
   </div>
-
-</form>
-
-<div *ngIf="authService.loginError != ''">
-  <p class="error">{{authService.loginError}}</p>
-</div>
 
 </section>

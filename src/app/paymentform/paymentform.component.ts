@@ -143,23 +143,25 @@ export class PaymentformComponent implements OnInit {
     //console.log('User address: ', this.selectedAddress);
 
     this.isBusy = true;
+    let transactionDate = moment(new Date()).utc().format("YYYY-MM-DD hh:mm"); 
     let userSelectedDate = this.startdate;
     let endDate = moment(userSelectedDate).utc().add(12, "months").format("YYYY-MM-DD");
 
     console.log('userSelectedDate: ', userSelectedDate);
 
-    let subsStartDate = moment(userSelectedDate).utc().add(1, "week").format("YYYY-MM-DD");
+    let subsStartDate = moment(userSelectedDate).utc().add(8, "days").format("YYYY-MM-DD");
     let subsEndDate = moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
 
     let preq: PReq = {
       VERSION: '21',
-      PAYGATE_ID: '10011072130',
+      PAYGATE_ID: '10011072130',  //Test
+      //PAYGATE_ID: '1026688100018',
       REFERENCE: this.selectedfirstname,
       AMOUNT: this.selectedPlan["price"] * 100,
       CURRENCY: 'ZAR',
       RETURN_URL: "https://lunch-api-8ff4b.firebaseapp.com/api/pay",
 
-      TRANSACTION_DATE: '2019-02-10 18:30',
+      TRANSACTION_DATE: transactionDate, //'2019-03-17 21:21',
       EMAIL: this.authService.userName,
       SUBS_START_DATE: subsStartDate,
       SUBS_END_DATE: subsEndDate,
@@ -192,6 +194,8 @@ export class PaymentformComponent implements OnInit {
       // only if payment doc successfully created
       // set request reference to new payment doc id
       preq.REFERENCE = docRef.id;
+
+      console.log('preq: ', preq);
 
       //calc request
       this.paymentService.calc(preq).subscribe(

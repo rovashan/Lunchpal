@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 //Afirestore service
 import { AfirestoreService } from "../afirestore.service";
 import { map } from "rxjs/operators";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import { Router } from "@angular/router";
 import { User } from '../models/user';
 import { UserStatus } from '../models/user-status';
@@ -66,8 +66,8 @@ export class AuthService {
   );
 
   //create account function
-  signUp(email: string, password: string) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+  signUp(email: string, password: string) : Promise<any>{
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
 
         let userObj: User = {
@@ -83,7 +83,7 @@ export class AuthService {
         });
 
         this.signupError = "";
-        this.router.navigate(["/plans"]);
+        //this.router.navigate(["/plans"]);
       })
       .catch((err) => {
         //console.log("An error ocurred: ", err);
@@ -165,11 +165,11 @@ export class AuthService {
 
 
   //login function
-  login(email: string, password: string) {
+  login(email: string, password: string) : Promise<any> {
+    this.loginError = "";
    
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then(()=>{
-      this.loginError = "";
       //the auth user ID will not match the id of the user document
       //we will need to find the user manually and check for its status
       this.afirestore.checkUser().subscribe(users=>{
@@ -205,7 +205,7 @@ export class AuthService {
                 //console.log("User subscription", this.userSubscription)
               })
             } else{
-              console.log("user subscription is empty")
+              console.log("user subscription is empty");
             }
             
             
@@ -234,7 +234,7 @@ export class AuthService {
         })
       })
       
-    })
+    }).catch(err => this.loginError = err)
     }
     
     }

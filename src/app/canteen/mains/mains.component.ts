@@ -33,7 +33,7 @@ export class MainsComponent implements OnInit {
     this.aFirestore.userMealsChanges.subscribe(x =>
       {
         this.weeklyMeals = x;
-       //console.log("weekly meals", this.weeklyMeals);
+        console.log("weekly meals", this.weeklyMeals);
       });
    
     //use the subscription to get the plan
@@ -87,7 +87,7 @@ export class MainsComponent implements OnInit {
 
         let plan = subscription["plan"]["planName"];
         let lowercasePlan = plan.toLowerCase();
-        this.aFirestore.getWeeklyMenusCanteen( "2019-02-11", lowercasePlan, "monday" );
+        this.aFirestore.getWeeklyMenusCanteen( weekStart, lowercasePlan, weekday );
       }
          
     });
