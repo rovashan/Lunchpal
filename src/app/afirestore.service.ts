@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {BehaviorSubject} from "rxjs";
+import { BehaviorSubject } from "rxjs";
+
 /*
 import { User } from './models/user';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -11,25 +12,26 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 export class AfirestoreService {
   constructor(
     private firestore: AngularFirestore,
-  ) {}
+  ) { }
 
 
   items: any;
   meals: any[];
   public userMealsChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.meals);
-  
+
   setUserWeeklyMeals(meals: any): void {
     this.meals = meals;
     this.userMealsChanges.next(meals);
-    
+
   }
-/*
-  public collectionChanges() {
-    //checks the changes in the subscriptions collection
-    //only the modified data
-    return this.firestore.collection("subscriptions").stateChanges(["modified"]);
-  }
-*/
+
+  /*
+    public collectionChanges() {
+      //checks the changes in the subscriptions collection
+      //only the modified data
+      return this.firestore.collection("subscriptions").stateChanges(["modified"]);
+    }
+  */
   //get current user subscription
   public getUserSubscription(userSubscription: any) {
 
@@ -39,7 +41,7 @@ export class AfirestoreService {
   //get the plans
   public getPlans() {
     //we need the document ID for the plan reference
-    return this.firestore.collection("plans", ref => ref.orderBy('price')). snapshotChanges();
+    return this.firestore.collection("plans", ref => ref.orderBy('price')).snapshotChanges();
   }
 
   public getSelectedPlan(planId: string) {
@@ -166,42 +168,42 @@ export class AfirestoreService {
   }
 
   //get weeklymenus for canteen
-  public getWeeklyMenusCanteen(currentDate: any, planSelected: string, weekday:string){
+  public getWeeklyMenusCanteen(currentDate: any, planSelected: string, weekday: string) {
     this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
-    .subscribe(data => {
-      let weeklyMeals = [];
-      this.setUserWeeklyMeals([]);
-      Object.keys(data).forEach((key) => {
-        // console.log(key, data[key])
-        this.firestore.doc(data[key]).valueChanges().subscribe(x =>{
-          //push to the meals array
-          //console.log(x)
-          weeklyMeals.push(x);
-         
-        })
-      
+      .subscribe(data => {
+        let weeklyMeals = [];
+        this.setUserWeeklyMeals([]);
+        Object.keys(data).forEach((key) => {
+          // console.log(key, data[key])
+          this.firestore.doc(data[key]).valueChanges().subscribe(x => {
+            //push to the meals array
+            //console.log(x)
+            weeklyMeals.push(x);
+
+          })
+
+        });
+        //console.log("weeklyMeals", weeklyMeals);
+        this.setUserWeeklyMeals(weeklyMeals)
+        //console.log(this.meals);
       });
-      //console.log("weeklyMeals", weeklyMeals);
-      this.setUserWeeklyMeals(weeklyMeals)
-      //console.log(this.meals);
-    });    
   }
 
   //get other products for the canteen
-  public getCanteenDrinks(){
+  public getCanteenDrinks() {
     return this.firestore.collection("menu/drinks/products").valueChanges();
   }
 
-  public getCanteenSnacks(){
+  public getCanteenSnacks() {
     return this.firestore.collection("menu/snacks/products").valueChanges();
   }
 
-  public getCanteenLightMeals(){
+  public getCanteenLightMeals() {
     return this.firestore.collection("menu/lightmeals/products").valueChanges();
   }
 
   public sendMessage(name: string, email: string, message: string) {
-    
+
     let data = {
       createdDate: new Date(),
       name: name,

@@ -31,6 +31,7 @@ import { PaymentService } from './paymentform/shared/payment.service';
 import { HttpClientModule } from '@angular/common/http';
 //moment js
 import { MomentModule } from 'ngx-moment';
+import { ApiService } from './api.service';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { MomentModule } from 'ngx-moment';
     HttpClientModule,
     MomentModule
   ],
-  providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService],
+  providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
