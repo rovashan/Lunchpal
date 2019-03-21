@@ -61,7 +61,7 @@ export class AfirestoreService {
 
   //update user status
   public updateUserStatus(docId: string) {
-    this.firestore.collection("users").doc(docId).update({ status: "Active" });
+    this.firestore.collection("users").doc(docId).update({ status: "ACTIVE" });
   }
 
 

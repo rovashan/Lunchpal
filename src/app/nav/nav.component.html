@@ -30,20 +30,12 @@
 
 
   <ul class="options">
-    <!--
-    <li *ngIf="userSubscription && userStatus !== 'Expired'"><a class="basket" id="basket" routerLink="/canteen/order">
-        <i class="material-icons">
-          shopping_basket
-        </i></a>
-      
-      </li>
-     --> 
      <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
      
     </ul>
 
     <ul class="creditsmobile" style="text-transform: none;">
-      <li title="credits per day" class="credits" *ngIf="canteen && userSubscription && userStatus !== 'Expired'">
+      <li title="credits per day" class="credits" *ngIf="canteen && userSubscription && userStatus !== 'EXPIRED'">
         <!-- Daily:&nbsp;&nbsp; -->
         {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Available:&nbsp;'}}
         <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />

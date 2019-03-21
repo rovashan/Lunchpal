@@ -11,7 +11,6 @@ import { AfirestoreService } from '../afirestore.service';
 export class NavComponent implements OnInit {
   dailyLimitSetting: boolean;
   limitPeriod: string;
-  remainingBalance: string;
 
   constructor(
     public authService: AuthService,
@@ -116,8 +115,6 @@ export class NavComponent implements OnInit {
       
       if (x) {
         this.userSubscription = x;
-        //this.remainingBalance = this.userSubscription['userRemainingBalance'];
-        console.log('remainingBalance: ', this.remainingBalance);
 
         if (this.canteen) {
             this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {

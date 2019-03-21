@@ -116,7 +116,7 @@ export class OrderComponent implements OnInit {
         deliveryTime: this.shoppingcart.deliveryTime,
         deliveredTime: '',
         total: this.orderTotal,
-        status: "Ordered"
+        status: "ORDERED"
       }
 
       console.log("order", order);
@@ -150,7 +150,7 @@ export class OrderComponent implements OnInit {
         deliveryTime: this.shoppingcart.deliveryTime,
         deliveredTime: '',
         total: this.totalCredits,
-        status: "Ordered"
+        status: "ORDERED"
       }
 
       console.log("order", order);

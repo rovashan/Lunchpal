@@ -74,7 +74,7 @@ export class AuthService {
           id: user.user.uid,
           createdDate: new Date(),
           email: user.user.email,
-          status: UserStatus.New,
+          status: UserStatus.NEW,
           subscription: ""
         }
         this.afirestore.addUser(userObj)
@@ -138,11 +138,11 @@ export class AuthService {
             
              //console.log("subscription status", user.payload.doc.data()["status"]);
               
-              if(this.userStatus === "Expired"){
-                this.setUserStatus("Expired");
+              if(this.userStatus === UserStatus.EXPIRED){
+                this.setUserStatus(UserStatus.EXPIRED);
                 console.log(this.userStatus);
               }else{
-                this.setUserStatus("Active");
+                this.setUserStatus(UserStatus.ACTIVE);
               }
 
               if(this.userSubscriptionId !== ""){
@@ -188,11 +188,11 @@ export class AuthService {
        
             //if the user status is expired
             //makes the changes for the nav to hide the cart and credits
-            if(this.userStatus === "Expired"){
-              this.setUserStatus("Expired");
+            if(this.userStatus === UserStatus.EXPIRED){
+              this.setUserStatus(UserStatus.EXPIRED);
               //console.log(this.userStatus);
             }else{
-              this.setUserStatus("Active");
+              this.setUserStatus(UserStatus.ACTIVE);
             }
             //console.log(this.userSubscriptionId, this.userStatus);
             
@@ -212,15 +212,15 @@ export class AuthService {
             let x = user.payload.doc.data()["status"];
           
             switch (x){
-              case UserStatus.New: {
+              case UserStatus.NEW: {
                 this.router.navigate(["/plans"]);
                 break;
               }
-              case UserStatus.Active: {
+              case UserStatus.ACTIVE: {
                 this.router.navigate(["/canteen"]);
                 break;
               }
-              case UserStatus.Expired: {
+              case UserStatus.EXPIRED: {
              
                 this.router.navigate(["/renew"]);
                 break;

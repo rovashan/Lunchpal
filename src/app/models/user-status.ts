@@ -1,5 +1,5 @@
 export enum UserStatus {
-    New = "New",
-    Active = "Active",
-    Expired = "Expired"
+    NEW = "NEW",
+    ACTIVE = "ACTIVE",
+    EXPIRED = "EXPIRED"
 }
