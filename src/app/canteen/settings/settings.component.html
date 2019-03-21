@@ -5,16 +5,16 @@
             <i class="material-icons">
                 home
             </i>
-            <label style="font-size: 1.2em;">Home</label>
+            <label style="font-size: 1.2em; cursor: pointer;">Home</label>
         </a>
     </div>
     <div class="settings">
         <mat-slide-toggle [(ngModel)]="dailyLimitSetting" (change)="updateDailyLimitSetting($event)">Daily Limit</mat-slide-toggle> 
-        <p>You can use a daily limit to help control your spending for the week.</p>
+        <p>You can use a daily limit to help control your spending. Switching this on will split your balance by each remaining day in your subscription.</p>
 
         <br>
 
         <mat-slide-toggle [(ngModel)]="remindersSetting" (change)="updateRemindersSetting($event)">Reminders</mat-slide-toggle> 
-        <p>App notifications remindingf you to order lunch each morning.</p>
+        <p>App reminders to order lunch each morning at 10:00 AM.</p>
     </div>
 </section>

@@ -45,7 +45,7 @@
     <ul class="creditsmobile" style="text-transform: none;">
       <li title="credits per day" class="credits" *ngIf="canteen && userSubscription && userStatus !== 'Expired'">
         <!-- Daily:&nbsp;&nbsp; -->
-        {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Weekly:&nbsp;'}}
+        {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Available:&nbsp;'}}
         <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />
         <!-- <strong>&nbsp;R{{userSubscription.plan.planPrice}}</strong> -->
         <strong>&nbsp;R{{userSubscription.remainingBalance}}</strong>
