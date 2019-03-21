@@ -17,7 +17,7 @@
               delete
             </i>
           </span> {{orderedItems}} </p>
-        <p>R65</p>
+        <p>R{{orderTotal}}</p>
       </div>
 
     </div>
@@ -27,15 +27,34 @@
         <strong style="vertical-align: middle; padding-top: 15px;">R{{orderTotal}}</strong>
       </div>
     </div>
-    <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage" class="orderdetails">
+    <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage"
+      class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
         <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm">
-          <mat-radio-group formControlName="deliveryDate">
-            <mat-radio-button value="soon" (change)="soonSelected()">As soon as possible</mat-radio-button>
-            <mat-radio-button value="later" (change)="showTime()">Later</mat-radio-button>
-            <input (change)="getTime($event)" *ngIf="laterSelected" class="deliveryTime" type="time" name="deliveryTime"
-              formControlName="deliveryTime" placeholder="time" />
+          <mat-radio-group formControlName="deliveryDate" (change)="radioChange($event)">
+            <mat-radio-button value="lunchTime">Lunch Time (12:00 to 13:00 PM)</mat-radio-button>
+            <mat-radio-button value="later">Later</mat-radio-button>
+
+            <!-- <input (change)="getTime($event)" *ngIf="laterSelected" class="deliveryTime" type="time" name="deliveryTime"
+              formControlName="deliveryTime" placeholder="time" /> -->
+            <!-- 
+            <mat-select *ngIf="laterSelected" placeholder="Select Time" [name]="deliveryTime" [(ngModel)]="deliveryTime">
+              <mat-option value="13:30">13:30</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="5">5</mat-option>
+            </mat-select> -->
+
+
+            <mat-select *ngIf="laterSelected" placeholder="Select Time" class="timeSelect" formControlName="deliveryTime" (selectionChange)="selectTime($event)">
+              <mat-option value="13:00 - 13:30 PM">13:00 - 13:30 PM</mat-option>
+              <mat-option value="13:30 - 14:00 PM">13:30 - 14:00 PM</mat-option>
+              <mat-option value="14:00 - 14:30 PM">14:00 - 14:30 PM</mat-option>
+              <mat-option value="14:30 - 15:00 PM">14:30 - 15:00 PM</mat-option>
+            </mat-select>
+
           </mat-radio-group>
 
           <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder" />
@@ -55,12 +74,12 @@
   <div style="text-align: center;">
     <p><strong>Total R {{orderTotal}}</strong> exceeds your daily <strong>Amount R
         {{totalCredits}}</strong> </p>
-        <p style="color: #f37702;">
-          You can switch off Daily Limit in 
-          <span>
-              <a style="color: #5ec5ff;" routerLink="/canteen/settings">Settings</a>
-          </span>
-        </p>
+    <p style="color: #f37702;">
+      You can switch off Daily Limit in
+      <span>
+        <a style="color: #5ec5ff;" routerLink="/canteen/settings">Settings</a>
+      </span>
+    </p>
   </div>
 </ng-template>
 

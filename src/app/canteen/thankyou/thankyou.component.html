@@ -2,8 +2,8 @@
   
     <h2>Thank you</h2>
     <img class="thankyouIcon" src="../../../assets/images/dish.svg" />
-    <p>Your meal will be delived at:</p>
-    <p *ngIf="deliveryTime; else showSoonMessage">{{deliveryTime}} {{meridian}}</p>
+    <p>Your meal will be delivered at:</p>
+    <p *ngIf="deliveryTime; else showSoonMessage">{{deliveryTime}}</p>
   
 
     <ng-template #showSoonMessage>

@@ -202,18 +202,21 @@ li i {
   position: relative;
   top: -1px;
   font-size: 14px;
-  padding-top: 11px;
+  padding-top: 12px;
   padding-right: 6px;
   padding-left: 4px;
 }
 .credits img {
-  width: 24px;
+  width: 20px;
 }
 .icon {
     cursor: pointer;
   }
   
 
+.logout {
+  padding-top: 2px;
+}
 
 .options .logout a{
     color: #111;

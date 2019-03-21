@@ -22,6 +22,14 @@
     border-radius: 6px;
 }
 
+.timeSelect {
+    width: 142px !important;
+}
+
+// .deleteIcon {
+//     color: #ff4081 !important;
+// }
+
 
 .lunchboxIcon {
     width: 30%;
@@ -65,7 +73,7 @@
 }
 .item p span {
     margin-right: 10px;
-    color: red;
+    color: #ff4081; //red;
     cursor: pointer;
 }
 
