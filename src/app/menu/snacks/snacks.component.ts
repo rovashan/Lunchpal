@@ -32,7 +32,7 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
         let thisSnack: any = snack;
         thisSnack.qty = '1';
 
-        menuSnacks.push(snack);
+        menuSnacks.push(thisSnack);
         this.snacks = menuSnacks;
       })
       console.log(this.snacks);

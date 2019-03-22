@@ -27,6 +27,14 @@ export class MainsComponent implements OnInit {
     this.shoppingcart.removeItemsAfterMealSelected();
   }
 
+  addProduct(quantity: number, ligthmeal: Object){
+    this.shoppingcart.addProduct(quantity, ligthmeal);
+  } 
+
+  changeUI($event: Event, item: any, name: string){
+    this.shoppingcart.orderedItems($event, item, name);
+  }
+
   ngOnInit() {
 
 

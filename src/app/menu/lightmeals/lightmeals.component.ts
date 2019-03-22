@@ -20,8 +20,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
   addProduct(quantity: number, ligthmeal: Object){
     this.shoppingcart.addProduct(quantity, ligthmeal);
   }  
-  changeUI($event: Event, item: any, name: string){
-  
+  changeUI($event: Event, item: any, name: string){  
     this.shoppingcart.orderedItems($event, item, name);
   }
   
@@ -36,7 +35,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
         let thisLightMeal: any = lightmeal;
         thisLightMeal.qty = '1';
 
-        menuLightMeals.push(lightmeal)
+        menuLightMeals.push(thisLightMeal)
         this.lightmeals = menuLightMeals;
       })
       console.log(this.lightmeals);

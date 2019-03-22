@@ -1,43 +1,45 @@
-<section  *ngIf="userStatus === 'ACTIVE'; else showRenewMessage" class="plan">
+<section *ngIf="userStatus === 'ACTIVE'; else showRenewMessage" class="plan">
   <h2>Light Meals</h2>
   <div class="backLink">
-      <a routerLink = "/menu">
-        <i class="material-icons">
-          arrow_back
-        </i>
-        <p>Back </p>
-      </a>  
-    </div>
-<div *ngIf="lightmeals" class="mealsContainer">
+    <a routerLink="/menu">
+      <i class="material-icons">
+        arrow_back
+      </i>
+      <p>Back </p>
+    </a>
+  </div>
+  <div *ngIf="lightmeals" class="mealsContainer">
     <div *ngFor="let lightmeal of lightmeals" class="meal">
-        <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
-        <div class="mealContent">
-        
+      <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
+      <div class="mealContent">
+
         <div>
-          <h3>{{lightmeal.name}}</h3> 
+          <h3>{{lightmeal.name}}</h3>
           <p>{{lightmeal.description}}</p>
           <div class="mealoptions">
             <p class="price">
-              <img style="vertical-align:middle;" src="../../../assets/icons/lunchpalcoin2.png" /> 
+              <img style="vertical-align:middle;" src="../../../assets/icons/lunchpalcoin2.png" />
               <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
             </p>
             <div>
-                <mat-select [name]="lightmeal.qty" [(ngModel)]="lightmeal.qty">
-                    <mat-option  value="1">1</mat-option>
-                    <mat-option  value="2">2</mat-option>
-                    <mat-option  value="3">3</mat-option>
-                    <mat-option  value="4">4</mat-option>
-                    <mat-option  value="5">5</mat-option>
-                </mat-select>
-           
-             <button class="buy" (click)="addProduct(lightmeal.qty, {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal.qty, lightmeal.name);">Add to Order</button>
-          </div> 
+              <mat-select [name]="lightmeal.qty" [(ngModel)]="lightmeal.qty">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+
+              <button class="buy"
+                (click)="addProduct(lightmeal.qty, {price:  lightmeal.price, name: lightmeal.name }); changeUI($event, lightmeal.qty, lightmeal.name);">
+                Add to Order</button>
+            </div>
           </div>
         </div>
-        
-       </div>
+
       </div>
-      <!--
+    </div>
+    <!--
     <div class="meal">
         <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>
         <div class="mealContent">
@@ -92,7 +94,7 @@
          </div>
         </div>
 -->
-</div>
+  </div>
 
 
 </section>
@@ -102,5 +104,5 @@
   <section>
     <h2>Your Lunchbox</h2>
     <p>Your plan has expired, renew it <a routerLink="/renew">here</a></p>
-</section>
+  </section>
 </ng-template>

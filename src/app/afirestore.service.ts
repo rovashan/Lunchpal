@@ -178,7 +178,9 @@ export class AfirestoreService {
           this.firestore.doc(data[key]).valueChanges().subscribe(x => {
             //push to the meals array
             //console.log(x)
-            weeklyMeals.push(x);
+            let meal: any = x;
+            meal.qty = '1';
+            weeklyMeals.push(meal);
 
           })
 
