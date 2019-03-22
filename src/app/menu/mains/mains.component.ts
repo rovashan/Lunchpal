@@ -92,7 +92,7 @@ export class MainsComponent implements OnInit {
 
           let plan = subscription["plan"]["planName"];
           let lowercasePlan = plan.toLowerCase();
-          this.aFirestore.getWeeklyMenusCanteen(weekStart, lowercasePlan, weekday);
+          this.aFirestore.getWeeklyMains(weekStart, lowercasePlan, weekday);
 
         });
       }

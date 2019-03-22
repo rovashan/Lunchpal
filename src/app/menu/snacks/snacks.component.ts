@@ -13,7 +13,7 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
 
   constructor(private shoppingcart: ShoppingcartService, private authService: AuthService,  private aFirestore:AfirestoreService) { }
   userStatus = this.authService.userStatus;
-  canteenSubscription: Subscription;
+  menuSubscription: Subscription;
   snacks:any[] = [];  
 
   addProduct(quantity: number, obj: Object){
@@ -26,7 +26,7 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
   ngOnInit() {
     //this.shoppingcart.updateItems();
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-    this.canteenSubscription = this.aFirestore.getCanteenSnacks().subscribe(snacks => {
+    this.menuSubscription = this.aFirestore.getSnacks().subscribe(snacks => {
       let menuSnacks = [];
       snacks.map(snack => {
         let thisSnack: any = snack;
@@ -53,7 +53,7 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
 
 
 ngOnDestroy(): void {
-  this.canteenSubscription.unsubscribe();
+  this.menuSubscription.unsubscribe();
   
 }
 }

@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     private shoppingcartService: ShoppingcartService
   ) { }
 
-  canteen: boolean = false;
+  menu: boolean = false;
   lunchbox: boolean = false;
   dailyLimitSetting: boolean;
 
@@ -35,25 +35,25 @@ export class AppComponent implements OnInit {
   checkURL() {
     this.router.events.subscribe((x) => {
 
-      // if(!this.router.url.indexOf("/canteen")){
-      //   this.canteen = false;
+      // if(!this.router.url.indexOf("/menu")){
+      //   this.menu = false;
       // } else {
-      //   this.canteen = true;
+      //   this.menu = true;
       // }
 
-      if (this.router.url.indexOf("/canteen") === -1) {
-        this.canteen = false;
+      if (this.router.url.indexOf("/menu") === -1) {
+        this.menu = false;
 
 
 
       } else {
-        this.canteen = true;
+        this.menu = true;
 
         this.lunchbox = true;
 
-        if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
-          (this.router.url.indexOf("/canteen/order") !== -1) ||
-          (this.router.url.indexOf("/canteen/settings") !== -1)) {
+        if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
+          (this.router.url.indexOf("/menu/order") !== -1) ||
+          (this.router.url.indexOf("/menu/settings") !== -1)) {
           this.lunchbox = false;
         }
 
@@ -70,25 +70,25 @@ export class AppComponent implements OnInit {
 
 
 
-    //   // if (!this.router.url.indexOf("/canteen")) {
+    //   // if (!this.router.url.indexOf("/menu")) {
     //   //   this.lunchbox = true;
     //   // } else {
     //   //   this.lunchbox = false;
     //   // }
 
-    //   if (this.router.url.indexOf("/canteen") !== -1) {
+    //   if (this.router.url.indexOf("/menu") !== -1) {
     //     this.lunchbox = true;
 
-    //     if ((this.router.url.indexOf("/canteen/thankyou") !== -1) ||
-    //       (this.router.url.indexOf("/canteen/order") !== -1)) {
+    //     if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
+    //       (this.router.url.indexOf("/menu/order") !== -1)) {
 
     //       this.lunchbox = false;
     //     }
     //   }
 
-    //   // if ( (this.router.url.indexOf("/canteen") !== -1)  || 
-    //   //      (this.router.url.indexOf("/canteen/thankyou") === -1) ||
-    //   //      (this.router.url.indexOf("/canteen/order") === -1)  ) {
+    //   // if ( (this.router.url.indexOf("/menu") !== -1)  || 
+    //   //      (this.router.url.indexOf("/menu/thankyou") === -1) ||
+    //   //      (this.router.url.indexOf("/menu/order") === -1)  ) {
     //   //   this.lunchbox = false;
     //   // } else {
     //   //   this.lunchbox = true;
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
 
 
 
-    //   // if (!this.router.url.indexOf("/canteen/order")) {
+    //   // if (!this.router.url.indexOf("/menu/order")) {
     //   //   this.lunchbox = false;
     //   // }
     // });
@@ -129,7 +129,7 @@ export class AppComponent implements OnInit {
       this.userSubscription = x;
       console.log(x);
 
-      if (this.canteen) {
+      if (this.menu) {
         this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
           this.dailyLimitSetting = settings['dailyLimit'];
           console.log('dailyLimitSetting: ', this.dailyLimitSetting);
@@ -151,7 +151,7 @@ export class AppComponent implements OnInit {
     });
 
 
-    //this.router.navigate(["/canteen"]);
+    //this.router.navigate(["/menu"]);
 
 
     this.notifications.init();

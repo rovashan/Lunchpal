@@ -167,7 +167,7 @@ export class OrderComponent implements OnInit {
       //remove meal after submit 
       localStorage.removeItem("meal");
     }
-    this.router.navigate(["/canteen/thankyou"]);
+    this.router.navigate(["/menu/thankyou"]);
     //send a push notification
     //this.notifications.customNotification("Order Placed", "Your order has been placed, thanks for using Lunchpal");  
 

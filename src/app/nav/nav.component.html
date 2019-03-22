@@ -4,28 +4,28 @@
   </ul>
 
   <ul class="menu">
-    <li><a class="logo" [routerLink]="canteen ? ['/canteen'] : ['/home']">LUNCHPAL</a></li>
-    <li *ngIf="!canteen"><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
-    <li *ngIf="!canteen"><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
-    <li *ngIf="!canteen"><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
-    <li *ngIf="!canteen"><a routerLink="/contact">Contact</a><span class="lineBelow"></span></li>
-    <li *ngIf="canteen"><a routerLink="/canteen/settings">Settings</a></li>
+    <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+    <li *ngIf="!menu"><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
+    <li *ngIf="!menu"><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
+    <li *ngIf="!menu"><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
+    <li *ngIf="!menu"><a routerLink="/contact">Contact</a><span class="lineBelow"></span></li>
+    <li *ngIf="menu"><a routerLink="/menu/settings">Settings</a></li>
   </ul>
 
 
 <!-- class="menu" -->
   <ul #sidenav class="sidenav">
-  <li><a class="logo" [routerLink]="canteen ? ['/canteen'] : ['/home']">LUNCHPAL</a></li>
-  <li><a *ngIf="!canteen" routerLink="/howitworks"> How It Works</a></li>
-  <li><a *ngIf="!canteen" routerLink="/plans">Plans</a></li>
-  <li><a *ngIf="!canteen" routerLink="/faqs">FAQ</a></li>
-  <li><a *ngIf="!canteen" routerLink="/contact">Contact</a></li>
-  <li><a *ngIf="canteen" routerLink="/canteen/settings">Settings</a></li>
+  <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+  <li><a *ngIf="!menu" routerLink="/howitworks"> How It Works</a></li>
+  <li><a *ngIf="!menu" routerLink="/plans">Plans</a></li>
+  <li><a *ngIf="!menu" routerLink="/faqs">FAQ</a></li>
+  <li><a *ngIf="!menu" routerLink="/contact">Contact</a></li>
+  <li><a *ngIf="menu" routerLink="/menu/settings">Settings</a></li>
   <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>   
   </ul>
 
   <ul class="mobileLogo">
-      <li><a [routerLink]="canteen ? ['/canteen'] : ['/home']">LUNCHPAL</a></li>
+      <li><a [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
   </ul>
 
 
@@ -35,7 +35,7 @@
     </ul>
 
     <ul class="creditsmobile" style="text-transform: none;">
-      <li title="credits per day" class="credits" *ngIf="canteen && userSubscription && userStatus !== 'EXPIRED'">
+      <li title="credits per day" class="credits" *ngIf="menu && userSubscription && userStatus !== 'EXPIRED'">
         <!-- Daily:&nbsp;&nbsp; -->
         {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Available:&nbsp;'}}
         <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />

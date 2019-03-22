@@ -138,8 +138,8 @@ orderedItems($event: Event, item: any, name: string){
 
     //redirect to the same component
     //in order to see the changes inside localStorage
-    this.router.navigateByUrl('canteen/order', {skipLocationChange: true}).then(()=>
-      this.router.navigate(["canteen/order"]));
+    this.router.navigateByUrl('menu/order', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["menu/order"]));
 
 
 }

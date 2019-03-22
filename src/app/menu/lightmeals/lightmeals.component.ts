@@ -14,7 +14,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
   constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService, private aFirestore: AfirestoreService) { }
 
   userStatus = this.authService.userStatus;
-  canteenSubscription: Subscription;
+  menuSubscription: Subscription;
   lightmeals:any[] = [];  
 
   addProduct(quantity: number, ligthmeal: Object){
@@ -29,7 +29,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
   
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-     this.canteenSubscription = this.aFirestore.getCanteenLightMeals().subscribe(lightmeals => {
+     this.menuSubscription = this.aFirestore.getLightMeals().subscribe(lightmeals => {
      
       let menuLightMeals = [];
       lightmeals.map(lightmeal => {
@@ -52,7 +52,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
   }
   
   ngOnDestroy(): void {
-    this.canteenSubscription.unsubscribe();
+    this.menuSubscription.unsubscribe();
     
   }
 }

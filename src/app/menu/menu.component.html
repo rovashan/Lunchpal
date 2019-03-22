@@ -1,4 +1,4 @@
-<section *ngIf="userStatus === 'ACTIVE'; else showRenewMessage" class="canteen">
+<section *ngIf="userStatus === 'ACTIVE'; else showRenewMessage" class="shopMenu">
   
   <div class="welcomeSection">
     <h2 class="username" *ngIf="user != null">Good Morning<br>{{username}}</h2>
@@ -8,28 +8,28 @@
   <div class="menu">
     <div class="mealsSection">
 
-      <a routerLink="/canteen/mains">
+      <a routerLink="/menu/mains">
         <h3>Mains</h3>
         <div class="overlay"></div>
       </a>
     </div>
 
     <div class="lightmealsSection">
-      <a routerLink="/canteen/lightmeals">
+      <a routerLink="/menu/lightmeals">
         <h3>Light Meals</h3>
         <div class="overlay"></div>
       </a>
     </div>
 
     <div class="snacksSection">
-      <a routerLink="/canteen/snacks">
+      <a routerLink="/menu/snacks">
         <h3>Snacks</h3>
         <div class="overlay"></div>
       </a>
     </div>
 
     <div class="drinksSection">
-      <a routerLink="/canteen/drinks">
+      <a routerLink="/menu/drinks">
         <h3>Drinks</h3>
         <div class="overlay"></div>
       </a>

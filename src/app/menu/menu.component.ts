@@ -4,11 +4,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 
 @Component({
-  selector: 'app-canteen',
-  templateUrl: './canteen.component.html',
-  styleUrls: ['./canteen.component.scss']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
-export class CanteenComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 

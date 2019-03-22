@@ -29,7 +29,7 @@ export class NavComponent implements OnInit {
 
   //---- Below is the implementation for the sidenav
 
-  canteen = false;
+  menu = false;
   //watch the sidenav
   @ViewChild('sidenav') menu: ElementRef;
 
@@ -58,15 +58,15 @@ export class NavComponent implements OnInit {
     }
   }
 
-  checkCanteen() {
+  checkMenu() {
     this.router.events.subscribe((x) => {
 
       //console.log('this.router.url: ', this.router.url);
 
-      if (this.router.url.indexOf("/canteen") === -1) {
-        this.canteen = false;
+      if (this.router.url.indexOf("/menu") === -1) {
+        this.menu = false;
       } else {
-        this.canteen = true;
+        this.menu = true;
 
 
         // this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
@@ -74,7 +74,7 @@ export class NavComponent implements OnInit {
         //   //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
         // });
       }
-      //console.log('canteen: ', this.canteen);
+      //console.log('menu: ', this.menu);
     });
   }
 
@@ -122,7 +122,7 @@ export class NavComponent implements OnInit {
       if (x) {
         this.userSubscription = x;
 
-        if (this.canteen) {
+        if (this.menu) {
             this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
             this.dailyLimitSetting = settings['dailyLimit'];
             //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
@@ -141,7 +141,7 @@ export class NavComponent implements OnInit {
       this.total = x;
     })
     
-    this.checkCanteen();
+    this.checkMenu();
     /*
     if(this.browserWindow.innerWidth > 599){
       this.hideNavbarLogin = false;
@@ -153,7 +153,7 @@ export class NavComponent implements OnInit {
   }
 
   // ngOnChanges() {
-  //   if (this.canteen) {
+  //   if (this.menu) {
   //     console.log(': ', this.authService.userDocId);
   //   }
   // }

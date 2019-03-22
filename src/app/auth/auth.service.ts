@@ -217,7 +217,7 @@ export class AuthService {
                 break;
               }
               case UserStatus.ACTIVE: {
-                this.router.navigate(["/canteen"]);
+                this.router.navigate(["/menu"]);
                 break;
               }
               case UserStatus.EXPIRED: {

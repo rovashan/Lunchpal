@@ -17,7 +17,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
     private aFirestore: AfirestoreService) { }
 
   userStatus = this.authService.userStatus;
-  canteenSubscription: Subscription;
+  menuSubscription: Subscription;
   drinks:any[] = [];  
   
   addProduct(quantity: number, obj: Object){
@@ -31,7 +31,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
   
   ngOnInit() {
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-   this.canteenSubscription = this.aFirestore.getCanteenDrinks().subscribe(drinks => {
+   this.menuSubscription = this.aFirestore.getDrinks().subscribe(drinks => {
       let menuDrinks = [];
       drinks.map(drink => {
         console.log('drink: ', drink);
@@ -58,7 +58,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
 }
 
   ngOnDestroy(): void {
-    this.canteenSubscription.unsubscribe();
+    this.menuSubscription.unsubscribe();
     
   }
 }

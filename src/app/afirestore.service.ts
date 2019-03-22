@@ -167,8 +167,8 @@ export class AfirestoreService {
     return this.firestore.doc('landing/lifestyleMenu').valueChanges();
   }
 
-  //get weeklymenus for canteen
-  public getWeeklyMenusCanteen(currentDate: any, planSelected: string, weekday: string) {
+  //get weeklymenus for menu
+  public getWeeklyMains(currentDate: any, planSelected: string, weekday: string) {
     this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
       .subscribe(data => {
         let weeklyMeals = [];
@@ -189,16 +189,16 @@ export class AfirestoreService {
       });
   }
 
-  //get other products for the canteen
-  public getCanteenDrinks() {
+  //get other products for the menu
+  public getDrinks() {
     return this.firestore.collection("menu/drinks/products").valueChanges();
   }
 
-  public getCanteenSnacks() {
+  public getSnacks() {
     return this.firestore.collection("menu/snacks/products").valueChanges();
   }
 
-  public getCanteenLightMeals() {
+  public getLightMeals() {
     return this.firestore.collection("menu/lightmeals/products").valueChanges();
   }
 
