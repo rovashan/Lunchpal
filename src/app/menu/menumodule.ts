@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared';
-import { CanteenRoutingModule } from './menu-routing.module';
-import { CanteenComponent } from './menu.component';
+import { MenuRoutingModule } from './menu-routing.module';
+import { MenuComponent } from './menu.component';
 
 @NgModule({
   imports: [
     SharedModule,
-    CanteenRoutingModule
+    MenuRoutingModule
   ],
-  declarations: [CanteenComponent]
+  declarations: [MenuComponent]
 })
-export class CanteenModule { }
+export class MenuModule { }

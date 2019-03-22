@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
 
   menu = false;
   //watch the sidenav
-  @ViewChild('sidenav') menu: ElementRef;
+  @ViewChild('sidenav') sidenav: ElementRef;
 
 
   //check for click event to close the sidenav
@@ -42,7 +42,7 @@ export class NavComponent implements OnInit {
       return;
     } else {
       //console.log('close sidenav');
-      this.menu.nativeElement.style.width = "0px";
+      this.sidenav.nativeElement.style.width = "0px";
     }
 
   }
@@ -51,7 +51,7 @@ export class NavComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (event.target.innerWidth > 599) {
-      this.menu.nativeElement.style.width = "0px";
+      this.sidenav.nativeElement.style.width = "0px";
       this.hideNavbarLogin = false;
     } else {
       this.hideNavbarLogin = true;
@@ -88,11 +88,11 @@ export class NavComponent implements OnInit {
 
 
   showMenu() {
-    this.menu.nativeElement.style.width = "250px";
+    this.sidenav.nativeElement.style.width = "250px";
   }
 
   closeMenu() {
-    this.menu.nativeElement.style.width = "";
+    this.sidenav.nativeElement.style.width = "";
   }
 
   //logout function from AuthService
@@ -111,7 +111,7 @@ export class NavComponent implements OnInit {
     // close sidenav on router change
     this.router.events.subscribe((event: NavigationStart) => {
       if (event instanceof NavigationStart) {
-        this.menu.nativeElement.style.width = "0px";
+        this.sidenav.nativeElement.style.width = "0px";
       }
     });
 
