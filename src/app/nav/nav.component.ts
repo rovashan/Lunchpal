@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, HostListener  } from '@angula
 import { AuthService } from "../auth/auth.service";
 import { Router, NavigationStart } from '@angular/router';
 import { AfirestoreService } from '../afirestore.service';
+import { ShoppingcartService } from '../shoppingcart.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,10 +13,15 @@ export class NavComponent implements OnInit {
   dailyLimitSetting: boolean;
   limitPeriod: string;
 
+  total: any = this.shoppingcartService.totalChange;
+
+
   constructor(
     public authService: AuthService,
     private afirestore: AfirestoreService,
     private router: Router,
+    private shoppingcartService: ShoppingcartService
+
   ) { }
 
 
@@ -130,6 +136,11 @@ export class NavComponent implements OnInit {
     })
     //changes on user status
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+
+    this.shoppingcartService.totalChanges.subscribe(x => {
+      this.total = x;
+    })
+    
     this.checkCanteen();
     /*
     if(this.browserWindow.innerWidth > 599){
