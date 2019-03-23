@@ -1,14 +1,14 @@
 
-<section *ngIf="userStatus === 'ACTIVE'; else showRenewMessage" class="shopMenu">
-  
-  <div class="welcomeSection">
-    <h2 class="username" *ngIf="user != null">Good Morning<br>{{username}}</h2>
+<section class="shopMenu">
+   
+   <div *ngIf="user" class="welcomeSection">
+    <h2 class="username">Good Morning<br>{{username}}</h2>
     <p class="whatsForLunch">What's for lunch today?</p>
   </div>
 
   <div class="menu">
+    
     <div class="mealsSection">
-
       <a routerLink="/menu/mains">
         <h3>Mains</h3>
         <div class="overlay"></div>

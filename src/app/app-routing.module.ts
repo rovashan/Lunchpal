@@ -52,11 +52,11 @@ const routes: Routes = [
   { path: '', component: MenuComponent, children: [
    
     {path: "menu", component: IndexComponent},
-    {path: "menu/mains",  canActivate:[GuardGuard] ,loadChildren: './menu/mains/mains.module#MainsModule'},
-    {path: 'menu/lightmeals', canActivate:[GuardGuard] ,loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
-    {path: 'menu/snacks', canActivate:[GuardGuard], loadChildren: './menu/snacks/snacks.module#SnacksModule'},
-    {path: "menu/drinks",  canActivate:[GuardGuard] ,loadChildren: './menu/drinks/drinks.module#DrinksModule'},
-    {path: 'menu/order', canActivate:[GuardGuard], loadChildren: './menu/order/order.module#OrderModule'},
+    {path: "menu/mains", loadChildren: './menu/mains/mains.module#MainsModule'},
+    {path: 'menu/lightmeals', loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
+    {path: 'menu/snacks', loadChildren: './menu/snacks/snacks.module#SnacksModule'},
+    {path: "menu/drinks", loadChildren: './menu/drinks/drinks.module#DrinksModule'},
+    {path: 'menu/order', loadChildren: './menu/order/order.module#OrderModule'},
     {path: 'menu/thankyou', canActivate:[GuardGuard], loadChildren: './menu/thankyou/thankyou.module#ThankyouModule'},
     {path: 'menu/settings', canActivate:[GuardGuard],loadChildren: './menu/settings/settings.module#SettingsModule'},
     {path: "", redirectTo:"menu", pathMatch: "full"},
