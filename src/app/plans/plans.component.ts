@@ -14,9 +14,9 @@ import {ViewEncapsulation} from "@angular/core";
   encapsulation: ViewEncapsulation.None
 })
 export class PlansComponent implements OnInit {
-  veggieMenu: any;
-  classicMenu: any;
-  lifestyleMenu: any;
+  // veggieMenu: any;
+  // classicMenu: any;
+  // lifestyleMenu: any;
 
   constructor(
     public authService: AuthService,
@@ -125,9 +125,9 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
     this.getplans();
     
-    this.getVeggieMenu();
-    this.getClassicMenu();
-    this.getLifestyleMenu(); 
+    // this.getVeggieMenu();
+    // this.getClassicMenu();
+    // this.getLifestyleMenu(); 
    }
  
   ngOnDestroy() {
@@ -139,21 +139,21 @@ export class PlansComponent implements OnInit {
   }
   
 
-  getClassicMenu() {
-    this.afirestore.getClassicMenu().subscribe(items => {
-      this.classicMenu = items;
-    });
-  }
+  // getClassicMenu() {
+  //   this.afirestore.getClassicMenu().subscribe(items => {
+  //     this.classicMenu = items;
+  //   });
+  // }
 
-  getVeggieMenu() {
-    this.afirestore.getVeggieMenu().subscribe(items => {
-      this.veggieMenu = items;
-    });
-  }
+  // getVeggieMenu() {
+  //   this.afirestore.getVeggieMenu().subscribe(items => {
+  //     this.veggieMenu = items;
+  //   });
+  // }
 
-  getLifestyleMenu() {
-    this.afirestore.getLifestyleMenu().subscribe(items => {
-      this.lifestyleMenu = items;
-    });
-  }
+  // getLifestyleMenu() {
+  //   this.afirestore.getLifestyleMenu().subscribe(items => {
+  //     this.lifestyleMenu = items;
+  //   });
+  // }
 }
