@@ -27,8 +27,10 @@
         <strong style="vertical-align: middle; padding-top: 15px;">R{{orderTotal}}</strong>
       </div>
     </div>
-    <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage"
-      class="orderdetails">
+    
+    <!-- <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage"
+      class="orderdetails"> -->
+    <div class="orderdetails">
       <p class="title">Delivery Time</p>
       <div>
         <form class="orderForm" (ngSubmit)="placeOrder(orderForm.value)" [formGroup]="orderForm">
@@ -48,7 +50,8 @@
             </mat-select> -->
 
 
-            <mat-select *ngIf="laterSelected" placeholder="Select Time" class="timeSelect" formControlName="deliveryTime" (selectionChange)="selectTime($event)">
+            <mat-select *ngIf="laterSelected" placeholder="Select Time" class="timeSelect"
+              formControlName="deliveryTime" (selectionChange)="selectTime($event)">
               <mat-option value="13:00 - 13:30 PM">13:00 - 13:30 PM</mat-option>
               <mat-option value="13:30 - 14:00 PM">13:30 - 14:00 PM</mat-option>
               <mat-option value="14:00 - 14:30 PM">14:00 - 14:30 PM</mat-option>
