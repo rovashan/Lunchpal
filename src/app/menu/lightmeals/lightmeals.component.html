@@ -8,6 +8,9 @@
       <p>Back </p>
     </a>
   </div>
+
+  <mat-spinner style="margin-top: 100px;" *ngIf="isBusy"></mat-spinner>
+
   <div *ngIf="lightmeals" class="mealsContainer">
     <div *ngFor="let lightmeal of lightmeals" class="meal">
       <div class="thumb" style="background: url('../../../assets/images/brooke-lark-194252-unsplash.png');"></div>

@@ -9,6 +9,8 @@
     </a>
   </div>
 
+  <mat-spinner style="margin-top: 100px;" *ngIf="isBusy"></mat-spinner>
+
   <div *ngIf="snacks" class="mealsContainer">
 
     <div *ngFor="let snack of snacks" class="meal">
