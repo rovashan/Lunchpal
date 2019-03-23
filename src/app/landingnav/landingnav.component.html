@@ -4,7 +4,7 @@
   </ul>
 
   <ul class="menu">
-    <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+    <li><a class="logo" [routerLink]="['/home']">LUNCHPAL</a></li>
     <li ><a routerLink="/menu">Menu</a><span class="lineBelow"></span></li>
     <li ><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
     <li ><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
@@ -16,7 +16,7 @@
 
 <!-- class="menu" -->
   <ul #sidenav class="sidenav">
-  <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+  <li><a class="logo" [routerLink]="['/home']">LUNCHPAL</a></li>
   <li><a routerLink="/howitworks"> How It Works</a></li>
   <li><a routerLink="/plans">Plans</a></li>
   <li><a routerLink="/faqs">FAQ</a></li>
@@ -28,7 +28,7 @@
 </ul>
 
   <ul class="mobileLogo">
-      <li><a [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+      <li><a [routerLink]="['/home']">LUNCHPAL</a></li>
   </ul>
 
 

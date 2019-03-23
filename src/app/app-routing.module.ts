@@ -45,7 +45,9 @@ const routes: Routes = [
   { path: 'payment/:plan', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
   { path: 'terms-and-conditions', loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
   { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyModule'},
-  { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},  
+  { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},
+  { path: 'faqs', loadChildren: './faqs/faqs.module#FaqsModule'},
+  { path: 'contact', loadChildren: './contact/contact.module#ContactModule'},  
   
   { path: '', component: MenuComponent, children: [
    
