@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
-import { FooterComponent } from './footer/footer.component';
 import {NavComponent} from "./nav/nav.component";
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -42,7 +41,6 @@ import { IndexComponent } from './menu/index/index.component';
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent,
     MenuComponent,
     IndexComponent,
    

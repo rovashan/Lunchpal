@@ -8,6 +8,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import {LandingnavComponent} from "../landingnav/landingnav.component";
 import {RouterModule} from "@angular/router";
+import { FooterComponent } from '../footer/footer.component';
 
 // Modules
 const modules = [
@@ -26,9 +27,10 @@ const modules = [
   ],
   exports: [
     ...modules,
-    LandingnavComponent
+    LandingnavComponent,
+    FooterComponent
   ],
-  declarations: [LandingnavComponent],
+  declarations: [LandingnavComponent, FooterComponent],
 
 })
 export class SharedModule { }
