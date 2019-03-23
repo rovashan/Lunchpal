@@ -163,12 +163,15 @@ export class NavComponent implements OnInit, OnDestroy {
 
  
   ngOnDestroy(){
-    
-    this.routerEvent.unsubscribe();
     this.userAuth.unsubscribe();
-    this.routerNavigation.unsubscribe();
     this.userSubscriptionEvent.unsubscribe();
     this.shoppingCartSubscription.unsubscribe();
-  
+    /*
+    this.routerEvent.unsubscribe();
+   
+    this.routerNavigation.unsubscribe();
+   
+   
+  */
   }
 }
