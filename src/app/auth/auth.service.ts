@@ -132,7 +132,7 @@ export class AuthService {
      this.afirestore.checkUser().subscribe(users =>{
         users.map(user => {
           if(user.payload.doc.data()["email"] === this.userName){
-            
+          
              //console.log("user ", user.payload.doc.data());
               //get us the document ID of the current user
               this.userDocId = user.payload.doc.id;
@@ -183,11 +183,10 @@ export class AuthService {
       //we will need to find the user manually and check for its status
       this.afirestore.checkUser().subscribe(users=>{
         users.map(user => {
-        
+        console.log(user);
           
           if(user.payload.doc.data()["email"] === this.userName){
-            console.log(user.payload.doc.data());
-
+       
             //get us the document ID of the current user
             this.userDocId = user.payload.doc.id;
             this.userSubscriptionId = user.payload.doc.data()["subscription"];

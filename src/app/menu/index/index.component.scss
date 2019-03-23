@@ -1,0 +1,120 @@
+
+.menu {
+    width: 100%;
+    margin: 0 auto;
+    /*
+    -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    background: #fff;
+   */
+}
+.shopMenu {
+   // padding-bottom: 100px;
+   padding: 0px;
+   margin: 0px;
+}
+
+.menu div {  
+ 
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.menu div:last-of-type {
+    margin-bottom: 0px
+}
+
+.menu div a {
+    display: block;
+    text-decoration: none;
+    padding: 70px 0px;
+    position: relative;
+    
+}
+.menu div a h3 {
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.overlay {
+    width: 110% !important;
+    height: 120% !important;
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute !important;
+    top: -0px;
+    left: -20px;
+    z-index: 1;
+}
+
+.welcomeSection {
+   // background: url("../../assets/images/ting-tian-789620-unsplash.png");
+}
+
+.mealsSection {
+    background: url("../../../assets/images/ting-tian-789620-unsplash.png");
+}
+
+.lightmealsSection {
+    background:url("../../../assets/images/jannis-brandt-107231-unsplash.png");
+}
+.snacksSection {
+    background:url("../../../assets/images/erik-dungan-1079095-unsplash.png");
+}
+
+.drinksSection{
+    background:url("../../../assets/images/leighann-renee-799319-unsplash.png");
+}
+
+
+.mealsSection, .lightmealsSection, .snacksSection, .drinksSection{
+   
+    background-size: 100%;
+    background-position: center;
+}
+
+.mealsSection:hover, .lightmealsSection:hover , .snacksSection:hover, .drinksSection:hover{
+    background-size: 109%;
+}
+
+.whatsForLunch {
+    font-size: 1.4em;
+}
+
+.username {
+    margin-top: 80px;
+    text-transform: none;
+}
+h2 {
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+}
+
+@media screen and (min-width: 993px) {
+  
+    .menu {
+       //margin-top: 60px;
+       width: 90%;
+       display: block;
+    
+   }
+   .menu div h3 {
+       font-size: 1.3rem;
+   }
+   .menu div {
+       width: 45%;
+       display: inline-block;
+       margin: 5px;
+       padding: 60px 0px;
+   }
+   .menu div:last-of-type {
+    margin: 5px;
+   }
+   .overlay {
+    top: -80px;
+    left: -20px;
+  
+}
+
+}

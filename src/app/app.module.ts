@@ -34,6 +34,16 @@ import { MomentModule } from 'ngx-moment';
 import { ApiService } from './api.service';
 import { LandingnavComponent } from './landingnav/landingnav.component';
 
+import { HomeComponent } from "./home/home.component";
+import {PlansComponent} from "./plans/plans.component";
+import {HowitworksComponent} from "./howitworks/howitworks.component";
+import {MaterialModule} from "./shared/material/material.module";
+import {MenuComponent} from "./menu/menu.component";
+import {MainsComponent} from "./menu/mains/mains.component";
+import {LoginComponent} from "./login/login.component";
+import { SharedModule } from './shared/shared.module';
+import { IndexComponent } from './menu/index/index.component';
+import {DrinksComponent} from "./menu/drinks/drinks.component";
 
 @NgModule({
   declarations: [
@@ -41,10 +51,19 @@ import { LandingnavComponent } from './landingnav/landingnav.component';
     NavComponent,
     FooterComponent,
     LandingnavComponent,
-  
+
+    HomeComponent,
+    PlansComponent,
+    HowitworksComponent,
+    MenuComponent,
+    MainsComponent,
+    LoginComponent,
+    IndexComponent,
+    DrinksComponent
   ],
   imports: [
-   
+   SharedModule,
+  
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AngularFirestoreModule,
@@ -58,6 +77,8 @@ import { LandingnavComponent } from './landingnav/landingnav.component';
     MomentModule
   ],
   providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService, ApiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
+  
 })
 export class AppModule { }
