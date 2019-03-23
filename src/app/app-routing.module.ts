@@ -52,6 +52,7 @@ const routes: Routes = [
   { path: '', component: MenuComponent, children: [
    
     {path: "menu", component: IndexComponent},
+    {path: "menu/plans", loadChildren: './menu/menu-plans/menu-plans.module#MenuPlansModule'},
     {path: "menu/mains", loadChildren: './menu/mains/mains.module#MainsModule'},
     {path: 'menu/lightmeals', loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
     {path: 'menu/snacks', loadChildren: './menu/snacks/snacks.module#SnacksModule'},
