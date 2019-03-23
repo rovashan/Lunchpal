@@ -42,7 +42,7 @@ export class MainsComponent implements OnInit {
     //get the user weekly meals
     this.aFirestore.userMealsChanges.subscribe(x => {
       this.weeklyMeals = x;
-      console.log("weekly meals", this.weeklyMeals);
+     // console.log("weekly meals", this.weeklyMeals);
     });
 
     //use the subscription to get the plan
@@ -56,43 +56,43 @@ export class MainsComponent implements OnInit {
           //console.log('server date: ', date);
 
           let weekStart = moment(date).startOf("isoWeek").format("YYYY-MM-DD"); //the start of the current week
-          console.log(weekStart);
+          //console.log(weekStart);
           let day = moment().weekday(); //gets the number of the day, monday is 1 
 
           switch (day) {
             case 0: {
               weekday = "sunday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 1: {
               weekday = "monday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 2: {
               weekday = "tuesday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 3: {
               weekday = "wednesday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 4: {
               weekday = "thursday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 5: {
               weekday = "friday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
             case 6: {
               weekday = "saturday";
-              console.log(weekday);
+              //console.log(weekday);
               break;
             }
 

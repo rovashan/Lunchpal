@@ -5,6 +5,7 @@ export interface User {
     createdDate: Date;
     email: string;
     status: UserStatus;
-    subscription: string
+    subscription: string;
+    balance: string
     //name: string;
   }

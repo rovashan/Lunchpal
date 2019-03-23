@@ -1,0 +1,309 @@
+
+$color: #5ec5ff;
+$hoverColor: #0f93e0;
+
+nav {
+    background: #fff;
+    color: #111;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    height: 60px;
+    top:0px;
+    position: fixed;
+    width: 100%;
+    //max-width: 200px;
+    z-index: 98;
+  
+}
+
+.topnav ul{
+    display: flex;
+    padding: 0px;
+    margin-top: 10px;
+
+}
+
+.clear {
+  clear: both;
+}
+
+.topnav .menu{
+    float: left;
+
+}
+
+
+
+.topnav .options, .topnav .creditsmobile {
+
+    float: right;
+
+}
+
+
+.topnav ul li {
+    list-style-type: none;
+    margin: 0px 2px;
+    position: relative;
+}
+
+
+
+.topnav ul li a {
+
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.topnav .menu li a{
+    color: #111;
+}
+
+
+
+.lineBelow{
+    height: 3px;
+    display: block;
+    background: $color;
+    position: relative;
+    width: 0px;
+    bottom: -10px;
+    z-index: 99;
+}
+
+
+.topnav .menu li a:hover{
+    color: $color;
+}
+
+// .sidenav li:active a {
+//   color: #e04a0f !important;
+//   width: 25px;
+// }
+
+.topnav ul li:hover .lineBelow {
+    width: 100%;
+}
+
+.topnav .mobileLogo {
+  display: none;
+}
+
+.topnav .menutoggler {
+    display: none;
+}
+.topnav .sidenav {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: -10px;
+    left: 0;
+    background-color: #fff;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    -webkit-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+    box-shadow: 2px 0px 12px -1px rgba(0,0,0,0.35);
+  
+}
+
+.topnav .sidenav li:last-of-type{
+ /* border-bottom: 1px solid $color; */
+}
+.topnav .sidenav li:first-of-type{
+    border-bottom: none;   
+}
+
+.sidesignup, .sidelogout {
+  border-top: 1px solid $color;
+  
+}
+
+.sidesignup a, .sidelogin a, .sidelogout a{
+  color: #555 !important;
+  
+}
+
+.sidesignup:hover a, .sidelogin:hover a, .sidelogout:hover a{
+  color: #fff !important;
+  
+}
+
+.topnav .sidenav li a {
+    color: #111;
+    display: inline-block;
+    width: 227px;
+    font-size: 1rem;
+}
+
+
+li i {
+  display: block;
+  padding-top: 8px;
+  font-size: 1.6rem;
+}
+
+
+
+.login a {
+    color: $color;
+    border: 1px solid $color;   
+    border-radius: 5px; 
+    text-align: center;
+    width: 50px;
+}
+
+.signup a {
+    background: $color !important;
+    color: #fff; //!important;
+    border: 1px solid;
+    border-radius: 5px; 
+    text-align: center;
+    width: 50px;
+    margin-right: 0 !important;
+}
+
+.signup {
+    margin-right: 0 !important;
+}
+
+
+.topnav .menu li a.logo {
+  padding-left: 10px;
+  font-size: 1.4rem;
+  margin-top: -4px;
+  color:  $color;
+}
+
+.topnav .sidenav li a.logo {
+  color:  $color;
+  font-size: 1.4rem;
+}
+
+.topnav .sidenav li a:hover{
+    text-indent: 5px;
+    color: #fff;
+    background: $color;
+}
+
+.topnav .sidenav li:first-of-type a:hover{
+   text-indent: 0px;
+   color: $color;
+   background: #fff;
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -1px;
+  font-size: 14px;
+  padding-top: 12px;
+  padding-right: 6px;
+  padding-left: 4px;
+}
+.credits img {
+  width: 20px;
+}
+.icon {
+    cursor: pointer;
+  }
+  
+
+.logout {
+  padding-top: 2px;
+}
+
+.options .logout a{
+    color: #111;
+    border-left: 1px solid rgb(228, 228, 228);
+}
+
+.options .logout:hover a{
+    color: $color !important;
+}
+.options .logout:hover{
+    background: none !important;
+}
+
+
+
+.basket.shake{
+    animation: shake 0.700s ease-in-out;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+//   .topnav .menu {
+//     display: none;
+// }
+// .topnav .sidenav {
+//   display: block;
+// }
+// .topnav .menutoggler {
+//   display:block;
+//   float: left;
+// }
+
+// .topnav .mobileLogo {
+//   display: block;
+//   float: left;
+//   margin-top: 7px;
+// }
+
+// .topnav .mobileLogo li a {
+//   color:  $color;
+//   font-size: 1.4rem;
+//   padding: 0;
+//   margin-top: 8px;
+// }
+
+
+@media screen and (max-width: 750px) {
+    .topnav .menu {
+        display: none;
+    }
+    .topnav .sidenav {
+      display: block;
+    }
+    .topnav .menutoggler {
+      display:block;
+      float: left;
+    }F
+
+    .topnav .mobileLogo {
+      display: block;
+      float: left;
+      margin-top: 7px;
+    }
+
+    .topnav .mobileLogo li a {
+      color:  $color;
+      font-size: 1.4rem;
+      padding: 0;
+      margin-top: 8px;
+    }
+    // .topnav .options {
+    //   display: none;
+    // }
+  }

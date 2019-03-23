@@ -1,15 +1,16 @@
-import { Component, OnInit, ElementRef, ViewChild, HostListener  } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, HostListener, OnDestroy } from '@angular/core';
 import { AuthService } from "../auth/auth.service";
 import { Router, NavigationStart } from '@angular/router';
 import { AfirestoreService } from '../afirestore.service';
 import { ShoppingcartService } from '../shoppingcart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
   dailyLimitSetting: boolean;
   limitPeriod: string;
 
@@ -24,7 +25,11 @@ export class NavComponent implements OnInit {
 
   ) { }
 
-
+  routerEvent: Subscription;
+  userAuth: Subscription;
+  userSubscriptionEvent: Subscription;
+  routerNavigation: Subscription;
+  shoppingCartSubscription: Subscription;
   hideNavbarLogin = false;
 
   //---- Below is the implementation for the sidenav
@@ -58,10 +63,11 @@ export class NavComponent implements OnInit {
     }
   }
 
+  /*
   checkMenu() {
-    this.router.events.subscribe((x) => {
+   this.routerEvent= this.router.events.subscribe((x) => {
 
-      //console.log('this.router.url: ', this.router.url);
+      console.log('this.router.url: ', this.router.url);
 
       if (this.router.url.indexOf("/menu") === -1) {
         this.menu = false;
@@ -77,7 +83,7 @@ export class NavComponent implements OnInit {
       //console.log('menu: ', this.menu);
     });
   }
-
+*/
 
   //---- End of implementation for the sidenav
 
@@ -108,8 +114,10 @@ export class NavComponent implements OnInit {
   }    
 */
   ngOnInit() {
+
+
     // close sidenav on router change
-    this.router.events.subscribe((event: NavigationStart) => {
+   this.routerNavigation = this.router.events.subscribe((event: NavigationStart) => {
       if (event instanceof NavigationStart) {
         this.sidenav.nativeElement.style.width = "0px";
       }
@@ -117,7 +125,7 @@ export class NavComponent implements OnInit {
 
     //    this.getWindow();
     //changes on user subscription
-    this.authService.userSubscriptionChanges.subscribe(x => {
+    this.userAuth = this.authService.userSubscriptionChanges.subscribe(x => {
       
       if (x) {
         this.userSubscription = x;
@@ -135,13 +143,14 @@ export class NavComponent implements OnInit {
 
     })
     //changes on user status
-    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+   this.userSubscriptionEvent = this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
 
-    this.shoppingcartService.totalChanges.subscribe(x => {
+   
+   this.shoppingCartSubscription = this.shoppingcartService.totalChanges.subscribe(x => {
       this.total = x;
     })
-    
-    this.checkMenu();
+   
+   //this.checkMenu();
     /*
     if(this.browserWindow.innerWidth > 599){
       this.hideNavbarLogin = false;
@@ -152,10 +161,14 @@ export class NavComponent implements OnInit {
 
   }
 
-  // ngOnChanges() {
-  //   if (this.menu) {
-  //     console.log(': ', this.authService.userDocId);
-  //   }
-  // }
-
+ 
+  ngOnDestroy(){
+    
+    this.routerEvent.unsubscribe();
+    this.userAuth.unsubscribe();
+    this.routerNavigation.unsubscribe();
+    this.userSubscriptionEvent.unsubscribe();
+    this.shoppingCartSubscription.unsubscribe();
+  
+  }
 }

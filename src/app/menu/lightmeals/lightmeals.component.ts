@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
 import {AuthService} from "../../auth/auth.service";
 import {AfirestoreService} from "../../afirestore.service";
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './lightmeals.component.html',
   styleUrls: ['./lightmeals.component.scss']
 })
-export class LightmealsComponent implements OnInit, AfterContentChecked {
+export class LightmealsComponent implements OnInit, OnDestroy {
 
   constructor(private shoppingcart: ShoppingcartService,  private authService: AuthService, private aFirestore: AfirestoreService) { }
 
@@ -38,10 +38,11 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
         menuLightMeals.push(thisLightMeal)
         this.lightmeals = menuLightMeals;
       })
-      console.log(this.lightmeals);
+      //console.log(this.lightmeals);
     })
   }
   
+  /*
   ngAfterContentChecked(){
   
     let matSelectElems = document.getElementsByTagName("mat-select");
@@ -49,7 +50,7 @@ export class LightmealsComponent implements OnInit, AfterContentChecked {
       this.shoppingcart.updateItems();
     }
   }
-  
+  */
   ngOnDestroy(): void {
     this.menuSubscription.unsubscribe();
     

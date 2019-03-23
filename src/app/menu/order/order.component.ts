@@ -104,7 +104,7 @@ export class OrderComponent implements OnInit {
 
   placeOrder(formData: FormData) {
     //this.slipTime();
-    console.log("order sent", formData);
+    //console.log("order sent", formData);
     //check if items
     if (localStorage.getItem("cart")) {
       //console.log("products details", this.orderedItems);
@@ -119,12 +119,15 @@ export class OrderComponent implements OnInit {
         status: "ORDERED"
       }
 
-      console.log("order", order);
+      //console.log("order", order);
 
       //send the meal to the collection order
       this.afirestore.createOrder(order).then(docRef => {
         //get the id of the document
-        console.log("orderDocId", docRef.id);
+       // console.log("orderDocId", docRef.id);
+       let newBalance = this.authService.userBalance - this.orderTotal;
+       //console.log(newBalance, this.authService.userDocId);
+       this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
       }).catch(err => {
         console.log("Error: ", err);
       })
@@ -153,12 +156,17 @@ export class OrderComponent implements OnInit {
         status: "ORDERED"
       }
 
-      console.log("order", order);
+      //console.log("order", order);
 
       //send the meal to the collection order
       this.afirestore.createOrder(order).then(docRef => {
         //get the id of the document
-        console.log("orderDocId", docRef.id);
+       // console.log("orderDocId", docRef.id);
+        let newBalance = this.authService.userBalance - this.orderTotal;
+        //console.log(newBalance, this.authService.userDocId);
+
+       //change the user balance
+       this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
       }).catch(err => {
         console.log("Error: ", err);
       })
@@ -175,11 +183,11 @@ export class OrderComponent implements OnInit {
 
   removeMeal(meal: string) {
     this.shoppingcart.removeMeal(meal);
-    console.log(meal);
+    //console.log(meal);
   }
 
   removeItemFromCart(item: string) {
-    console.log('remove item');
+    //console.log('remove item');
     this.shoppingcart.removeItem(item);
   }
 
@@ -193,8 +201,8 @@ export class OrderComponent implements OnInit {
 
   radioChange($event) {
     
-    console.log('deliveryDate: ', this.orderForm.controls.deliveryDate);
-    console.log('deliveryTime: ', this.orderForm.controls.deliveryTime);
+    //console.log('deliveryDate: ', this.orderForm.controls.deliveryDate);
+    //console.log('deliveryTime: ', this.orderForm.controls.deliveryTime);
     
     if ($event.value === 'lunchTime') {
       this.laterSelected = false;
@@ -233,7 +241,7 @@ export class OrderComponent implements OnInit {
 
     this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
       this.dailyLimitSetting = settings['dailyLimit'];
-      console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+      //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
     });
 
 
@@ -254,8 +262,9 @@ export class OrderComponent implements OnInit {
 
         this.orderedItems = this.shoppingcart.items;
         this.orderTotal = this.shoppingcart.total;
-
-        if (this.orderTotal <= this.totalCredits) {
+        //this.totalCredits
+        
+        if (this.orderTotal <= this.authService.userBalance) {
           this.enoughCredits = true;
         } else {
           this.enoughCredits = false;

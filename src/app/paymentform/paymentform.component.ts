@@ -227,6 +227,14 @@ export class PaymentformComponent implements OnInit {
           this.isBusy = false;
           this.stepper.next();
 
+          // ------------- MUST BE MOVED TO THE CLOUD FUNCTION
+
+            //add balance to the user
+           // console.log( this.authService.userDocId, this.selectedPlan["price"]);
+           this.aFirestore.addBalanceToUSer(this.authService.userDocId, this.selectedPlan["price"]);
+
+          // ------------- MUST BE MOVED TO THE CLOUD FUNCTION
+
         },
         error => {
           this.isBusy = false;
@@ -256,49 +264,6 @@ export class PaymentformComponent implements OnInit {
       this.selectedBuilding = data.building;
     }
   }
-
-  /*
-    createUserSubscription() {
-  
-      console.log("Order confirmed!");
-      
-      let plan = {
-        initDate: "Initial date",
-        expDate: "expiration date",
-        planId: this.route.snapshot.paramMap.get("plan"),
-        planName: this.selectedPlan["name"],
-        planCredits: this.selectedPlan["creditsPerDay"],
-        deliveryAddress: this.selectedAddress
-  
-      }
-  
-      console.log(this.selectedPlan);
-  
-      console.log(this.authService.userName);
-      console.log(this.authService.userDocId);
-  
-      //Create the user subscription
-      this.aFirestore.addSubscription(this.authService.userName, this.authService.userDocId, plan)
-        .then(data => {
-          //this is the documents ID reference
-          console.log(data.id);
-          this.aFirestore.updateUserStatus(this.authService.userDocId);
-          this.aFirestore.updateUserSubscription(this.authService.userDocId, data.id);
-          
-          //create the payment doc with the subscription docID
-          this.aFirestore.addPaymentReference(
-            this.authService.userName,
-            this.authService.userDocId,
-            this.selectedfirstname,
-            data.id
-          )
-  
-      }).catch(err => {
-        console.log(err);
-      })
-    
-    }
-  */
 
   //------ this is the end of the function that sends the data to firestore
 

@@ -7,9 +7,9 @@ import { MatToolbarModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { NavComponent } from "./nav/nav.component";
-import { FooterComponent } from './footer/footer.component';
 
+import { FooterComponent } from './footer/footer.component';
+import {NavComponent} from "./nav/nav.component";
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 //moment js
 import { MomentModule } from 'ngx-moment';
 import { ApiService } from './api.service';
+import { LandingnavComponent } from './landingnav/landingnav.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ApiService } from './api.service';
     AppComponent,
     NavComponent,
     FooterComponent,
+    LandingnavComponent,
   
   ],
   imports: [

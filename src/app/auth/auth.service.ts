@@ -29,7 +29,8 @@ export class AuthService {
   public userStatus: string;
   public userSubscription: object;
   public userFullName: any;
-
+  public userBalance: any;
+  public userBalanceChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.userBalance);
   public userSubscriptionChanges: BehaviorSubject<object> = new BehaviorSubject<object>(this.userSubscription);
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
   public userFullNameChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.userFullName);
@@ -37,6 +38,11 @@ export class AuthService {
   setUserFullName(userFullName: any): void {
     this.userFullName = userFullName;
     this.userFullNameChanges.next(userFullName);
+  }
+
+  setUserBalance(balance: any): void {
+    this.userBalance = balance;
+    this.userBalanceChanges.next(balance);
   }
 
 
@@ -75,7 +81,8 @@ export class AuthService {
           createdDate: new Date(),
           email: user.user.email,
           status: UserStatus.NEW,
-          subscription: ""
+          subscription: "",
+          balance : ""
         }
         this.afirestore.addUser(userObj)
         .then(doc => {
@@ -133,7 +140,9 @@ export class AuthService {
               this.userStatus = user.payload.doc.data()["status"];
               //this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
               this._userFullName = user.payload.doc.data()["firstName"];
+              this.userBalance = user.payload.doc.data()["balance"];
 
+              this.setUserBalance(user.payload.doc.data()["balance"]);
               this.setUserFullName(this._userFullName);
             
              //console.log("subscription status", user.payload.doc.data()["status"]);
@@ -177,6 +186,7 @@ export class AuthService {
         
           
           if(user.payload.doc.data()["email"] === this.userName){
+            console.log(user.payload.doc.data());
 
             //get us the document ID of the current user
             this.userDocId = user.payload.doc.id;
@@ -185,7 +195,9 @@ export class AuthService {
             this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
             this.setUserFullName(this._userFullName);
 
-       
+           
+            this.setUserBalance(user.payload.doc.data()["balance"]);
+            console.log(this.userBalance)
             //if the user status is expired
             //makes the changes for the nav to hide the cart and credits
             if(this.userStatus === UserStatus.EXPIRED){

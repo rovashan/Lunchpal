@@ -92,7 +92,9 @@ nav {
 }
 
 .topnav .menutoggler {
-    display: none;
+    //display: none;
+    float: left;
+    
 }
 .topnav .sidenav {
     height: 100%;
@@ -138,6 +140,10 @@ nav {
     display: inline-block;
     width: 227px;
     font-size: 1rem;
+}
+
+.topnav .sidenav {
+  display: block;
 }
 
 
@@ -278,7 +284,7 @@ li i {
 //   margin-top: 8px;
 // }
 
-
+/*
 @media screen and (max-width: 750px) {
     .topnav .menu {
         display: none;
@@ -307,3 +313,4 @@ li i {
     //   display: none;
     // }
   }
+*/

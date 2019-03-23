@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 //onesignal service
@@ -6,13 +6,14 @@ import { OnesignalService } from "./onesignal/onesignal.service";
 import { AuthService } from "./auth/auth.service";
 import { AfirestoreService } from "./afirestore.service";
 import { ShoppingcartService } from "./shoppingcart.service";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private notifications: OnesignalService,
@@ -26,30 +27,34 @@ export class AppComponent implements OnInit {
   menu: boolean = false;
   lunchbox: boolean = false;
   dailyLimitSetting: boolean;
-
+  routerEvent: Subscription;
+  routerNavigation: Subscription;
+  shoppingCartBasket: Subscription;
+  shoppingCartTotal: Subscription;
+  userSubscriptionEvent: Subscription;
+  userAuth: Subscription;
   total: any = this.shoppingcartService.totalChange;
   userSubscription: any = this.authService.userSubscription;
   basketChange: any = this.shoppingcartService.emptyBasket;
+  balanceTotal: any;
+
+  showNavMenu;
+  showLandingNav;
 
   //checks url in order to show or hide the footer
   checkURL() {
-    this.router.events.subscribe((x) => {
-
-      // if(!this.router.url.indexOf("/menu")){
-      //   this.menu = false;
-      // } else {
-      //   this.menu = true;
-      // }
+  this.routerEvent = this.router.events.subscribe((x) => {
 
       if (this.router.url.indexOf("/menu") === -1) {
         this.menu = false;
-
-
+        this.showNavMenu = false;
+        this.showLandingNav = true;
 
       } else {
         this.menu = true;
-
+        this.showNavMenu = true;
         this.lunchbox = true;
+        this.showLandingNav = false;
 
         if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
           (this.router.url.indexOf("/menu/order") !== -1) ||
@@ -65,101 +70,67 @@ export class AppComponent implements OnInit {
 
     });
 
-    // this.router.events.subscribe((x) => {
-
-
-
-
-    //   // if (!this.router.url.indexOf("/menu")) {
-    //   //   this.lunchbox = true;
-    //   // } else {
-    //   //   this.lunchbox = false;
-    //   // }
-
-    //   if (this.router.url.indexOf("/menu") !== -1) {
-    //     this.lunchbox = true;
-
-    //     if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
-    //       (this.router.url.indexOf("/menu/order") !== -1)) {
-
-    //       this.lunchbox = false;
-    //     }
-    //   }
-
-    //   // if ( (this.router.url.indexOf("/menu") !== -1)  || 
-    //   //      (this.router.url.indexOf("/menu/thankyou") === -1) ||
-    //   //      (this.router.url.indexOf("/menu/order") === -1)  ) {
-    //   //   this.lunchbox = false;
-    //   // } else {
-    //   //   this.lunchbox = true;
-    //   // }
-
-
-
-
-
-    //   // if (!this.router.url.indexOf("/menu/order")) {
-    //   //   this.lunchbox = false;
-    //   // }
-    // });
-
-
   }
-  /*
-    x(){
-      this.afirestore.collectionChanges().subscribe(x => {
-        console.log(x);
-      })
-    }
-  */
   ngOnInit() {
+    
     //scroll to top after route navigation
-    this.router.events.subscribe((event: NavigationEnd) => {
+   this.routerNavigation = this.router.events.subscribe((event: NavigationEnd) => {
       if (event instanceof NavigationEnd) {
         window.scrollTo(0, 0);
       }
     });
 
-    this.shoppingcartService.emptyBasketChange.subscribe(x => {
+    this.shoppingCartBasket = this.shoppingcartService.emptyBasketChange.subscribe(x => {
       this.basketChange = x;
     });
 
 
-    this.authService.userSubscriptionChanges.subscribe(x => {
+   this.userSubscriptionEvent = this.authService.userSubscriptionChanges.subscribe(x => {
       this.userSubscription = x;
-      console.log(x);
+      //console.log(x);
 
       if (this.menu) {
         this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
           this.dailyLimitSetting = settings['dailyLimit'];
-          console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+          //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
         });
       }
     });
 
-    this.shoppingcartService.totalChanges.subscribe(x => {
+    this.shoppingCartTotal = this.shoppingcartService.totalChanges.subscribe(x => {
       this.total = x;
     })
 
 
-    this.authService.user.subscribe(user => {
-      //console.log("checking user", user)
+    this.authService.userBalanceChanges.subscribe(x => {
+      this.balanceTotal = x;
+    })
+
+
+    this.userAuth = this.authService.user.subscribe(user => {
+    
       if (user !== null) {
         this.authService.userChanges();
+        //getting the balance
+        this.balanceTotal = this.authService.userBalance;
+        console.log("User balance:", this.authService.userBalance);
+        console.log("balanceTotal:", this.balanceTotal);
       }
 
     });
 
-
-    //this.router.navigate(["/menu"]);
-
-
     this.notifications.init();
-    //this.notifications.updateChanges();
     this.checkURL();
-    //this.authService.userChanges();
+   
 
   }
-
+  ngOnDestroy(): void {
+   this.shoppingCartTotal.unsubscribe();
+   this.shoppingCartBasket.unsubscribe();
+   this.routerEvent.unsubscribe();
+   this.routerNavigation.unsubscribe();
+   this.userAuth.unsubscribe();
+   this.userSubscriptionEvent.unsubscribe(); 
+  }
 
 }

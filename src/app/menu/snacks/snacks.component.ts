@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
 import {AuthService} from "../../auth/auth.service";
 import {AfirestoreService} from "../../afirestore.service";
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './snacks.component.html',
   styleUrls: ['./snacks.component.scss']
 })
-export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  {
+export class SnacksComponent implements OnInit, OnDestroy  {
 
   constructor(private shoppingcart: ShoppingcartService, private authService: AuthService,  private aFirestore:AfirestoreService) { }
   userStatus = this.authService.userStatus;
@@ -35,7 +35,7 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
         menuSnacks.push(thisSnack);
         this.snacks = menuSnacks;
       })
-      console.log(this.snacks);
+      //console.log(this.snacks);
     })
   }
   /*
@@ -43,14 +43,15 @@ export class SnacksComponent implements OnInit, AfterContentChecked, OnDestroy  
     this.shoppingcart.updateItems();
   }
   */
- ngAfterContentChecked(){
+ /*
+  ngAfterContentChecked(){
   
   let matSelectElems = document.getElementsByTagName("mat-select");
   if(matSelectElems.length !== 0){
     this.shoppingcart.updateItems();
   }
 }
-
+*/
 
 ngOnDestroy(): void {
   this.menuSubscription.unsubscribe();

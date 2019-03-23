@@ -1,0 +1,52 @@
+<nav class="topnav">
+  <ul class="menutoggler">
+      <li (click)="showMenu()" class="icon"><i class="material-icons">menu</i></li>
+  </ul>
+
+  <ul class="menu">
+    <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+    <li ><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
+    <li ><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
+    <li><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
+    <li ><a routerLink="/contact">Contact</a><span class="lineBelow"></span></li>
+   
+  </ul>
+
+
+<!-- class="menu" -->
+  <ul #sidenav class="sidenav">
+  <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+  <li><a routerLink="/howitworks"> How It Works</a></li>
+  <li><a routerLink="/plans">Plans</a></li>
+  <li><a routerLink="/faqs">FAQ</a></li>
+  <li><a routerLink="/contact">Contact</a></li>
+ <!--
+  <li class="signup"><a routerLink="/signup">Sign Up</a></li>
+  <li class="login"><a routerLink="/login">Log In</a></li>  
+-->
+</ul>
+
+  <ul class="mobileLogo">
+      <li><a [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
+  </ul>
+
+
+  <ul class="options">
+      <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
+    
+  </ul>
+  
+ 
+    
+  <ng-template #showsignup>
+    <li class="signup"><a routerLink="/signup">Sign Up</a></li>
+    <li class="login"><a routerLink="/login">Log In</a></li>
+  </ng-template>
+  <!--
+  <ng-template #showsidesignup>
+    <li class="sidesignup"><a routerLink="/signup">Sign Up</a></li>
+    <li class="sidelogin"><a routerLink="/login">Log In</a></li>
+  </ng-template>
+-->
+  <p class="clear"></p>
+</nav>

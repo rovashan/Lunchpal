@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
   { path: 'payment/:plan', canActivate:[GuardGuard], loadChildren: './paymentform/paymentform.module#PaymentformModule' },
   { path: 'menu', canActivate:[GuardGuard], loadChildren: './menu/menu.module#MenuModule'},
+  
   { path: 'menu/mains', canActivate:[GuardGuard], loadChildren: './menu/mains/mains.module#MainsModule'},
   { path: 'menu/lightmeals', canActivate:[GuardGuard], loadChildren: './menu/lightmeals/lightmeals.module#LightmealsModule'},
   { path: 'menu/drinks', canActivate:[GuardGuard], loadChildren: './menu/drinks/drinks.module#DrinksModule'},
@@ -21,10 +22,12 @@ const routes: Routes = [
   { path: 'menu/order', canActivate:[GuardGuard], loadChildren: './menu/order/order.module#OrderModule'},
   { path: 'menu/thankyou', canActivate:[GuardGuard], loadChildren: './menu/thankyou/thankyou.module#ThankyouModule'},
   { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},  
-  { path: 'terms-and-conditions', loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
-  { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyModule'},
   { path: 'menu/settings', loadChildren: './menu/settings/settings.module#SettingsModule'},
 
+  
+  { path: 'terms-and-conditions', loadChildren: './terms-and-conditions/terms-and-conditions.module#TermsAndConditionsModule'},
+  { path: 'privacy', loadChildren: './privacy/privacy.module#PrivacyModule'},
+ 
 ];
 
 @NgModule({

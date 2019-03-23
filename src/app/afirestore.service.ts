@@ -226,4 +226,11 @@ export class AfirestoreService {
   public updateRemindersSetting(userId: string, value: any) {
     return this.firestore.collection("settings").doc(userId).update({ reminders: value })
   }
+
+  public addBalanceToUSer(docId: string, balance: any){
+    this.firestore.collection("users").doc(docId).update({balance: balance});
+  }
+
+
+
 }

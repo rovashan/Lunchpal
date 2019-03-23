@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import {ShoppingcartService} from "../../shoppingcart.service";
 import {AuthService} from "../../auth/auth.service";
 import {AfirestoreService} from "../../afirestore.service";
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './drinks.component.html',
   styleUrls: ['./drinks.component.scss']
 })
-export class DrinksComponent implements OnInit, AfterContentChecked {
+export class DrinksComponent implements OnInit, OnDestroy {
 
   constructor(
     private shoppingcart: ShoppingcartService,
@@ -41,7 +41,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
         menuDrinks.push(thisDrink)
         this.drinks = menuDrinks;
       })
-      console.log(this.drinks);
+     // console.log(this.drinks);
     })
   }
   /*
@@ -49,6 +49,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
     this.shoppingcart.updateItems();
   }
   */
+ /*
  ngAfterContentChecked(){
   
   let matSelectElems = document.getElementsByTagName("mat-select");
@@ -56,7 +57,7 @@ export class DrinksComponent implements OnInit, AfterContentChecked {
     this.shoppingcart.updateItems();
   }
 }
-
+*/
   ngOnDestroy(): void {
     this.menuSubscription.unsubscribe();
     

@@ -5,22 +5,15 @@
 
   <ul class="menu">
     <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
-    <li *ngIf="!menu"><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
-    <li *ngIf="!menu"><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
-    <li *ngIf="!menu"><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
-    <li *ngIf="!menu"><a routerLink="/contact">Contact</a><span class="lineBelow"></span></li>
-    <li *ngIf="menu"><a routerLink="/menu/settings">Settings</a></li>
+     <!-- <li><a routerLink="/menu/settings">Settings</a></li>-->
+   
   </ul>
 
 
 <!-- class="menu" -->
   <ul #sidenav class="sidenav">
   <li><a class="logo" [routerLink]="menu ? ['/menu'] : ['/home']">LUNCHPAL</a></li>
-  <li><a *ngIf="!menu" routerLink="/howitworks"> How It Works</a></li>
-  <li><a *ngIf="!menu" routerLink="/plans">Plans</a></li>
-  <li><a *ngIf="!menu" routerLink="/faqs">FAQ</a></li>
-  <li><a *ngIf="!menu" routerLink="/contact">Contact</a></li>
-  <li><a *ngIf="menu" routerLink="/menu/settings">Settings</a></li>
+  <li><a routerLink="/menu/settings">Settings</a></li>
   <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>   
   </ul>
 
@@ -48,16 +41,6 @@
         
         </li>  
     </ul>
-
-    
-  <ng-template #showsignup>
-    <li class="signup"><a routerLink="/signup">Sign Up</a></li>
-    <li class="login"><a routerLink="/login">Log In</a></li>
-  </ng-template>
-  <ng-template #showsidesignup>
-    <li class="sidesignup"><a routerLink="/signup">Sign Up</a></li>
-    <li class="sidelogin"><a routerLink="/login">Log In</a></li>
-  </ng-template>
-
+ 
   <p class="clear"></p>
 </nav>
