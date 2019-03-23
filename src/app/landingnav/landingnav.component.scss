@@ -280,9 +280,15 @@ li i {
 
 
 @media screen and (max-width: 750px) {
-    .topnav .menu {
+    .topnav .menu li {
         display: none;
+      
     }
+    .topnav .menu li:first-of-type {
+      display: block;
+    margin-left: -10px !important;
+    }
+
     .topnav .sidenav {
       display: block;
     }

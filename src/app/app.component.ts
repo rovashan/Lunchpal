@@ -47,14 +47,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
       if (this.router.url.indexOf("/menu") === -1) {
         this.menu = false;
-        this.showNavMenu = false;
-        this.showLandingNav = true;
-
+      
+     
       } else {
         this.menu = true;
-        this.showNavMenu = true;
+      
         this.lunchbox = true;
-        this.showLandingNav = false;
+      
 
         if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
           (this.router.url.indexOf("/menu/order") !== -1) ||
