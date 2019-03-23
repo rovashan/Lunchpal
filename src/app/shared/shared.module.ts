@@ -6,6 +6,9 @@ import { MaterialModule } from './material';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
+import {LandingnavComponent} from "../landingnav/landingnav.component";
+import {RouterModule} from "@angular/router";
+
 // Modules
 const modules = [
   CommonModule,
@@ -13,7 +16,8 @@ const modules = [
   FormsModule,
   GooglePlaceModule,
   SlickCarouselModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  RouterModule,
 ];
 
 @NgModule({
@@ -21,8 +25,10 @@ const modules = [
     ...modules
   ],
   exports: [
-    ...modules
+    ...modules,
+    LandingnavComponent
   ],
-  declarations: []
+  declarations: [LandingnavComponent],
+
 })
 export class SharedModule { }
