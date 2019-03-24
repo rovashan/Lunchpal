@@ -311,6 +311,6 @@ export class OrderComponent implements OnInit {
       }
 
 
-    }
-
+    }) 
+  }
 }
