@@ -14,12 +14,14 @@
       <strong style="vertical-align:middle;">&nbsp;R{{total}} &nbsp;&nbsp;|</strong>
       <a [routerLink]="['/menu/order']">&nbsp;&nbsp;&nbsp;View Lunchbox</a>
     </p>
+  <!--
     <p>Balance Total: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">
       <strong style="vertical-align:middle;">&nbsp;R{{balanceTotal}} &nbsp;&nbsp;</strong>
     </p>
     <p>New Balance: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">
       <strong style="vertical-align:middle;">&nbsp;R{{balanceTotal - total}} &nbsp;&nbsp;</strong>
     </p>
+    -->
   </div>
 
   <div *ngIf="dailyLimitSetting && (userSubscription?.plan.creditsPerDay - total) <= 0" style="height: 10px; margin-top: -20px; padding-bottom: 15px;">

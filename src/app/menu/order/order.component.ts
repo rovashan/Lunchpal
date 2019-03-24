@@ -310,6 +310,6 @@ export class OrderComponent implements OnInit {
         console.log(user);
       }
     });
+    }) 
   }
-
 }

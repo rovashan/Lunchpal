@@ -13,7 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
@@ -71,11 +71,11 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     
-
+/**
     this.authService.userBalanceChanges.subscribe(x => {
       this.balanceTotal = x;
     })
-
+ */
 
       //scroll to top after route navigation
       this.routerNavigation = this.router.events.subscribe((event: NavigationEnd) => {
@@ -123,5 +123,7 @@ export class MenuComponent implements OnInit {
     this.checkURL();
   }
   
-
+  ngOnDestroy(){
+    
+  }
 }
