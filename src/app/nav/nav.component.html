@@ -7,13 +7,28 @@
     <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
      <!-- <li><a routerLink="/menu/settings">Settings</a></li>-->
    
+     <li *ngIf="!user"><a routerLink="/menu">Menu</a><span class="lineBelow"></span></li>
+     <li *ngIf="!user" ><a routerLink="/howitworks">How It Works</a><span class="lineBelow"></span></li>
+     <li *ngIf="!user" ><a routerLink="/plans">Plans</a><span class="lineBelow"></span></li>
+     <li *ngIf="!user"><a routerLink="/faqs">FAQ</a><span class="lineBelow"></span></li>
+     <li *ngIf="!user"><a routerLink="/contact">Contact</a><span class="lineBelow"></span></li>
+    
   </ul>
 
 
 <!-- class="menu" -->
   <ul #sidenav class="sidenav">
   <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
+  <li *ngIf="user && userSubscription" id="balanceMobile"> <a href="">Balance: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">{{balanceTotal}}</a></li>
+   
+  
   <li><a routerLink="/menu/settings">Settings</a></li>
+  <li *ngIf="!user"><a routerLink="/menu">Menu</a></li>
+  <li *ngIf="!user" ><a routerLink="/howitworks">How It Works</a></li>
+  <li *ngIf="!user" ><a routerLink="/plans">Plans</a></li>
+  <li *ngIf="!user"><a routerLink="/faqs">FAQ</a></li>
+  <li *ngIf="!user"><a routerLink="/contact">Contact</a></li>
+ 
   <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>   
   </ul>
 
@@ -23,7 +38,8 @@
 
 
   <ul class="options">
-     <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
+    <li *ngIf="user && userSubscription" class="balance">Balance: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">{{balanceTotal}}</li>
+    <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
      
     </ul>
 
@@ -41,6 +57,9 @@
         
         </li>  
     </ul>
- 
+    <ng-template #showsignup>
+      <li class="signup"><a routerLink="/signup">Sign Up</a></li>
+      <li class="login"><a routerLink="/login">Log In</a></li>
+    </ng-template>
   <p class="clear"></p>
 </nav>

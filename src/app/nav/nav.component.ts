@@ -31,6 +31,8 @@ export class NavComponent implements OnInit, OnDestroy {
   routerNavigation: Subscription;
   shoppingCartSubscription: Subscription;
   hideNavbarLogin = false;
+  
+  user;
 
   //---- Below is the implementation for the sidenav
 
@@ -91,7 +93,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   userSubscription = this.authService.userSubscription;
   userStatus = this.authService.userStatus;
-
+  balanceTotal:any = this.authService.userBalance;
 
   showMenu() {
     this.sidenav.nativeElement.style.width = "250px";
@@ -114,6 +116,15 @@ export class NavComponent implements OnInit, OnDestroy {
   }    
 */
   ngOnInit() {
+
+    
+    this.authService.userBalanceChanges.subscribe(x => {
+      this.balanceTotal = x;
+      console.log("balance Total", x)
+      
+      console.log("balance Total", this.balanceTotal)
+    })
+
 
 
     // close sidenav on router change
@@ -157,7 +168,15 @@ export class NavComponent implements OnInit, OnDestroy {
     }else{
       this.hideNavbarLogin = true;
     }
-*/
+*/ this.authService.user.subscribe(user => {
+  if (user) {
+    this.user = true;
+    console.log('this.user = true');
+  } else {
+    this.user = false 
+    console.log('this.user = false');
+  }
+});
 
   }
 

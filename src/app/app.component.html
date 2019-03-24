@@ -2,29 +2,3 @@
 <main>
   <router-outlet></router-outlet>
 </main>
-
-<div *ngIf="lunchbox && basketChange" class="lunchbox">
-
-  <div>
-    <!-- <p class="price">
-          <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" /> 
-          <label style="vertical-align:middle">&nbsp;R{{lightmeal.price}}</label>
-        </p> -->
-    <p>Total: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">
-      <strong style="vertical-align:middle;">&nbsp;R{{total}} &nbsp;&nbsp;|</strong>
-      <a [routerLink]="['/menu/order']">&nbsp;&nbsp;&nbsp;View Lunchbox</a>
-    </p>
-    <p>Balance Total: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">
-      <strong style="vertical-align:middle;">&nbsp;R{{balanceTotal}} &nbsp;&nbsp;</strong>
-    </p>
-    <p>New Balance: &nbsp;<img style="vertical-align:middle; width: 20px;" src="../assets/icons/lunchpalcoin2.png">
-      <strong style="vertical-align:middle;">&nbsp;R{{balanceTotal - total}} &nbsp;&nbsp;</strong>
-    </p>
-  </div>
-
-  <div *ngIf="dailyLimitSetting && (userSubscription?.plan.creditsPerDay - total) <= 0" style="height: 10px; margin-top: -20px; padding-bottom: 15px;">
-    <span style="color: #f37702;font-style: italic;">Daily Limit exceeded</span>
-  </div>
-</div>
-
-<!-- <app-footer *ngIf="!menu"></app-footer> -->

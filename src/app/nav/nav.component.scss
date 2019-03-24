@@ -73,7 +73,6 @@ nav {
     z-index: 99;
 }
 
-
 .topnav .menu li a:hover{
     color: $color;
 }
@@ -92,9 +91,7 @@ nav {
 }
 
 .topnav .menutoggler {
-    //display: none;
-    float: left;
-    
+   float: left;
 }
 .topnav .sidenav {
     height: 100%;
@@ -142,10 +139,6 @@ nav {
     font-size: 1rem;
 }
 
-.topnav .sidenav {
-  display: block;
-}
-
 
 li i {
   display: block;
@@ -185,6 +178,10 @@ li i {
   color:  $color;
 }
 
+.topnav .sidenav {
+  text-align: left;
+}
+
 .topnav .sidenav li a.logo {
   color:  $color;
   font-size: 1.4rem;
@@ -202,6 +199,11 @@ li i {
    background: #fff;
 }
 
+#balanceMobile a:hover {
+  background: none;
+  color: #222;
+  cursor: auto;
+}
 .credits {
   display: flex;
   align-items: center;
@@ -229,38 +231,26 @@ li i {
     border-left: 1px solid rgb(228, 228, 228);
 }
 
+.balance {
+  position: relative;
+  height: 20px;
+  display: block;
+  top: 10px;
+}
+
 .options .logout:hover a{
     color: $color !important;
 }
 .options .logout:hover{
     background: none !important;
 }
-
-
-
-.basket.shake{
-    animation: shake 0.700s ease-in-out;
-}
-
-@keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-    }
-    
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
-    }
+.topnav .sidenav {
+     display: block;
   }
 
-//   .topnav .menu {
+
+
+  //   .topnav .menu {
 //     display: none;
 // }
 // .topnav .sidenav {
@@ -284,18 +274,24 @@ li i {
 //   margin-top: 8px;
 // }
 
-/*
+
 @media screen and (max-width: 750px) {
-    .topnav .menu {
+    .topnav .menu li {
         display: none;
+      
     }
+    .topnav .menu li:first-of-type {
+      display: block;
+    margin-left: -10px !important;
+    }
+
     .topnav .sidenav {
       display: block;
     }
     .topnav .menutoggler {
       display:block;
       float: left;
-    }
+    }F
 
     .topnav .mobileLogo {
       display: block;
@@ -313,4 +309,9 @@ li i {
     //   display: none;
     // }
   }
-*/
+
+  @media screen and (max-width: 480px) {
+    .balance {
+      display: none;
+    }
+  }

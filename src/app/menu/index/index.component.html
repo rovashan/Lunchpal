@@ -1,10 +1,14 @@
 <section class="shopMenu">
-
-  <div *ngIf="user" class="welcomeSection">
+ 
+  <div *ngIf="user && userSubscription; else showheader" class="welcomeSection">
     <h2 class="username">Good Morning<br>{{username}}</h2>
     <p class="whatsForLunch">What's for lunch today?</p>
   </div>
 
+
+  <ng-template #showheader>
+    <h2 class="username">Good Morning</h2>
+  </ng-template>
   <div class="menu">
 
     <div class="mealsSection">

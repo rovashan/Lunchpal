@@ -277,7 +277,9 @@ li i {
 //   padding: 0;
 //   margin-top: 8px;
 // }
-
+.topnav .sidenav {
+  text-align: left;
+}
 
 @media screen and (max-width: 750px) {
     .topnav .menu li {
