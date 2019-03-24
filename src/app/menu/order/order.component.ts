@@ -18,6 +18,7 @@ import { AuthService } from "../../auth/auth.service";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
+  user = false;
 
   constructor(
     private shoppingcart: ShoppingcartService,
@@ -124,10 +125,10 @@ export class OrderComponent implements OnInit {
       //send the meal to the collection order
       this.afirestore.createOrder(order).then(docRef => {
         //get the id of the document
-       // console.log("orderDocId", docRef.id);
-       let newBalance = this.authService.userBalance - this.orderTotal;
-       //console.log(newBalance, this.authService.userDocId);
-       this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
+        // console.log("orderDocId", docRef.id);
+        let newBalance = this.authService.userBalance - this.orderTotal;
+        //console.log(newBalance, this.authService.userDocId);
+        this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
       }).catch(err => {
         console.log("Error: ", err);
       })
@@ -161,12 +162,12 @@ export class OrderComponent implements OnInit {
       //send the meal to the collection order
       this.afirestore.createOrder(order).then(docRef => {
         //get the id of the document
-       // console.log("orderDocId", docRef.id);
+        // console.log("orderDocId", docRef.id);
         let newBalance = this.authService.userBalance - this.orderTotal;
         //console.log(newBalance, this.authService.userDocId);
 
-       //change the user balance
-       this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
+        //change the user balance
+        this.afirestore.addBalanceToUSer(this.authService.userDocId, newBalance);
       }).catch(err => {
         console.log("Error: ", err);
       })
@@ -200,10 +201,10 @@ export class OrderComponent implements OnInit {
   // }
 
   radioChange($event) {
-    
+
     //console.log('deliveryDate: ', this.orderForm.controls.deliveryDate);
     //console.log('deliveryTime: ', this.orderForm.controls.deliveryTime);
-    
+
     if ($event.value === 'lunchTime') {
       this.laterSelected = false;
       this.orderForm.controls.deliveryTime.setValue("Lunch Time (12:00 to 13:00 PM)");
@@ -213,10 +214,10 @@ export class OrderComponent implements OnInit {
       this.orderForm.controls.deliveryTime.setValue('');
     }
   }
-  
+
   selectTime($event) {
     //console.log($event.value);
-    this.shoppingcart.deliveryTime = $event.value; 
+    this.shoppingcart.deliveryTime = $event.value;
   }
 
   // //hide the input
@@ -263,7 +264,7 @@ export class OrderComponent implements OnInit {
         this.orderedItems = this.shoppingcart.items;
         this.orderTotal = this.shoppingcart.total;
         //this.totalCredits
-        
+
         if (this.orderTotal <= this.authService.userBalance) {
           this.enoughCredits = true;
         } else {
@@ -300,7 +301,16 @@ export class OrderComponent implements OnInit {
     }
     this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
 
+    this.authService.user.subscribe(user => {
+      if (user) {
+        this.user = true;
+        console.log(user);
+      } else {
+        this.user = false
+        console.log(user);
+      }
 
-  }
+
+    }
 
 }

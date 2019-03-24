@@ -60,7 +60,7 @@
 
           </mat-radio-group>
 
-          <input [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder" />
+          <input *ngIf="user; else showViewPlans" [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder" />
         </form>
       </div>
 
@@ -86,6 +86,13 @@
   </div>
 </ng-template>
 
+
+<ng-template #showViewPlans>
+  <div style="text-align: center;">
+    <p>View Plans
+    </p>
+  </div>
+</ng-template>
 
 
 <ng-template #showMessage>

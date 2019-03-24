@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
   username = this.authService.userFullName;
   userStatus = this.authService.userStatus;
   lunchbox: boolean = false;
-  dailyLimitSetting: boolean;
+  // dailyLimitSetting: boolean;
   routerEvent: Subscription;
   routerNavigation: Subscription;
   shoppingCartBasket: Subscription;
@@ -93,12 +93,12 @@ export class MenuComponent implements OnInit {
         this.userSubscription = x;
       //console.log(x);
 
-      if (this.menu) {
-        this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
-          this.dailyLimitSetting = settings['dailyLimit'];
-          //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
-        });
-      }
+      // if (this.menu) {
+      //   this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
+      //     this.dailyLimitSetting = settings['dailyLimit'];
+      //     //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+      //   });
+      // }
     });
 
     this.shoppingCartTotal = this.shoppingcartService.totalChanges.subscribe(x => {

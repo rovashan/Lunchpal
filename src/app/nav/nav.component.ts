@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy {
-  dailyLimitSetting: boolean;
+  // dailyLimitSetting: boolean;
   limitPeriod: string;
 
   total: any = this.shoppingcartService.totalChange;
@@ -141,12 +141,12 @@ export class NavComponent implements OnInit, OnDestroy {
       if (x) {
         this.userSubscription = x;
 
-        if (this.menu) {
-            this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
-            this.dailyLimitSetting = settings['dailyLimit'];
-            //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
-          });
-        }
+        // if (this.menu) {
+        //     this.afirestore.getSettings(this.authService.userDocId).subscribe(settings => {
+        //     this.dailyLimitSetting = settings['dailyLimit'];
+        //     //console.log('dailyLimitSetting: ', this.dailyLimitSetting);
+        //   });
+        // }
       }
 
  
