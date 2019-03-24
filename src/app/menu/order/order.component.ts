@@ -309,8 +309,7 @@ export class OrderComponent implements OnInit {
         this.user = false
         console.log(user);
       }
-
-
-    }
+    });
+  }
 
 }
