@@ -138,14 +138,14 @@ export class AuthService {
               this.userDocId = user.payload.doc.id;
               this.userSubscriptionId = user.payload.doc.data()["subscription"];
               this.userStatus = user.payload.doc.data()["status"];
-              //this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
+              this._userFullName = user.payload.doc.data()["firstName"] + " " + user.payload.doc.data()["lastName"];
               this._userFullName = user.payload.doc.data()["firstName"];
               this.userBalance = user.payload.doc.data()["balance"];
 
               this.setUserBalance(user.payload.doc.data()["balance"]);
               this.setUserFullName(this._userFullName);
             
-             //console.log("subscription status", user.payload.doc.data()["status"]);
+             console.log("subscription status", user.payload.doc.data()["status"]);
               
               if(this.userStatus === UserStatus.EXPIRED){
                 this.setUserStatus(UserStatus.EXPIRED);
