@@ -1,47 +1,49 @@
 <nav class="topnav">
   <ul class="menutoggler">
-      <li (click)="showMenu()" class="icon"><i class="material-icons">menu</i></li>
+    <li (click)="showMenu()" class="icon"><i class="material-icons">menu</i></li>
   </ul>
 
   <ul class="menu">
     <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
-     <!-- <li><a routerLink="/menu/settings">Settings</a></li>-->
-   
+    <!-- <li><a routerLink="/menu/settings">Settings</a></li>-->
+
   </ul>
 
 
-<!-- class="menu" -->
+  <!-- class="menu" -->
   <ul #sidenav class="sidenav">
-  <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
-  <li><a routerLink="/menu/settings">Settings</a></li>
-  <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#" (click)="logout($event)">Log Out</a></li>   
+    <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
+    <li><a routerLink="/menu/settings">Settings</a></li>
+    <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#"
+        (click)="logout($event)">Log Out</a></li>
   </ul>
 
   <ul class="mobileLogo">
-      <li><a [routerLink]="['/menu']">LUNCHPAL</a></li>
+    <li><a [routerLink]="['/menu']">LUNCHPAL</a></li>
   </ul>
 
 
-  <ul class="options">
-     <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#" (click)="logout($event)">Log Out</a></li>
-     
-    </ul>
+  <!-- <ul class="options">
+    <li *ngIf="authService.user | async as user; else showsignup" class="logout"><a href="#"
+        (click)="logout($event)">Log Out</a></li>
 
-    <ul class="creditsmobile" style="text-transform: none;">
-      <li title="credits per day" class="credits" *ngIf="menu && userSubscription && userStatus !== 'EXPIRED'">
-        <!-- Daily:&nbsp;&nbsp; -->
-        <!-- {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Available:&nbsp;'}} -->
-        {{ Available }}
-        <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />
-        <!-- <strong>&nbsp;R{{userSubscription.plan.planPrice}}</strong> -->
-        <!-- <strong>&nbsp;R{{userSubscription.remainingBalance}}</strong> -->
-        <strong>&nbsp;R{{total}}</strong>
-        
-        
+  </ul> -->
 
-        
-        </li>  
-    </ul>
- 
+  <ul class="creditsmobile" style="text-transform: none;">
+    <li title="credits per day" class="credits">
+      <!-- Daily:&nbsp;&nbsp; -->
+      <!-- {{dailyLimitSetting ? 'Daily:&nbsp;' : 'Available:&nbsp;'}} -->
+      Available:
+      <img style="vertical-align:middle" src="../../../assets/icons/lunchpalcoin2.png" />
+      <!-- <strong>&nbsp;R{{userSubscription.plan.planPrice}}</strong> -->
+      <!-- <strong>&nbsp;R{{userSubscription.remainingBalance}}</strong> -->
+      <strong>&nbsp;R{{total}}</strong>
+
+
+
+
+    </li>
+  </ul>
+
   <p class="clear"></p>
 </nav>

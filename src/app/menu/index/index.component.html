@@ -1,45 +1,46 @@
 <section class="shopMenu">
- 
-  <div *ngIf="user && userSubscription; else showheader" class="welcomeSection">
-    <h2 class="username">Good Morning<br>{{username}}</h2>
-    <p class="whatsForLunch">What's for lunch today?</p>
-  </div>
 
-
-  <ng-template #showheader>
-    <h2 class="username">Menu</h2>
-  </ng-template>
-  <div class="menu">
-
-    <div class="mealsSection">
-      <!-- <a routerLink="/menu/mains"> -->
-      <a routerLink="/menu/plans">
-        <h3>Mains</h3>
-        <div class="overlay"></div>
-      </a>
+  <!-- <div *ngIf="user && userSubscription; else showheader" class="welcomeSection"> -->
+    <div *ngIf="user; else showheader" class="welcomeSection">
+      <h2 class="username">Good Morning<br>{{username}}</h2>
+      <p class="whatsForLunch">What's for lunch today?</p>
     </div>
 
-    <div class="lightmealsSection">
-      <a routerLink="/menu/lightmeals">
-        <h3>Light Meals</h3>
-        <div class="overlay"></div>
-      </a>
-    </div>
 
-    <div class="snacksSection">
-      <a routerLink="/menu/snacks">
-        <h3>Snacks</h3>
-        <div class="overlay"></div>
-      </a>
-    </div>
+    <ng-template #showheader>
+      <h2 class="username">Menu</h2>
+    </ng-template>
+    <div class="menu">
 
-    <div class="drinksSection">
-      <a routerLink="/menu/drinks">
-        <h3>Drinks</h3>
-        <div class="overlay"></div>
-      </a>
+      <div class="mealsSection">
+        <!-- <a routerLink="/menu/mains"> -->
+        <a routerLink="/menu/plans">
+          <h3>Mains</h3>
+          <div class="overlay"></div>
+        </a>
+      </div>
+
+      <div class="lightmealsSection">
+        <a routerLink="/menu/lightmeals">
+          <h3>Light Meals</h3>
+          <div class="overlay"></div>
+        </a>
+      </div>
+
+      <div class="snacksSection">
+        <a routerLink="/menu/snacks">
+          <h3>Snacks</h3>
+          <div class="overlay"></div>
+        </a>
+      </div>
+
+      <div class="drinksSection">
+        <a routerLink="/menu/drinks">
+          <h3>Drinks</h3>
+          <div class="overlay"></div>
+        </a>
+      </div>
     </div>
-  </div>
 
 </section>
 

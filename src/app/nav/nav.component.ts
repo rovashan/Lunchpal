@@ -36,7 +36,7 @@ export class NavComponent implements OnInit, OnDestroy {
 
   //---- Below is the implementation for the sidenav
 
-  menu = false;
+  //menu = false;
   //watch the sidenav
   @ViewChild('sidenav') sidenav: ElementRef;
 
