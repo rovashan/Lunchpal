@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   user = false;
   username = this.authService.userFullName;
   userStatus = this.authService.userStatus;
-  lunchbox: boolean = false;
+  lunchbox: boolean;
   // dailyLimitSetting: boolean;
   routerEvent: Subscription;
   routerNavigation: Subscription;
@@ -44,25 +44,26 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.routerEvent = this.router.events.subscribe((x) => {
   
         if (this.router.url.indexOf("/menu") === -1) {
-          this.menu = false;
-        
-       
+         
+         // this.menu = false;
+         this.lunchbox = false;
+         console.log(this.router.url, this.lunchbox)
         } else {
-          this.menu = true;
+          //this.menu = true;
           this.lunchbox = true;
-        
-  
+          console.log(this.router.url, this.lunchbox)
+
           if ((this.router.url.indexOf("/menu/thankyou") !== -1) ||
-            (this.router.url.indexOf("/menu/order") !== -1) ||
-            (this.router.url.indexOf("/menu/settings") !== -1)) {
-            this.lunchbox = false;
-          }
-  
+             (this.router.url.indexOf("/menu/order") !== -1) ||
+             (this.router.url.indexOf("/menu/settings") !== -1)) {
+                this.lunchbox = false;
+           
+            }
+
           if ((localStorage.getItem("cart") === null) && (localStorage.getItem("meal") === null)) {
             this.basketChange = false;
           }
         }
-  
   
       });
   
@@ -70,7 +71,10 @@ export class MenuComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    
+    console.log("oninit", this.router.url, this.lunchbox)
+    if(this.lunchbox === undefined){
+      this.lunchbox = true;
+    }
 /**
     this.authService.userBalanceChanges.subscribe(x => {
       this.balanceTotal = x;
@@ -110,10 +114,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.authService.user.subscribe(user => {
       if (user) {
         this.user = true;
-        console.log(user);
+       // console.log(user);
       } else {
         this.user = false 
-        console.log(user);
+        //console.log(user);
       }
     });
 
@@ -121,6 +125,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
     this.authService.userFullNameChanges.subscribe(x => this.username = x);
     this.checkURL();
+    this.authService.userChanges();
   }
   
   ngOnDestroy(){
