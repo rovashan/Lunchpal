@@ -27,7 +27,7 @@
         <strong style="vertical-align: middle; padding-top: 15px;">R{{orderTotal}}</strong>
       </div>
     </div>
-    
+
     <!-- <div *ngIf="(dailyLimitSetting && enoughCredits) || !dailyLimitSetting; else showCreditsMessage"
       class="orderdetails"> -->
     <div class="orderdetails">
@@ -60,7 +60,8 @@
 
           </mat-radio-group>
 
-          <input *ngIf="user; else showViewPlans" [disabled]="!orderForm.valid" type="submit" value="Place Order" class="placeOrder" />
+          <input *ngIf="user; else showViewPlans" [disabled]="!orderForm.valid" type="submit" value="Place Order"
+            class="placeOrder" />
         </form>
       </div>
 
@@ -89,9 +90,12 @@
 
 <ng-template #showViewPlans>
   <div style="text-align: center;">
+    <a class="plansLink" routerLink="/plans">View Plans</a>
+  </div>
+  <!-- <div style="text-align: center;">
     <p>View Plans
     </p>
-  </div>
+  </div> -->
 </ng-template>
 
 
