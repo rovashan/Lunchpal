@@ -17,9 +17,9 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    public router: Router,
     private afirestore: AfirestoreService,
-    private shoppingcartService: ShoppingcartService) { }
+    public shoppingcartService: ShoppingcartService) { }
 
   user = false;
   username = this.authService.userFullName;

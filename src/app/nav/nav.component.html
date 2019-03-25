@@ -14,7 +14,7 @@
   <ul #sidenav class="sidenav">
     <li><a class="logo" [routerLink]="['/menu']">LUNCHPAL</a></li>
     <li><a routerLink="/menu/settings">Settings</a></li>
-    <li *ngIf="authService.user | async as user; else showsidesignup" class="sidelogout"><a href="#"
+    <li class="sidelogout"><a href="#"
         (click)="logout($event)">Log Out</a></li>
   </ul>
 

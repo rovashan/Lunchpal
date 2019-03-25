@@ -1,10 +1,10 @@
 {
-  "name": "my-app",
+  "name": "lunchpal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng run my-app:app-shell:production",
+    "build": "ng run lunchpal:app-shell:production",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
