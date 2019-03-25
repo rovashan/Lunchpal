@@ -124,7 +124,7 @@ orderedItems($event: Event, item: any, name: string){
   }
 
   checkForEmpty(){
-    if((localStorage.getItem("cart") != null && localStorage.getItem("cart").includes("product")) || localStorage.getItem("meal")){
+    if((localStorage.getItem("cart") != null && localStorage.getItem("cart").includes("product"))){
       this.setEmptyBasket(true);
       console.log("has products or meal", this.emptyBasket);
       

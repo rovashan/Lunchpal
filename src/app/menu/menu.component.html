@@ -3,7 +3,9 @@
 
 <router-outlet></router-outlet>
 <!-- *ngIf="lunchbox && basketChange" -->
-<div *ngIf="lunchbox && basketChange" class="lunchbox">
+<div *ngIf="lunchbox && basketChange && !shoppingcartService.emptybasket
+            && router.url != '/menu/order'
+            && router.url != '/menu/thankyou'" class="lunchbox">
 
   <div>
     <!-- <p class="price">
