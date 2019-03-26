@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable, of } from "rxjs";
 
 /*
 import { User } from './models/user';
@@ -169,10 +169,15 @@ export class AfirestoreService {
 
   //get weeklymenus for menu
   public getWeeklyMains(currentDate: any, planSelected: string, weekday: string) {
+
+    this.meals = [];
+    this.setUserWeeklyMeals([]);
+
     this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
       .subscribe(data => {
+
         let weeklyMeals = [];
-        this.setUserWeeklyMeals([]);
+
         Object.keys(data).forEach((key) => {
           // console.log(key, data[key])
           this.firestore.doc(data[key]).valueChanges().subscribe(x => {
@@ -191,7 +196,63 @@ export class AfirestoreService {
       });
   }
 
-  //get other products for the menu
+  // public getWeeklyMains(currentDate: any, planSelected: string, weekday: string) : Observable<any[]> 
+  // {
+  //   let weeklyMeals = [];
+  //   weeklyMeals.push('hi');
+
+  //   this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
+  //     .subscribe(data => {
+  //       //this.meals = [];
+
+
+  //       //this.setUserWeeklyMeals([]);
+
+  //       Object.keys(data).forEach((key) => {
+  //         // console.log(key, data[key])
+  //         this.firestore.doc(data[key]).valueChanges().subscribe(x => {
+  //           //push to the meals array
+  //           //console.log(x)
+  //           let meal: any = x;
+  //           meal.qty = '1';
+  //           weeklyMeals.push(meal);
+
+  //           return of(weeklyMeals);
+  //         })
+
+
+  //       });
+
+
+  //       //console.log("weeklyMeals", weeklyMeals);
+  //       //this.setUserWeeklyMeals(weeklyMeals)
+  //       //console.log(this.meals);
+  //     });
+
+  // }
+
+  // //get products for the menu
+  // public getMains(currentDate: any, planSelected: string, weekday: string) {
+  //   this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
+  //   .subscribe(data => {
+  //     let weeklyMains = [];
+
+  //     Object.keys(data).forEach((key) => {
+  //       // console.log(key, data[key])
+  //       this.firestore.doc(data[key]).valueChanges().subscribe(x => {
+  //         //push to the meals array
+  //         //console.log(x)
+  //         let meal: any = x;
+  //         meal.qty = '1';
+  //         weeklyMains.push(meal);
+
+  //       })
+
+  //     });
+
+  //   })
+  // }
+
   public getDrinks() {
     return this.firestore.collection("menu/drinks/products").valueChanges();
   }
@@ -203,6 +264,7 @@ export class AfirestoreService {
   public getLightMeals() {
     return this.firestore.collection("menu/lightmeals/products").valueChanges();
   }
+
 
   public sendMessage(name: string, email: string, message: string) {
 
@@ -227,8 +289,8 @@ export class AfirestoreService {
     return this.firestore.collection("settings").doc(userId).update({ reminders: value })
   }
 
-  public addBalanceToUSer(docId: string, balance: any){
-    this.firestore.collection("users").doc(docId).update({balance: balance});
+  public addBalanceToUSer(docId: string, balance: any) {
+    this.firestore.collection("users").doc(docId).update({ balance: balance });
   }
 
 

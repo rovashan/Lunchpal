@@ -11,6 +11,8 @@
     </a>
   </div>
 
+  <mat-spinner style="margin-top: 100px;" *ngIf="isBusy"></mat-spinner>
+
   <div *ngIf="weeklyMeals" class="mealsContainer">
 
     <div *ngFor="let meal of weeklyMeals" class="meal">
