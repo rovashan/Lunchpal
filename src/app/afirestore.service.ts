@@ -171,7 +171,7 @@ export class AfirestoreService {
   public getWeeklyMains(currentDate: any, planSelected: string, weekday: string) {
 
     this.meals = [];
-    this.setUserWeeklyMeals([]);
+    //this.setUserWeeklyMeals([]);
 
     this.firestore.doc(`weeklymenu/${currentDate}/plans/${planSelected}/weekdays/${weekday}`).valueChanges()
       .subscribe(data => {

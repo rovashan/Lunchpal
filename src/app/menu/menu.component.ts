@@ -126,17 +126,18 @@ export class MenuComponent implements OnInit, OnDestroy {
       if (user) {
         this.user = true;
         // console.log(user);
+
+        this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+    
+        this.authService.userFullNameChanges.subscribe(x => this.username = x);
+        this.authService.userChanges();
       } else {
         this.user = false
         //console.log(user);
       }
     });
 
-    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-
-    this.authService.userFullNameChanges.subscribe(x => this.username = x);
     this.checkURL();
-    this.authService.userChanges();
   }
 
   ngOnDestroy() {

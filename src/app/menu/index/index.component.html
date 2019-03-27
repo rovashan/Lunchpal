@@ -14,7 +14,7 @@
 
       <div class="mealsSection">
         <!-- <a routerLink="/menu/mains"> -->
-        <a routerLink="/menu/mains">
+        <a [routerLink]="user ? ['/menu/mains'] : ['/menu/plans']">
           <h3>Mains</h3>
           <div class="overlay"></div>
         </a>

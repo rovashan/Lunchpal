@@ -29,14 +29,15 @@ export class IndexComponent implements OnInit {
       if (user) {
         this.user = true;
         console.log('this.user = true');
+        
+        this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
+    
+        this.authService.userFullNameChanges.subscribe(x => this.username = x);
       } else {
         this.user = false 
         console.log('this.user = false');
       }
     });
-    this.authService.userStatusChanges.subscribe(x => this.userStatus = x);
-
-    this.authService.userFullNameChanges.subscribe(x => this.username = x);
   }
 
 }
