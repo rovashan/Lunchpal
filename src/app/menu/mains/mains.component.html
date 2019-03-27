@@ -16,7 +16,12 @@
   <div *ngIf="weeklyMeals" class="mealsContainer">
 
     <div *ngFor="let meal of weeklyMeals" class="meal">
-      <div class="thumb" style="background: url('../../../assets/images/battered-fish.png');"></div>
+      <!-- <div class="thumb" style="background: url('../../../assets/images/battered-fish.png');"></div> -->
+      <!-- <div class="thumb" [style.background]="meal.imgDownloadUrl"></div> -->
+
+      <div class="thumb" [ngStyle]="{'background-image':'url('+meal.imgDownloadUrl+')'}"></div>
+
+      
       <div class="mealContent">
 
         <div>
