@@ -36,7 +36,6 @@ import {MenuComponent} from "./menu/menu.component";
 import { SharedModule } from './shared/shared.module';
 import { IndexComponent } from './menu/index/index.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

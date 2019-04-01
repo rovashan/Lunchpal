@@ -4,6 +4,7 @@ import { CarouselHandlerService } from "../carousel-handler.service";
 import { ViewEncapsulation } from "@angular/core";
 import { AfirestoreService } from '../afirestore.service';
 import { toArray } from 'rxjs/operators';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -20,8 +21,10 @@ export class HomeComponent implements OnInit {
   // classicMenu: any;
   // lifestyleMenu: any;
 
-  constructor(private carouselHandler: CarouselHandlerService,
-    private afirestore: AfirestoreService, ) { }
+  constructor(
+    private carouselHandler: CarouselHandlerService,
+    private afirestore: AfirestoreService,
+    private router: Router ) { }
 
 
   //------------- scroll variables
@@ -78,7 +81,15 @@ export class HomeComponent implements OnInit {
   }
 
   handleAddressChange(address: string) {
-    console.log('handleAddressChange: ', address);
+    //console.log('handleAddressChange: ', address);
+    let coords = {
+      "lat": address["geometry"]["location"].lat(),
+      "lng": address["geometry"]["location"].lng()
+    
+    }
+    console.log(coords);
+    this.router.navigate(["events/", coords.lat, coords.lng]);
+    
   }
 
   //------------- scroll functions 

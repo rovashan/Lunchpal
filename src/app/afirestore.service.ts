@@ -25,13 +25,7 @@ export class AfirestoreService {
 
   }
 
-  /*
-    public collectionChanges() {
-      //checks the changes in the subscriptions collection
-      //only the modified data
-      return this.firestore.collection("subscriptions").stateChanges(["modified"]);
-    }
-  */
+ 
   //get current user subscription
   public getUserSubscription(userSubscription: any) {
 
@@ -293,6 +287,9 @@ export class AfirestoreService {
     this.firestore.collection("users").doc(docId).update({ balance: balance });
   }
 
+  public getCaterers(){
+    return this.firestore.collection("caterers").valueChanges();
+  }
 
 
 }

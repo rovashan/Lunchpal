@@ -1,0 +1,16 @@
+<app-landingnav></app-landingnav>
+<section>
+
+  <h2>Events Page</h2>
+    
+  <div class="nearbyEvents">
+    <div *ngFor="let item of caterers">
+      <h2>{{item["name"]}}</h2>
+      <p>{{item["address"]}}</p>
+    </div>
+  </div>
+
+</section>
+
+
+<app-footer></app-footer>
