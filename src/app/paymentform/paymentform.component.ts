@@ -181,7 +181,7 @@ export class PaymentformComponent implements OnInit {
     }
 
     this.aFirestore.addPaymentReference(
-      this.authService.userDocId,
+      this.authService.userId,
       this.selectedfirstname,
       this.selectedlastname,
       this.selectedphone,

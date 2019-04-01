@@ -77,31 +77,14 @@ export class HomeComponent implements OnInit {
 
   }
 
+  handleAddressChange(address: string) {
+    console.log('handleAddressChange: ', address);
+  }
 
   //------------- scroll functions 
 
   ngOnInit() {
-    // this.getVeggieMenu();
-    // this.getClassicMenu();
-    // this.getLifestyleMenu();
+    
   }
-
-  // getClassicMenu() {
-  //   this.afirestore.getClassicMenu().subscribe(items => {
-  //     this.classicMenu = items;
-  //   });
-  // }
-
-  // getVeggieMenu() {
-  //   this.afirestore.getVeggieMenu().subscribe(items => {
-  //     this.veggieMenu = items;
-  //   });
-  // }
-
-  // getLifestyleMenu() {
-  //   this.afirestore.getLifestyleMenu().subscribe(items => {
-  //     this.lifestyleMenu = items;
-  //   });
-  // }
 
 }

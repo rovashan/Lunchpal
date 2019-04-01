@@ -1,10 +1,21 @@
-
 <app-landingnav></app-landingnav>
 <header>
   <div class="info">
     <h1>WHAT'S FOR LUNCH?</h1>
-    <p>Get fresh, healthy lunches delivered to your workplace.</p>
-    <a class="plansLink" routerLink="/plans">View Plans</a>
+    <p>Order meals and platters for workplaces and events.</p>
+
+
+    <mat-form-field class="address">
+      <mat-icon style="color: #f37702" matPrefix>room</mat-icon>
+
+      <input matInput  class="addressInput" ngx-google-places-autocomplete [options]="{ bounds: defaultBounds,
+      strictBounds: false, 
+      componentRestrictions: { country: 'ZA'} }" #placesRef="ngx-places" 
+        (onAddressChange)="handleAddressChange($event)" placeholder="Enter your delivery address" />
+
+    </mat-form-field>
+
+    <!-- <a class="plansLink" routerLink="/plans">View Plans</a> -->
   </div>
 </header>
 
@@ -60,7 +71,7 @@
           </div>
         </div>
         ---->
-        <!-- <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
+<!-- <div class="scrolling-wrapper-flexbox" (mousemove)="scrollDrag($event); false"
           (mouseup)="releaseDrag($event); false" (mousedown)="holdDrag($event); false"
           (mouseleave)="releaseDrag($event)">
 
@@ -146,7 +157,7 @@
     </mat-tab>
   </mat-tab-group>
 
-</section> --> 
+</section> -->
 
 <section>
   <h2>Areas Covered</h2>

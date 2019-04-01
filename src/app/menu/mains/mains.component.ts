@@ -37,6 +37,7 @@ export class MainsComponent implements OnInit {
   changeUI($event: Event, item: any, name: string) {
     this.shoppingcart.orderedItems($event, item, name);
   }
+
   
   ngOnInit() {
     this.aFirestore.setUserWeeklyMeals([]);
