@@ -1,0 +1,35 @@
+<app-landingnav></app-landingnav>
+<section>
+  <h2>{{caterer["name"]}}</h2>
+
+  <div class="catererInfo">
+    <div class="categories">
+      <h3>Categories</h3>
+
+      <p>Wraps</p>
+      <p>Platters</p>
+    </div>
+    
+    <div class="categoryMeals">
+       <h3>Meals</h3> 
+
+       <div class="innerMeal">
+         <h4>Veggie Meal 1</h4>
+         <p>Meal description</p>
+         <p class="innerMealPrice">R 50</p>
+         <button mat-raised-button (click)="openDialog({name: 'veggie 1', price: '50', description: 'this is the meal description'})">Select Meal</button>
+       </div>
+       <div class="innerMeal">
+          <h4>Veggie Meal 2</h4>
+          <p>Meal description</p>
+          <p class="innerMealPrice">R 30</p>
+          <button mat-raised-button (click)="openDialog({name: 'veggie 2', price: '30',  description: 'this is the meal description'})">Select Meal</button>
+        </div>
+    </div>
+    
+    <div class="orderDetails">
+      <h3>Order Details</h3>
+    </div>
+  </div>
+
+</section>

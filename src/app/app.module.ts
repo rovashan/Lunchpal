@@ -35,6 +35,8 @@ import { ApiService } from './api.service';
 import {MenuComponent} from "./menu/menu.component";
 import { SharedModule } from './shared/shared.module';
 import { IndexComponent } from './menu/index/index.component';
+import { OrderdialogComponent } from './orderdialog/orderdialog.component';
+
 
 @NgModule({
   declarations: [
@@ -42,11 +44,11 @@ import { IndexComponent } from './menu/index/index.component';
     NavComponent,
     MenuComponent,
     IndexComponent,
+    OrderdialogComponent
    
   ],
   imports: [
    SharedModule,
-  
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AngularFirestoreModule,
@@ -61,7 +63,7 @@ import { IndexComponent } from './menu/index/index.component';
   ],
   providers: [AuthService, AfirestoreService, OnesignalService, ShoppingcartService, PaymentService, ApiService],
   bootstrap: [AppComponent],
- 
+ entryComponents : [OrderdialogComponent]
   
 })
 export class AppModule { }

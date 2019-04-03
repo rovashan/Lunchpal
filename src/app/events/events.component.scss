@@ -1,0 +1,35 @@
+.eventsForm {
+    display: block;
+    background: none;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.eventsForm input  {
+   background: none;
+}
+
+.filter {
+    background: red !important;
+}
+
+@media screen and (min-width: 690px) {
+    .eventsForm {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    .nearbyEvents {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    .nearbyEvents div {
+        margin: 10px;
+        padding: 10px;
+        background: #fff;
+    }
+}

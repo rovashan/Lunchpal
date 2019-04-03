@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content>
+  <p>{{data.description}}</p>
+  <mat-form-field>
+    <input type="number" matInput placeholder="Quantity" />
+  </mat-form-field>
+  <p>{{data.price}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add To Cart</button>
+</div>

@@ -1,12 +1,50 @@
 <app-landingnav></app-landingnav>
 <section>
+  <h2>Lunchpal Events</h2>
 
-  <h2>Events Page</h2>
-    
+  
+ 
+    <form class="eventsForm" (ngSubmit)="filterCaterers(eventsForm.value)" [formGroup]="eventsForm">
+     
+      <mat-form-field>
+        <input placeholder="Address" matInput ngx-google-places-autocomplete [options]="{ bounds: defaultBounds,
+          strictBounds: false, 
+          componentRestrictions: { country: 'ZA'} }" #placesRef="ngx-places"
+          formControlName="address" (onAddressChange)="handleAddressChange($event)"
+        />
+        </mat-form-field>
+
+      <div>
+          
+        <mat-form-field >
+          <input placeholder="Choose Date" matInput class="datePickerInput" [min]="minDate"
+            (ngModelChange)="checkDate($event)" [matDatepicker]="picker"
+            [matDatepickerFilter]="myFilter" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <input placeholder="Address" type="text" matInput name="delivery" placeholder="delivery" formControlName="delivery">
+      </mat-form-field>
+      
+      <button type="submit" [disabled]="!eventsForm.valid" mat-stroked-button>Filter</button>
+      
+
+    </form>
+ 
+
+
+
+
   <div class="nearbyEvents">
     <div *ngFor="let item of caterers">
-      <h2>{{item["name"]}}</h2>
-      <p>{{item["address"]}}</p>
+    
+      <h2>{{item["data"]["name"]}}</h2>
+      <p>{{item["data"]["address"]}}</p>
+   
+      <a [routerLink]="[ '/events/caterer/', item['id'] ]">Check Menu</a>
     </div>
   </div>
 

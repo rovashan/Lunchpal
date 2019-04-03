@@ -1,0 +1,45 @@
+.catererInfo {
+    background: #fff;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.catererInfo > div {
+    border-right: 1px solid #ddd;
+    padding: 10px;
+}
+
+.categories {
+    width: 30%;
+}
+
+.categoryMeals {
+    width: 80%;
+}
+.orderDetails {
+    width: 30%;
+}
+
+.innerMeal {
+    
+    position: relative;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.innerMealPrice {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+
+@media screen and (min-width: 690px) {
+    .catererInfo{
+        display: flex;
+        align-items: flex-start;
+        
+    }
+   
+}

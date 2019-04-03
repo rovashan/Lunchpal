@@ -291,5 +291,8 @@ export class AfirestoreService {
     return this.firestore.collection("caterers").valueChanges();
   }
 
+  public getCaterer(docId: string){ 
+    return this.firestore.collection("caterers").doc(docId).valueChanges();
+  }
 
 }

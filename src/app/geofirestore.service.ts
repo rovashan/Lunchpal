@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
 import { GeoCollectionReference, GeoFirestore, GeoQuery, GeoQuerySnapshot } from 'geofirestore';
 import { BehaviorSubject } from "rxjs";
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
+
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeofirestoreService {
 
+
   caterers: any;
   geoFirestore: any;
   firestore: any;
   geoCollection: GeoCollectionReference;
   query :  GeoQuery;
-  constructor() {
-    this.firestore= firebase.firestore();
-    this.geoFirestore = new GeoFirestore(this.firestore);
+  constructor(  private afirestore: AngularFirestore,) {
+
+   
+   // this.firestore= firebase.firestore();
+   //use the AngularFire firestore module
+   this.firestore = this.afirestore.firestore; 
+   this.geoFirestore = new GeoFirestore(this.firestore);
     this.geoCollection = this.geoFirestore.collection("caterers");
    }
 /*
@@ -35,7 +42,9 @@ export class GeofirestoreService {
   }
 */
   public getNearbyCaterers(lat: any, lng: any){
+   //return this.query = this.geoCollection.near({ center: new firebase.firestore.GeoPoint(lat, lng), radius: 100 });
    return this.query = this.geoCollection.near({ center: new firebase.firestore.GeoPoint(lat, lng), radius: 100 });
+  
   }
   
 }

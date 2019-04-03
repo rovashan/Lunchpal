@@ -48,8 +48,9 @@ const routes: Routes = [
   { path: 'renew', canActivate:[GuardGuard], loadChildren: './renew/renew.module#RenewModule'},
   { path: 'faqs', loadChildren: './faqs/faqs.module#FaqsModule'},
   { path: 'contact', loadChildren: './contact/contact.module#ContactModule'},
-  { path: 'events/:lat/:lng', loadChildren: './events/events.module#EventsModule'},  
   
+  { path: 'events/caterer/:id', loadChildren: './events/caterer/caterer.module#CatererModule'},
+  { path: 'events/:lat/:lng', loadChildren: './events/events.module#EventsModule'}, 
   { path: '', component: MenuComponent, children: [
    
     {path: "menu", component: IndexComponent},
