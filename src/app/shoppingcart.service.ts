@@ -123,23 +123,24 @@ orderedItems($event: Event, item: any, name: string){
     
   }
 
-  checkForEmpty(){
+  checkForEmpty(route: string){
     if((localStorage.getItem("cart") != null && localStorage.getItem("cart").includes("product"))){
       this.setEmptyBasket(true);
-      console.log("has products or meal", this.emptyBasket);
+      //console.log("has products or meal", this.emptyBasket);
       
     }else if(localStorage.getItem("cart") == null){
       this.setEmptyBasket(true);
     }else{
       this.setEmptyBasket(false);
-      console.log("has products or meal", this.emptyBasket);
+     //console.log("has products or meal", this.emptyBasket);
       
     }    
 
     //redirect to the same component
     //in order to see the changes inside localStorage
-    this.router.navigateByUrl('menu/order', {skipLocationChange: true}).then(()=>
-      this.router.navigate(["menu/order"]));
+    //'menu/order'
+    this.router.navigateByUrl(route, {skipLocationChange: true}).then(()=>
+      this.router.navigate([route]));
 
 
 }
@@ -185,13 +186,13 @@ orderedItems($event: Event, item: any, name: string){
         });
         //get the total
         this.total += item["price"] * item["quantity"];
-        console.log(this.items)
+        //console.log(this.items)
         
-        console.log("meal is null");
+       // console.log("meal is null");
         
     }
   }else{
-    console.log("cart is null");
+    //console.log("cart is null");
     this.meal = JSON.parse(localStorage.getItem("meal"));
     
   }
@@ -199,18 +200,18 @@ orderedItems($event: Event, item: any, name: string){
   }
 
   //remove meal
-  removeMeal(name:string){
+  removeMeal(name:string, route){
     console.log("meal removed");
     localStorage.removeItem("meal");
-    this.checkForEmpty();
+    this.checkForEmpty(route);
   }
 
 
   //remove item from cart
-  removeItem(name: string){
-    console.log("item deleted");
+  removeItem(name: string, route){
+   // console.log("item deleted");
     let cart: any = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart);
+   // console.log(cart);
     let index: number = -1;
     for (var i = 0; i < cart.length; i++) {
 			let item: Item = JSON.parse(cart[i]);
@@ -237,7 +238,7 @@ orderedItems($event: Event, item: any, name: string){
         });
         //get the total
         total += (item["price"] * item["quantity"]);
-        console.log(total);
+       // console.log(total);
         this.fakeTotal = total;
         this.setTotalChange(this.fakeTotal);
       
@@ -245,7 +246,7 @@ orderedItems($event: Event, item: any, name: string){
   
   }    
 
-    this.checkForEmpty();
+    this.checkForEmpty(route);
   }
 
   

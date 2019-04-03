@@ -2,11 +2,12 @@
 <div mat-dialog-content>
   <p>{{data.description}}</p>
   <mat-form-field>
-    <input type="number" matInput placeholder="Quantity" />
+    <input type="number" [name]="data[name]" matInput [(ngModel)]="data[name]" placeholder="Quantity" />
   </mat-form-field>
   <p>{{data.price}}</p>
+  {{data[name]}}
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add To Cart</button>
+  <button mat-button [mat-dialog-close]="data[name]" cdkFocusInitial>Add To Cart</button>
 </div>

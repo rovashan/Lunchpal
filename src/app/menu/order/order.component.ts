@@ -183,13 +183,13 @@ export class OrderComponent implements OnInit {
   }
 
   removeMeal(meal: string) {
-    this.shoppingcart.removeMeal(meal);
+    this.shoppingcart.removeMeal(meal, 'menu/order');
     //console.log(meal);
   }
 
   removeItemFromCart(item: string) {
     //console.log('remove item');
-    this.shoppingcart.removeItem(item);
+    this.shoppingcart.removeItem(item, 'menu/order');
   }
 
 

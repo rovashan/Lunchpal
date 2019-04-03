@@ -1,26 +1,15 @@
 .catererInfo {
     background: #fff;
     display: block;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
     max-width: 1200px;
 }
 
 .catererInfo > div {
-    border-right: 1px solid #ddd;
-    padding: 10px;
+   padding: 10px;
 }
 
-.categories {
-    width: 30%;
-}
-
-.categoryMeals {
-    width: 80%;
-}
-.orderDetails {
-    width: 30%;
-}
 
 .innerMeal {
     
@@ -30,8 +19,21 @@
 }
 .innerMealPrice {
     position: absolute;
-    right: 0px;
+    right: 20px;
     top: 0px;
+}
+
+.categories, .categoryMeals, .orderDetails {
+    text-align: left;
+  
+}
+
+.item {
+    border-bottom: 1px solid #ddd;
+}
+.categoryMeals {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 
@@ -41,5 +43,15 @@
         align-items: flex-start;
         
     }
-   
+    .categories {
+        width: 30%;
+    }
+    
+    .categoryMeals {
+        width: 80%;
+    }
+    .orderDetails {
+        width: 30%;
+    }
+    
 }

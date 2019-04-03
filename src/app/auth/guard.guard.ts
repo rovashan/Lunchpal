@@ -18,6 +18,7 @@ export class GuardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     
       //check if the user object is not empty
+      
       return this.authService.user.pipe(
         take(1),
         map(user => !!user),
