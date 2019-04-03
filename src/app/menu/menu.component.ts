@@ -53,19 +53,18 @@ export class MenuComponent implements OnInit, OnDestroy {
 
         // this.menu = false;
         this.lunchbox = false;
-        console.log(this.router.url, this.lunchbox)
+        //console.log(this.router.url, this.lunchbox)
       } else {
         //this.menu = true;
         this.lunchbox = true;
-        console.log(this.router.url, this.lunchbox)
+        //console.log(this.router.url, this.lunchbox)
 
 
       }
 
       if ((localStorage.getItem("cart") === null)) {
         this.basketChange = false;
-        console.log('this.basketChange: ', this.basketChange);
-
+        //console.log('this.basketChange: ', this.basketChange);
       }
 
 

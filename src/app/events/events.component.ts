@@ -13,7 +13,7 @@ export class EventsComponent implements OnInit {
 
   constructor(private geofirestore: GeofirestoreService, private route: ActivatedRoute) { }
   result;
-  caterers: any[] = [];
+  caterers: any[];
   lat: number = parseInt(this.route.snapshot.paramMap.get("lat"));
   lng: number = parseInt(this.route.snapshot.paramMap.get("lng"));
 
@@ -32,18 +32,38 @@ export class EventsComponent implements OnInit {
   public handleAddressChange(address: string) {
     // Do some stuff
     //console.log('handleAddressChange: ', address);
-   console.log(address);
+   //console.log(address);
+  
+    let lat = address["geometry"]["location"].lat();
+    let lng = address["geometry"]["location"].lng();
+  
+    this.geofirestore.getNearbyCaterers(lat, lng).get().then( value =>  {
+      this.result = value.docs;
+      this.caterers = [];
+      this.result.map(res => {
+        this.caterers.push(
+          {
+           id:  res.id,
+           data: res.data()
+          })
+        
+      })
+    });
+
   }
 
   public filterCaterers(formData: FormData){
     console.log(formData);
+  
   }
 
+  
+  
 
   ngOnInit() {
     this.geofirestore.getNearbyCaterers(this.lat, this.lng).get().then( value =>  {
       this.result = value.docs;
-    
+      this.caterers = [];
       this.result.map(res => {
         this.caterers.push(
           {

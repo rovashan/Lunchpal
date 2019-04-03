@@ -52,17 +52,17 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
   
   openDialog(mealObj: Object): void {
     const dialogRef = this.dialog.open(OrderdialogComponent, {
-      width: '250px',
+      width: '300px',
       data: {name: mealObj["name"], description: mealObj["description"], price: mealObj["price"] }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       //this.mealQuantity = result;
       //add to localStorage
       this.shoppingCart.addProduct(result, {name: mealObj["name"], price: mealObj["price"]});
       
-      console.log(result);
+      //console.log(result);
     });
   }
 
