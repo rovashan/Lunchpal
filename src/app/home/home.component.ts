@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   // veggieMenu: any;
   // classicMenu: any;
   // lifestyleMenu: any;
+defaultBounds;
 
   constructor(
     private carouselHandler: CarouselHandlerService,

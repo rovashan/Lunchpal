@@ -1,0 +1,128 @@
+.structureContainer{
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    padding: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    background: #fff;
+}
+.paymentContainer {
+    width: 100%;
+}
+.summary {
+    text-align: center;
+}
+
+.buttonControls > p {
+   text-align: right;
+   font-style: italic;
+   font-weight: bold;
+}
+
+.mat-calendar-body tr:hover {
+ background:rgba(74, 174, 255, 0.2);
+  
+}
+/*
+.mat-calendar-body-cell-content:hover{
+    background: red !important;
+}
+*/
+.mat-spinner.mat-progress-spinner.mat-primary.mat-progress-spinner-indeterminate-animation, svg{
+ width: 20px !important;
+ height: 20px !important;
+ display: inline-block;
+}
+
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+  }
+  .custom-day.focused {
+    background-color: #e6e6e6;
+  }
+  .custom-day.range, .custom-day:hover {
+    background-color: rgb(2, 117, 216);
+    color: white;
+  }
+  .custom-day.faded {
+    background-color: rgba(2, 117, 216, 0.5);
+  }
+
+.mat-horizontal-stepper-content{
+    margin-top: 40px;
+   
+}
+
+.summary div:first-of-type h3 {
+    color: #111;
+}
+
+.summary h3 {
+    color: #aaa;
+}
+
+
+
+.summary > div {
+    margin: 20px 0px 40px 0px;
+   
+}
+
+.confirmIcon {
+    max-width: 70px;
+    margin: 0 auto;
+    display: block;
+}
+
+.paygateIcon {
+    max-width: 275px;
+    margin: 0 auto;
+    display: block;
+}
+
+.payTitle {
+    text-align: center;
+}
+
+.controls > div > div > mat-form-field {
+    width: 100%;
+}
+
+
+input[type="submit"]:disabled {
+    background: #dddddd;
+}
+
+@media screen and (min-width: 1150px) {
+    .paymentContainer {
+        width: 70%;
+    }
+    .summary {
+        border-left: 1px solid #eee;
+        width: 20%;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .structureContainer {
+        display: flex;  
+    }
+    
+    .controls {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .controls > div {
+        width: 100%;
+        margin: 20px 20px 20px 0px;
+        
+    }
+    
+  }
+

@@ -16,6 +16,8 @@ export class EventsComponent implements OnInit {
   caterers: any[];
   lat: number = parseInt(this.route.snapshot.paramMap.get("lat"));
   lng: number = parseInt(this.route.snapshot.paramMap.get("lng"));
+  defaultBounds;
+  minDate = new Date();
 
   public eventsForm = new FormGroup({
     address: new FormControl('', Validators.required),
@@ -26,7 +28,10 @@ export class EventsComponent implements OnInit {
   checkDate($event: any) {
     console.log($event);
   }
-
+  myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    return day == 1;
+  }
 
 
   public handleAddressChange(address: string) {

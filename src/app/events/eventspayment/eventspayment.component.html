@@ -1,0 +1,175 @@
+<app-landingnav></app-landingnav>
+<section>
+  <h2>personal & Payment Form (Events)</h2>
+  <div class="structureContainer">
+    <div class="paymentContainer">
+      <!-- <div> -->
+      <mat-horizontal-stepper #stepper linear>
+        <mat-step [completed]="personalState" label="Personal">
+
+          <form [formGroup]="personal" (change)="personalCompleted()">
+            <!-- <p>Please fill the form below with your personal information: </p> -->
+            <div class="controls">
+              <div>
+                <label for="firstname">First Name: </label>
+                <input name="firstname" placeholder="First Name" formControlName="firstname">
+                <div
+                  *ngIf="personal.get('firstname').hasError('required') && (personal.get('firstname').dirty || personal.get('firstname').touched)">
+                  <span class="error">First name is required.</span>
+                </div>
+              </div>
+              <div>
+                <label for="">Last Name: </label>
+                <input name="lastname" placeholder="Last Name" formControlName="lastname">
+                <div
+                  *ngIf="personal.get('lastname').hasError('required') && (personal.get('lastname').dirty || personal.get('lastname').touched)">
+                  <span class="error">Last name is required.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <div>
+                <label for="phone">Phone Number: </label>
+                <input type="text" mask='(000) 000 0000 0000' name="phone" placeholder="Phone Number"
+                  formControlName="phone">
+                <div
+                  *ngIf="personal.get('phone').hasError('required') && (personal.get('phone').dirty || personal.get('phone').touched)">
+                  <span class="error">Phone is required.</span>
+                </div>
+              </div>
+              <div>
+                <label for="fdeldate">Event Date </label>
+                <div>
+                  <!--(ngModelChange)="personalCompleted()"-->
+                  <mat-form-field [floatLabel]="'never'">
+                    <input placeholder="Select the date of your event" matInput class="datePickerInput" [min]="minDate"
+                      (ngModelChange)="checkDate($event); personalCompleted()" [matDatepicker]="picker"
+                      [matDatepickerFilter]="myFilter" formControlName="startdate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  *ngIf="personal.get('startdate').hasError('required') && (personal.get('startdate').dirty || personal.get('startdate').touched)">
+                  <span class="error">Event date is required.</span>
+                </div>
+
+              </div>
+            </div>
+          </form>
+          <button [disabled]="!personal.valid" class="continue" matStepperNext type="button"
+          [ngStyle]="{'background' : (personal.valid) ? '#5ec5ff' : '#b4c8d3'}"
+            (click)="personalCompleted()">Continue</button>
+        </mat-step>
+
+        <mat-step  [completed]="deliveryState" label="Delivery">
+
+          <form [formGroup]="deliveryInfo" (change)="deliveryChanged()">
+            <p>Where do you want your lunch delivered?</p>
+            <div class="controls">
+              <div>
+                <label for="phone">Address: </label>
+                <input ngx-google-places-autocomplete [options]="{ bounds: defaultBounds,
+                               strictBounds: false, 
+                               componentRestrictions: { country: 'ZA'} }" #placesRef="ngx-places"
+                  formControlName="address" (onAddressChange)="handleAddressChange($event)"
+                  (change)="inputAddressChange($event)" />
+                <div
+                  *ngIf="deliveryInfo.get('address').hasError('required') && (deliveryInfo.get('address').dirty || deliveryInfo.get('address').touched)">
+                  <span class="error">Address is required.</span>
+                </div>
+                <label for="phone">Building (optional): </label>
+                <input name="building" placeholder="Building name" formControlName="building"
+                  (change)="inputBuildingChange($event)">
+                <p>These areas are covered. More areas coming soon.</p>
+                <div>
+                  <mat-chip-list>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Sandton</mat-chip>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Bryanston</mat-chip>
+                    <mat-chip style="background-color: #ff7b00; color: #fff; font-size: 15px;">Rosebank</mat-chip>
+                  </mat-chip-list>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+          <div class="buttonControls">
+          
+            <button [disabled]="!deliveryInfo.valid || !selectedAddress || isBusy " class="continue" type="button"
+            [ngStyle]="{'background' : (deliveryInfo.valid) ? '#5ec5ff' : '#b4c8d3'}"
+              (click)="deliveryCompleted()">Continue</button>
+            <p *ngIf="isBusy">
+              <mat-spinner></mat-spinner> Setting up payment...
+            </p>
+
+          </div>
+        </mat-step>
+
+        <mat-step label="Payment">
+          <p class="payTitle">Please proceed to the PayGate secure gateway to complete payment.</p>
+          <img class="confirmIcon" src="../../assets/images/padlock.svg" />
+          <img class="paygateIcon" src="../../assets/images/paygate-logo.png" />
+
+          <form #payForm id="payForm" action="https://www.paygate.co.za/paysubs/process.trans" method="POST"
+            [formGroup]="payment">
+            <input type="hidden" name="VERSION" formControlName="VERSION">
+            <input type="hidden" name="PAYGATE_ID" formControlName="PAYGATE_ID">
+            <input type="hidden" name="REFERENCE" formControlName="REFERENCE">
+            <input type="hidden" name="AMOUNT" formControlName="AMOUNT">
+            <input type="hidden" name="CURRENCY" formControlName="CURRENCY">
+            <input type="hidden" name="RETURN_URL" formControlName="RETURN_URL">
+            <input type="hidden" name="TRANSACTION_DATE" formControlName="TRANSACTION_DATE">
+            <input type="hidden" name="EMAIL" formControlName="EMAIL">
+            <input type="hidden" name="SUBS_START_DATE" formControlName="SUBS_START_DATE">
+            <input type="hidden" name="SUBS_END_DATE" formControlName="SUBS_END_DATE">
+            <input type="hidden" name="SUBS_FREQUENCY" formControlName="SUBS_FREQUENCY">
+            <input type="hidden" name="PROCESS_NOW" formControlName="PROCESS_NOW">
+            <input type="hidden" name="PROCESS_NOW_AMOUNT" formControlName="PROCESS_NOW_AMOUNT">
+            <input type="hidden" name="CHECKSUM" formControlName="CHECKSUM">
+
+            <button type="submit" class="confirmPay continue" style="margin: 0 auto;" (click)="pay()">Pay Now</button>
+
+          </form>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+
+    <div class="summary">
+      <div>
+        <h3>Order Summary</h3>
+
+        <!-- GET THE LOCAL STORAGE INFO-->
+        <p><strong> Caterer Name: {{caterer["d"]["name"]}} </strong></p>
+        <p><strong> Custom Event Order Total: R{{orderTotal}} </strong></p>
+        <!--
+        <p><strong> Amount Per Day: R{{selectedPlan.price}}</strong> </p>
+          -->
+      </div>
+
+      <div>
+        <h3>Personal Information</h3>
+        <p>Name: <span class="personalinfo">{{selectedfirstname}} {{selectedlastname}}</span></p>
+        <p>Email: <span class="personalinfo">{{userEmail}}</span> </p>
+        <p>Phone: <span class="personalinfo">{{selectedphone}}</span> </p>
+      </div>
+      <div>
+        <h3>Address</h3>
+        <p>Address: <span class="personalinfo">{{selectedAddress}}</span> </p>
+        <p>Building: <span class="personalinfo">{{selectedBuilding}}</span> </p>
+
+      </div>
+      <div>
+        <h3>Event Date</h3>
+        <p>Event date: <span class="personalinfo">{{eventdate}}</span></p>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<app-footer></app-footer>

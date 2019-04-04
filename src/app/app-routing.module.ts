@@ -50,6 +50,7 @@ const routes: Routes = [
   { path: 'contact', loadChildren: './contact/contact.module#ContactModule'},
   
   { path: 'events/caterer/:id', loadChildren: './events/caterer/caterer.module#CatererModule'},
+  { path: 'events/payment/:order', canActivate:[GuardGuard], loadChildren: './events/eventspayment/eventspayment.module#EventspaymentModule' },
   { path: 'events/:lat/:lng', loadChildren: './events/events.module#EventsModule'}, 
   { path: '', component: MenuComponent, children: [
    

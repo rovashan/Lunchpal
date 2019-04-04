@@ -74,7 +74,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
 
   checkout(){
     // TODO: redirects to the payment form
-    this.router.navigate(["/payment/id"])
+    this.router.navigate(["events/payment/", this.route.snapshot.paramMap.get("id") ]);
   }
 
   removeItemFromCart(item: string) {
