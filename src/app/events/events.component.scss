@@ -2,16 +2,28 @@
     display: block;
     background: none;
     text-align: left;
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     margin: 0 auto;
+    text-align: center;
 }
-.eventsForm input  {
+.eventsForm mat-form-field  {
    background: none;
+    width: 100%;
 }
 
 .filter {
-    background: red !important;
+
+    display: block;
+    margin: 10px auto;
+}
+
+.nearbyEvents div {
+    margin: 10px auto;
+    padding: 10px;
+    background: #fff; 
+    width: 90%;
+    max-width: 400px;  
 }
 
 @media screen and (min-width: 690px) {
@@ -21,15 +33,15 @@
         align-items: center;
         
     }
+    .eventsForm mat-form-field {
+        margin: 10px;
+    }
+
     .nearbyEvents {
         width: 90%;
         margin: 0 auto;
         display: flex;
         justify-content: center;
     }
-    .nearbyEvents div {
-        margin: 10px;
-        padding: 10px;
-        background: #fff;
-    }
+   
 }

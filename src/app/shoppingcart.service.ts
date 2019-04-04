@@ -210,6 +210,8 @@ orderedItems($event: Event, item: any, name: string){
   //remove item from cart
   removeItem(name: string, route){
    // console.log("item deleted");
+   
+
     let cart: any = JSON.parse(localStorage.getItem("cart"));
    // console.log(cart);
     let index: number = -1;

@@ -44,7 +44,8 @@ import { OrderdialogComponent } from './orderdialog/orderdialog.component';
     NavComponent,
     MenuComponent,
     IndexComponent,
-    OrderdialogComponent
+    OrderdialogComponent,
+   
    
   ],
   imports: [

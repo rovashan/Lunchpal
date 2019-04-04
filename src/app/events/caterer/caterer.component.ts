@@ -26,6 +26,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
     private shoppingCart: ShoppingcartService,
     private router: Router, ) {
       
+
     //actually redirect to the same component
     //and see the changes in localStorage
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -41,7 +42,8 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
       }
 
     });
-     }
+
+  }
   
   
   caterer;
@@ -58,11 +60,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
 
     dialogRef.afterClosed().subscribe(result => {
       //console.log('The dialog was closed');
-      //this.mealQuantity = result;
-      //add to localStorage
       this.shoppingCart.addProduct(result, {name: mealObj["name"], price: mealObj["price"]});
-      
-      //console.log(result);
     });
   }
 
@@ -73,6 +71,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
     
   } 
   
+
   checkout(){
     // TODO: redirects to the payment form
     this.router.navigate(["/payment/id"])
@@ -81,17 +80,19 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
   removeItemFromCart(item: string) {
     //console.log('remove item');
     this.shoppingCart.removeItem(item, `/events/caterer/${this.route.snapshot.paramMap.get("id")}`);
-    
+  
   }
 
+
   ngOnInit() {
+    
     this.getCatererInfo(this.route.snapshot.paramMap.get("id"));
-  
     this.shoppingCart.emptyBasketChange.subscribe(x => this.emptyBasket = x);
   
   }
 
   ngAfterContentChecked(){
+    
      //load the shoppingcart
      this.shoppingCart.loadCart();
 

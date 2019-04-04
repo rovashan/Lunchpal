@@ -14,7 +14,7 @@
         />
         </mat-form-field>
 
-      <div>
+     
           
         <mat-form-field >
           <input placeholder="Choose Date" matInput class="datePickerInput" [min]="minDate"
@@ -23,13 +23,13 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-      </div>
+     
 
       <mat-form-field>
         <input placeholder="Address" type="text" matInput name="delivery" placeholder="delivery" formControlName="delivery">
       </mat-form-field>
       
-      <button type="submit" [disabled]="!eventsForm.valid" mat-stroked-button>Filter</button>
+      <button class="filter" type="submit" [disabled]="!eventsForm.valid" >Filter</button>
       
 
     </form>

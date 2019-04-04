@@ -13,8 +13,9 @@ header{
 
 .address {
   padding-top: 30px;
-  width: 500px;
+  max-width: 500px;
   color: #f37702;
+  width: 80%;
 }
 
 .mat-form-field-empty.mat-form-field-label {
