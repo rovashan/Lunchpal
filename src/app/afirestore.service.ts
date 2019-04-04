@@ -104,7 +104,24 @@ export class AfirestoreService {
     }
     return this.firestore.collection("payments").add(data)
   }
-
+  
+  //event payment reference
+  public addEventPaymentReference(userDocId: string, firstName: string, lastName: string, phone: string,
+    address: string, building: string, order: object, orderTotal: number){
+      let data = {
+        createdDate: new Date(),
+        userId: userDocId,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        userAddress: address,
+        userBuilding: building ? building : "Not set",  //if building defined else "Not Set"
+        order,
+        orderTotal,
+        paymentStatus: null
+      }
+      return this.firestore.collection("events").add(data);
+  }
 
   //get the users last subscription
   public renewSubscription(userName: string, userId: string, subscriptionId: string, plan: Object) {

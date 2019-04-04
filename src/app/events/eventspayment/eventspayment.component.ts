@@ -149,54 +149,46 @@ export class EventspaymentComponent implements OnInit {
 
     this.isBusy = true;
     let transactionDate = moment(new Date()).utc().format("YYYY-MM-DD hh:mm"); 
-    let userSelectedDate = this.eventdate;
-    let endDate = moment(userSelectedDate).utc().add(12, "months").format("YYYY-MM-DD");
+    //let userSelectedDate = this.eventdate;
+    //let endDate = moment(userSelectedDate).utc().add(12, "months").format("YYYY-MM-DD");
 
     //console.log('userSelectedDate: ', userSelectedDate);
 
-    let subsStartDate = moment(userSelectedDate).utc().add(8, "days").format("YYYY-MM-DD");
-    let subsEndDate = moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
-/*
+    // let subsStartDate = moment(userSelectedDate).utc().add(8, "days").format("YYYY-MM-DD");
+    // let subsEndDate = moment(subsStartDate).utc().add(12, "months").format("YYYY-MM-DD");;
+
     let preq: PReq = {
       VERSION: '21',
       PAYGATE_ID: '10011072130',  //Test
       //PAYGATE_ID: '1026688100018',
       REFERENCE: this.selectedfirstname,
-      AMOUNT: this.selectedPlan["price"] * 100,
+      AMOUNT: this.orderTotal,
       CURRENCY: 'ZAR',
       RETURN_URL: "https://lunch-api-8ff4b.firebaseapp.com/api/pay",
 
       TRANSACTION_DATE: transactionDate, //'2019-03-17 21:21',
       EMAIL: this.authService.userName,
-      SUBS_START_DATE: subsStartDate,
-      SUBS_END_DATE: subsEndDate,
+      SUBS_START_DATE: transactionDate,
+      SUBS_END_DATE: this.eventdate,
       SUBS_FREQUENCY: '112',
 
       PROCESS_NOW: 'YES',
-      PROCESS_NOW_AMOUNT: this.selectedPlan["price"] * 100,
+      PROCESS_NOW_AMOUNT: this.orderTotal,
       CHECKSUM: ''
     }
-*/
+
+    
     //create the payment document    
-/*
-
-    let plan = {
-      planName: this.selectedPlan["name"],
-      planPrice: this.selectedPlan["price"],
-      creditsPerDay: this.selectedPlan["creditsPerDay"],
-      planDocId: this.route.snapshot.paramMap.get("plan")
-    }
-
-    this.aFirestore.addPaymentReference(
+    this.aFirestore.addEventPaymentReference(
       this.authService.userId,
       this.selectedfirstname,
       this.selectedlastname,
       this.selectedphone,
       this.selectedAddress,
       this.selectedBuilding,
-      plan,
-      this.startdate,
-      endDate
+      this.shoppingCart.items,
+      this.orderTotal,
+    
     ).then((docRef) => {
       // only if payment doc successfully created
       // set request reference to new payment doc id
@@ -234,14 +226,6 @@ export class EventspaymentComponent implements OnInit {
           this.isBusy = false;
           this.stepper.next();
 
-          // ------------- MUST BE MOVED TO THE CLOUD FUNCTION
-
-            //add balance to the user
-           // console.log( this.authService.userDocId, this.selectedPlan["price"]);
-           this.aFirestore.addBalanceToUSer(this.authService.userDocId, this.selectedPlan["price"]);
-
-          // ------------- MUST BE MOVED TO THE CLOUD FUNCTION
-
         },
         error => {
           this.isBusy = false;
@@ -252,7 +236,7 @@ export class EventspaymentComponent implements OnInit {
       this.isBusy = false;
       console.log('Error creating payment document: ', err);
     });
-*/
+
 
   }
 
