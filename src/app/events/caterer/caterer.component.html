@@ -33,10 +33,10 @@
     <div class="orderDetails">
       <h3>Order Details</h3>
 
-        <div *ngIf="orderedItems; else showMessage">
-          <div class="item" *ngFor="let item of orderedItems">
+        <div *ngIf="(itemsArray && itemsArray.length > 0); else showMessage">
+          <div class="item" *ngFor="let item of itemsArray; let i = index">
             <p>
-              <span (click)="removeItemFromCart(item.product)">
+              <span (click)="removeItemFromCart(item.product, i)">
                 <i class="material-icons">
                   delete
                 </i>

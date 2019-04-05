@@ -251,6 +251,47 @@ orderedItems($event: Event, item: any, name: string){
     this.checkForEmpty(route);
   }
 
+
+  removeItemFromArray(name: string){
+    let cart: any = JSON.parse(localStorage.getItem("cart"));
+    // console.log(cart);
+     let index: number = -1;
+     for (var i = 0; i < cart.length; i++) {
+       let item: Item = JSON.parse(cart[i]);
+       if (item["product"] == name) {
+         cart.splice(i, 1);
+         break;
+       }
+     }
+     //pass the name of the item to the remove function
+     this.removeCurrentItem(name);
+     localStorage.setItem("cart", JSON.stringify(cart));
+     let total = 0;
+     let items = [];
+     if(localStorage.getItem("cart") != null){
+       let cart = JSON.parse(localStorage.getItem("cart"));
+       for(let i = 0; i < cart.length; i++){
+         //parse each item in the cart
+         let item = JSON.parse(cart[i]);
+         //push the items to the array
+         items.push({
+           product: item["product"],
+           quantity: item["quantity"],
+           price: item["price"]
+         });
+         //get the total
+         total += (item["price"] * item["quantity"]);
+        // console.log(total);
+         this.fakeTotal = total;
+         this.setTotalChange(this.fakeTotal);
+       
+      }
+   
+   }    
+ 
+   //  this.checkForEmpty(route);
+  } 
+  
   
   removeCurrentItem(name: string){
     //process the name of the item

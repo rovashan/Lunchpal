@@ -10,6 +10,7 @@ import {OrderdialogComponent } from "../../orderdialog/orderdialog.component";
 import { ShoppingcartService } from "../../shoppingcart.service";
 
 
+
 @Component({
   selector: 'app-caterer',
   templateUrl: './caterer.component.html',
@@ -25,7 +26,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
     public dialog: MatDialog,
     private shoppingCart: ShoppingcartService,
     private router: Router, ) {
-      
+      /*
 
     //actually redirect to the same component
     //and see the changes in localStorage
@@ -42,7 +43,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
       }
 
     });
-
+*/
   }
   
   
@@ -51,6 +52,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
   orderedItems: any;
   orderTotal: number;
   emptyBasket = this.shoppingCart.emptyBasket;
+  itemsArray: any[];
   
   openDialog(mealObj: Object): void {
     const dialogRef = this.dialog.open(OrderdialogComponent, {
@@ -77,9 +79,14 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
     this.router.navigate(["events/payment/", this.route.snapshot.paramMap.get("id") ]);
   }
 
-  removeItemFromCart(item: string) {
+  removeItemFromCart(item: string, index: number) {
     //console.log('remove item');
-    this.shoppingCart.removeItem(item, `/events/caterer/${this.route.snapshot.paramMap.get("id")}`);
+    //this.shoppingCart.removeItem(item, `/events/caterer/${this.route.snapshot.paramMap.get("id")}`);
+    
+    this.itemsArray.splice(index, 1);
+    console.log(this.itemsArray);
+    this.shoppingCart.removeItemFromArray(item);
+  
   
   }
 
@@ -110,6 +117,7 @@ export class CatererComponent implements OnInit, OnDestroy, AfterContentChecked 
        } else {
     
          this.orderedItems = this.shoppingCart.items;
+         this.itemsArray = this.orderedItems;
          this.orderTotal = this.shoppingCart.total;
          //this.totalCredits
  
