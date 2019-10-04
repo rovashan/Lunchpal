@@ -53,8 +53,8 @@ These are the other components associated with this project.
 
 | App | Repo |
 | ------ | ------ |
-| Admin Portal | [https://github.com/rovashan/lunch-admin] |
-| Server-side API | [https://github.com/rovashan/lunch-api] |
+| Admin Portal | https://github.com/rovashan/lunch-admin |
+| Server-side API | https://github.com/rovashan/lunch-api |
 
 
 License
