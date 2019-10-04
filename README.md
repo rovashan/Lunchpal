@@ -53,8 +53,8 @@ These are the other components associated with this project.
 
 | App | Repo |
 | ------ | ------ |
-| Admin Portal | [plugins/dropbox/README.md][PlDb] |
-| Server-side API | [plugins/github/README.md][PlGh] |
+| Admin Portal | [https://github.com/rovashan/lunch-admin] |
+| Server-side API | [https://github.com/rovashan/lunch-api] |
 
 
 License
