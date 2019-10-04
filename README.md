@@ -24,7 +24,6 @@ TODO:
 
 ![Landing](Screenshots/Landing.PNG)
 ![Menu](Screenshots/Menu.PNG)
-![Meal](Screenshots/Meal.PNG)
 ![Lunchbox](Screenshots/Lunchbox.PNG)
 
 
