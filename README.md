@@ -2,9 +2,6 @@
 
 Lunchpal is a food delivery and lunch subscription service. It was created to automate daily lunch requirements (mostly for myself) in the South African market but never gained enough traction. Feel free to try to launch it in your region or to adapt the code for a related service. 
 
-# Licence
-
-MIT
 
 # Features
   
@@ -22,12 +19,14 @@ TODO:
   - View order history.
   - Any other useful features.
 
+
 ### Screenshots
 
 ![Landing](Screenshots/Landing.PNG)
 ![Menu](Screenshots/Menu.PNG)
 ![Lightmeal](Screenshots/Lightmeal.PNG)
 ![Lunchbox](Screenshots/Lunchbox.PNG)
+
 
 ### Tech
 Lunchpal uses a number of open source technologies that are good for rapid prototyping at minimum cost:
@@ -37,6 +36,7 @@ Lunchpal uses a number of open source technologies that are good for rapid proto
 * [Firebase](https://firebase.google.com/) - Amazing cloud service for authentication, NoSQL database and hosting.
 * [NodeJS](https://nodejs.org/) - Server side logic.
 * [OneSignal](https://onesignal.com/) - Push notifications.
+
 
 ### Installation
 
